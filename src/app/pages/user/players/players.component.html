@@ -1,11 +1,8 @@
-<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
+<div class="documents-wrapper">
 	<div class="documents-container">
 		<div class="documents-list">
 			<div class="documents-header">
 				<div class="documents-header-left">
-					<div class="documents-header-left__arrow" (click)="back()">
-						<span class="material-icons">arrow_back_ios</span>
-					</div>
 					<div
 						class="documents-header-left__avatar"
 						routerLink="/profile"
@@ -14,44 +11,11 @@
 					</div>
 				</div>
 				<div class="documents-header__title">Title header</div>
-				<div
-					(click)="isMenuOpen = !isMenuOpen"
-					class="burger-wrap"
-					class="burger-wrap"
-				>
-					<div
-						[class.burger--close]="isMenuOpen"
-						class="burger"
-					></div>
+				<div class="burger-wrap" class="burger-wrap">
+					<div class="burger"></div>
 				</div>
 			</div>
-			<div
-				[class.documents-sidebar--open]="isMenuOpen"
-				class="documents-sidebar"
-			>
-				<div
-					(click)="isMenuOpen = !isMenuOpen"
-					class="documents-sidebar__close"
-				>
-					<span class="material-icons">close</span>
-				</div>
-				<div class="documents-sidebar-content">
-					<div class="documents-sidebar__img">
-						<img src="assets/default.png" alt="" />
-					</div>
-					<div class="documents-sidebar__title">
-						Title of sidebar...
-					</div>
-					<div class="documents-sidebar__description">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Sint molestiae consequatur quae. Modi corporis rem amet
-						tempore debitis assumenda minima repellat labore
-						expedita quam. Itaque accusamus culpa ullam
-						necessitatibus nisi.
-					</div>
-				</div>
-			</div>
-			<div class="documents-main">
+			<div class="documents-main pl0">
 				<div class="documents-main-content">
 					<div class="documents-main-row">
 						<div class="documents__title">
@@ -195,9 +159,6 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="documents-main-row">
-						<wform [config]="formDoc"></wform>
 					</div>
 				</div>
 			</div>
