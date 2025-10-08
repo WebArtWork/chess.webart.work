@@ -1,0 +1,57 @@
+.file {
+	&-wrapper {
+		max-width: 650px;
+		padding: 80px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 3px dashed #ffffff94;
+		border-radius: 8px;
+	}
+	&__content {
+		text-align: center;
+	}
+	&__title {
+		font-size: 24px;
+		font-weight: 700;
+	}
+	&__or {
+		padding: 15px 0;
+		color: #b0b0b0;
+	}
+}
+
+.file-upload {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.file-upload__input {
+	display: none; /* скрываем стандартный input */
+}
+
+.file-upload__button {
+	background-color: var(--c-primary-hover);
+	color: white;
+	padding: 12px 50px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	transition: all 0.3s;
+	color: #000;
+}
+
+.file-upload__button:hover {
+	background-color: var(--c-primary-cursor);
+}
+
+.file-upload__filename {
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #ffffff;
+}

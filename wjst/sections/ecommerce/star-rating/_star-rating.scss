@@ -1,0 +1,59 @@
+// star-rating section
+
+.star-rating {
+	--star-size: calc(var(--icon-size) * 1.5);
+	display: flex;
+	align-items: center;
+	font-family: var(--ff-base);
+	line-height: var(--line-height);
+
+	&__stars {
+		position: relative;
+		display: inline-block;
+		font-size: var(--star-size);
+		line-height: 1;
+	}
+
+	&__base,
+	&__fill {
+		display: flex;
+	}
+
+	&__base {
+		color: var(--c-text-body-secondary);
+	}
+
+	&__fill {
+		color: var(--c-yellow);
+		position: absolute;
+		top: 0;
+		left: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		width: calc(var(--rating) / 5 * 100%);
+	}
+
+	&__text {
+		margin-left: calc(8px * var(--margin-scale));
+		font-size: calc(var(--font-size) * 0.875);
+		color: var(--c-text-body-secondary);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.star-rating {
+		--star-size: calc(var(--icon-size) * 1.25);
+	}
+	.star-rating__text {
+		font-size: calc(var(--font-size) * 0.8);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.star-rating {
+		--star-size: calc(var(--icon-size) * 1.1);
+	}
+	.star-rating__text {
+		font-size: calc(var(--font-size) * 0.75);
+	}
+}

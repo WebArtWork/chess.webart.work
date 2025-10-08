@@ -1,0 +1,717 @@
+{
+	"layout": "/layouts/full.html",
+	"layouts": ["default", "full", "navigation"],
+	"sections": ["home-one"],
+	"title": "Title which will fit on all pages",
+	"description": "Description which will fit on all pages",
+	"keywords": "waw, web art work, server render, template",
+	"prefix": "/wjst-default",
+	"favicon": "img/favicon.ico",
+	"image": "https://webartwork.github.io/wjst-default/img/avatar.png",
+	"author": "Honchar Denys",
+	"scss": "scss/index.scss",
+	"test": {},
+	"theme": {
+		"bp-lg": "991px",
+		"bp-md": "767px",
+		"bp-sm": "479px",
+		"fs": "16px",
+		"fontSize": "16px",
+		"lineHeight": "1.5",
+		"letterSpacing": "0.5px",
+		"iconSize": "16px",
+		"paddingScale": "1",
+		"marginScale": "1",
+		"borderRadius": "4px",
+		"transition": "0.3s ease-in-out",
+		"fontBase": "Roboto, sans-serif",
+		"fontTitle": "Lato, sans-serif",
+		"fontSecond": "Roboto, sans-serif",
+		"colors": {
+			"primary": "#212529",
+			"textPrimary": "#fff",
+			"secondary": "#24373d",
+			"textSecondary": "#000",
+			"primaryHover": "#f8ec20",
+			"primaryCursor": "#cfc720",
+			"error": "#ff4d4d",
+			"alert": "#363636",
+			"errorHover": "#d73535",
+			"success": "#2bb729",
+			"successHover": "#358834",
+			"primaryBorder": "#0028ffcc",
+			"secondaryBorder": "#a0a0a0",
+			"successBorder": "#00ff00",
+			"dangerBorder": "#ff0000",
+			"warningBorder": "#ffff00",
+			"infoBorder": "#00ffff",
+			"shadow": "rgba(0, 0, 0, 0.5)",
+			"tableShadow": "rgba(0, 0, 0, 0.15)",
+			"shadowTable": "rgba(0, 0, 0, 0.2)",
+			"placeholder": "#666666",
+			"bgItem": "#1c1c1c",
+			"textBodySecondary": "#6c757d",
+			"codeHover": "#007eff",
+			"fontTitle": "#ffffff",
+			"tablePrimary": "#cfe2ff",
+			"tableSecondary": "#e2e3e5",
+			"tableSuccess": "#d1e7dd",
+			"tableDanger": "#f8d7da",
+			"tableWarning": "#fff3cd",
+			"tableInfo": "#cff4fc",
+			"tableLight": "#f8f9fa",
+			"tableStriped": "#2c3034",
+			"border": "#495057",
+			"orange": "#ffa500",
+			"question": "#4da6ff",
+			"loading": "#a0a0a0",
+			"blue": "#334d6e",
+			"sky": "#3498db",
+			"skyLight": "#58acf5",
+			"grey": "#bdbdbd",
+			"greyLight": "#f2f2f2",
+			"red": "#a31010",
+			"redDark": "#8c1b0f",
+			"green": "#089227",
+			"dark": "#000",
+			"white": "#fff",
+			"black": "#000",
+			"body": "#242b36",
+			"blueGray": "#425155",
+			"blueGrayDarken": "#262d2e",
+			"yellow": "#e0dc10",
+			"yellowDarken": "#8b890d",
+			"greenDarken": "#0a5803"
+		}
+	},
+	"lightTheme": {
+		"bp-lg": "991px",
+		"bp-md": "767px",
+		"bp-sm": "479px",
+		"fs": "16px",
+		"fontSize": "16px",
+		"lineHeight": "1.5",
+		"letterSpacing": "0.5px",
+		"iconSize": "16px",
+		"paddingScale": "1",
+		"marginScale": "1",
+		"borderRadius": "4px",
+		"transition": "0.3s ease-in-out",
+		"fontBase": "Roboto, sans-serif",
+		"fontTitle": "Lato, sans-serif",
+		"fontSecond": "Roboto, sans-serif",
+		"colors": {
+			"primary": "#000",
+			"textPrimary": "#fff",
+			"secondary": "#24373d",
+			"textSecondary": "#000",
+			"primaryHover": "#f8ec20",
+			"primaryCursor": "#cfc720",
+			"error": "#ff4d4d",
+			"alert": "#363636",
+			"errorHover": "#d73535",
+			"success": "#2bb729",
+			"successHover": "#358834",
+			"primaryBorder": "#0028ffcc",
+			"secondaryBorder": "#a0a0a0",
+			"successBorder": "#00ff00",
+			"dangerBorder": "#ff0000",
+			"warningBorder": "#ffff00",
+			"infoBorder": "#00ffff",
+			"shadow": "rgba(0, 0, 0, 0.5)",
+			"tableShadow": "rgba(0, 0, 0, 0.15)",
+			"shadowTable": "rgba(0, 0, 0, 0.2)",
+			"placeholder": "#666666",
+			"bgItem": "#1c1c1c",
+			"textBodySecondary": "#6c757d",
+			"codeHover": "#007eff",
+			"fontTitle": "#ffffff",
+			"tablePrimary": "#cfe2ff",
+			"tableSecondary": "#e2e3e5",
+			"tableSuccess": "#d1e7dd",
+			"tableDanger": "#f8d7da",
+			"tableWarning": "#fff3cd",
+			"tableInfo": "#cff4fc",
+			"tableLight": "#f8f9fa",
+			"tableStriped": "#2c3034",
+			"border": "#495057",
+			"orange": "#ffa500",
+			"question": "#4da6ff",
+			"loading": "#a0a0a0",
+			"blue": "#334d6e",
+			"sky": "#3498db",
+			"skyLight": "#58acf5",
+			"grey": "#bdbdbd",
+			"greyLight": "#f2f2f2",
+			"red": "#a31010",
+			"redDark": "#8c1b0f",
+			"green": "#089227",
+			"dark": "#000",
+			"white": "#fff",
+			"black": "#000",
+			"body": "#242b36",
+			"blueGray": "#425155",
+			"blueGrayDarken": "#262d2e",
+			"yellow": "#e0dc10",
+			"yellowDarken": "#8b890d",
+			"greenDarken": "#0a5803"
+		}
+	},
+
+	"items": [
+		{
+			"name": "Customize",
+			"url": "/customize",
+			"items": [
+				{
+					"name": "Sass",
+					"url": "/customize#sass"
+				},
+				{
+					"name": "CSS Variables",
+					"url": "/customize#css-variables"
+				},
+				{
+					"name": "Template Variables",
+					"url": "/customize#template-variables"
+				},
+				{
+					"name": "Optimize",
+					"url": "/customize#optimize"
+				}
+			]
+		},
+		{
+			"name": "Layout",
+			"url": "/layout",
+			"items": [
+				{
+					"name": "Breakpoints",
+					"url": "/layout#breakpoints"
+				},
+				{
+					"name": "Containers",
+					"url": "/layout#containers"
+				},
+				{
+					"name": "Grid",
+					"url": "/layout#grid"
+				},
+				{
+					"name": "Columns",
+					"url": "/layout#columns"
+				}
+			]
+		},
+		{
+			"name": "Content",
+			"url": "/content",
+			"items": [
+				{
+					"name": "Typography",
+					"url": "/content#typography"
+				},
+				{
+					"name": "Images",
+					"url": "/content#images"
+				},
+				{
+					"name": "Tables",
+					"url": "/content#tables"
+				}
+			]
+		},
+		{
+			"name": "Components",
+			"url": "/components",
+			"items": [
+				{
+					"name": "Alerts",
+					"url": "/components#alerts",
+					"id": "alerts"
+				},
+				{
+					"name": "Accardion",
+					"url": "/components#accardion",
+					"id": "accardion"
+				},
+				{
+					"name": "Buttons",
+					"url": "/components#buttons"
+				},
+				{
+					"name": "Breadcrumb",
+					"url": "/components#breadcrumb"
+				},
+				{
+					"name": "Collapse",
+					"url": "/components#collapse"
+				},
+				{
+					"name": "Dropdowns",
+					"url": "/components#dropdowns"
+				},
+				{
+					"name": "Modal",
+					"url": "/components#modal"
+				},
+				{
+					"name": "Navbar",
+					"url": "/components#navbar"
+				},
+				{
+					"name": "Pagination",
+					"url": "/components#pagination"
+				},
+				{
+					"name": "Popovers",
+					"url": "/components#popovers"
+				}
+			]
+		},
+		{
+			"name": "About",
+			"url": "/about",
+			"items": [
+				{
+					"name": "Team",
+					"url": "/about#team"
+				},
+				{
+					"name": "Brand",
+					"url": "/about#brand"
+				},
+				{
+					"name": "License",
+					"url": "/about#license"
+				}
+			]
+		}
+	],
+	"teams": [
+		{
+			"name": "CEO & Founder",
+			"users": [
+				{
+					"href": "https://github.com/CrackerakiUA",
+					"img": "https://webart.work/api/user/image/63b9245ff9e925059d9ef676.jpg?1685462740871",
+					"name": "Denys Honchar",
+					"username": "Crackeraki",
+					"socials": [
+						{
+							"href": "https://github.com/CrackerakiUA",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.linkedin.com/in/crackeraki",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.instagram.com/wawceo",
+							"img": "img/inst.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01ea03b307667b49e1",
+							"img": "img/up.svg"
+						},
+						{
+							"href": "https://webart.work/m/63b9245ff9e925059d9ef676",
+							"img": "img/spider.svg"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Co-founders",
+			"users": [
+				{
+					"href": "https://github.com/Esmodeo",
+					"img": "https://avatars.githubusercontent.com/u/11319329?v=4",
+					"name": "Andrew Momot",
+					"username": "Esmodeo",
+					"socials": [
+						{
+							"href": "https://github.com/Esmodeo",
+							"img": "img/git.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/Kondruk",
+					"img": "https://webart.work/api/user/image/6602d9a0eb28ecc0dbacf3ed.jpg?1711533376634",
+					"name": "Roman Kondruk",
+					"username": "Kondruk",
+					"socials": [
+						{
+							"href": "https://github.com/Kondruk",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.linkedin.com/in/kondruk-roman-71bb30176/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01934c25cc0ecdfa94",
+							"img": "img/up.svg"
+						},
+						{
+							"href": "https://webart.work/m/6602d9a0eb28ecc0dbacf3ed",
+							"img": "img/spider.svg"
+						},
+						{
+							"href": "https://djinni.co/q/ffe54cc6ca/",
+							"img": "img/dj.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/div632",
+					"img": "https://avatars.githubusercontent.com/u/63455695?v=4",
+					"name": "Dina Irikova",
+					"username": "div632",
+					"socials": [
+						{
+							"href": "https://github.com/div632",
+							"img": "img/git.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/hlushko-arthur",
+					"img": "https://avatars.githubusercontent.com/u/61018089?v=4",
+					"name": "Arthur Hlushko",
+					"username": "hlushko-arthur",
+					"socials": [
+						{
+							"href": "https://github.com/hlushko-arthur",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.instagram.com/arthur.hlushko/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01fa7e6dede9f40634",
+							"img": "img/up.svg"
+						}
+					]
+				},
+				{
+					"href": "https://webart.work/m/6474b20780f5fe5cf6f21e6f",
+					"img": "https://webart.work/api/user/image/6474b20780f5fe5cf6f21e6f.jpg?1685463694255",
+					"name": "Solomia Hadzyra",
+					"username": "mia_hadzyra",
+					"socials": [
+						{
+							"href": "https://www.linkedin.com/in/mia-hadzyra-bb2362230/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://webart.work/m/6474b20780f5fe5cf6f21e6f",
+							"img": "img/spider.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/NastyaVod",
+					"img": "https://avatars.githubusercontent.com/u/104510101?v=4",
+					"name": "Anastasiia Vodnieva",
+					"username": "NastyaVod",
+					"socials": [
+						{
+							"href": "https://github.com/NastyaVod",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01c1fef1a09e234322",
+							"img": "img/up.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/unrequi",
+					"img": "https://avatars.githubusercontent.com/u/59056045?v=4",
+					"name": "Yulian Hramchuk",
+					"username": "unrequi",
+					"socials": [
+						{
+							"href": "https://github.com/unrequi",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.instagram.com/yulian.design/",
+							"img": "img/inst.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01cf5148fdfc9cb943",
+							"img": "img/up.svg"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Active Team",
+			"users": [
+				{
+					"href": "https://github.com/Lizvinskyi0202",
+					"img": "img/photo1.jpg",
+					"name": "Andrii Lizvinskyi",
+					"username": "Lizvinskyi0202",
+					"socials": [
+						{
+							"href": "https://github.com/Lizvinskyi0202",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://t.me/lukin_drg",
+							"img": "img/tg.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/nikiquickie",
+					"img": "https://webart.work/api/user/image/64eee5d08eaf76400c6c3063.jpg?1693378151062",
+					"name": "Nika Rohovska",
+					"username": "nikiquickie",
+					"socials": [
+						{
+							"href": "https://github.com/nikiquickie",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://webart.work/m/64eee5d08eaf76400c6c3063",
+							"img": "img/spider.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/volodkina01",
+					"img": "https://webart.work/api/user/image/666ae070fe74e00ea634c6f5.jpg?1718280491815",
+					"name": "Nadiia Bercha",
+					"username": "enber",
+					"socials": [
+						{
+							"href": "https://github.com/volodkina01",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.linkedin.com/in/nadiia-bercha-116b5a313/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~019ab4f83a017b9719",
+							"img": "img/up.svg"
+						},
+						{
+							"href": "https://webart.work/m/666ae070fe74e00ea634c6f5",
+							"img": "img/spider.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/denisN2102",
+					"img": "https://webart.work/api/user/image/65d748355ad774b675a148c0.jpg?1708607959929",
+					"name": "Denys Narolskyi",
+					"username": "henriquevq",
+					"socials": [
+						{
+							"href": "https://github.com/denisN2102",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.linkedin.com/in/denys-narolskyi-516135232/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01dab23ad8635286b0?viewMode=1",
+							"img": "img/up.svg"
+						},
+						{
+							"href": "https://webart.work/m/65d748355ad774b675a148c0",
+							"img": "img/spider.svg"
+						},
+						{
+							"href": "https://djinni.co/q/27b807bccf/",
+							"img": "img/dj.svg"
+						},
+						{
+							"href": "https://t.me/henriquevq",
+							"img": "img/tg.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/Lizvinskyi0202",
+					"img": "https://ca.slack-edge.com/T43NCC449-U07LMKVMX60-6b9f9312041d-512",
+					"name": "Nadia Tverdokhlib",
+					"username": "hope.tv",
+					"socials": [
+						{
+							"href": "https://www.instagram.com/h.o.p.e_tv_/",
+							"img": "img/inst.svg"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inactive Co-founders",
+			"users": [
+				{
+					"href": "https://github.com/dmaksiuta",
+					"img": "https://avatars.githubusercontent.com/u/40692184?v=4",
+					"name": "Dmytro Maksiuta",
+					"username": "lord1k",
+					"socials": [
+						{
+							"href": "https://github.com/dmaksiuta",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.instagram.com/maksiuta.di/",
+							"img": "img/inst.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01e755530516cfd524",
+							"img": "img/up.svg"
+						},
+						{
+							"href": "https://webart.work/m/647467580b9f4f56d78f358d",
+							"img": "img/spider.svg"
+						},
+						{
+							"href": "https://t.me/dmaksiuta",
+							"img": "img/tg.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/blackwolf3342",
+					"img": "https://avatars.githubusercontent.com/u/17449783?v=4",
+					"name": "Valik Maystrenko",
+					"username": "Valentyn Maistrenko",
+					"socials": [
+						{
+							"href": "https://github.com/blackwolf3342",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.linkedin.com/in/valentin-maystrenko-full-stack-developer/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01c1ee76a50c66071d",
+							"img": "img/up.svg"
+						},
+						{
+							"href": "https://www.facebook.com/Valik.Maystrenko/",
+							"img": "img/fb.svg"
+						}
+					]
+				},
+				{
+					"href": "https://www.upwork.com/freelancers/~01849d6880bec4e843",
+					"img": "https://www.upwork.com/profile-portraits/c1jyTD1L1GoOdHqKTQx3bOq42m7TTRnKsIWxWLjNHyllBeNtl690hkPhyYdM0MBbx6",
+					"name": "Oleksandr Fedorak",
+					"username": "herzog",
+					"socials": [
+						{
+							"href": "https://www.linkedin.com/in/oleksandr-fedorak-4b4221257/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01849d6880bec4e843",
+							"img": "img/up.svg"
+						}
+					]
+				},
+				{
+					"href": "https://www.upwork.com/freelancers/~01de3e11f13e45ce4e",
+					"img": "https://media.licdn.com/dms/image/v2/C4E03AQEbo_xmoqKHJA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1660673439329?e=1731542400&v=beta&t=TrgFCQ_4dTEyibyhu4Hly5rB0nahkMEP5UeBIX1MNZU",
+					"name": "Oganes Petikian",
+					"username": "oganesman",
+					"socials": [
+						{
+							"href": "https://www.linkedin.com/in/oganes-petikyan-96403a249/",
+							"img": "img/in.svg"
+						},
+						{
+							"href": "https://www.instagram.com/ogaaness/",
+							"img": "img/inst.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01de3e11f13e45ce4e",
+							"img": "img/up.svg"
+						}
+					]
+				},
+				{
+					"href": "https://github.com/IrynaPrysyazhna",
+					"img": "https://avatars.githubusercontent.com/u/15999441?v=4",
+					"name": "Iryna Prysyazhna",
+					"username": "IrynaPrysyazhna",
+					"socials": [
+						{
+							"href": "https://github.com/IrynaPrysyazhna",
+							"img": "img/git.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01c8dd6365a15542d5",
+							"img": "img/up.svg"
+						},
+						{
+							"href": "https://www.facebook.com/profile.php?id=100011281180671",
+							"img": "img/fb.svg"
+						}
+					]
+				},
+				{
+					"href": "https://www.instagram.com/iv.balias?igsh=YW14azF5dWUwdG5l&utm_source=qr",
+					"img": "https://instagram.frwn2-1.fna.fbcdn.net/v/t51.2885-19/358931165_621449966434759_6271530752331755740_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.frwn2-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=hoEYiwNqQh4Q7kNvgFwXux1&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBflo9pl-wCJcK2s1bkMBxKMiXx6HqEDYEjENwY3pTYAA&oe=66EBA04B&_nc_sid=10d13b",
+					"name": "Ivan Balias",
+					"username": "iv.balias",
+					"socials": [
+						{
+							"href": "https://www.instagram.com/iv.balias?igsh=YW14azF5dWUwdG5l&utm_source=qr",
+							"img": "img/inst.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01bd466087775fe6d4?companyReference=1508878016690860033&mp_source=share",
+							"img": "img/up.svg"
+						}
+					]
+				},
+				{
+					"href": "https://www.upwork.com/freelancers/~01e97ca5a3da0a9e19?companyReference=1170718340907143169&mp_source=share",
+					"img": "",
+					"name": "Natalie Zarytska",
+					"username": "SpicyNata",
+					"socials": [
+						{
+							"href": "https://www.upwork.com/freelancers/~01e97ca5a3da0a9e19?companyReference=1170718340907143169&mp_source=share",
+							"img": "img/up.svg"
+						}
+					]
+				},
+				{
+					"href": "https://www.upwork.com/freelancers/~01424e64846e5a6b3c?viewMode=1&mp_source=share",
+					"img": "https://www.upwork.com/profile-portraits/c1rUyoaqUjmPvCMQ0z4j3ZVdLtoi3V63hFl7_0yDwwhIdTTsXNAYJHk3x886qy3uGr",
+					"name": "Nataliia Marynina",
+					"username": "natali_marynina",
+					"socials": [
+						{
+							"href": "https://www.instagram.com/natali_marynina?igsh=OTlmNGtnc3VycTQy",
+							"img": "img/inst.svg"
+						},
+						{
+							"href": "https://www.upwork.com/freelancers/~01424e64846e5a6b3c?viewMode=1&mp_source=share",
+							"img": "img/up.svg"
+						}
+					]
+				}
+			]
+		}
+	]
+}

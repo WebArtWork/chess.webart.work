@@ -1,0 +1,87 @@
+// survey section
+
+.survey {
+	padding: calc(20px * var(--padding-scale));
+	font-family: var(--ff-base);
+	background: var(--c-bg-item);
+	border-radius: var(--b-radius);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 24px;
+		font-weight: 600;
+		margin-bottom: calc(20px * var(--margin-scale));
+		color: var(--c-text-primary);
+		text-align: center;
+	}
+
+	&__description {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		margin-bottom: calc(24px * var(--margin-scale));
+		color: var(--c-text-body-secondary);
+		text-align: center;
+	}
+
+	&__question {
+		margin-bottom: calc(20px * var(--margin-scale));
+	}
+
+	&__label {
+		display: block;
+		font-weight: 600;
+		margin-bottom: calc(8px * var(--margin-scale));
+		color: var(--c-text-primary);
+	}
+
+	&__input,
+	&__textarea,
+	&__select {
+		width: 100%;
+		padding: calc(8px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background: var(--c-body);
+		color: var(--c-text-primary);
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+	}
+
+	&__option {
+		display: flex;
+		align-items: center;
+		margin-bottom: calc(4px * var(--margin-scale));
+
+		input {
+			margin-right: calc(8px * var(--margin-scale));
+		}
+	}
+
+	&__submit {
+		display: inline-block;
+		padding: calc(10px * var(--padding-scale))
+			calc(20px * var(--padding-scale));
+		background: var(--c-primary);
+		color: var(--c-text-primary);
+		border: none;
+		border-radius: var(--b-radius);
+		cursor: pointer;
+		transition: background var(--transition);
+
+		&:hover {
+			background: var(--c-primary-hover);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.survey__title {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.survey__title {
+		font-size: 18px;
+	}
+}

@@ -1,0 +1,42 @@
+// trust badges section
+
+.trust-badges {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: calc(24px * var(--margin-scale));
+	padding: calc(20px * var(--padding-scale)) 0;
+
+	&__item {
+		padding: calc(8px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background-color: var(--c-bg-item);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		filter: grayscale(100%);
+		transition: filter var(--transition);
+
+		img {
+			max-height: calc(3 * var(--icon-size));
+			display: block;
+		}
+
+		&:hover {
+			filter: grayscale(0%);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.trust-badges {
+		gap: calc(16px * var(--margin-scale));
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.trust-badges {
+		gap: calc(12px * var(--margin-scale));
+	}
+}

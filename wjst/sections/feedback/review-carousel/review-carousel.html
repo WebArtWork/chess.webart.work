@@ -1,0 +1,44 @@
+<div class="review-carousel">
+	{% if section.title %}
+	<div class="review-carousel__title">{{{section.title}}}</div>
+	{% endif %} {% if section.reviews %}
+	<div class="review-carousel__track">
+		{% for review in section.reviews %}
+		<div class="review-carousel__item">
+			{% if review.text %}
+			<div class="review-carousel__text">{{{review.text}}}</div>
+			{% endif %} {% if review.author %}
+			<div class="review-carousel__author">{{{review.author}}}</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+	<div class="review-carousel__nav">
+		<button class="review-carousel__button review-carousel__button--prev">
+			<span class="material-icons">chevron_left</span>
+		</button>
+		<button class="review-carousel__button review-carousel__button--next">
+			<span class="material-icons">chevron_right</span>
+		</button>
+	</div>
+	{% endif %}
+</div>
+<script>
+	(function () {
+		var carousel = document.querySelector(".review-carousel");
+		if (!carousel) return;
+		var track = carousel.querySelector(".review-carousel__track");
+		var prev = carousel.querySelector(".review-carousel__button--prev");
+		var next = carousel.querySelector(".review-carousel__button--next");
+		function scroll(dir) {
+			var width = carousel.clientWidth;
+			track.scrollBy({ left: width * dir, behavior: "smooth" });
+		}
+		prev.addEventListener("click", function () {
+			scroll(-1);
+		});
+		next.addEventListener("click", function () {
+			scroll(1);
+		});
+	})();
+</script>

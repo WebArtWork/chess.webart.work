@@ -1,0 +1,241 @@
+.navbar {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	position: relative;
+	&-logo {
+		display: flex;
+		align-items: center;
+	}
+	&-form {
+		form {
+			display: flex;
+		}
+	}
+	&-navigation {
+		display: flex;
+		li {
+			margin-right: 30px;
+			&:last-child {
+				margin-right: 0;
+				display: flex;
+				align-items: center;
+			}
+			a {
+				transition: all 0.3s;
+				font-size: 20px;
+				&:hover {
+					color: var(--c-primary-hover);
+				}
+			}
+		}
+		&-dropdawn {
+			position: relative;
+			&:hover {
+				.navbar-navigation-dropdawn__text {
+					color: var(--c-primary-hover);
+				}
+			}
+			&__text {
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			&__img {
+				display: flex;
+				margin-left: 5px;
+			}
+			.arrow-icon {
+				transition: transform 0.3s ease-in-out; /* Анімація повороту іконки */
+			}
+			&__list {
+				max-height: 0; /* Встановлюємо максимальну висоту в 0 для приховання */
+				overflow: hidden; /* Приховуємо елементи за межами контейнера */
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				transition: max-height 0.3s ease-in-out; /* Анімація плавного переходу висоти */
+				position: absolute;
+				border: 1px solid transparent;
+				transition: all 0.3s;
+				padding: 5px;
+				border-radius: var(--b-radius);
+				width: 100%;
+				z-index: 99;
+				li {
+					margin: 0 0 5px 0;
+				}
+			}
+		}
+	}
+	&-form {
+		input {
+			border: 2px solid var(--c-primary-hover);
+			padding: 5px;
+			background-color: transparent;
+			color: var(--c-text-primary);
+			border-radius: var(--b-radius);
+			&::placeholder {
+				color: var(--c-text-primary);
+			}
+		}
+		button {
+			background: var(--c-primary-hover);
+			color: var(--c-primary);
+			padding: 7.5px 20px;
+			transition: all 0.3s;
+			&:hover {
+				background-color: var(--c-primary-cursor);
+			}
+		}
+	}
+}
+.navbar-navigation-dropdawn.open .navbar-navigation-dropdawn__list {
+	max-height: 100vh; /* Максимальна висота, достатня для показу всього списку */
+	border: 1px solid var(--c-primary-hover);
+	background: var(--c-primary);
+}
+
+.navbar-navigation-dropdawn.open .arrow-icon {
+	transform: rotate(180deg); /* Повертаємо іконку */
+}
+
+///*  burger  */
+.burger-wrap-n {
+	display: none;
+	width: 36px;
+	height: 27px;
+	position: relative;
+}
+
+.burger-n {
+	height: 5px;
+	width: 100%;
+	background-color: rgb(255, 255, 255);
+	transition: all 0.3s;
+}
+
+.burger-n::before,
+.burger-n::after {
+	content: "";
+	width: 100%;
+	height: 5px;
+	display: block;
+	background-color: rgb(255, 255, 255);
+	transition: all 0.3s;
+	position: absolute;
+	left: 0;
+}
+
+.burger-n::before {
+	top: 0;
+}
+
+.burger-n:after {
+	bottom: 0;
+}
+
+@media screen and (max-width: 1024px) {
+	.navbar-navigation {
+		position: relative;
+		display: block;
+		max-height: unset;
+		width: unset;
+		opacity: 1;
+		border: none;
+		margin: unset;
+	}
+
+	.burger-wrap-n {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		z-index: 3;
+		left: 0;
+		transform: translateY(-50%);
+		top: 50%;
+	}
+
+	.burger-n--close {
+		max-width: 0;
+		overflow: hidden;
+	}
+
+	.burger-n--close::before {
+		transform: translateY(-1px) rotate(45deg);
+	}
+
+	.burger-n--close::after {
+		transform: translateY(3px) rotate(-45deg);
+	}
+
+	.burger-n--close::after,
+	.burger-n--close::before {
+		transform-origin: 0;
+	}
+
+	.navbar-navigation {
+		position: absolute;
+		top: 15px;
+		width: 100%;
+		left: 0;
+		background: #000000e0;
+		z-index: 3;
+		padding: 0;
+		opacity: 0;
+		display: flex;
+		max-height: 0;
+		overflow: hidden;
+		transition: all 0.3s;
+		border-bottom: 1px solid black;
+		margin: 0 auto;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.navbar-navigation {
+		flex-flow: column wrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.navbar-navigation li {
+		display: block;
+		margin-right: 0;
+		padding-right: 0;
+		font-size: 20px;
+	}
+
+	.navbar-navigation li a {
+		display: block;
+		padding: 10px 0;
+		border: none;
+		text-align: center;
+		width: 100%;
+	}
+
+	.navbar-navigation--open {
+		max-height: 500px;
+		opacity: 1;
+		padding: 15px 0;
+		overflow: unset;
+	}
+	.navbar-form {
+		max-width: 210px;
+		padding-top: 10px;
+	}
+	.navbar-logo {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+	.navbar {
+		justify-content: right;
+	}
+	.pagination .page-link {
+		width: 33px !important;
+		height: 33px !important;
+	}
+}

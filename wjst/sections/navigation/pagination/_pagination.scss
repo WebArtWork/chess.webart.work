@@ -1,0 +1,57 @@
+// pagination navigation section
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: calc(12px * var(--margin-scale));
+	padding: calc(20px * var(--padding-scale)) 0;
+	font-family: var(--ff-base);
+
+	&__list {
+		display: flex;
+		list-style: none;
+		gap: calc(8px * var(--margin-scale));
+		margin: 0;
+		padding: 0;
+	}
+
+	&__item {
+		display: flex;
+	}
+
+	&__prev,
+	&__next,
+	&__link {
+		display: inline-block;
+		text-decoration: none;
+		color: var(--c-text-primary);
+		padding: calc(8px * var(--padding-scale))
+			calc(12px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		transition: background-color var(--transition), color var(--transition),
+			border-color var(--transition);
+	}
+
+	&__prev:hover,
+	&__next:hover,
+	&__link:hover {
+		background-color: var(--c-primary-hover);
+		color: var(--c-text-secondary);
+		border-color: var(--c-primary);
+	}
+
+	&__link.is-current {
+		background-color: var(--c-primary);
+		color: var(--c-text-secondary);
+		border-color: var(--c-primary);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.pagination {
+		flex-wrap: wrap;
+		gap: calc(8px * var(--margin-scale));
+	}
+}

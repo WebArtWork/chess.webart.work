@@ -1,0 +1,387 @@
+<!--
+<div class="index-readme">
+	<div id="team">
+		<div class="index-readme__title">
+			<h1>Team</h1>
+			<p>
+				An overview of the founding team and core contributors to waw.
+			</p>
+		</div>
+		<p>
+			waw is maintained by a small group of invaluable core contributors,
+			with the massive support and involvement of our community.
+		</p>
+
+		{% for team in teams %}
+		<p>{{{team.name}}}</p>
+		<div class="list">
+			{% for user in team.users %}
+			<a
+				class="list-group"
+				{%
+				if
+				user.href
+				%}href="{{{user.href}}}"
+				target="_blank"
+				{%
+				endif
+				%}
+			>
+				<img
+					src="{{{user.img}}}"
+					alt="{{{user.name}}}"
+					width="32"
+					height="32"
+					loading="lazy"
+				/>
+				<span>
+					<strong>{{{user.name}}}</strong>
+					{% if user.username %}
+					<span> @{{{user.username}}}</span>
+					{% endif %}
+				</span>
+			</a>
+
+			{% if user.socials %}
+			<div class="list-group__socials">
+				{% for social in user.socials %}
+				<a href="{{{social.href}}}" target="_blank">
+					<img
+						src="{{{social.img}}}"
+						alt="@{{{social.href}}}"
+						width="32"
+						height="32"
+						loading="lazy"
+					/>
+				</a>
+				{% endfor %}
+			</div>
+			{% endif %} {% endfor %}
+		</div>
+		{% endfor %}
+
+		<p>
+			Get involved with waw development by
+			<span class="index-readme__code">opening an issue</span> or
+			submitting a pull request.
+		</p>
+	</div>
+
+	<div id="brand">
+		<div class="index-readme__title">
+			<h1>Brand</h1>
+			<p>
+				Documentation and examples for waw’s logo and brand usage
+				guidelines.
+			</p>
+		</div>
+		<p>
+			Have a need for waw’s brand resources? Great! We have only a few
+			guidelines we follow, and in turn ask you to follow as well.
+		</p>
+	</div>
+
+	<div id="logo">
+		<div class="index-readme__title">
+			<h1>Logo</h1>
+		</div>
+		<p>
+			When referencing waw, use our logo mark. Do not modify our logos in
+			any way. Do not use waw’s branding for your own open or closed
+			source projects.
+		</p>
+		<div class="img border">
+			<img class="image" src="img/logo2.jpg" width="300" height="300" />
+		</div>
+	</div>
+
+	<div id="name">
+		<div class="index-readme__title">
+			<h1>Name</h1>
+		</div>
+		<p>waw should always be referred to as just waw. No capital w.</p>
+		<div class="example">
+			<div class="text">
+				<div class="left">
+					<div class="h2 text-waw">waw</div>
+					<strong class="text-success">Correct</strong>
+				</div>
+				<div class="right">
+					<div class="h2 text-body-secondary">Waw</div>
+					<strong class="text-danger">Incorrect</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="license">
+		<div class="index-readme__title">
+			<h1>License FAQs</h1>
+			<p>Commonly asked questions about waw’s open source license.</p>
+		</div>
+		<p>
+			waw is released under the MIT license and is copyright 2024. Boiled
+			down to smaller chunks, it can be described with the following
+			conditions.
+		</p>
+		<div class="index-readme__title">
+			<h1>It requires you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Keep the license and copyright notice included in waw’s CSS and
+				JavaScript files when you use them in your works
+			</li>
+		</ul>
+		<div class="index-readme__title">
+			<h1>It permits you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Freely download and use waw, in whole or in part, for personal,
+				private, company internal, or commercial purposes
+			</li>
+			<li>Use waw in packages or distributions that you create</li>
+			<li>Modify the source code</li>
+			<li>
+				Grant a sublicense to modify and distribute waw to third parties
+				not included in the license
+			</li>
+		</ul>
+		<div class="index-readme__title">
+			<h1>It forbids you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Hold the authors and license owners liable for damages as waw is
+				provided without warranty
+			</li>
+			<li>Hold the creators or copyright holders of waw liable</li>
+			<li>Redistribute any piece of waw without proper attribution</li>
+			<li>
+				Use any marks owned by waw in any way that might state or imply
+				that waw endorses your distribution
+			</li>
+			<li>
+				Use any marks owned by waw in any way that might state or imply
+				that you created the waw software in question
+			</li>
+		</ul>
+		<div class="index-readme__title">
+			<h1>It does not require you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Include the source of waw itself, or of any modifications you
+				may have made to it, in any redistribution you may assemble that
+				includes it
+			</li>
+			<li>
+				Submit changes that you make to waw back to the waw project
+				(though such feedback is encouraged)
+			</li>
+		</ul>
+		<p>
+			The full waw license is located
+			<span class="index-readme__code">in the project repository</span>
+			for more information.
+		</p>
+	</div>
+</div>
+
+-->
+
+
+
+
+<div class="index-readme">
+	<div id="team">
+		<div class="index-readme__title">
+			<h1>Team</h1>
+			<p>
+				An overview of the founding team and core contributors to waw.
+			</p>
+		</div>
+		<p>
+			waw is maintained by a small group of invaluable core contributors,
+			with the massive support and involvement of our community.
+		</p>
+
+		{% for team in teams %}
+		<p>{{{team.name}}}</p>
+		<div class="list">
+			{% for user in team.users %}
+			<a
+				class="list-group"
+				{%
+				if
+				user.href
+				%}href="{{{user.href}}}"
+				target="_blank"
+				{%
+				endif
+				%}
+			>
+				<img
+					src="{{{user.img}}}"
+					alt="{{{user.name}}}"
+					width="32"
+					height="32"
+					loading="lazy"
+				/>
+				<span>
+					<strong>{{{user.name}}}</strong>
+					{% if user.username %}
+					<span> @{{{user.username}}}</span>
+					{% endif %}
+				</span>
+			</a>
+
+			<!-- NEW CODE -->
+			{% if user.socials %}
+			<div class="list-group__socials">
+				<!-- line where we put list of social icons -->
+				{% for social in user.socials %}
+				<a href="{{{social.href}}}" target="_blank">
+					<img
+						src="{{{social.img}}}"
+						alt="@{{{social.href}}}"
+						width="32"
+						height="32"
+						loading="lazy"
+					/>
+				</a>
+				{% endfor %}
+			</div>
+			{% endif %} {% endfor %}
+		</div>
+		{% endfor %}
+
+		<p>
+			Get involved with waw development by
+			<span class="index-readme__code">opening an issue</span> or
+			submitting a pull request.
+		</p>
+	</div>
+
+	<div id="brand">
+		<div class="index-readme__title">
+			<h1>Brand</h1>
+			<p>
+				Documentation and examples for waw’s logo and brand usage
+				guidelines.
+			</p>
+		</div>
+		<p>
+			Have a need for waw’s brand resources? Great! We have only a few
+			guidelines we follow, and in turn ask you to follow as well.
+		</p>
+	</div>
+
+	<div id="logo">
+		<div class="index-readme__title">
+			<h1>Logo</h1>
+		</div>
+		<p>
+			When referencing waw, use our logo mark. Do not modify our logos in
+			any way. Do not use waw’s branding for your own open or closed
+			source projects.
+		</p>
+		<div class="img border">
+			<img class="image" src="img/logo2.jpg" width="300" height="300" />
+		</div>
+	</div>
+
+	<div id="name">
+		<div class="index-readme__title">
+			<h1>Name</h1>
+		</div>
+		<p>waw should always be referred to as just waw. No capital w.</p>
+		<div class="example">
+			<div class="text">
+				<div class="left">
+					<div class="h2 text-waw">waw</div>
+					<strong class="text-success">Correct</strong>
+				</div>
+				<div class="right">
+					<div class="h2 text-body-secondary">Waw</div>
+					<strong class="text-danger">Incorrect</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="license">
+		<div class="index-readme__title">
+			<h1>License FAQs</h1>
+			<p>Commonly asked questions about waw’s open source license.</p>
+		</div>
+		<p>
+			waw is released under the MIT license and is copyright 2024. Boiled
+			down to smaller chunks, it can be described with the following
+			conditions.
+		</p>
+		<div class="index-readme__title">
+			<h1>It requires you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Keep the license and copyright notice included in waw’s CSS and
+				JavaScript files when you use them in your works
+			</li>
+		</ul>
+		<div class="index-readme__title">
+			<h1>It permits you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Freely download and use waw, in whole or in part, for personal,
+				private, company internal, or commercial purposes
+			</li>
+			<li>Use waw in packages or distributions that you create</li>
+			<li>Modify the source code</li>
+			<li>
+				Grant a sublicense to modify and distribute waw to third parties
+				not included in the license
+			</li>
+		</ul>
+		<div class="index-readme__title">
+			<h1>It forbids you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Hold the authors and license owners liable for damages as waw is
+				provided without warranty
+			</li>
+			<li>Hold the creators or copyright holders of waw liable</li>
+			<li>Redistribute any piece of waw without proper attribution</li>
+			<li>
+				Use any marks owned by waw in any way that might state or imply
+				that waw endorses your distribution
+			</li>
+			<li>
+				Use any marks owned by waw in any way that might state or imply
+				that you created the waw software in question
+			</li>
+		</ul>
+		<div class="index-readme__title">
+			<h1>It does not require you to:</h1>
+		</div>
+		<ul class="list-style">
+			<li>
+				Include the source of waw itself, or of any modifications you
+				may have made to it, in any redistribution you may assemble that
+				includes it
+			</li>
+			<li>
+				Submit changes that you make to waw back to the waw project
+				(though such feedback is encouraged)
+			</li>
+		</ul>
+		<p>
+			The full waw license is located
+			<span class="index-readme__code">in the project repository</span>
+			for more information.
+		</p>
+	</div>
+</div>

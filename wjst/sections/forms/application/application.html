@@ -1,0 +1,78 @@
+<div class="application">
+	{% if section.title %}
+	<div class="application__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="application__description">{{{section.description}}}</div>
+	{% endif %}
+	<form
+		class="application__form"
+		action=""
+		method="post"
+		enctype="multipart/form-data"
+	>
+		<div class="application__field">
+			<label class="application__label" for="app-name">Full Name</label>
+			<input
+				class="application__input"
+				type="text"
+				id="app-name"
+				name="name"
+				placeholder="Your name"
+			/>
+		</div>
+		<div class="application__field">
+			<label class="application__label" for="app-email">Email</label>
+			<input
+				class="application__input"
+				type="email"
+				id="app-email"
+				name="email"
+				placeholder="email@example.com"
+			/>
+		</div>
+		<div class="application__field">
+			<label class="application__label" for="app-phone">Phone</label>
+			<input
+				class="application__input"
+				type="tel"
+				id="app-phone"
+				name="phone"
+				placeholder="+1 234 567 890"
+			/>
+		</div>
+		<div class="application__field">
+			<label class="application__label" for="app-position"
+				>Position</label
+			>
+			<input
+				class="application__input"
+				type="text"
+				id="app-position"
+				name="position"
+				placeholder="Position applying for"
+			/>
+		</div>
+		<div class="application__field">
+			<label class="application__label" for="app-resume">Resume</label>
+			<input
+				class="application__input"
+				type="file"
+				id="app-resume"
+				name="resume"
+			/>
+		</div>
+		<div class="application__field">
+			<label class="application__label" for="app-message">Message</label>
+			<textarea
+				class="application__textarea"
+				id="app-message"
+				name="message"
+				rows="4"
+				placeholder="Cover letter or message"
+			></textarea>
+		</div>
+		<button class="application__submit" type="submit">
+			{{{section.submit || 'Submit Application'}}}
+		</button>
+	</form>
+</div>

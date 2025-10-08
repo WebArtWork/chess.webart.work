@@ -1,0 +1,19 @@
+<div class="certificate">
+	{% if section.title %}
+	<div class="certificate__title">{{{section.title}}}</div>
+	{% endif %} {% if section.recipient %}
+	<div class="certificate__recipient">{{{section.recipient}}}</div>
+	{% endif %} {% if section.course %}
+	<div class="certificate__course">{{{section.course}}}</div>
+	{% endif %} {% if section.issuer or section.date %}
+	<div class="certificate__meta">
+		{% if section.issuer %}<span class="certificate__issuer"
+			>{{{section.issuer}}}</span
+		>{% endif %} {% if section.date %}<span class="certificate__date"
+			>{{{section.date}}}</span
+		>{% endif %}
+	</div>
+	{% endif %} {% if section.id %}
+	<div class="certificate__id">{{{section.id}}}</div>
+	{% endif %}
+</div>

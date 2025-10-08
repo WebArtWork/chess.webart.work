@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="{{{base || prefix + '/'}}}" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Honchar Denys" />
+
+		<title>{{{title}}}</title>
+		<meta itemprop="name" content="{{{title}}}" />
+		<meta name="twitter:title" content="{{{title}}}" />
+		<meta property="og:title" content="{{{title}}}" />
+
+		<meta name="description" content="{{{description}}}" />
+		<meta itemprop="description" content="{{{description}}}" />
+		<meta name="twitter:description" content="{{{description}}}" />
+		<meta property="og:description" content="{{{description}}}" />
+
+		<meta itemprop="image" content="{{{image}}}" />
+		<meta name="twitter:image:src" content="{{{image}}}" />
+		<meta property="og:image" content="{{{image}}}" />
+
+		<link rel="icon" type="image/x-icon" href="{{{favicon}}}" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+
+		<style>
+			:root {
+			  /* =======================
+			     📱 Breakpoints
+			     Used in media queries
+			  ======================= */
+			  --bp-lg: {{{theme.bp-lg}}};   /* Max width for large devices (e.g. tablets) */
+			  --bp-md: {{{theme.bp-md}}};   /* Max width for medium devices (e.g. phones) */
+			  --bp-sm: {{{theme.bp-sm}}};   /* Max width for small devices */
+
+			  /* =======================
+			     🔠 Typography
+			  ======================= */
+			  --fs: {{{theme.fs}}};                      /* Base font size */
+			  --font-size: {{{theme.fontSize}}};         /* Alias for base font size */
+			  --line-height: {{{theme.lineHeight}}};     /* Default line height */
+			  --letter-spacing: {{{theme.letterSpacing}}}; /* Default letter spacing */
+			  --ff-base: {{{theme.fontBase}}};           /* Font for body text */
+			  --ff-title: {{{theme.fontTitle}}};         /* Font for titles/headings */
+			  --ff-second: {{{theme.fontSecond}}};       /* Secondary font */
+
+			  /* =======================
+			     📐 Layout & Spacing
+			  ======================= */
+			  --icon-size: {{{theme.iconSize}}};         /* Default icon size */
+			  --padding-scale: {{{theme.paddingScale}}}; /* Padding scale multiplier */
+			  --margin-scale: {{{theme.marginScale}}};   /* Margin scale multiplier */
+			  --b-radius: {{{theme.borderRadius}}};      /* Border radius */
+			  --transition: {{{theme.transition}}};      /* Global transition */
+
+			  /* =======================
+			     🎨 Base Colors
+			  ======================= */
+			     --c-primary: {{{theme.colors.primary}}};             /* Main brand color */
+			     --c-secondary: {{{theme.colors.secondary}}};         /* Secondary UI color */
+			     --c-text-primary: {{{theme.colors.textPrimary}}};    /* Primary text color */
+			     --c-text-secondary: {{{theme.colors.textSecondary}}};/* Secondary text color */
+			     --c-text-body-secondary: {{{theme.colors.textBodySecondary}}};/* Body secondary text color */
+			     --c-body: {{{theme.colors.body}}};                   /* Background/body color */
+			     --c-bg-item: {{{theme.colors.bgItem}}};              /* Background of items/cards */
+			     --c-placeholder: {{{theme.colors.placeholder}}};     /* Placeholder/input hint color */
+			     --c-border: {{{theme.colors.border}}};               /* Default border color */
+
+			  /* =======================
+			     🎯 States & Feedback
+			  ======================= */
+			  --c-primary-hover: {{{theme.colors.primaryHover}}};       /* Hover state for primary */
+			  --c-primary-cursor: {{{theme.colors.primaryCursor}}};     /* Cursor/pressed state */
+			  --c-success: {{{theme.colors.success}}};                  /* Success state */
+			  --c-successhover: {{{theme.colors.successHover}}};        /* Success hover */
+			  --c-error: {{{theme.colors.error}}};                      /* Error color */
+			  --c-error-hover: {{{theme.colors.errorHover}}};           /* Error hover */
+			  --c-alert: {{{theme.colors.alert}}};                      /* Warning/alert color */
+
+			  /* =======================
+			     🎨 Border Colors
+			  ======================= */
+			  --c-primary-border: {{{theme.colors.primaryBorder}}};
+			  --c-secondary-border: {{{theme.colors.secondaryBorder}}};
+			  --c-success-border: {{{theme.colors.successBorder}}};
+			  --c-danger-border: {{{theme.colors.dangerBorder}}};
+			  --c-warning-border: {{{theme.colors.warningBorder}}};
+			  --c-info-border: {{{theme.colors.infoBorder}}};
+
+			  /* =======================
+			     🧱 Table & Shadow
+			  ======================= */
+			  --c-shadow: {{{theme.colors.shadow}}};             /* Generic shadow */
+			  --c-table-shadow: {{{theme.colors.tableShadow}}};  /* Shadow used in tables */
+			  --c-shadow-table: {{{theme.colors.shadowTable}}};  /* Alternate table shadow */
+			  --c-table-striped: {{{theme.colors.tableStriped}}};/* Zebra-stripe row color */
+
+			  --c-primary-table: {{{theme.colors.tablePrimary}}};
+			  --c-secondary-table: {{{theme.colors.tableSecondary}}};
+			  --c-success-table: {{{theme.colors.tableSuccess}}};
+			  --c-danger-table: {{{theme.colors.tableDanger}}};
+			  --c-warning-table: {{{theme.colors.tableWarning}}};
+			  --c-info-table: {{{theme.colors.tableInfo}}};
+			  --c-light-table: {{{theme.colors.tableLight}}};
+
+			  /* =======================
+			     🌈 Extended Palette
+			  ======================= */
+			  --c-blue: {{{theme.colors.blue}}};
+			  --c-sky: {{{theme.colors.sky}}};
+			  --c-sky-light: {{{theme.colors.skyLight}}};
+			  --c-grey: {{{theme.colors.grey}}};
+			  --c-grey-light: {{{theme.colors.greyLight}}};
+			  --c-red: {{{theme.colors.red}}};
+			  --c-red-dark: {{{theme.colors.redDark}}};
+			  --c-green: {{{theme.colors.green}}};
+			  --c-dark: {{{theme.colors.dark}}};
+			  --c-white: {{{theme.colors.white}}};
+			  --c-black: {{{theme.colors.black}}};
+			  --c-orange: {{{theme.colors.orange}}};
+			  --c-yellow: {{{theme.colors.yellow}}};
+			  --c-yellow-darken: {{{theme.colors.yellowDarken}}};
+			  --c-green-darken: {{{theme.colors.greenDarken}}};
+			  --c-blue-gray: {{{theme.colors.blueGray}}};
+			  --c-blue-gray-darken: {{{theme.colors.blueGrayDarken}}};
+
+			  /* =======================
+			     💬 UI Utility Colors
+			  ======================= */
+			  --c-question: {{{theme.colors.question}}};     /* Used in Q&A blocks */
+			  --c-loading: {{{theme.colors.loading}}};       /* Loading spinner or loaders */
+			  --c-code-hover: {{{theme.colors.codeHover}}};  /* Hover color in code examples */
+			}
+		</style>
+
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		{% include layout %}
+		<script src="js/index.js"></script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+// table-of-contents section
+
+.table-of-contents {
+	padding-bottom: calc(50px * var(--padding-scale));
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 24px;
+		font-weight: 600;
+		color: var(--c-text-primary);
+		margin-bottom: calc(12px * var(--margin-scale));
+	}
+
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__item {
+		margin-bottom: calc(8px * var(--margin-scale));
+	}
+
+	&__link {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-primary);
+		text-decoration: none;
+		transition: color var(--transition);
+	}
+
+	&__link:hover {
+		color: var(--c-primary-hover);
+	}
+
+	&__sublist {
+		list-style: none;
+		padding-left: calc(16px * var(--padding-scale));
+		margin-top: calc(4px * var(--margin-scale));
+	}
+
+	&__subitem {
+		margin-bottom: calc(4px * var(--margin-scale));
+	}
+}

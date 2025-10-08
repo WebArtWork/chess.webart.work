@@ -1,0 +1,14 @@
+<div class="testimonial">
+	{% if section.img %}
+	<div class="testimonial__img">
+		<img src="{{{section.img}}}" alt="" />
+	</div>
+	{% endif %}
+	<div class="testimonial__content">
+		{% if section.quote %}
+		<div class="testimonial__quote">{{{section.quote}}}</div>
+		{% endif %} {% if section.author %}
+		<div class="testimonial__author">{{{section.author}}}</div>
+		{% endif %}
+	</div>
+</div>

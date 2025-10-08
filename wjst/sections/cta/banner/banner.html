@@ -1,0 +1,13 @@
+<div class="banner">
+	{% if section.title %}
+	<div class="banner__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="banner__description">{{{section.description}}}</div>
+	{% endif %} {% if section.button %}
+	<div class="banner__action">
+		<a href="{{{section.button.url}}}" class="banner__button"
+			>{{{section.button.label}}}</a
+		>
+	</div>
+	{% endif %}
+</div>

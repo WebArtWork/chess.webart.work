@@ -1,0 +1,40 @@
+<div class="quiz" data-answer="{{{section.answer}}}">
+	{% if section.question %}
+	<div class="quiz__question">{{{section.question}}}</div>
+	{% endif %} {% if section.options %}
+	<div class="quiz__options">
+		{% for option in section.options %}
+		<label class="quiz__option">
+			<input type="radio" name="quiz-option" value="{{{loop.index0}}}" />
+			<span>{{{option}}}</span>
+		</label>
+		{% endfor %}
+	</div>
+	{% endif %}
+	<button type="button" class="quiz__submit">Check</button>
+	<div class="quiz__result" aria-live="polite"></div>
+</div>
+<script>
+	(function () {
+		const quiz = document.currentScript.previousElementSibling;
+		if (!quiz) return;
+		const answer = quiz.dataset.answer;
+		const submit = quiz.querySelector(".quiz__submit");
+		const result = quiz.querySelector(".quiz__result");
+		submit.addEventListener("click", function () {
+			const selected = quiz.querySelector(
+				'input[name="quiz-option"]:checked'
+			);
+			if (!selected) return;
+			if (selected.value === answer) {
+				result.textContent = "Correct!";
+				result.classList.remove("quiz__result--wrong");
+				result.classList.add("quiz__result--correct");
+			} else {
+				result.textContent = "Try again";
+				result.classList.remove("quiz__result--correct");
+				result.classList.add("quiz__result--wrong");
+			}
+		});
+	})();
+</script>

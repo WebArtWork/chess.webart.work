@@ -1,0 +1,22 @@
+<div class="post-grid">
+	{% for item in section.items %}
+	<article class="post-grid__item">
+		{% if item.img %}
+		<div class="post-grid__image">
+			<img src="{{{item.img}}}" alt="" />
+		</div>
+		{% endif %}
+		<div class="post-grid__body">
+			{% if item.title %}
+			<h3 class="post-grid__title">
+				{% if item.url %}
+				<a href="{{{item.url}}}">{{{item.title}}}</a>
+				{% else %} {{{item.title}}} {% endif %}
+			</h3>
+			{% endif %} {% if item.description %}
+			<div class="post-grid__excerpt">{{{item.description}}}</div>
+			{% endif %}
+		</div>
+	</article>
+	{% endfor %}
+</div>

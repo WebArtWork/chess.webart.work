@@ -1,0 +1,125 @@
+.w-btn,
+button {
+	font-size: var(--fs);
+	font-weight: 500;
+	font-family: var(--ff-base);
+	background-color: var(--c-primary);
+	border-radius: var(--b-radius);
+	transition: var(--transition);
+	color: var(--c-white);
+	position: relative;
+	line-height: 19px;
+	text-align: center;
+	white-space: nowrap;
+	user-select: none;
+	border: none;
+	cursor: pointer;
+
+	&._primary {
+		background-color: var(--c-primary);
+
+		&:hover {
+			background-color: var(--c-primary-hover);
+		}
+	}
+
+	&._second {
+		border: 1px solid #256eff;
+		background-color: var(--c-white);
+		color: #256eff;
+	}
+
+	&._danger {
+		background-color: var(--c-error);
+		color: white;
+
+		&:hover {
+			background: var(--c-error-hover);
+		}
+	}
+
+	&._link {
+		background: transparent;
+		color: var(--c-text-primary);
+		font-size: 14px;
+		font-weight: 400;
+
+		&:hover {
+			color: var(--c-text-secondary);
+		}
+	}
+
+	&:disabled {
+		background-color: var(--c-grey-dark);
+		cursor: default;
+
+		&:hover {
+			background-color: var(--c-grey-dark);
+		}
+	}
+}
+
+.btn {
+	display: inline-block;
+	width: 100%;
+	max-width: 270px;
+	padding: 15px 20px;
+	background-color: var(--c-primary-hover); /* Колір фону */
+	color: var(--c-secondary); /* Колір тексту */
+	border: none;
+	border-radius: var(--b-radius);
+	text-align: center;
+	font-size: 20px;
+	cursor: pointer;
+	transition: background-color 0.3s, padding 0.3s;
+	border: 2px solid transparent;
+	&:hover {
+		background-color: var(--c-primary-cursor); /* Колір фону */
+	}
+
+	&--error {
+		background-color: var(--c-error);
+		color: var(--c-text-primary);
+		&:hover {
+			background-color: var(--c-error-hover);
+		}
+	}
+	&--second {
+		background-color: transparent;
+		border: 2px solid var(--c-primary-hover);
+		color: var(--c-text-primary);
+		&:hover {
+			background-color: var(--c-primary-hover);
+			color: var(--c-secondary); /* Колір тексту */
+		}
+	}
+	&--success {
+		background: var(--c-success);
+	}
+	&--danger {
+		background: var(--c-danger-border);
+	}
+	&--warning {
+		background: var(--c-orange);
+	}
+	&--info {
+		background: var(--c-question);
+	}
+	&--light {
+		background: var(--c-text-primary);
+	}
+	&--dark {
+		background: var(--c-primary);
+	}
+	&--link {
+		background: var(--c-code-hover);
+	}
+	&:disabled {
+		background-color: var(--c-placeholder);
+		cursor: default;
+
+		&:hover {
+			background-color: var(--c-placeholder);
+		}
+	}
+}

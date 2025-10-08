@@ -1,0 +1,20 @@
+<div class="social-feed">
+	{% for item in section.items %}
+	<div class="social-feed__item">
+		<div class="social-feed__avatar">
+			<img src="{{{item.avatar}}}" alt="{{{item.name}}}" />
+		</div>
+		<div class="social-feed__content">
+			<div class="social-feed__header">
+				<span class="social-feed__name">{{{item.name}}}</span>
+				{% if item.handle %}
+				<span class="social-feed__handle">{{{item.handle}}}</span>
+				{% endif %} {% if item.time %}
+				<span class="social-feed__time">{{{item.time}}}</span>
+				{% endif %}
+			</div>
+			<div class="social-feed__text">{{{item.text}}}</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>

@@ -1,0 +1,53 @@
+// accordion section
+
+.accordion-button__arrow {
+	transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+
+.accordion-button.active .accordion-button__arrow {
+	transform: rotate(-180deg); /* Rotate 90 degrees */
+}
+.accordion {
+	max-width: 100%;
+	margin: 0;
+	//border: 1px solid #ccc;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.accordion-item {
+	border: 2px solid var(--c-primary-hover);
+	border-radius: var(--b-radius);
+}
+
+.accordion-button {
+	width: 100%;
+	padding: 10px;
+	text-align: left;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 22px;
+	transition: background-color 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.accordion-button:hover {
+	background-color: transparent;
+}
+
+.accordion-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+	padding: 0 15px;
+	border-top: 1px solid var(--c-primary-hover);
+	font-size: 18px;
+}
+
+.accordion-content p {
+	margin: 15px 0;
+}

@@ -1,0 +1,12 @@
+<div class="animated-banner">
+	<div class="animated-banner__media">
+		<img src="{{{section.img}}}" alt="" />
+	</div>
+	<div class="animated-banner__content">
+		{% if section.title %}
+		<div class="animated-banner__title">{{{section.title}}}</div>
+		{% endif %} {% if section.subtitle %}
+		<div class="animated-banner__subtitle">{{{section.subtitle}}}</div>
+		{% endif %}
+	</div>
+</div>

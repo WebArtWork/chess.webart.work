@@ -1,0 +1,11 @@
+<div class="quote">
+	{% if section.img %}
+	<div class="quote__img">
+		<img src="{{{section.img}}}" alt="" />
+	</div>
+	{% endif %} {% if section.quote %}
+	<div class="quote__text">{{{section.quote}}}</div>
+	{% endif %} {% if section.author %}
+	<div class="quote__author">{{{section.author}}}</div>
+	{% endif %}
+</div>

@@ -1,0 +1,64 @@
+// api-layout section
+
+.api-layout {
+	font-family: var(--ff-base);
+	color: var(--c-text-primary);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 32px;
+		font-weight: 600;
+		margin-bottom: calc(20px * var(--margin-scale));
+	}
+
+	&__description {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		color: var(--c-text-body-secondary);
+		margin-bottom: calc(24px * var(--margin-scale));
+		max-width: 70ch;
+	}
+
+	&__endpoints {
+		display: flex;
+		flex-direction: column;
+		gap: calc(16px * var(--margin-scale));
+	}
+
+	&__endpoint {
+		padding: calc(16px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background: var(--c-bg-item);
+	}
+
+	&__method {
+		font-weight: 600;
+		color: var(--c-primary);
+		margin-right: calc(8px * var(--margin-scale));
+		text-transform: uppercase;
+	}
+
+	&__path {
+		font-family: var(--ff-second);
+		word-break: break-all;
+	}
+
+	&__endpoint-description {
+		margin-top: calc(8px * var(--margin-scale));
+		font-size: calc(var(--font-size) * 0.9);
+		color: var(--c-text-body-secondary);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.api-layout__title {
+		font-size: 24px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.api-layout__title {
+		font-size: 20px;
+	}
+}

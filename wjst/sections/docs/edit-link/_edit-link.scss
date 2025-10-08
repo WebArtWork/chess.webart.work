@@ -1,0 +1,35 @@
+// docs edit link section
+
+.edit-link {
+	margin-top: calc(24px * var(--margin-scale));
+	text-align: right;
+	font-family: var(--ff-base);
+	font-size: calc(var(--font-size) * 0.875);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+
+	&__link {
+		color: var(--c-primary);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: calc(8px * var(--margin-scale));
+		transition: color var(--transition);
+
+		&:hover {
+			color: var(--c-primary-hover);
+		}
+	}
+
+	&__icon {
+		width: var(--icon-size);
+		height: var(--icon-size);
+		display: inline-block;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.edit-link {
+		font-size: calc(var(--font-size) * 0.75);
+	}
+}

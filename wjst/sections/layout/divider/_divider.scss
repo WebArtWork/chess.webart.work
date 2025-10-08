@@ -1,0 +1,34 @@
+// divider section
+
+.divider {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	font-family: var(--ff-base);
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+	color: var(--c-text-secondary);
+	margin: calc(24px * var(--margin-scale)) 0;
+
+	&::before,
+	&::after {
+		content: "";
+		flex: 1 1 auto;
+		border-bottom: 1px solid var(--c-border);
+	}
+
+	&:not(:empty)::before {
+		margin-right: calc(12px * var(--margin-scale));
+	}
+
+	&:not(:empty)::after {
+		margin-left: calc(12px * var(--margin-scale));
+	}
+
+	&__text {
+		display: inline-block;
+	}
+}

@@ -1,0 +1,4 @@
+{% set size = section.size or 'lg' %}
+<div class="container container--{{{size}}}">
+	{% if section.content %} {{{section.content}}} {% endif %}
+</div>

@@ -1,0 +1,95 @@
+// statistics section
+
+.statistics {
+	padding-bottom: calc(50px * var(--padding-scale));
+	text-align: center;
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 36px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__description {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		margin-top: calc(12px * var(--margin-scale));
+		max-width: 70ch;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__items {
+		margin-top: calc(30px * var(--margin-scale));
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: calc(20px * var(--margin-scale));
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		align-items: flex-start;
+		gap: calc(16px * var(--margin-scale));
+		background: var(--c-bg-item);
+		padding: calc(20px * var(--padding-scale));
+		border-radius: var(--b-radius);
+		box-shadow: 0 2px 4px var(--c-shadow);
+
+	}
+
+	&__value {
+		font-family: var(--ff-title);
+		font-size: 36px;
+		font-weight: 600;
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-primary-hover);
+	}
+
+	&__label {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-primary);
+		margin-top: calc(4px * var(--margin-scale));
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.statistics__title {
+		font-size: 28px;
+	}
+	.statistics__value {
+		font-size: 32px;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.statistics__title {
+		font-size: 24px;
+	}
+	.statistics__value {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.statistics__title {
+		font-size: 20px;
+	}
+	.statistics__value {
+		font-size: 24px;
+	}
+	.statistics__label {
+		font-size: calc(var(--font-size) * 0.875);
+	}
+}

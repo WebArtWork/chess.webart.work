@@ -1,0 +1,19 @@
+<div class="version-switcher">
+	{% if section.label %}
+	<label for="version-switcher__select" class="version-switcher__label"
+		>{{{section.label}}}</label
+	>
+	{% endif %} {% if section.versions %}
+	<select
+		id="version-switcher__select"
+		class="version-switcher__select"
+		onchange="if(this.value){window.location.href=this.value}"
+	>
+		{% for v in section.versions %}
+		<option value="{{{v.url}}}" {% if v.current %}selected{% endif %}>
+			{{{v.label}}}
+		</option>
+		{% endfor %}
+	</select>
+	{% endif %}
+</div>

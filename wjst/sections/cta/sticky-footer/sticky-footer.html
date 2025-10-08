@@ -1,0 +1,16 @@
+<div id="stickyFooter" class="sticky-footer">
+	<div class="sticky-footer__content">
+		<span class="sticky-footer__text">{{{section.text}}}</span>
+		{% if section.button %}
+		<a href="{{{section.button.url}}}" class="sticky-footer__button"
+			>{{{section.button.label}}}</a
+		>
+		{% endif %}
+	</div>
+	<button
+		class="sticky-footer__close"
+		onclick="toggleClass('stickyFooter','hidden')"
+	>
+		&times;
+	</button>
+</div>

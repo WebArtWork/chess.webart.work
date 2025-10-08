@@ -1,0 +1,12 @@
+<div class="media-text">
+	<div class="media-text__media">
+		<img src="{{{section.img}}}" alt="" />
+	</div>
+	<div class="media-text__content">
+		{% if section.title %}
+		<div class="media-text__title">{{{section.title}}}</div>
+		{% endif %} {% if section.text %}
+		<div class="media-text__text">{{{section.text}}}</div>
+		{% endif %}
+	</div>
+</div>

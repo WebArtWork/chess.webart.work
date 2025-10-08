@@ -1,0 +1,39 @@
+// version switcher section
+
+.version-switcher {
+	display: inline-flex;
+	align-items: center;
+	gap: calc(8px * var(--padding-scale));
+	font-family: var(--ff-base);
+
+	&__label {
+		font-size: calc(var(--font-size) * 0.9);
+		color: var(--c-text-secondary);
+	}
+
+	&__select {
+		font-family: var(--ff-base);
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		padding: calc(6px * var(--padding-scale))
+			calc(8px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background-color: var(--c-bg-item);
+		color: var(--c-text-primary);
+		cursor: pointer;
+		transition: border-color var(--transition), box-shadow var(--transition);
+
+		&:focus {
+			outline: none;
+			border-color: var(--c-primary);
+			box-shadow: 0 0 0 2px var(--c-primary-border);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.version-switcher__label {
+		font-size: calc(var(--font-size) * 0.8);
+	}
+}

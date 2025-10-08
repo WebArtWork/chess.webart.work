@@ -1,0 +1,1318 @@
+<div class="alert alert--{{section.type}}">
+	{% if section.close %}
+	<button class="alert__close" type="button">&times;</button>
+	{% endif %} {% if section.title %}
+	<div class="alert__title">{{{section.title}}}</div>
+	{% endif %} {% if section.message %}
+	<div class="alert__message">{{{section.message}}}</div>
+	{% endif %}
+</div>
+
+
+<div class="components-alert item-block" id="alerts">
+	<div class="index-readme__title">
+		<h1>Componenets</h1>
+	</div>
+	<h2 id="alerts">Alerts</h2>
+	<div class="index-readme__item">
+		<div class="alert-wrap alert-info">
+			<div class="alert-wrap-close">
+				<svg
+					height="512px"
+					id="Layer_1"
+					style="enable-background: new 0 0 512 512"
+					version="1.1"
+					viewBox="0 0 512 512"
+					width="512px"
+					xml:space="preserve"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+				>
+					<path
+						d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-img">
+				<svg
+					class="bi bi-info-circle-fill"
+					fill="currentColor"
+					height="16"
+					viewBox="0 0 16 16"
+					width="16"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-text">
+				<div class="alert-wrap-text__title">Title for info alerts</div>
+				<div class="alert-wrap-text__description">
+					Aontrary to popular belief, Lorem Ipsum is not simply random
+					text. It has roots in a piece of classical Latin literature
+					from
+				</div>
+			</div>
+		</div>
+		<div class="alert-wrap alert-error">
+			<div class="alert-wrap-close">
+				<svg
+					height="512px"
+					id="Layer_1"
+					style="enable-background: new 0 0 512 512"
+					version="1.1"
+					viewBox="0 0 512 512"
+					width="512px"
+					xml:space="preserve"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+				>
+					<path
+						d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-img">
+				<svg
+					fill="none"
+					height="16"
+					viewBox="0 0 16 16"
+					width="16"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						clip-rule="evenodd"
+						d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM4.29289 5.70711L6.58579 8L4.29289 10.2929L5.70711 11.7071L8 9.41421L10.2929 11.7071L11.7071 10.2929L9.41421 8L11.7071 5.70711L10.2929 4.29289L8 6.58579L5.70711 4.29289L4.29289 5.70711Z"
+						fill="#fff"
+						fill-rule="evenodd"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-text">
+				<div class="alert-wrap-text__title">Title for eror alerts</div>
+				<div class="alert-wrap-text__description">
+					Aontrary to popular belief, Lorem Ipsum is not simply random
+					text. It has roots in a piece of classical Latin literature
+					from
+				</div>
+			</div>
+		</div>
+		<div class="alert-wrap alert-warning">
+			<div class="alert-wrap-close">
+				<svg
+					width="512"
+					height="512"
+					viewBox="0 0 512 512"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M437.501 386.6L306.901 256L437.501 125.4C451.601 111.3 451.601 88.5998 437.501 74.4998C423.401 60.3998 400.701 60.3998 386.601 74.4998L256.001 205.1L125.401 74.4998C111.301 60.3998 88.6008 60.3998 74.5008 74.4998C60.4008 88.5998 60.4008 111.3 74.5008 125.4L205.101 256L74.5008 386.6C60.4008 400.7 60.4008 423.4 74.5008 437.5C88.6008 451.6 111.301 451.6 125.401 437.5L256.001 306.9L386.601 437.5C400.701 451.6 423.401 451.6 437.501 437.5C451.501 423.4 451.501 400.6 437.501 386.6Z"
+						fill="white"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-img">
+				<svg
+					width="26"
+					height="26"
+					viewBox="0 0 26 26"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M13 0.5C6.1 0.5 0.5 6.1 0.5 13C0.5 19.9 6.1 25.5 13 25.5C19.9 25.5 25.5 19.9 25.5 13C25.5 6.1 19.9 0.5 13 0.5ZM14.25 19.25H11.75V16.75H14.25V19.25ZM14.25 14.25H11.75V6.75H14.25V14.25Z"
+						fill="#E8EAED"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-text">
+				<div class="alert-wrap-text__title">
+					Title for success alerts
+				</div>
+				<div class="alert-wrap-text__description">
+					Aontrary to popular belief, Lorem Ipsum is not simply random
+					text. It has roots in a piece of classical Latin literature
+					from
+				</div>
+			</div>
+		</div>
+		<div class="alert-wrap alert-success">
+			<div class="alert-wrap-close">
+				<svg
+					width="512"
+					height="512"
+					viewBox="0 0 512 512"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M437.501 386.6L306.901 256L437.501 125.4C451.601 111.3 451.601 88.5998 437.501 74.4998C423.401 60.3998 400.701 60.3998 386.601 74.4998L256.001 205.1L125.401 74.4998C111.301 60.3998 88.6008 60.3998 74.5008 74.4998C60.4008 88.5998 60.4008 111.3 74.5008 125.4L205.101 256L74.5008 386.6C60.4008 400.7 60.4008 423.4 74.5008 437.5C88.6008 451.6 111.301 451.6 125.401 437.5L256.001 306.9L386.601 437.5C400.701 451.6 423.401 451.6 437.501 437.5C451.501 423.4 451.501 400.6 437.501 386.6Z"
+						fill="white"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-img">
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M12 1C9.82441 1 7.69767 1.64514 5.88873 2.85383C4.07979 4.06253 2.66989 5.78049 1.83733 7.79048C1.00477 9.80047 0.786929 12.0122 1.21137 14.146C1.6358 16.2798 2.68345 18.2398 4.22183 19.7782C5.76021 21.3166 7.72022 22.3642 9.85401 22.7886C11.9878 23.2131 14.1995 22.9952 16.2095 22.1627C18.2195 21.3301 19.9375 19.9202 21.1462 18.1113C22.3549 16.3023 23 14.1756 23 12C23 9.08262 21.8411 6.28473 19.7782 4.22183C17.7153 2.15893 14.9174 1 12 1ZM17.707 9.707L10.707 16.707C10.5195 16.8945 10.2652 16.9998 10 16.9998C9.73484 16.9998 9.48053 16.8945 9.293 16.707L6.293 13.707C6.11085 13.5184 6.01005 13.2658 6.01233 13.0036C6.01461 12.7414 6.11978 12.4906 6.30519 12.3052C6.49059 12.1198 6.74141 12.0146 7.0036 12.0123C7.2658 12.01 7.5184 12.1108 7.707 12.293L10 14.586L16.293 8.293C16.4816 8.11084 16.7342 8.01005 16.9964 8.01233C17.2586 8.0146 17.5094 8.11977 17.6948 8.30518C17.8802 8.49059 17.9854 8.7414 17.9877 9.0036C17.99 9.2658 17.8892 9.5184 17.707 9.707Z"
+						fill="white"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-text">
+				<div class="alert-wrap-text__title">
+					Title for success alerts
+				</div>
+				<div class="alert-wrap-text__description">
+					Aontrary to popular belief, Lorem Ipsum is not simply random
+					text. It has roots in a piece of classical Latin literature
+					from
+				</div>
+			</div>
+		</div>
+		<div class="alert-wrap alert-question">
+			<div class="alert-wrap-close">
+				<svg
+					width="512"
+					height="512"
+					viewBox="0 0 512 512"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M437.501 386.6L306.901 256L437.501 125.4C451.601 111.3 451.601 88.5998 437.501 74.4998C423.401 60.3998 400.701 60.3998 386.601 74.4998L256.001 205.1L125.401 74.4998C111.301 60.3998 88.6008 60.3998 74.5008 74.4998C60.4008 88.5998 60.4008 111.3 74.5008 125.4L205.101 256L74.5008 386.6C60.4008 400.7 60.4008 423.4 74.5008 437.5C88.6008 451.6 111.301 451.6 125.401 437.5L256.001 306.9L386.601 437.5C400.701 451.6 423.401 451.6 437.501 437.5C451.501 423.4 451.501 400.6 437.501 386.6Z"
+						fill="white"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-img">
+				<svg
+					width="26"
+					height="26"
+					viewBox="0 0 26 26"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M13 0.5C6.1 0.5 0.5 6.1 0.5 13C0.5 19.9 6.1 25.5 13 25.5C19.9 25.5 25.5 19.9 25.5 13C25.5 6.1 19.9 0.5 13 0.5ZM14.25 21.75H11.75V19.25H14.25V21.75ZM16.8375 12.0625L15.7125 13.2125C14.8125 14.125 14.25 14.875 14.25 16.75H11.75V16.125C11.75 14.75 12.3125 13.5 13.2125 12.5875L14.7625 11.0125C15.225 10.5625 15.5 9.9375 15.5 9.25C15.5 7.875 14.375 6.75 13 6.75C11.625 6.75 10.5 7.875 10.5 9.25H8C8 6.4875 10.2375 4.25 13 4.25C15.7625 4.25 18 6.4875 18 9.25C18 10.35 17.55 11.35 16.8375 12.0625Z"
+						fill="#E8EAED"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-text">
+				<div class="alert-wrap-text__title">
+					Title for success alerts
+				</div>
+				<div class="alert-wrap-text__description">
+					Aontrary to popular belief, Lorem Ipsum is not simply random
+					text. It has roots in a piece of classical Latin literature
+					from
+				</div>
+			</div>
+		</div>
+		<div class="alert-wrap alert-loading">
+			<div class="alert-wrap-close">
+				<svg
+					width="512"
+					height="512"
+					viewBox="0 0 512 512"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M437.501 386.6L306.901 256L437.501 125.4C451.601 111.3 451.601 88.5998 437.501 74.4998C423.401 60.3998 400.701 60.3998 386.601 74.4998L256.001 205.1L125.401 74.4998C111.301 60.3998 88.6008 60.3998 74.5008 74.4998C60.4008 88.5998 60.4008 111.3 74.5008 125.4L205.101 256L74.5008 386.6C60.4008 400.7 60.4008 423.4 74.5008 437.5C88.6008 451.6 111.301 451.6 125.401 437.5L256.001 306.9L386.601 437.5C400.701 451.6 423.401 451.6 437.501 437.5C451.501 423.4 451.501 400.6 437.501 386.6Z"
+						fill="white"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-img">
+				<svg
+					width="26"
+					height="26"
+					viewBox="0 0 26 26"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M13 0.5C6.1 0.5 0.5 6.1 0.5 13C0.5 19.9 6.1 25.5 13 25.5C19.9 25.5 25.5 19.9 25.5 13C25.5 6.1 19.9 0.5 13 0.5ZM6.75 14.875C5.7125 14.875 4.875 14.0375 4.875 13C4.875 11.9625 5.7125 11.125 6.75 11.125C7.7875 11.125 8.625 11.9625 8.625 13C8.625 14.0375 7.7875 14.875 6.75 14.875ZM13 14.875C11.9625 14.875 11.125 14.0375 11.125 13C11.125 11.9625 11.9625 11.125 13 11.125C14.0375 11.125 14.875 11.9625 14.875 13C14.875 14.0375 14.0375 14.875 13 14.875ZM19.25 14.875C18.2125 14.875 17.375 14.0375 17.375 13C17.375 11.9625 18.2125 11.125 19.25 11.125C20.2875 11.125 21.125 11.9625 21.125 13C21.125 14.0375 20.2875 14.875 19.25 14.875Z"
+						fill="#E8EAED"
+					/>
+				</svg>
+			</div>
+			<div class="alert-wrap-text">
+				<div class="alert-wrap-text__title">
+					Title for success alerts
+				</div>
+				<div class="alert-wrap-text__description">
+					Aontrary to popular belief, Lorem Ipsum is not simply random
+					text. It has roots in a piece of classical Latin literature
+					from
+				</div>
+			</div>
+		</div>
+		<div class="alert-block">
+			<div class="alert-block__text">Are you sure?</div>
+			<div class="alert-block__description">
+				Do you want to delete this file?
+			</div>
+			<div class="alert-block-btns">
+				<div class="alert-block-btns__btn alert-block-btns__btn-yes">
+					Yes
+				</div>
+				<div class="alert-block-btns__btn alert-block-btns__btn-no">
+					No
+				</div>
+			</div>
+		</div>
+		<div class="alert-block alert-block--white">
+			<div class="alert-block__text">Are you sure?</div>
+			<div class="alert-block__description">
+				Do you want to delete this file?
+			</div>
+			<div class="alert-block-btns">
+				<div class="alert-block-btns__btn alert-block-btns__btn-yes">
+					Yes
+				</div>
+				<div class="alert-block-btns__btn alert-block-btns__btn-no">
+					No
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="components-alert item-block" id="accardion">
+	<h2>Accardion</h2>
+	<div class="index-readme__item">
+		<div class="accordion-item">
+			<button class="accordion-button">
+				<div class="accordion-button__text">Пункт 1</div>
+				<div class="accordion-button__arrow">
+					<svg
+						width="36"
+						height="36"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M6 9L12 15L18 9"
+							stroke="white"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</div>
+			</button>
+			<div class="accordion-content">
+				<p>
+					Це контент першого пункту аккордеону. Він може містити
+					будь-який HTML-контент.
+				</p>
+			</div>
+		</div>
+		<div class="accordion-item">
+			<button class="accordion-button active">
+				<div class="accordion-button__text">Пункт 1</div>
+				<div class="accordion-button__arrow">
+					<svg
+						width="36"
+						height="36"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M6 9L12 15L18 9"
+							stroke="white"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</div>
+			</button>
+			<div class="accordion-content" style="max-height: fit-content">
+				<p>
+					Це контент першого пункту аккордеону. Він може містити
+					будь-який HTML-контент.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="components-buttons item-block" id="buttons">
+	<h2>Buttons</h2>
+	<div class="index-readme__item">
+		<button class="btn">Btn Text</button>
+		<button class="btn btn--second">Btn Second</button>
+		<button class="btn btn--error">Btn Error</button>
+		<button class="btn" disabled>Btn Disabled</button>
+		<button class="btn btn--success">Btn Success</button>
+		<button class="btn btn--danger">Btn Success</button>
+		<button class="btn btn--warning">Btn Warning</button>
+		<button class="btn btn--info">Btn Info</button>
+		<button class="btn btn--light">Btn Info</button>
+		<button class="btn btn--dark">Btn Dark</button>
+		<button class="btn btn--link">Btn Link</button>
+	</div>
+</div>
+<div class="components-breadcrumb item-block" id="breadcrumb">
+	<h2>Breadcrumb</h2>
+	<div class="index-readme__item">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-current="page">Home</li>
+			</ol>
+		</nav>
+
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">
+					Library
+				</li>
+			</ol>
+		</nav>
+
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Home</a></li>
+				<li class="breadcrumb-item"><a href="#">Library</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Data</li>
+			</ol>
+		</nav>
+	</div>
+</div>
+<div class="components-card">
+	<h2>Card</h2>
+	<div class="index-readme__item">
+		<div class="card-wrapper">
+			<div class="card__wrap">
+				<div class="card__item">
+					<div class="card-top">
+						<div class="card-top__title">Top title card</div>
+					</div>
+					<div class="card-center">
+						<div class="card-center__wrap">
+							<div class="card-center__item">1</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">2</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">3</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">4</div>
+						</div>
+					</div>
+					<div class="card-bottom">
+						<div class="card__btn">
+							<a href="" class="btn">Card Btn</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card__wrap">
+				<div class="card__item">
+					<div class="card-top">
+						<div class="card-top__title">Top title card</div>
+					</div>
+					<div class="card-center card-center--third">
+						<div class="card-center__wrap">
+							<div class="card-center__item">1</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">2</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">3</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card__wrap">
+				<div class="card__item">
+					<div class="card-center card-center--two">
+						<div class="card-center__wrap">
+							<div class="card-center__item">1</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">2</div>
+						</div>
+					</div>
+					<div class="card-bottom">
+						<div class="card__btn">
+							<a href="" class="btn">Card Btn</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card__wrap">
+				<div class="card__item">
+					<div class="card-center">
+						<div class="card-center__wrap">
+							<div class="card-center__item">1</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">2</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">3</div>
+						</div>
+						<div class="card-center__wrap">
+							<div class="card-center__item">4</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="components-checkbox">
+	<h2>Checkbox</h2>
+	<div class="index-readme__item">
+		<div class="checkbox-container">
+			<label class="custom-checkbox">
+				<input type="checkbox" />
+				<span class="checkbox-checkmark"></span>
+				Option 1
+			</label>
+			<label class="custom-checkbox">
+				<input type="checkbox" />
+				<span class="checkbox-checkmark"></span>
+				Option 2
+			</label>
+		</div>
+	</div>
+</div>
+<div class="components-dropdowns">
+	<h2>Drop-downs</h2>
+	<div class="index-readme__item">
+		<div class="dropdown">
+			<button class="dropdown-button">
+				<div class="dropdown-button__text">Punkt menu</div>
+				<div class="dropdown-button__arrow">
+					<svg
+						width="22"
+						height="22"
+						viewBox="0 0 22 22"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M6 9L12 15L18 9"
+							stroke="#24373d"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						></path>
+					</svg>
+				</div>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">Опція 1</a></li>
+				<li><a href="#">Опція 2</a></li>
+				<li><a href="#">Опція 3</a></li>
+			</ul>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const dropdown = document.querySelector(".dropdown");
+				const button = document.querySelector(".dropdown-button");
+				const menu = document.querySelector(".dropdown-menu");
+
+				button.addEventListener("click", () => {
+					if (dropdown.classList.contains("open")) {
+						closeMenu();
+					} else {
+						openMenu();
+					}
+				});
+
+				function openMenu() {
+					dropdown.classList.add("open");
+					const menuHeight = menu.scrollHeight; // Get the full height of the menu
+					menu.style.height = `${menuHeight}px`;
+				}
+
+				function closeMenu() {
+					menu.style.height = `0`;
+					dropdown.classList.remove("open");
+				}
+
+				// Optional: Close dropdown when clicking outside
+				document.addEventListener("click", (event) => {
+					if (!dropdown.contains(event.target)) {
+						closeMenu();
+					}
+				});
+			});
+		</script>
+	</div>
+</div>
+<div class="components-modals">
+	<h2>Modals</h2>
+	<div class="index-readme__item">
+		<!-- Example buttons that trigger the modal -->
+		<div class="open-modal" data-target="content1">Open First Modal</div>
+		<div class="open-modal" data-target="content2">Open Second Modal</div>
+		<div class="open-modal" data-target="content3">Open Third Modal</div>
+
+		<!-- Modal structure -->
+		<div class="modal" id="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="modal-body">
+					<!-- Dynamic content will be inserted here -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Hidden content templates -->
+		<div id="content1" class="modal-template">
+			<h2>First Modal</h2>
+			<p>This is the content of the first modal.</p>
+		</div>
+
+		<div id="content2" class="modal-template">
+			<h2>Second Modal</h2>
+			<p>This is the content of the second modal.</p>
+		</div>
+
+		<div id="content3" class="modal-template">
+			<h2>Third Modal</h2>
+			<p>This is the content of the third modal.</p>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const modal = document.getElementById("modal");
+				const modalContent = modal.querySelector(".modal-body");
+				const openModalButtons =
+					document.querySelectorAll(".open-modal");
+				const closeModalButton = modal.querySelector(".close");
+
+				// Function to open modal with dynamic content
+				function openModal(contentId) {
+					const content = document.getElementById(contentId);
+					if (content) {
+						modalContent.innerHTML = content.innerHTML; // Clone the content
+						modal.classList.add("show");
+						document.body.style.overflow = "hidden"; // Disable page scroll
+					}
+				}
+
+				// Function to close modal
+				function closeModal() {
+					modal.classList.remove("show");
+					document.body.style.overflow = "auto"; // Re-enable page scroll
+				}
+
+				// Add event listeners to open modal buttons
+				openModalButtons.forEach((button) => {
+					button.addEventListener("click", () => {
+						const targetId = button.getAttribute("data-target");
+						openModal(targetId);
+					});
+				});
+
+				// Add event listener to close modal button
+				closeModalButton.addEventListener("click", closeModal);
+
+				// Close modal when clicking outside of the modal content
+				window.addEventListener("click", (event) => {
+					if (event.target === modal) {
+						closeModal();
+					}
+				});
+			});
+		</script>
+	</div>
+</div>
+<div class="components-navbar">
+	<h2>NavBar</h2>
+	<div class="index-readme__item">
+		<nav class="navbar">
+			<a href="" class="navbar-logo">
+				<svg
+					width="100"
+					height="20"
+					viewBox="0 0 100 20"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M16.25 19.575L2.275 5.4L2.975 5.575L3.025 19H0.6V0.374998H0.725L14.55 14.6L13.975 14.475L13.925 0.924999H16.325V19.575H16.25ZM19.7229 19L27.6229 0.174999H27.7729L35.6479 19H32.8729L26.9729 3.975L28.6979 2.85L22.0979 19H19.7229ZM24.3479 12.15H31.0729L31.8729 14.25H23.6479L24.3479 12.15ZM37.9352 0.924999L43.8852 15.875L42.5102 15.6L48.1602 0.924999H50.9852L43.0102 19.825L35.0602 0.924999H37.9352ZM59.2539 0.924999C61.0706 0.924999 62.4956 1.3 63.5289 2.05C64.5789 2.78333 65.1039 3.93333 65.1039 5.5C65.1039 6.45 64.8872 7.275 64.4539 7.975C64.0206 8.675 63.4122 9.225 62.6289 9.625C61.8622 10.025 60.9539 10.25 59.9039 10.3L59.5539 9.05C60.7706 9.08333 61.8622 9.3 62.8289 9.7C63.7956 10.1 64.5622 10.6583 65.1289 11.375C65.6956 12.0917 65.9789 12.9417 65.9789 13.925C65.9789 14.825 65.8122 15.6 65.4789 16.25C65.1456 16.8833 64.6956 17.4083 64.1289 17.825C63.5622 18.225 62.9206 18.525 62.2039 18.725C61.4872 18.9083 60.7456 19 59.9789 19H54.6039V0.924999H59.2539ZM59.7539 8.85C60.7539 8.85 61.4789 8.575 61.9289 8.025C62.3789 7.45833 62.6039 6.775 62.6039 5.975C62.6039 5.025 62.3122 4.33333 61.7289 3.9C61.1456 3.46667 60.3622 3.25 59.3789 3.25H57.0289V8.85H59.7539ZM59.8539 16.75C60.5206 16.75 61.1289 16.65 61.6789 16.45C62.2456 16.25 62.6872 15.9417 63.0039 15.525C63.3372 15.1083 63.5039 14.5833 63.5039 13.95C63.5039 13.25 63.3122 12.7 62.9289 12.3C62.5622 11.9 62.0872 11.6167 61.5039 11.45C60.9206 11.2667 60.3206 11.175 59.7039 11.175H57.0289V16.75H59.8539ZM67.8674 19L75.7674 0.174999H75.9174L83.7924 19H81.0174L75.1174 3.975L76.8424 2.85L70.2424 19H67.8674ZM72.4924 12.15H79.2174L80.0174 14.25H71.7924L72.4924 12.15ZM91.9967 0.924999C92.9133 0.924999 93.755 1.05 94.5217 1.3C95.305 1.53333 95.98 1.89167 96.5467 2.375C97.13 2.84167 97.58 3.425 97.8967 4.125C98.23 4.80833 98.3967 5.60833 98.3967 6.525C98.3967 7.24167 98.2883 7.94167 98.0717 8.625C97.8717 9.30833 97.53 9.93333 97.0467 10.5C96.5633 11.05 95.93 11.5 95.1467 11.85C94.38 12.1833 93.43 12.35 92.2967 12.35H89.6217V19H87.1967V0.924999H91.9967ZM92.2467 10.025C92.9633 10.025 93.555 9.91667 94.0217 9.7C94.505 9.48333 94.88 9.20833 95.1467 8.875C95.4133 8.525 95.605 8.15 95.7217 7.75C95.8383 7.35 95.8967 6.975 95.8967 6.625C95.8967 6.25833 95.83 5.88333 95.6967 5.5C95.58 5.1 95.38 4.73333 95.0967 4.4C94.83 4.06667 94.4717 3.79167 94.0217 3.575C93.5883 3.35833 93.055 3.25 92.4217 3.25H89.6217V10.025H92.2467ZM95.2217 11.4L99.9467 19H97.1467L92.3467 11.475L95.2217 11.4Z"
+						fill="#F8EC20"
+					/>
+				</svg>
+			</a>
+			<div class="burger-wrap-n">
+				<div class="burger-n"></div>
+			</div>
+			<ul class="navbar-navigation">
+				<li class="navbar-navigation__link"><a href=""> Home </a></li>
+				<li class="navbar-navigation__link">
+					<a href=""> About us </a>
+				</li>
+				<li class="navbar-navigation__link">
+					<a href=""> Contacts </a>
+				</li>
+				<li class="navbar-navigation__link">
+					<div class="navbar-navigation-dropdawn">
+						<div class="navbar-navigation-dropdawn__text">
+							Dropdawn
+							<div class="navbar-navigation-dropdawn__img">
+								<svg
+									class="arrow-icon"
+									width="18"
+									height="18"
+									viewBox="0 0 18 18"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M0 4.66431H18L9 13.3358L0 4.66431Z"
+										fill="#F8EC20"
+									/>
+								</svg>
+							</div>
+						</div>
+						<ul class="navbar-navigation-dropdawn__list">
+							<li><a href=""> Punkt1 </a></li>
+							<li><a href=""> Punkt2 </a></li>
+							<li><a href=""> Punkt3 </a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			<div class="navbar-form">
+				<form action="">
+					<input type="text" placeholder="Enter message" />
+					<button>Find!</button>
+				</form>
+			</div>
+		</nav>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const dropdownText = document.querySelector(
+					".navbar-navigation-dropdawn__text"
+				);
+				const dropdown = document.querySelector(
+					".navbar-navigation-dropdawn"
+				);
+
+				dropdownText.addEventListener("click", function () {
+					dropdown.classList.toggle("open"); // Додаємо або видаляємо клас 'open'
+				});
+			});
+			document
+				.querySelector(".burger-wrap-n")
+				.addEventListener("click", function () {
+					const menuNavigation =
+						document.querySelector(".navbar-navigation");
+					const burger = document.querySelector(".burger-n");
+
+					menuNavigation.classList.toggle("navbar-navigation--open");
+					burger.classList.toggle("burger-n--close");
+				});
+			document.addEventListener("DOMContentLoaded", function () {
+				const navbarForm = document.querySelector(".navbar-form");
+				const navbarNavigation =
+					document.querySelector(".navbar-navigation");
+				const navbar = document.querySelector(".navbar");
+
+				function moveNavbarForm() {
+					if (window.innerWidth <= 1024) {
+						// Переместить форму внутрь navbar-navigation, если она там не находится
+						if (navbarForm.parentElement !== navbarNavigation) {
+							navbarNavigation.appendChild(navbarForm);
+						}
+					} else {
+						// Вернуть форму обратно в navbar, если она там
+						if (navbarForm.parentElement === navbarNavigation) {
+							navbar.appendChild(navbarForm);
+						}
+					}
+				}
+
+				// Инициализация функции при загрузке страницы
+				moveNavbarForm();
+
+				// Добавить обработчик события на изменение размера окна
+				window.addEventListener("resize", moveNavbarForm);
+			});
+		</script>
+	</div>
+</div>
+<div class="components-pagination">
+	<h2>Pagination</h2>
+	<div class="index-readme__item">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<li class="page-item prev-arrow">
+					<a class="page-link" href="#">
+						<svg
+							width="8"
+							height="13"
+							viewBox="0 0 4 7"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M3.49367 5.44741e-05L4 0.506384L1.01266 3.46841L4 6.43044L3.49367 6.93677L2.23406e-07 3.46841L3.49367 5.44741e-05Z"
+								fill="white"
+							/>
+						</svg>
+					</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item active">
+					<a class="page-link" href="#">3</a>
+				</li>
+				<li class="page-item disabled next-arrow">
+					<a class="page-link" href="#">
+						<svg
+							width="8"
+							height="13"
+							viewBox="0 0 4 7"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M0.506329 6.93671L0 6.43038L2.98734 3.46835L0 0.50633L0.506329 0L4 3.46835L0.506329 6.93671Z"
+								fill="white"
+							/>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<li class="page-item">
+					<a class="page-link" href="#">
+						<svg
+							width="12"
+							height="14"
+							viewBox="0 0 12 14"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M6.98734 0.0633414L8 1.076L2.02532 7.00006L8 12.9241L6.98734 13.9368L4.46813e-07 7.00006L6.98734 0.0633414Z"
+								fill="white"
+							/>
+							<path
+								d="M11.1139 0.999913L12 1.88599L6.77215 7.06954L12 12.2531L11.1139 13.1392L5 7.06954L11.1139 0.999913Z"
+								fill="white"
+							/>
+						</svg>
+					</a>
+				</li>
+				<li class="page-item prev-arrow">
+					<a class="page-link" href="#">
+						<svg
+							width="8"
+							height="13"
+							viewBox="0 0 4 7"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M3.49367 5.44741e-05L4 0.506384L1.01266 3.46841L4 6.43044L3.49367 6.93677L2.23406e-07 3.46841L3.49367 5.44741e-05Z"
+								fill="white"
+							/>
+						</svg>
+					</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item next-arrow">
+					<a class="page-link" href="#">
+						<svg
+							width="8"
+							height="13"
+							viewBox="0 0 4 7"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M0.506329 6.93671L0 6.43038L2.98734 3.46835L0 0.50633L0.506329 0L4 3.46835L0.506329 6.93671Z"
+								fill="white"
+							/>
+						</svg>
+					</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">
+						<svg
+							width="12"
+							height="14"
+							viewBox="0 0 12 14"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M5.01266 0.000108948L4 1.01277L9.97468 6.93683L4 12.8609L5.01266 13.8735L12 6.93683L5.01266 0.000108948Z"
+								fill="white"
+							/>
+							<path
+								d="M0.886077 0.936681L0 1.82276L5.22785 7.00631L0 12.1899L0.886077 13.0759L7 7.00631L0.886077 0.936681Z"
+								fill="white"
+							/>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+<div class="components-propovers">
+	<h2>Popovers</h2>
+	<div class="index-readme__item">
+		<div class="popover-wrapper">
+			<button id="popoverButton" class="btn btn-secondary">
+				Click me
+			</button>
+
+			<div id="popover" class="popover popover-top" role="tooltip">
+				<div class="popover-arrow"></div>
+				<div class="popover-body">
+					<div class="popover-body__title">Title for that.</div>
+					<ul class="popover-body__list">
+						<li>lorem ipsum tralala</li>
+						<li>lorem ipsum tralala</li>
+						<li>lorem ipsum tralala</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const button = document.getElementById("popoverButton");
+			const popover = document.getElementById("popover");
+
+			button.addEventListener("click", function () {
+				const rect = button.getBoundingClientRect();
+				const popoverStyle = getComputedStyle(popover);
+
+				// Встановлення CSS-змінних для позиціонування
+				document.documentElement.style.setProperty(
+					"--popover-top",
+					`${rect.bottom + window.scrollY}px`
+				);
+				document.documentElement.style.setProperty(
+					"--popover-left",
+					`${
+						rect.left +
+						window.scrollX +
+						button.offsetWidth / 2 -
+						parseFloat(popoverStyle.width) / 2
+					}px`
+				);
+
+				if (
+					popover.style.visibility === "hidden" ||
+					!popover.style.visibility
+				) {
+					popover.style.display = "block"; // Встановити display block перед анімацією
+					setTimeout(() => {
+						// Використовуємо setTimeout для запуску переходу
+						popover.style.opacity = "1";
+						popover.style.visibility = "visible";
+					}, 10);
+
+					// Додавання слухача подій для закриття поповера при кліку поза його межами
+					function onClickOutside(event) {
+						if (
+							!popover.contains(event.target) &&
+							event.target !== button
+						) {
+							closePopover();
+							document.removeEventListener(
+								"click",
+								onClickOutside
+							);
+						}
+					}
+					document.addEventListener("click", onClickOutside);
+				} else {
+					closePopover();
+				}
+			});
+
+			function closePopover() {
+				popover.style.opacity = "0";
+				popover.style.visibility = "hidden";
+				setTimeout(() => {
+					popover.style.display = "none";
+				}, 300); // Час відповідає тривалості transition
+			}
+
+			// Переконатися, що поповер прихований спочатку
+			popover.style.visibility = "hidden";
+		});
+	</script>
+</div>
+<div class="components-progress">
+	<h2>Progress</h2>
+	<div class="index-readme__item">
+		<div class="progress-container">
+			<div class="progress-bar" id="progressBar">
+				<span class="progress-label" id="progressLabel">0%</span>
+			</div>
+		</div>
+		<button onclick="startProgress()" class="btn btn--progress btn--second">
+			Start Progress
+		</button>
+
+		<div class="progress-item">
+			<span></span>
+		</div>
+
+		<script>
+			function startProgress() {
+				const progressBar = document.getElementById("progressBar");
+				const progressLabel = document.getElementById("progressLabel");
+				let progress = 0;
+
+				const interval = setInterval(() => {
+					if (progress >= 100) {
+						clearInterval(interval);
+					} else {
+						progress += 1;
+						progressBar.style.width = `${progress}%`;
+						progressLabel.textContent = `${progress}%`;
+					}
+				}, 35); // Устанавливаем прогресс каждые 100ms
+			}
+		</script>
+	</div>
+</div>
+<div class="components-spinner">
+	<h2>Spinner</h2>
+	<div class="index-readme__item">
+		<div class="spinner"></div>
+	</div>
+</div>
+<div class="components-radio">
+	<h2>Radio button</h2>
+	<div class="index-readme__item">
+		<div class="radio-container">
+			<input
+				type="radio"
+				id="radio1"
+				name="customRadio"
+				class="custom-radio"
+			/>
+			<label for="radio1" class="custom-label">Option 1</label>
+
+			<input
+				type="radio"
+				id="radio2"
+				name="customRadio"
+				class="custom-radio"
+			/>
+			<label for="radio2" class="custom-label">Option 2</label>
+
+			<input
+				type="radio"
+				id="radio3"
+				name="customRadio"
+				class="custom-radio"
+			/>
+			<label for="radio3" class="custom-label">Option 3</label>
+		</div>
+	</div>
+</div>
+<div class="components-switch">
+	<h2>Switch</h2>
+	<div class="index-readme__item">
+		<label class="switch">
+			<input type="checkbox" />
+			<span class="slider"></span>
+		</label>
+	</div>
+</div>
+<div class="components-form">
+	<h2>Form</h2>
+	<div class="index-readme__item">
+		<form action="" class="w-forms">
+			<div class="w-forms__title">Title for your form</div>
+			<div class="w-forms__input">
+				<input type="text" placeholder="Enter your name" />
+			</div>
+			<div class="w-forms__input">
+				<input type="text" placeholder="Enter your email" />
+			</div>
+			<div class="w-forms__textarea">
+				<textarea name="" id="" placeholder="Enter message"></textarea>
+			</div>
+			<div class="w-forms__btn">
+				<button class="btn">Send info</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="components-stats">
+	<h2>Stats</h2>
+	<div class="stats-wrapper">
+		<div class="stats__title">
+			A thriving community of skilled freelancers
+		</div>
+		<div class="stats__description">
+			We create digital experiences that leave a lasting “Waw!” impression
+		</div>
+		<div class="stats-triggers">
+			<div class="stats-triggers__wrap">
+				<div class="stats-triggers__item">
+					<div class="stats-triggers__title">50%</div>
+					<div class="stats-triggers__description">
+						Experienced freelancers
+					</div>
+				</div>
+			</div>
+			<div class="stats-triggers__wrap">
+				<div class="stats-triggers__item">
+					<div class="stats-triggers__title">50%</div>
+					<div class="stats-triggers__description">
+						Experienced freelancers
+					</div>
+				</div>
+			</div>
+			<div class="stats-triggers__wrap">
+				<div class="stats-triggers__item">
+					<div class="stats-triggers__title">50%</div>
+					<div class="stats-triggers__description">
+						Experienced freelancers
+					</div>
+				</div>
+			</div>
+			<div class="stats-triggers__wrap">
+				<div class="stats-triggers__item">
+					<div class="stats-triggers__title">50%</div>
+					<div class="stats-triggers__description">
+						Experienced freelancers
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="components-stats">
+	<h2>Slider</h2>
+	<div class="index-readme__item">
+		<div class="slider">
+			<div class="slider__container" id="slider">
+				<div class="slider__slide slider__slide--1">Слайд 1</div>
+				<div class="slider__slide slider__slide--2">Слайд 2</div>
+				<div class="slider__slide slider__slide--3">Слайд 3</div>
+				<div class="slider__slide slider__slide--4">Слайд 4</div>
+			</div>
+
+			<button class="slider__button slider__button--prev" id="prev">
+				&#10094;
+			</button>
+			<button class="slider__button slider__button--next" id="next">
+				&#10095;
+			</button>
+
+			<div class="slider__dots" id="dots-container">
+				<!-- Точки для навігації будуть додаватись динамічно -->
+			</div>
+		</div>
+
+		<script>
+			const slider = document.getElementById("slider");
+			const slides = document.querySelectorAll(".slider__slide");
+			const prevBtn = document.getElementById("prev");
+			const nextBtn = document.getElementById("next");
+			const dotsContainer = document.getElementById("dots-container");
+
+			let currentIndex = 0;
+
+			// Динамічно створюємо точки
+			slides.forEach((_, index) => {
+				const dot = document.createElement("span");
+				dot.classList.add("slider__dot");
+				dot.addEventListener("click", () => goToSlide(index));
+				dotsContainer.appendChild(dot);
+			});
+
+			// Оновлюємо активну точку
+			function updateDots() {
+				const dots = document.querySelectorAll(".slider__dot");
+				dots.forEach((dot, index) => {
+					dot.classList.remove("slider__dot--active");
+					if (index === currentIndex) {
+						dot.classList.add("slider__dot--active");
+					}
+				});
+			}
+
+			// Переходимо до слайду
+			function goToSlide(index) {
+				if (index < 0) {
+					currentIndex = slides.length - 1;
+				} else if (index >= slides.length) {
+					currentIndex = 0;
+				} else {
+					currentIndex = index;
+				}
+
+				slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+				updateDots();
+			}
+
+			// Обробка кнопок "Попередній" та "Наступний"
+			prevBtn.addEventListener("click", () =>
+				goToSlide(currentIndex - 1)
+			);
+			nextBtn.addEventListener("click", () =>
+				goToSlide(currentIndex + 1)
+			);
+
+			// Ініціалізація слайдера
+			updateDots();
+		</script>
+	</div>
+</div>
+<div class="components-form">
+	<h2>File</h2>
+	<div class="index-readme__item">
+		<div class="file-wrapper">
+			<div class="file__content">
+				<div class="file__icon">
+					<svg
+						width="100"
+						height="101"
+						viewBox="0 0 100 101"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<g clip-path="url(#clip0_118_317)">
+							<path
+								d="M80.625 42.0133C77.7917 27.6383 65.1667 16.8467 50 16.8467C37.9583 16.8467 27.5 23.68 22.2917 33.68C9.75 35.0133 0 45.6383 0 58.5133C0 72.305 11.2083 83.5133 25 83.5133H79.1667C90.6667 83.5133 100 74.18 100 62.68C100 51.68 91.4583 42.7633 80.625 42.0133ZM70.8333 54.3467L50 75.18L29.1667 54.3467H41.6667V37.68H58.3333V54.3467H70.8333Z"
+								fill="url(#paint0_linear_118_317)"
+							/>
+						</g>
+						<defs>
+							<linearGradient
+								id="paint0_linear_118_317"
+								x1="1.85714"
+								y1="50.1799"
+								x2="101"
+								y2="50.1799"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop stop-color="#F5E920" />
+								<stop offset="1" stop-color="#ABA31E" />
+							</linearGradient>
+							<clipPath id="clip0_118_317">
+								<rect
+									width="100"
+									height="100"
+									fill="white"
+									transform="translate(0 0.179688)"
+								/>
+							</clipPath>
+						</defs>
+					</svg>
+				</div>
+				<div class="file__title">Drag & Drop to Upload File</div>
+				<div class="file__or">OR</div>
+				<div class="file-upload">
+					<input
+						type="file"
+						id="fileInput"
+						class="file-upload__input"
+					/>
+					<label for="fileInput" class="file-upload__button"
+						>Browse File</label
+					>
+					<span id="fileName" class="file-upload__filename"></span>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const fileInput = document.getElementById("fileInput");
+			const fileNameSpan = document.getElementById("fileName");
+
+			// Обработчик события для отображения имени файла
+			fileInput.addEventListener("change", function () {
+				if (fileInput.files.length > 0) {
+					fileNameSpan.textContent = `Выбран файл: ${fileInput.files[0].name}`;
+				} else {
+					fileNameSpan.textContent = "";
+				}
+			});
+		</script>
+	</div>
+</div>
+<!--comitted-->
+<!--
+<div class="components-select">
+    <div class="index-readme__item">
+        <div class="custom-select" id="customSelect">
+            <div class="select-selected">
+              Select an option
+              <span class="arrow"></span>
+            </div>
+            <div class="select-items">
+              <div data-value="option1">Option 1</div>
+              <div data-value="option2">Option 2</div>
+              <div data-value="option3">Option 3</div>
+            </div>
+          </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            var customSelect = document.getElementById("customSelect");
+            var selected = customSelect.querySelector(".select-selected");
+            var items = customSelect.querySelector(".select-items");
+            var options = items.querySelectorAll("div");
+
+            selected.addEventListener("click", function () {
+                items.classList.toggle("select-open");
+                selected.classList.toggle("select-open");
+            });
+
+            options.forEach(option => {
+                option.addEventListener("click", function () {
+                var selectedValue = this.getAttribute("data-value");
+                selected.innerHTML = this.innerHTML + '<span class="arrow"></span>';
+                items.classList.remove("select-open");
+                selected.classList.remove("select-open");
+                options.forEach(opt => opt.classList.remove("same-as-selected"));
+                this.classList.add("same-as-selected");
+                // Додайте свою логіку обробки вибору
+                console.log("Selected value: " + selectedValue);
+                });
+            });
+
+            document.addEventListener("click", function (e) {
+                if (!customSelect.contains(e.target)) {
+                items.classList.remove("select-open");
+                selected.classList.remove("select-open");
+                }
+            });
+            });
+          </script>
+    </div>
+</div>
+-->

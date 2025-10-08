@@ -1,0 +1,14 @@
+<div class="author">
+	{% if section.avatar %}
+	<div class="author__avatar">
+		<img src="{{{section.avatar}}}" alt="{{{section.name}}}" />
+	</div>
+	{% endif %}
+	<div class="author__info">
+		{% if section.name %}
+		<div class="author__name">{{{section.name}}}</div>
+		{% endif %} {% if section.bio %}
+		<div class="author__bio">{{{section.bio}}}</div>
+		{% endif %}
+	</div>
+</div>

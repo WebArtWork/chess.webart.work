@@ -1,0 +1,49 @@
+// price section
+
+.price {
+	display: flex;
+	align-items: baseline;
+	font-family: var(--ff-base);
+
+	&__current {
+		font-size: calc(var(--font-size) * 1.5);
+		font-weight: 700;
+		color: var(--c-primary);
+	}
+
+	&__original {
+		font-size: calc(var(--font-size) * 1.1);
+		color: var(--c-text-body-secondary);
+		text-decoration: line-through;
+		margin-right: calc(12px * var(--margin-scale));
+	}
+
+	&__currency {
+		font-size: calc(var(--font-size) * 0.75);
+		margin-right: calc(2px * var(--margin-scale));
+	}
+
+	&__note {
+		font-size: calc(var(--font-size) * 0.875);
+		color: var(--c-text-secondary);
+		margin-left: calc(12px * var(--margin-scale));
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.price__current {
+		font-size: calc(var(--font-size) * 1.25);
+	}
+	.price__original {
+		font-size: var(--font-size);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.price__current {
+		font-size: calc(var(--font-size) * 1.1);
+	}
+	.price__note {
+		font-size: calc(var(--font-size) * 0.75);
+	}
+}

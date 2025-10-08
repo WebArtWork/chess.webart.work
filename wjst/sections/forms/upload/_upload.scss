@@ -1,0 +1,56 @@
+// upload section
+
+.upload {
+	font-family: var(--ff-base);
+	display: flex;
+	flex-direction: column;
+	gap: calc(12px * var(--margin-scale));
+	max-width: 400px;
+
+	&__input {
+		width: 100%;
+		padding: calc(8px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background: var(--c-bg-item);
+		color: var(--c-text-primary);
+	}
+
+	&__button {
+		background: var(--c-primary);
+		color: var(--c-text-primary);
+		padding: calc(8px * var(--padding-scale))
+			calc(16px * var(--padding-scale));
+		border: none;
+		border-radius: var(--b-radius);
+		cursor: pointer;
+		transition: background var(--transition);
+		text-align: center;
+
+		&:hover {
+			background: var(--c-primary-hover);
+		}
+	}
+
+	&__progress {
+		width: 0;
+		height: 4px;
+		background: var(--c-primary);
+		border-radius: var(--b-radius);
+		transition: width var(--transition);
+	}
+
+	&__status {
+		font-size: calc(var(--font-size) * 0.875);
+		line-height: var(--line-height);
+		color: var(--c-text-secondary);
+
+		&--success {
+			color: var(--c-success);
+		}
+
+		&--error {
+			color: var(--c-error);
+		}
+	}
+}

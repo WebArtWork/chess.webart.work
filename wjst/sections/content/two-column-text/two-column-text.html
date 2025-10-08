@@ -1,0 +1,17 @@
+<div class="two-column-text">
+	{% if section.title %}
+	<div class="two-column-text__title">{{{section.title}}}</div>
+	{% endif %} {% if section.columns %}
+	<div class="two-column-text__columns">
+		{% for col in section.columns %}
+		<div class="two-column-text__column">
+			{% if col.title %}
+			<div class="two-column-text__column-title">{{{col.title}}}</div>
+			{% endif %} {% if col.text %}
+			<div class="two-column-text__column-text">{{{col.text}}}</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>

@@ -1,0 +1,13 @@
+<div class="trust-badges">
+	{% for badge in section.badges %}
+	<div class="trust-badges__item">
+		{% if badge.href %}
+		<a href="{{{badge.href}}}"
+			><img src="{{{badge.img}}}" alt="{{{badge.alt}}}"
+		/></a>
+		{% else %}
+		<img src="{{{badge.img}}}" alt="{{{badge.alt}}}" />
+		{% endif %}
+	</div>
+	{% endfor %}
+</div>

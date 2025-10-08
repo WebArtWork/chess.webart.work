@@ -1,0 +1,19 @@
+<div
+	class="background"
+	{%
+	if
+	section.color
+	or
+	section.image
+	or
+	section.size
+	or
+	section.position
+	%}
+	style="{% if section.color %}background-color: {{{section.color}}};{% endif %}{% if section.image %} background-image: url('{{{section.image}}}');{% endif %}{% if section.size %} background-size: {{{section.size}}};{% endif %}{% if section.position %} background-position: {{{section.position}}};{% endif %}"
+	{%
+	endif
+	%}
+>
+	{% if section.content %} {{{section.content}}} {% endif %}
+</div>

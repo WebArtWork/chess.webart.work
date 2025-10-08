@@ -1,0 +1,39 @@
+// blog meta section
+
+.blog-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: calc(8px * var(--margin-scale));
+	font-family: var(--ff-base);
+	font-size: calc(var(--font-size) * 0.875);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+	color: var(--c-text-secondary);
+
+	&__item {
+		display: flex;
+		align-items: center;
+
+		a {
+			color: var(--c-primary);
+			text-decoration: none;
+			transition: color var(--transition);
+
+			&:hover {
+				color: var(--c-primary-hover);
+			}
+		}
+	}
+
+	&__item:not(:last-child)::after {
+		content: "\2022";
+		margin: 0 calc(8px * var(--margin-scale));
+		color: var(--c-text-secondary);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.blog-meta {
+		font-size: calc(var(--font-size) * 0.75);
+	}
+}

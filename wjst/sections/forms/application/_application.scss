@@ -1,0 +1,116 @@
+// application form section
+
+.application {
+	max-width: 600px;
+	margin: 0 auto;
+	padding-bottom: calc(40px * var(--padding-scale));
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 28px;
+		font-weight: 600;
+		text-align: center;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__description {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		max-width: 70ch;
+		margin: calc(16px * var(--margin-scale)) auto;
+		text-align: center;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: calc(12px * var(--margin-scale));
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__label {
+		margin-bottom: calc(6px * var(--margin-scale));
+		font-size: calc(var(--font-size) * 0.9);
+	}
+
+	&__input,
+	&__textarea {
+		width: 100%;
+		padding: calc(10px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background: var(--c-bg-item);
+		color: var(--c-text-primary);
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		font-family: var(--ff-base);
+	}
+
+	&__input::placeholder,
+	&__textarea::placeholder {
+		color: var(--c-placeholder);
+	}
+
+	&__input:focus,
+	&__textarea:focus {
+		border-color: var(--c-primary);
+		outline: none;
+	}
+
+	&__submit {
+		align-self: flex-start;
+		padding: calc(10px * var(--padding-scale))
+			calc(20px * var(--padding-scale));
+		background: var(--c-primary);
+		color: var(--c-text-primary);
+		border: none;
+		border-radius: var(--b-radius);
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		font-family: var(--ff-base);
+		cursor: pointer;
+		transition: background var(--transition);
+	}
+
+	&__submit:hover {
+		background: var(--c-primary-hover);
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.application__title {
+		font-size: 24px;
+	}
+	.application__description {
+		font-size: calc(var(--font-size) * 0.95);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.application__title {
+		font-size: 22px;
+	}
+	.application__description {
+		font-size: calc(var(--font-size) * 0.9);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.application__title {
+		font-size: 20px;
+	}
+	.application__description {
+		font-size: calc(var(--font-size) * 0.875);
+	}
+}

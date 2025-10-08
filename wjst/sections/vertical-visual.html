@@ -1,0 +1,28 @@
+<div class="vertical">
+	<div class="vertical__title">{{{section.title}}}</div>
+	<div class="vertical-wrapper">
+		<div class="vertical__item">
+			<div class="vertical__img">
+				<img src="{{{section.imgs[0]}}}" alt="" />
+			</div>
+		</div>
+		<div class="vertical__item">
+			<div class="vertical__img">
+				<img src="{{{section.imgs[0]}}}" alt="" />
+			</div>
+		</div>
+		<div class="vertical__item">
+			<div class="vertical__img">
+				<img src="{{{section.imgs[0]}}}" alt="" />
+			</div>
+		</div>
+	</div>
+	{% for social in section.socials %}
+	<a href="{{{social.href}}}" class="vertical-instagram">
+		<div class="vertical-instagram__text">text for instagram link</div>
+		<div class="vertical-instagram__icon">
+			<img src="{{{social.img}}}" alt="" />
+		</div>
+	</a>
+	{% endfor %}
+</div>

@@ -1,0 +1,67 @@
+<script>
+	const themes = {
+		dark: JSON.parse(`{{{theme|json|safe}}}`),
+		light: JSON.parse(`{{{lightTheme|json|safe}}}`),
+	};
+
+	function updateThemeVars(theme) {
+		const root = document.documentElement;
+
+		// Update top-level keys
+		for (const key in themes[theme]) {
+			if (key === "colors") continue; // handle separately
+			root.style.setProperty(
+				`--${key.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())}`,
+				themes[theme][key]
+			);
+		}
+
+		// Update colors.* keys
+		if (themes[theme].colors) {
+			for (const colorKey in themes[theme].colors) {
+				root.style.setProperty(
+					`--c-${colorKey.replace(
+						/[A-Z]/g,
+						(m) => "-" + m.toLowerCase()
+					)}`,
+					themes[theme].colors[colorKey]
+				);
+			}
+		}
+	}
+</script>
+
+<footer class="footer">
+	<p class="footer__text">
+		<span class="footer__text-part"
+			>Wjst is copyright ©2024 Web Art Work</span
+		>
+		<span class="footer__text-part">
+			Licensed for use under the permissive MIT Open Source License.</span
+		>
+		<span class="footer__text-part"> Architected by Honchar Denys</span>
+	</p>
+	<div class="footer-wrap">
+		<div class="footer__item-link">
+			<div class="footer__link-title">Themes</div>
+			<button class="footer__link" onclick="updateThemeVars('dark')">
+				Dark
+			</button>
+			<button class="footer__link" onclick="updateThemeVars('light')">
+				Light
+			</button>
+		</div>
+		<div class="footer__item-link footer__item-link--center">
+			<div class="footer__link-title">Title for links</div>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+		</div>
+		<div class="footer__item-link footer__item-link--end">
+			<div class="footer__link-title">Title for links</div>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+		</div>
+	</div>
+</footer>

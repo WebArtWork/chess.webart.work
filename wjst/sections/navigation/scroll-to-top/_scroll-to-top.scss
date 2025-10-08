@@ -1,0 +1,42 @@
+// scroll-to-top section
+
+.scroll-to-top {
+	position: fixed;
+	bottom: calc(20px * var(--padding-scale));
+	right: calc(20px * var(--padding-scale));
+	width: calc(var(--icon-size) * 2);
+	height: calc(var(--icon-size) * 2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: var(--b-radius);
+	background-color: var(--c-primary);
+	color: var(--c-body);
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity var(--transition), visibility var(--transition);
+	z-index: 1000;
+
+	.material-icons {
+		font-size: var(--icon-size);
+		line-height: 1;
+	}
+
+	&--visible {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&:hover {
+		background-color: var(--c-primary-hover);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.scroll-to-top {
+		bottom: calc(15px * var(--padding-scale));
+		right: calc(15px * var(--padding-scale));
+	}
+}

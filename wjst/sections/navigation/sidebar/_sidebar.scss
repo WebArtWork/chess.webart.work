@@ -1,0 +1,63 @@
+// sidebar section
+
+.sidebar {
+	font-family: var(--ff-base);
+	background: var(--c-bg-item);
+	width: 250px;
+	padding: calc(16px * var(--padding-scale));
+	border-right: 1px solid var(--c-border);
+
+	&__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	&__item {
+		margin: 0;
+
+		&--active > .sidebar__link {
+			color: var(--c-primary-hover);
+			font-weight: 600;
+		}
+
+		> .sidebar__sublist {
+			display: none;
+			margin-left: calc(16px * var(--margin-scale));
+			border-left: 1px solid var(--c-border);
+		}
+
+		&--active > .sidebar__sublist {
+			display: block;
+		}
+	}
+
+	&__link {
+		display: block;
+		padding: calc(8px * var(--padding-scale)) 0;
+		color: var(--c-text-primary);
+		text-decoration: none;
+		transition: color var(--transition);
+
+		&:hover {
+			color: var(--c-primary-hover);
+		}
+	}
+
+	&__subitem--active > .sidebar__sublink {
+		color: var(--c-primary-hover);
+		font-weight: 600;
+	}
+
+	&__sublink {
+		display: block;
+		padding: calc(8px * var(--padding-scale)) 0;
+		color: var(--c-text-secondary);
+		text-decoration: none;
+		transition: color var(--transition);
+
+		&:hover {
+			color: var(--c-primary-hover);
+		}
+	}
+}

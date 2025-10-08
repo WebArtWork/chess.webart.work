@@ -1,0 +1,10 @@
+<div class="code-snippet">
+	{% if section.label %}
+	<div class="code-snippet__label">{{{section.label}}}</div>
+	{% endif %} {% if section.code %}
+	<pre class="code-snippet__code"><code>{{{section.code}}}</code></pre>
+	<button class="code-snippet__copy" data-copy="{{{section.code}}}">
+		Copy
+	</button>
+	{% endif %}
+</div>

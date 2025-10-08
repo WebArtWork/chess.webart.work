@@ -1,0 +1,91 @@
+// newsletter section
+
+.newsletter {
+	padding: calc(40px * var(--padding-scale)) 0;
+	text-align: center;
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 32px;
+		font-weight: 600;
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-primary);
+		margin-bottom: calc(8px * var(--margin-scale));
+	}
+
+	&__description {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		max-width: 60ch;
+		margin: 0 auto;
+	}
+
+	&__form {
+		margin-top: calc(20px * var(--margin-scale));
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__input {
+		padding: calc(12px * var(--padding-scale))
+			calc(16px * var(--padding-scale));
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		color: var(--c-text-secondary);
+		background: var(--c-bg-item);
+		border: 1px solid var(--c-border);
+		border-right: none;
+		border-radius: var(--b-radius) 0 0 var(--b-radius);
+		outline: none;
+		transition: border-color var(--transition);
+
+		&:focus {
+			border-color: var(--c-primary);
+		}
+	}
+
+	&__button {
+		font-family: var(--ff-second);
+		font-size: var(--font-size);
+		padding: calc(12px * var(--padding-scale))
+			calc(24px * var(--padding-scale));
+		color: var(--c-text-primary);
+		background: var(--c-primary);
+		border: 1px solid var(--c-primary-border);
+		border-radius: 0 var(--b-radius) var(--b-radius) 0;
+		cursor: pointer;
+		transition: background var(--transition);
+
+		&:hover {
+			background: var(--c-primary-hover);
+		}
+
+		&:active {
+			background: var(--c-primary-cursor);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.newsletter__form {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.newsletter__input,
+	.newsletter__button {
+		width: 100%;
+		border-radius: var(--b-radius);
+		border-right: 1px solid var(--c-border);
+	}
+
+	.newsletter__button {
+		margin-top: calc(12px * var(--margin-scale));
+		border-left: 1px solid var(--c-primary-border);
+	}
+}

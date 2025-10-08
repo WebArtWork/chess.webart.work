@@ -1,0 +1,28 @@
+<div class="add-to-cart" data-product-id="{{{section.id}}}">
+	{% if section.price %}
+	<div class="add-to-cart__price">{{{section.price}}}</div>
+	{% endif %}
+	<div class="add-to-cart__controls">
+		<button
+			class="add-to-cart__btn add-to-cart__btn--decrease"
+			aria-label="Decrease quantity"
+		>
+			&minus;
+		</button>
+		<input
+			class="add-to-cart__quantity"
+			type="number"
+			min="1"
+			value="{{{section.quantity || 1}}}"
+		/>
+		<button
+			class="add-to-cart__btn add-to-cart__btn--increase"
+			aria-label="Increase quantity"
+		>
+			+
+		</button>
+	</div>
+	<button class="add-to-cart__submit">
+		{{{section.button || 'Add to cart'}}}
+	</button>
+</div>

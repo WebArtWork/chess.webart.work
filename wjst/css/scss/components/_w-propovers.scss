@@ -1,0 +1,61 @@
+:root {
+	--popover-arrow-size: 10px;
+	--popover-bg: #f7f7f7;
+	--popover-border: #ddd;
+}
+
+.popover {
+	max-width: 200px;
+	padding: 1rem;
+	background-color: var(--popover-bg);
+	border: 1px solid var(--popover-border);
+	border-radius: 0.3rem;
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	position: absolute;
+	display: none; /* Початково приховано */
+	z-index: 1000;
+	bottom: unset;
+	top: 0;
+	right: -210px;
+	opacity: 0; /* Початкова непрозорість */
+	transition: opacity 0.3s ease, visibility 0.3s ease; /* Перехід для непрозорості та видимості */
+	visibility: hidden; /* Початково невидимий */
+	color: #000;
+	&-wrapper {
+		position: relative;
+	}
+}
+.popover-wrapper {
+	position: relative;
+	max-width: fit-content;
+	width: 100%;
+}
+.popover .popover-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border: var(--popover-arrow-size) solid transparent;
+	left: -15px;
+}
+
+.popover .popover-arrow::before {
+	content: "";
+	position: absolute;
+	border: var(--popover-arrow-size) solid var(--popover-bg);
+}
+
+.popover-top .popover-arrow {
+	/*bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);*/
+}
+
+.popover-top .popover-arrow::before {
+	bottom: 0;
+	left: -10px;
+	transform: translateY(-50%) rotate(-90deg);
+	top: 50%;
+	border-width: 0 var(--popover-arrow-size) var(--popover-arrow-size)
+		var(--popover-arrow-size);
+	border-color: transparent transparent var(--popover-bg) transparent;
+}

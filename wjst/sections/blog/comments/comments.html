@@ -1,0 +1,49 @@
+<div class="comments">
+	{% if section.title %}
+	<div class="comments__title">{{{section.title}}}</div>
+	{% endif %} {% if section.items %}
+	<ul class="comments__list">
+		{% for comment in section.items %}
+		<li class="comments__item">
+			{% if comment.avatar %}
+			<img src="{{{comment.avatar}}}" alt="" class="comments__avatar" />
+			{% endif %}
+			<div class="comments__body">
+				{% if comment.author %}
+				<div class="comments__author">{{{comment.author}}}</div>
+				{% endif %} {% if comment.date %}
+				<div class="comments__date">{{{comment.date}}}</div>
+				{% endif %} {% if comment.text %}
+				<div class="comments__text">{{{comment.text}}}</div>
+				{% endif %} {% if comment.replies %}
+				<ul class="comments__replies">
+					{% for reply in comment.replies %}
+					<li class="comments__item">
+						{% if reply.avatar %}
+						<img
+							src="{{{reply.avatar}}}"
+							alt=""
+							class="comments__avatar"
+						/>
+						{% endif %}
+						<div class="comments__body">
+							{% if reply.author %}
+							<div class="comments__author">
+								{{{reply.author}}}
+							</div>
+							{% endif %} {% if reply.date %}
+							<div class="comments__date">{{{reply.date}}}</div>
+							{% endif %} {% if reply.text %}
+							<div class="comments__text">{{{reply.text}}}</div>
+							{% endif %}
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

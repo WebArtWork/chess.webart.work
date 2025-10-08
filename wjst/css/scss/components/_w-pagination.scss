@@ -1,0 +1,68 @@
+.pagination {
+	display: flex;
+	padding-left: 0;
+	list-style: none;
+	border-radius: 0.25rem;
+	margin-bottom: 20px;
+	.page-link {
+		position: relative;
+		display: block;
+		padding: 0.5rem 0.75rem;
+		margin-left: -1px;
+		line-height: 1.25;
+		color: var(--c-text-primary);
+		background-color: var(--c-primary);
+		border: 1px solid var(--c-primary-hover);
+		border-radius: 4px;
+		transition: all 0.3s;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		svg {
+			transition: all 0.3s;
+			path {
+				transition: all 0.3s;
+			}
+		}
+		&:hover {
+			background-color: var(--c-primary-hover);
+			color: var(--c-primary);
+			svg {
+				path {
+					fill: var(--c-primary);
+				}
+			}
+		}
+	}
+	.page-item {
+		margin-right: 10px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	.prev-arrow {
+		margin-right: 20px;
+	}
+	.next-arrow {
+		margin-left: 10px;
+	}
+}
+.page-link:not(:disabled):not(.disabled) {
+	cursor: pointer;
+}
+.page-item.active .page-link {
+	z-index: 1;
+	color: #fff;
+	background-color: var(--c-primary-hover);
+	color: var(--c-primary);
+}
+.page-item.disabled .page-link {
+	background-color: #54575a;
+	color: #b7acac;
+	cursor: default;
+}
+.page-item.disabled svg path {
+	fill: #3c3a3a;
+}

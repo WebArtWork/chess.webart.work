@@ -1,0 +1,51 @@
+// press logos section
+
+.press-logos {
+	padding: calc(20px * var(--padding-scale)) 0;
+	text-align: center;
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 24px;
+		font-weight: 600;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+		margin-bottom: calc(20px * var(--margin-scale));
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: calc(16px * var(--margin-scale));
+	}
+
+	&__item {
+		padding: calc(8px * var(--padding-scale));
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background-color: var(--c-bg-item);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			max-height: calc(2.5 * var(--icon-size));
+			display: block;
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.press-logos__list {
+		gap: calc(12px * var(--margin-scale));
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.press-logos__list {
+		gap: calc(8px * var(--margin-scale));
+	}
+}

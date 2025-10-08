@@ -1,0 +1,22 @@
+<div class="product-details">
+	<div class="product-details__image">
+		<img src="{{{section.img}}}" alt="{{{section.title}}}" />
+	</div>
+	<div class="product-details__info">
+		{% if section.title %}
+		<div class="product-details__title">{{{section.title}}}</div>
+		{% endif %} {% if section.description %}
+		<div class="product-details__description">
+			{{{section.description}}}
+		</div>
+		{% endif %} {% if section.price %}
+		<div class="product-details__price">{{{section.price}}}</div>
+		{% endif %} {% if section.rating %}
+		<div class="product-details__rating">{{{section.rating}}}</div>
+		{% endif %} {% if section.cta %}
+		<a class="product-details__cta" href="{{{section.cta.href}}}"
+			>{{{section.cta.text}}}</a
+		>
+		{% endif %}
+	</div>
+</div>

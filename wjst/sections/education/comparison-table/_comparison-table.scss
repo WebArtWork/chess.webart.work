@@ -1,0 +1,42 @@
+// comparison table section
+
+.comparison-table {
+	overflow-x: auto;
+	padding: calc(40px * var(--padding-scale)) 0;
+	font-family: var(--ff-base);
+
+	&__table {
+		width: 100%;
+		border-collapse: collapse;
+		box-shadow: 0 0 10px var(--c-table-shadow);
+
+		th,
+		td {
+			padding: calc(12px * var(--padding-scale))
+				calc(16px * var(--padding-scale));
+			border: 1px solid var(--c-border);
+			text-align: center;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
+			color: var(--c-text-primary);
+		}
+
+		th {
+			font-family: var(--ff-title);
+			background-color: var(--c-secondary);
+			color: var(--c-text-primary);
+		}
+
+		tbody tr:nth-child(odd) {
+			background-color: var(--c-table-striped);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.comparison-table__table th,
+	.comparison-table__table td {
+		font-size: calc(var(--font-size) * 0.95);
+	}
+}

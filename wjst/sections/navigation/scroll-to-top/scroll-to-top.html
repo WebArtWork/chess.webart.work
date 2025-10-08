@@ -1,0 +1,19 @@
+<button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+	<span class="material-icons">expand_less</span>
+</button>
+<script>
+	(function () {
+		var btn = document.getElementById("scrollToTop");
+		if (!btn) return;
+		window.addEventListener("scroll", function () {
+			if (window.scrollY > window.innerHeight) {
+				btn.classList.add("scroll-to-top--visible");
+			} else {
+				btn.classList.remove("scroll-to-top--visible");
+			}
+		});
+		btn.addEventListener("click", function () {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		});
+	})();
+</script>

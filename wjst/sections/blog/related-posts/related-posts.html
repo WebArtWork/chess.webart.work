@@ -1,0 +1,21 @@
+<div class="related-posts">
+	{% if section.title %}
+	<div class="related-posts__title">{{{section.title}}}</div>
+	{% endif %}
+
+	<div class="related-posts__grid">
+		{% for post in section.posts %}
+		<a class="related-posts__item" href="{{{post.href}}}">
+			<div class="related-posts__img">
+				<img src="{{{post.img}}}" alt="" />
+			</div>
+			<div class="related-posts__content">
+				<div class="related-posts__post-title">{{{post.title}}}</div>
+				{% if post.date %}
+				<div class="related-posts__date">{{{post.date}}}</div>
+				{% endif %}
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+</div>

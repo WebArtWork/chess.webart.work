@@ -1,0 +1,29 @@
+<div class="variant-selector">
+	{% if section.title %}
+	<div class="variant-selector__title">{{{section.title}}}</div>
+	{% endif %} {% if section.options %}
+	<div class="variant-selector__options">
+		{% for option in section.options %}
+		<button
+			class="variant-selector__option"
+			data-img="{{{option.img}}}"
+			data-price="{{{option.price}}}"
+		>
+			{% if option.color %}
+			<span
+				class="variant-selector__swatch"
+				style="background-color: {{{option.color}}}"
+			></span>
+			{% endif %} {% if option.label %}
+			<span class="variant-selector__label">{{{option.label}}}</span>
+			{% endif %}
+		</button>
+		{% endfor %}
+	</div>
+
+	<div class="variant-selector__display">
+		<img class="variant-selector__image" src="" alt="" />
+		<div class="variant-selector__price"></div>
+	</div>
+	{% endif %}
+</div>

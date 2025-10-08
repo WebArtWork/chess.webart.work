@@ -1,0 +1,124 @@
+.alert {
+	&-wrap {
+		display: flex;
+		flex-flow: row wrap;
+		padding: 5px;
+		border-radius: var(--b-radius);
+		margin-bottom: 10px;
+		position: relative;
+		align-items: center;
+		&-img {
+			margin-right: 15px;
+			display: flex;
+			svg {
+				width: 30px;
+				height: 30px;
+			}
+		}
+		&-text {
+			&__title {
+				font-size: 16px;
+				font-weight: 600;
+			}
+			&__description {
+				font-size: 16px;
+			}
+		}
+		&-close {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			right: 10px;
+			top: 10px;
+			transition: all 0.3s;
+			cursor: pointer;
+			&:hover {
+				transform: scale(0.8);
+			}
+			svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	&-block {
+		max-width: 315px;
+		width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--c-alert);
+		border-radius: 4px;
+		padding: 25px 35px;
+		text-align: center;
+		&--white {
+			background: var(--c-text-primary);
+			color: var(--c-primary);
+		}
+		&__text {
+			font-weight: 700;
+			font-size: 17px;
+		}
+		&__description {
+			font-size: 14px;
+			padding: 5px 0 10px 0;
+		}
+		&-btns {
+			display: flex;
+			width: 100%;
+			justify-content: center;
+			&__btn {
+				max-width: 80px;
+				width: 100%;
+				flex: 0 0 80px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 17px;
+				color: var(--c-text-primary);
+				cursor: pointer;
+				border-radius: 4px;
+				margin: 0 5px;
+				transition: all 0.3s;
+				&-yes {
+					background-color: var(--c-success);
+					&:hover {
+						background: var(--c-successhover);
+					}
+				}
+				&-no {
+					background-color: var(--c-error);
+					&:hover {
+						background: var(--c-error-hover);
+					}
+				}
+			}
+		}
+	}
+	&-info {
+		background: var(--c-primary-hover);
+		color: var(--c-primary);
+	}
+	&-error {
+		background: var(--c-error);
+		svg {
+			path {
+				fill: var(--c-text-primary);
+			}
+		}
+	}
+	&-success {
+		background: var(--c-success);
+	}
+	&-warning {
+		background: var(--c-orange);
+	}
+	&-question {
+		background-color: var(--c-question);
+	}
+	&-loading {
+		background-color: var(--c-loading);
+	}
+}

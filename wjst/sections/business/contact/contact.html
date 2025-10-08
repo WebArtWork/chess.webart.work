@@ -1,0 +1,25 @@
+<div class="contact">
+	{% if section.title %}
+	<div class="contact__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="contact__description">{{{section.description}}}</div>
+	{% endif %}
+	<div class="contact__details">
+		{% if section.address %}
+		<div class="contact__item">
+			<span class="material-icons">location_on</span>
+			<span>{{{section.address}}}</span>
+		</div>
+		{% endif %} {% if section.phone %}
+		<div class="contact__item">
+			<span class="material-icons">phone</span>
+			<span>{{{section.phone}}}</span>
+		</div>
+		{% endif %} {% if section.email %}
+		<div class="contact__item">
+			<span class="material-icons">email</span>
+			<span>{{{section.email}}}</span>
+		</div>
+		{% endif %}
+	</div>
+</div>

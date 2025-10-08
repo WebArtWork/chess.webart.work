@@ -1,0 +1,63 @@
+<div class="slider">
+	{% if section.slides %}
+	<div class="slider__container">
+		{% for slide in section.slides %}
+		<div class="slider__slide">
+			<img src="{{{slide.img}}}" alt="{{{slide.alt}}}" />
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+	<button class="slider__button slider__button--prev">&#10094;</button>
+	<button class="slider__button slider__button--next">&#10095;</button>
+	<div class="slider__dots"></div>
+</div>
+<script>
+	(function () {
+		var root = document.currentScript.previousElementSibling;
+		if (!root) return;
+		var container = root.querySelector(".slider__container");
+		var slides = root.querySelectorAll(".slider__slide");
+		var prevBtn = root.querySelector(".slider__button--prev");
+		var nextBtn = root.querySelector(".slider__button--next");
+		var dotsContainer = root.querySelector(".slider__dots");
+		var currentIndex = 0;
+		slides.forEach(function (_, index) {
+			var dot = document.createElement("span");
+			dot.className = "slider__dot";
+			dot.addEventListener("click", function () {
+				goToSlide(index);
+			});
+			dotsContainer.appendChild(dot);
+		});
+		function updateDots() {
+			var dots = root.querySelectorAll(".slider__dot");
+			dots.forEach(function (dot, index) {
+				if (index === currentIndex) {
+					dot.classList.add("slider__dot--active");
+				} else {
+					dot.classList.remove("slider__dot--active");
+				}
+			});
+		}
+		function goToSlide(index) {
+			if (index < 0) {
+				currentIndex = slides.length - 1;
+			} else if (index >= slides.length) {
+				currentIndex = 0;
+			} else {
+				currentIndex = index;
+			}
+			container.style.transform =
+				"translateX(-" + currentIndex * 100 + "%)";
+			updateDots();
+		}
+		prevBtn.addEventListener("click", function () {
+			goToSlide(currentIndex - 1);
+		});
+		nextBtn.addEventListener("click", function () {
+			goToSlide(currentIndex + 1);
+		});
+		updateDots();
+	})();
+</script>

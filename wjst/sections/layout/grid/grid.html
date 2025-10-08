@@ -1,0 +1,15 @@
+<div
+	class="grid"
+	{%
+	if
+	section.min
+	%}
+	style="--grid-min: {{{section.min}}};"
+	{%
+	endif
+	%}
+>
+	{% if section.items %} {% for item in section.items %}
+	<div class="grid__item">{{{item.content}}}</div>
+	{% endfor %} {% endif %}
+</div>

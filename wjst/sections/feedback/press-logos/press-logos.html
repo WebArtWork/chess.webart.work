@@ -1,0 +1,12 @@
+<div class="press-logos">
+	{% if section.title %}
+	<div class="press-logos__title">{{{section.title}}}</div>
+	{% endif %}
+	<div class="press-logos__list">
+		{% for logo in section.logos %}
+		<div class="press-logos__item">
+			<img src="{{{logo.img}}}" alt="{{{logo.alt}}}" />
+		</div>
+		{% endfor %}
+	</div>
+</div>

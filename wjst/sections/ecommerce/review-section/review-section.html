@@ -1,0 +1,31 @@
+<div class="review-section">
+	{% if section.title %}
+	<div class="review-section__title">{{{section.title}}}</div>
+	{% endif %} {% if section.reviews %}
+	<ul class="review-section__list">
+		{% for review in section.reviews %}
+		<li class="review-section__item">
+			{% if review.avatar %}
+			<div class="review-section__avatar">
+				<img src="{{{review.avatar}}}" alt="" />
+			</div>
+			{% endif %}
+			<div class="review-section__body">
+				<div class="review-section__header">
+					{% if review.name %}
+					<div class="review-section__name">{{{review.name}}}</div>
+					{% endif %} {% if review.rating %}
+					<div class="review-section__rating">
+						{{{review.rating}}}/5
+					</div>
+					{% endif %}
+				</div>
+				{% if review.comment %}
+				<div class="review-section__comment">{{{review.comment}}}</div>
+				{% endif %}
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

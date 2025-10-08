@@ -1,0 +1,57 @@
+// code-snippet section
+
+.code-snippet {
+	position: relative;
+	font-family: var(--ff-second);
+}
+
+.code-snippet__label {
+	font-family: var(--ff-title);
+	font-size: calc(var(--font-size) * 0.875);
+	line-height: var(--line-height);
+	margin-bottom: calc(8px * var(--margin-scale));
+	color: var(--c-text-secondary);
+}
+
+.code-snippet__code {
+	background-color: var(--c-dark);
+	color: var(--c-primary-hover);
+	padding: calc(16px * var(--padding-scale));
+	border-radius: var(--b-radius);
+	overflow-x: auto;
+	font-size: calc(var(--font-size) * 0.875);
+	line-height: var(--line-height);
+	transition: color var(--transition);
+}
+
+.code-snippet__code:hover {
+	color: var(--c-code-hover);
+}
+
+.code-snippet__copy {
+	position: absolute;
+	top: calc(8px * var(--padding-scale));
+	right: calc(8px * var(--padding-scale));
+	padding: calc(4px * var(--padding-scale)) calc(8px * var(--padding-scale));
+	font-size: calc(var(--font-size) * 0.75);
+	border: 1px solid var(--c-border);
+	border-radius: var(--b-radius);
+	background-color: var(--c-bg-item);
+	color: var(--c-text-primary);
+	cursor: pointer;
+	transition: background-color var(--transition), color var(--transition);
+}
+
+.code-snippet__copy:hover {
+	background-color: var(--c-primary-hover);
+	color: var(--c-white);
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.code-snippet__label {
+		font-size: calc(var(--font-size) * 0.75);
+	}
+	.code-snippet__copy {
+		font-size: calc(var(--font-size) * 0.6875);
+	}
+}

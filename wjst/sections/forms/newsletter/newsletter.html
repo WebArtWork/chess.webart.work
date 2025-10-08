@@ -1,0 +1,19 @@
+<div class="newsletter">
+	{% if section.title %}
+	<div class="newsletter__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="newsletter__description">{{{section.description}}}</div>
+	{% endif %}
+	<form class="newsletter__form" action="{{{section.action}}}" method="post">
+		<input
+			class="newsletter__input"
+			type="email"
+			name="email"
+			placeholder="{{{section.placeholder}}}"
+			required
+		/>
+		<button class="newsletter__button" type="submit">
+			{{{section.button}}}
+		</button>
+	</form>
+</div>

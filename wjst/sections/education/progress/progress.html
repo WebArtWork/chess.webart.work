@@ -1,0 +1,39 @@
+<div class="progress">
+	{% if section.title %}
+	<div class="progress__title">{{{ section.title }}}</div>
+	{% endif %} {% if section.description %}
+	<div class="progress__description">{{{ section.description }}}</div>
+	{% endif %} {% for item in section.items %}
+	<div class="progress__item">
+		{% if item.label %}
+		<div class="progress__label">{{{ item.label }}}</div>
+		{% endif %}
+		<div class="progress__track">
+			<div
+				class="progress__bar"
+				data-progress="{{ item.value | default(0) }}"
+			>
+				<span class="progress__value">0%</span>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll(".progress__bar").forEach((bar) => {
+			const target = parseInt(bar.dataset.progress, 10) || 0;
+			let width = 0;
+			const label = bar.querySelector(".progress__value");
+			const interval = setInterval(() => {
+				if (width >= target) {
+					clearInterval(interval);
+				} else {
+					width += 1;
+					bar.style.width = width + "%";
+					label.textContent = width + "%";
+				}
+			}, 20);
+		});
+	});
+</script>

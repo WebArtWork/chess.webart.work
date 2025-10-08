@@ -1,0 +1,10 @@
+// background section
+.background {
+	padding: calc(40px * var(--padding-scale)) calc(20px * var(--padding-scale));
+	color: var(--c-text-primary);
+	background-color: var(--c-body);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	transition: background-color var(--transition);
+}

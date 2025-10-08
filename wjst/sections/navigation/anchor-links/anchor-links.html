@@ -1,0 +1,5 @@
+<nav class="anchor-links">
+	{% if section.links %} {% for link in section.links %}
+	<a class="anchor-links__link" href="{{{link.href}}}">{{{link.label}}}</a>
+	{% endfor %} {% endif %}
+</nav>

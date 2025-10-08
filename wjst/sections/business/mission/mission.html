@@ -1,0 +1,24 @@
+<div class="mission">
+	{% if section.title %}
+	<div class="mission__title">{{{section.title}}}</div>
+	{% endif %} {% if section.statement %}
+	<div class="mission__statement">{{{section.statement}}}</div>
+	{% endif %} {% if section.items %}
+	<ul class="mission__list">
+		{% for item in section.items %}
+		<li class="mission__item">
+			{% if item.icon %}
+			<img src="{{{item.icon}}}" alt="" class="mission__icon" />
+			{% endif %}
+			<div class="mission__content">
+				{% if item.title %}
+				<div class="mission__item-title">{{{item.title}}}</div>
+				{% endif %} {% if item.text %}
+				<div class="mission__item-text">{{{item.text}}}</div>
+				{% endif %}
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

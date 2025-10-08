@@ -1,0 +1,35 @@
+// discount badge section
+
+.discount-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--ff-base);
+	font-size: calc(var(--font-size) * 0.875);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+	background-color: var(--c-error);
+	color: var(--c-text-primary);
+	padding: calc(4px * var(--padding-scale)) calc(8px * var(--padding-scale));
+	border-radius: var(--b-radius);
+	font-weight: 600;
+	transition: background-color var(--transition);
+
+	&:hover {
+		background-color: var(--c-error-hover);
+	}
+
+	&__value {
+		margin-right: calc(4px * var(--margin-scale));
+	}
+
+	&__label {
+		font-weight: 400;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.discount-badge {
+		font-size: calc(var(--font-size) * 0.75);
+	}
+}

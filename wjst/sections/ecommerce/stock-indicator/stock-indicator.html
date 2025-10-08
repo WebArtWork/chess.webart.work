@@ -1,0 +1,21 @@
+<div class="stock-indicator">
+	<div class="stock-indicator__bar">
+		<div
+			class="stock-indicator__progress{% if section.quantity <= 0 %} stock-indicator__progress--out{% elseif section.quantity <= section.low %} stock-indicator__progress--low{% else %} stock-indicator__progress--in{% endif %}"
+			style="width: {{{ section.quantity / section.max * 100 }}}%"
+		></div>
+	</div>
+	{% if section.quantity <= 0 %}
+	<div class="stock-indicator__status stock-indicator__status--out">
+		{{{ section.labels.out | default("Out of stock") }}}
+	</div>
+	{% elseif section.quantity <= section.low %}
+	<div class="stock-indicator__status stock-indicator__status--low">
+		{{{ section.labels.low | default("Low stock") }}}
+	</div>
+	{% else %}
+	<div class="stock-indicator__status stock-indicator__status--in">
+		{{{ section.labels.in | default("In stock") }}}
+	</div>
+	{% endif %}
+</div>
