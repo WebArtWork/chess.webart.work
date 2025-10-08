@@ -51,6 +51,26 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'games',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Games'
+					}
+				},
+				loadChildren: () => import('./modules/cybersportsession/pages/games/games.routes').then(r => r.gamesRoutes)
+			}, 
+			{
+				path: 'tournaments',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Tournaments'
+					}
+				},
+				loadChildren: () => import('./modules/cybersporttournament/pages/tournaments/tournaments.routes').then(r => r.tournamentsRoutes)
+			}, 
+			{
 				path: 'profile',
 				canActivate: [MetaGuard],
 				data: {
