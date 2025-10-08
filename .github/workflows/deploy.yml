@@ -27,7 +27,7 @@ jobs:
       - name: Move Angular
         run: |
           mkdir dist/app/browser/app/
-          cp -r dist/app/browser/* dist/app/browser/app/ --exclude=app
+          rsync -av --exclude='app' dist/app/browser/ dist/app/browser/app/
 
       - name: Copy Wjst
         run: cp -r wjst dist/app/browser/
