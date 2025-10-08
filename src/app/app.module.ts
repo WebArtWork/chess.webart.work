@@ -1,21 +1,21 @@
-import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 // Core
-import { GuestComponent } from './core/theme/guest/guest.component';
-import { UserComponent } from './core/theme/user/user.component';
-import { PublicComponent } from './core/theme/public/public.component';
-import { AppComponent } from './app.component';
-import { CoreModule } from 'src/app/core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from 'src/app/core/core.module';
+import { AppComponent } from './app.component';
+import { GuestComponent } from './core/theme/guest/guest.component';
+import { PublicComponent } from './core/theme/public/public.component';
+import { UserComponent } from './core/theme/user/user.component';
 // config
-import { WacomModule, MetaGuard } from 'wacom';
 import { environment } from 'src/environments/environment';
+import { MetaGuard, WacomModule } from 'wacom';
 // guards
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AdminsGuard } from './core/guards/admins.guard';
 import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { GuestGuard } from './core/guards/guest.guard';
-import { AdminsGuard } from './core/guards/admins.guard';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
 	{
@@ -51,15 +51,31 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
-				path: 'games',
+				path: 'game',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Games'
+						title: 'Game'
 					}
 				},
-				loadChildren: () => import('./modules/cybersportsession/pages/games/games.routes').then(r => r.gamesRoutes)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/game/game.module').then(
+						(m) => m.GameModule
+					)
+			},
+			{
+				path: 'tournament',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Tournament'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/tournament/tournament.module').then(
+						(m) => m.TournamentModule
+					)
+			},
 			{
 				path: 'tournaments',
 				canActivate: [MetaGuard],
@@ -68,8 +84,24 @@ const routes: Routes = [
 						title: 'Tournaments'
 					}
 				},
-				loadChildren: () => import('./modules/cybersporttournament/pages/tournaments/tournaments.routes').then(r => r.tournamentsRoutes)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/tournaments/tournaments.module').then(
+						(m) => m.TournamentsModule
+					)
+			},
+			{
+				path: 'players',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Players'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/players/players.module').then(
+						(m) => m.PlayersModule
+					)
+			},
 			{
 				path: 'profile',
 				canActivate: [MetaGuard],
@@ -124,6 +156,32 @@ const routes: Routes = [
 		component: UserComponent,
 		children: [
 			/* admin */
+			{
+				path: 'games',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Games'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/cybersportsession/pages/games/games.routes'
+					).then((r) => r.gamesRoutes)
+			},
+			{
+				path: 'tournaments',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Tournaments'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/cybersporttournament/pages/tournaments/tournaments.routes'
+					).then((r) => r.tournamentsRoutes)
+			},
 			{
 				path: 'users',
 				canActivate: [MetaGuard],

@@ -1,6 +1,6 @@
 export const cybersporttournamentFormComponents = {
 	formId: 'cybersporttournament',
-	title: 'Cybersporttournament',
+	title: 'Tournament',
 	components: [
 		{
 			name: 'Text',
@@ -9,11 +9,11 @@ export const cybersporttournamentFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill cybersporttournament title',
+					value: 'fill tournament title...'
 				},
 				{
 					name: 'Label',
-					value: 'Title',
+					value: 'Title'
 				}
 			]
 		},
@@ -23,13 +23,13 @@ export const cybersporttournamentFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill cybersporttournament description',
+					value: 'fill tournament description...'
 				},
 				{
 					name: 'Label',
-					value: 'Description',
+					value: 'Description'
 				}
 			]
 		}
 	]
-}
+};

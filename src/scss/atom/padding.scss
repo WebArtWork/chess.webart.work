@@ -4,8 +4,8 @@ $padding-x-px: 0;
 $padding-y-px: 0;
 $padding-top-px: 0;
 $padding-bottom-px: 0;
-$padding-left-px: 0;
-$padding-right-px: 0;
+$padding-left-px: 0 10;
+$padding-right-px: 0 10;
 
 /* Generators */
 @mixin padding {

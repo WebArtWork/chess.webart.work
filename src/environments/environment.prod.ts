@@ -1,7 +1,7 @@
 export const environment = {
 	roles: [],
 	production: true,
-	appId: 'test',
+	appId: 'chess',
 	url: 'https://api.webart.work',
 	sign: {
 		logo: '',
@@ -9,15 +9,15 @@ export const environment = {
 		password: ''
 	},
 	image: {
-		default: 'https://ngx.webart.work/assets/logo.png',
-		logo: 'https://ngx.webart.work/assets/logo.png'
+		default: 'https://chess.webart.work/assets/logo.png',
+		logo: 'https://chess.webart.work/assets/logo.png'
 	},
 	meta: {
-		title: 'Web Art Work',
+		title: 'Chess wiki | Web Art Work',
 		description:
-			'An amazing solution to build web or mobile app for your business',
-		favicon: 'https://ngx.webart.work/assets/favicon.ico',
-		image: 'https://ngx.webart.work/assets/logo.png'
+			'Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place.',
+		favicon: 'https://chess.webart.work/assets/favicon.ico',
+		image: 'https://chess.webart.work/assets/logo.png'
 	},
 	defaultLanguageCode: 'en'
 };

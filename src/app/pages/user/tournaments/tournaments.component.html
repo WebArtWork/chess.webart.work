@@ -1,0 +1,73 @@
+<div class="documents-wrapper">
+	<div class="documents-container">
+		<div class="documents-list">
+			<div class="documents-header">
+				<div class="documents-header-left">
+					<div
+						class="documents-header-left__avatar"
+						routerLink="/profile"
+					>
+						<img [src]="userService.thumb" alt="" />
+					</div>
+				</div>
+				<div class="documents-header__title" translate>
+					Common.Tournaments
+				</div>
+				<div class="burger-wrap" (click)="create()">
+					<span class="material-icons">add</span>
+				</div>
+			</div>
+			<div class="documents-main" style="padding-left: 0">
+				<div class="documents-main-content">
+					@for (tournament of documents; track tournament._id) {
+					<div
+						(click)="profile(tournament)"
+						class="documents-main-row"
+					>
+						<div class="documents__title">
+							{{tournament.name || 'No title'}}
+						</div>
+						<div class="documents__description">
+							{{tournament.description || 'No description'}}
+						</div>
+						<div class="documents-tags">
+							@for (tag of []; track $index) {
+							<div class="documents-tags__wrap">
+								<div class="documents-tags__item">
+									Smth here
+								</div>
+							</div>
+							}
+						</div>
+						<div class="documents-tags">
+							<div class="documents-tags__wrap">
+								<span
+									(click)="$event.stopPropagation(); players(tournament)"
+									class="material-icons pr10"
+									title="Players"
+								>
+									person
+								</span>
+								<span
+									(click)="$event.stopPropagation(); update(tournament)"
+									class="material-icons pr10"
+									title="Edit"
+								>
+									edit
+								</span>
+								<span
+									(click)="$event.stopPropagation(); delete(tournament)"
+									class="material-icons pr10"
+									title="Delete"
+								>
+									delete_outline
+								</span>
+							</div>
+						</div>
+					</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
