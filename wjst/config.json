@@ -1,6 +1,6 @@
 {
 	"port": 8000,
 	"build": {
-		"base": "/wjst"
+		"base": "/wjst/"
 	}
 }
