@@ -24,11 +24,16 @@ jobs:
       - name: Build Angular app
         run: npm run build
 
-      - name: Copy CNAME file
-        run: cp CNAME dist/app/browser/
+      - name: Move Angular
+        run: |
+          mkdir dist/app/browser/app/
+          cp -r dist/app/browser/* dist/app/browser/app/
 
       - name: Copy Wjst
         run: cp -r wjst dist/app/browser/
+
+      - name: Copy CNAME file
+        run: cp CNAME dist/app/browser/
 
       - name: Install waw globally
         run: npm install -g waw
@@ -38,8 +43,6 @@ jobs:
           cd wjst
           waw build
           cd ..
-          mkdir dist/app/browser/app
-          mv dist/app/browser/index.html dist/app/browser/app/index.html
           mv wjst/index.html dist/app/browser/index.html
           mv wjst/tournaments.html dist/app/browser/tournaments.html
 
