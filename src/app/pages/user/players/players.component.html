@@ -10,156 +10,45 @@
 						<img [src]="userService.thumb" alt="" />
 					</div>
 				</div>
-				<div class="documents-header__title">Title header</div>
-				<div class="burger-wrap" class="burger-wrap">
-					<div class="burger"></div>
+				<div class="documents-header__title" translate>
+					Common.Players
 				</div>
 			</div>
 			<div class="documents-main pl0">
 				<div class="documents-main-content">
-					<div class="documents-main-row">
+					@for (tournament of documents; track tournament._id) {
+					<div
+						(click)="profile(tournament)"
+						class="documents-main-row"
+					>
 						<div class="documents__title">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
+							{{tournament.name || 'No title'}}
 						</div>
 						<div class="documents__description">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Mollitia voluptatum facilis sit
-							necessitatibus, rem consectetur pariatur sapiente
-							incidunt laudantium praesentium aut iste omnis
-							suscipit autem deleniti, nisi temporibus obcaecati
-							eligendi?
-						</div>
-					</div>
-					<div class="documents-main-row">
-						<div class="documents__title">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
-						</div>
-						<div class="documents__description">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Mollitia voluptatum facilis sit
-							necessitatibus, rem consectetur pariatur sapiente
-							incidunt laudantium praesentium aut iste omnis
-							suscipit autem deleniti, nisi temporibus obcaecati
-							eligendi?
+							{{tournament.bio || 'No biography'}}
 						</div>
 						<div class="documents-tags">
-							<div
-								class="documents-tags__wrap"
-								*ngFor="let tag of [{}, {}, {}, {}, {}]"
-							>
+							@for (tag of []; track $index) {
+							<div class="documents-tags__wrap">
 								<div class="documents-tags__item">
 									Smth here
 								</div>
 							</div>
+							}
 						</div>
-					</div>
-					<div class="documents-main-row">
-						<div class="documents__title">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
-						</div>
-						<div class="documents-triggers">
-							<div
-								class="documents-triggers__wrap"
-								*ngFor="let tag of [{}, {}, {}, {}, {}]"
-							>
-								<div class="documents-triggers__item">
-									<div class="documents-triggers__img">
-										<img src="/assets/default.png" alt="" />
-									</div>
-									<div class="documents-triggers__title">
-										Trigger title...
-									</div>
-									<div
-										class="documents-triggers__description"
-									>
-										Lorem ipsum dolor sit amet consectetur
-										adipisicing elit
-									</div>
-								</div>
+						<div class="documents-tags">
+							<div class="documents-tags__wrap">
+								<span
+									(click)="$event.stopPropagation(); profile(tournament)"
+									class="material-icons pr10"
+									title="Player"
+								>
+									visibility
+								</span>
 							</div>
 						</div>
 					</div>
-					<div class="documents-main-row">
-						<div class="documents__title">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
-						</div>
-						<div class="documents-wrap">
-							<div class="documents-img">
-								<img src="/assets/default.png" alt="" />
-							</div>
-							<div class="documents-text">
-								<div class="documents-text__title">
-									Lorem ipsum dolor sit amet consectetur
-									adipisicing elit.
-								</div>
-								<div class="documents-text__description">
-									<p>
-										Lorem ipsum dolor sit amet consectetur
-										adipisicing elit. Tenetur accusantium
-										quis minus mollitia voluptatum illo hic
-										laborum laboriosam et commodi. Quas
-										nulla doloribus mollitia vero nostrum
-										laudantium dolores quidem provident.
-									</p>
-									<p>
-										Lorem ipsum dolor sit amet consectetur,
-										adipisicing elit. Sunt accusantium
-										eveniet quo? Minus quisquam odit magnam
-										nulla.
-									</p>
-									<p>
-										Lorem ipsum dolor sit amet consectetur,
-										adipisicing elit. Sunt accusantium
-										eveniet quo? Minus quisquam odit magnam
-										nulla.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="documents-main-row">
-						<div class="documents__title">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
-						</div>
-						<a href="" class="documents__btn">Press button</a>
-					</div>
-					<div class="documents-main-row">
-						<div class="documents-products-list">
-							<div
-								class="documents-products__wrap"
-								*ngFor="let tag of [{}, {}, {}, {}, {}]"
-							>
-								<div class="documents-products__item">
-									<div class="documents-products__img">
-										<img src="assets/logo.png" alt="" />
-									</div>
-									<div class="documents-products__title">
-										Title of product card here
-									</div>
-									<div
-										class="documents-products__description"
-									>
-										Lorem ipsum dolor sit amet consectetur
-										adipisicing elit. Optio nesciunt
-										voluptates reiciendis sequi assumenda?
-										Illo porro qui ducimus sint provident
-										amet, molestias ut eligendi quod cumque,
-										laudantium dicta quasi. Iure!
-									</div>
-									<div class="documents-products__btn">
-										<wbutton type="primary"
-											>Hello World</wbutton
-										>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					}
 				</div>
 			</div>
 		</div>

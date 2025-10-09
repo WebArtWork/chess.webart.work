@@ -42,23 +42,30 @@
 						<div class="documents-tags">
 							<div class="documents-tags__wrap">
 								<span
+									(click)="$event.stopPropagation(); profile(tournament)"
+									class="material-icons pr10"
+									title="Tournament profile"
+								>
+									visibility
+								</span>
+								<span
 									(click)="$event.stopPropagation(); players(tournament)"
 									class="material-icons pr10"
-									title="Players"
+									title="Players list"
 								>
 									person
 								</span>
 								<span
 									(click)="$event.stopPropagation(); update(tournament)"
 									class="material-icons pr10"
-									title="Edit"
+									title="Edit tournament"
 								>
 									edit
 								</span>
 								<span
 									(click)="$event.stopPropagation(); delete(tournament)"
 									class="material-icons pr10"
-									title="Delete"
+									title="Delete tournament"
 								>
 									delete_outline
 								</span>

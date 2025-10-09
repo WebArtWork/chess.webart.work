@@ -51,6 +51,16 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'player',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Player'
+					}
+				},
+				loadChildren: () => import('./pages/user/player/player.module').then(m => m.PlayerModule)
+			}, 
+			{
 				path: 'game',
 				canActivate: [MetaGuard],
 				data: {
