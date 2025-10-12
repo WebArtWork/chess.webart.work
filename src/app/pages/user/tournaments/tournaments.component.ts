@@ -21,6 +21,8 @@ export class TournamentsComponent extends CrudComponent<
 > {
 	config = this.getConfig();
 
+	show: 'all' | 'mine' = 'all';
+
 	constructor(
 		public tournamentService: CybersporttournamentService,
 		public userService: UserService,
@@ -58,5 +60,9 @@ export class TournamentsComponent extends CrudComponent<
 
 	players(tournament: Cybersporttournament) {
 		this._router.navigateByUrl('/players/tournament/' + tournament._id);
+	}
+
+	toggleShow() {
+		this.show = this.show === 'all' ? 'mine' : 'all';
 	}
 }

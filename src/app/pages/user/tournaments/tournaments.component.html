@@ -13,8 +13,14 @@
 				<div class="documents-header__title" translate>
 					Common.Tournaments
 				</div>
-				<div class="burger-wrap" (click)="create()">
-					<span class="material-icons">add</span>
+				<div class="burger-wrap" style="right: 25px">
+					<span
+						class="material-icons"
+						style="margin-right: 10px"
+						(click)="toggleShow()"
+						>{{show === 'all' ? 'public' : 'inventory_2'}}</span
+					>
+					<span class="material-icons" (click)="create()">add</span>
 				</div>
 			</div>
 			<div class="documents-main pl0">
@@ -42,7 +48,6 @@
 						<div class="documents-tags">
 							<div class="documents-tags__wrap">
 								<span
-									(click)="$event.stopPropagation(); profile(tournament)"
 									class="material-icons pr10"
 									title="Tournament profile"
 								>

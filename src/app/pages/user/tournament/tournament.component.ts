@@ -21,6 +21,14 @@ export class TournamentComponent extends CrudComponent<
 > {
 	config = this.getConfig();
 
+	tournamentId = this._router.url.replace('/tournament/', '');
+
+	override preCreate(game: Cybersportsession) {
+		delete game.__created;
+
+		game.tournament = this.tournamentId;
+	}
+
 	constructor(
 		public sessionService: CybersportsessionService,
 		public userService: UserService,
