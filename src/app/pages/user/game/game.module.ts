@@ -9,6 +9,10 @@ const routes: Routes = [
 		component: GameComponent
 	},
 	{
+		path: 'player/:_id',
+		component: GameComponent
+	},
+	{
 		path: ':_id',
 		component: GameComponent
 	}

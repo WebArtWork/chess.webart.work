@@ -40,8 +40,10 @@ export class PlayerComponent extends CrudComponent<
 		this.setDocuments();
 	}
 
-	create() {
-		this.config?.create?.();
+	play() {
+		this._router.navigateByUrl(
+			'/game/player/' + this._router.url.replace('/player/', '')
+		);
 	}
 
 	update(tournament: Cybersporttournament) {

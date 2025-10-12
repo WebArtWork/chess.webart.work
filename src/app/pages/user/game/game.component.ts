@@ -60,54 +60,6 @@ export class GameComponent implements AfterViewInit, OnDestroy {
 		]
 	};
 
-	private computeDests(): Map<Key, Key[]> {
-		const dests = new Map<Key, Key[]>();
-		for (const m of this.game.moves({ verbose: true }) as Array<{
-			from: Key;
-			to: Key;
-		}>) {
-			const arr = dests.get(m.from) || [];
-			arr.push(m.to);
-			dests.set(m.from, arr);
-		}
-		return dests;
-	}
-
-	private onUserMove(orig: Key, dest: Key) {
-		// Promote to queen by default (simple demo)
-		const move = this.game.move({
-			from: orig,
-			to: dest,
-			promotion: 'q' as const
-		});
-		if (!move) return;
-
-		this.cg.set({
-			fen: this.game.fen(),
-			turnColor: this.game.turn() === 'w' ? 'white' : 'black',
-			movable: { dests: this.computeDests() }
-		});
-	}
-
-	// Public API examples
-	loadFen(fen: string) {
-		this.game.load(fen);
-		this.cg.set({
-			fen,
-			movable: { dests: this.computeDests() },
-			turnColor: this.game.turn() === 'w' ? 'white' : 'black'
-		});
-	}
-
-	reset() {
-		this.game.reset();
-		this.cg.set({
-			fen: this.game.fen(),
-			movable: { dests: this.computeDests() },
-			turnColor: 'white'
-		});
-	}
-
 	ngAfterViewInit() {
 		this.cg = Chessground(this.boardEl.nativeElement, {
 			fen: this.game.fen(),
@@ -127,6 +79,37 @@ export class GameComponent implements AfterViewInit, OnDestroy {
 	ngOnDestroy() {
 		this.pause();
 		(this.cg as any)?.destroy?.();
+	}
+
+	private computeDests(): Map<Key, Key[]> {
+		const dests = new Map<Key, Key[]>();
+		for (const m of this.game.moves({ verbose: true }) as Array<{
+			from: Key;
+			to: Key;
+		}>) {
+			const arr = dests.get(m.from) || [];
+			arr.push(m.to);
+			dests.set(m.from, arr);
+		}
+		return dests;
+	}
+
+	loadFen(fen: string) {
+		this.game.load(fen);
+		this.cg.set({
+			fen,
+			movable: { dests: this.computeDests() },
+			turnColor: this.game.turn() === 'w' ? 'white' : 'black'
+		});
+	}
+
+	reset() {
+		this.game.reset();
+		this.cg.set({
+			fen: this.game.fen(),
+			movable: { dests: this.computeDests() },
+			turnColor: 'white'
+		});
 	}
 
 	first() {
@@ -152,6 +135,7 @@ export class GameComponent implements AfterViewInit, OnDestroy {
 	moveIndex = 0;
 
 	playing = false;
+
 	private timerId: any = null;
 
 	private refreshBoard(last?: { from: Key; to: Key }) {
