@@ -24,29 +24,41 @@ export class GameComponent implements AfterViewInit, OnDestroy {
 	private cg!: Api;
 	private game = new Chess();
 
-	ngAfterViewInit() {
-		// Ensure pieces are visible by providing a starting FEN.
-		// Make sure you have a piece set CSS included globally (e.g., merida or cburnett).
-		this.cg = Chessground(this.boardEl.nativeElement, {
-			fen: this.game.fen(),
-			coordinates: true,
-			orientation: 'white',
-			highlight: { lastMove: true, check: true },
-			animation: { duration: 200 },
-			draggable: { enabled: true },
-			movable: {
-				free: false,
-				// Set color directly; update it after each move as needed
-				color: this.game.turn() === 'w' ? 'white' : 'black',
-				dests: this.computeDests(),
-				events: {
-					after: (orig, dest) => this.onUserMove(orig, dest)
-				}
-			}
-		});
-
-		console.log(this.cg);
-	}
+	session = {
+		moves: [
+			'e4',
+			'e5',
+			'Nf3',
+			'Nc6',
+			'Bc4',
+			'Bc5',
+			'c3',
+			'Nf6',
+			'd4',
+			'exd4',
+			'cxd4',
+			'Bb4+',
+			'Nc3',
+			'Nxe4',
+			'O-O',
+			'Bxc3',
+			'd5',
+			'Ne7',
+			'bxc3',
+			'O-O',
+			'Re1',
+			'Nxc3',
+			'Qd4',
+			'Na4',
+			'Bg5',
+			'f6',
+			'd6+',
+			'Kh8',
+			'Re7',
+			'Nb6',
+			'Rxg7'
+		]
+	};
 
 	private computeDests(): Map<Key, Key[]> {
 		const dests = new Map<Key, Key[]>();
@@ -96,8 +108,102 @@ export class GameComponent implements AfterViewInit, OnDestroy {
 		});
 	}
 
+	ngAfterViewInit() {
+		this.cg = Chessground(this.boardEl.nativeElement, {
+			fen: this.game.fen(),
+			coordinates: true,
+			orientation: 'white',
+			highlight: { lastMove: true, check: true },
+			animation: { duration: 200 },
+			draggable: { enabled: false }, // prevent manual drags during replay
+			movable: {
+				free: false,
+				color: this.game.turn() === 'w' ? 'white' : 'black',
+				dests: this.computeDests()
+			}
+		});
+	}
+
 	ngOnDestroy() {
-		// chessground typings don’t expose destroy in some versions
+		this.pause();
 		(this.cg as any)?.destroy?.();
+	}
+
+	first() {
+		this.pause();
+		this.game.reset();
+		this.moveIndex = 0;
+		this.refreshBoard();
+	}
+
+	last() {
+		this.pause();
+		this.game.reset();
+		for (const san of this.session.moves) this.game.move(san);
+		this.moveIndex = this.session.moves.length;
+		const hist = this.game.history({ verbose: true }) as Array<{
+			from: Key;
+			to: Key;
+		}>;
+		const last = hist.length ? hist[hist.length - 1] : undefined;
+		this.refreshBoard(last);
+	}
+
+	moveIndex = 0;
+
+	playing = false;
+	private timerId: any = null;
+
+	private refreshBoard(last?: { from: Key; to: Key }) {
+		this.cg.set({
+			fen: this.game.fen(),
+			turnColor: this.game.turn() === 'w' ? 'white' : 'black',
+			lastMove: last ? [last.from, last.to] : undefined,
+			highlight: { lastMove: true, check: true },
+			movable: { dests: this.computeDests() }
+		});
+	}
+
+	next() {
+		if (this.moveIndex >= this.session.moves.length) {
+			this.pause();
+			return;
+		}
+		const san = this.session.moves[this.moveIndex];
+		const move = this.game.move(san);
+		if (!move) {
+			this.pause();
+			return;
+		}
+		this.moveIndex++;
+		this.refreshBoard({ from: move.from as Key, to: move.to as Key });
+		if (this.moveIndex >= this.session.moves.length) this.pause(); // auto-stop at end
+	}
+
+	prev() {
+		if (this.moveIndex <= 0) return;
+		this.pause();
+		this.game.undo();
+		this.moveIndex--;
+		const hist = this.game.history({ verbose: true }) as Array<{
+			from: Key;
+			to: Key;
+		}>;
+		const last = hist.length ? hist[hist.length - 1] : undefined;
+		this.refreshBoard(last);
+	}
+
+	play() {
+		if (this.playing || this.moveIndex >= this.session.moves.length) return;
+		this.playing = true;
+		this.timerId = setInterval(() => this.next(), 2000); // step every 2s
+	}
+
+	pause() {
+		if (this.timerId) {
+			clearInterval(this.timerId);
+			this.timerId = null;
+		}
+		this.playing = false;
 	}
 }
