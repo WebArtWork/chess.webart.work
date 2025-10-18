@@ -15,13 +15,9 @@
 					<div class="burger"></div>
 				</div>
 			</div>
+
 			<div class="documents-main pl0">
 				<div class="documents-main-content">
-					<div class="documents-main-row">
-						<div class="documents__title">
-							Player One White - Player Two Black
-						</div>
-					</div>
 					<div class="documents-main-row">
 						<div
 							#board
@@ -29,56 +25,36 @@
 							aria-label="Chess board"
 						></div>
 					</div>
+
 					<div
 						class="documents-main-row"
-						style="display: flex; align-items: center; gap: 0.75rem"
+						style="
+							display: flex;
+							align-items: center;
+							gap: 0.75rem;
+							flex-wrap: wrap;
+						"
 					>
-						<button
-							type="button"
-							(click)="first()"
-							[disabled]="playing || moveIndex===0"
-						>
-							⏮ First
+						<button type="button" (click)="toggleColor()">
+							Switch color (You: {{ myColor }})
 						</button>
-						<button
-							type="button"
-							(click)="prev()"
-							[disabled]="playing || moveIndex===0"
-						>
-							◀ Prev
+						<button type="button" (click)="resetFromStart()">
+							Reset
 						</button>
-						<button
-							type="button"
-							(click)="play()"
-							[disabled]="playing || moveIndex>=session.moves.length"
-						>
-							⏵ Play
-						</button>
-						<button
-							type="button"
-							(click)="pause()"
-							[disabled]="!playing"
-						>
-							⏸ Pause
-						</button>
-						<button
-							type="button"
-							(click)="next()"
-							[disabled]="playing || moveIndex>=session.moves.length"
-						>
-							Next ▶
-						</button>
-						<button
-							type="button"
-							(click)="last()"
-							[disabled]="playing || moveIndex>=session.moves.length"
-						>
-							⏭ Last
-						</button>
-						<span
-							>Move {{ moveIndex }} / {{ session.moves.length
-							}}</span
-						>
+
+						<span>Remaining games: {{ filteredGames.length }}</span>
+						<span *ngIf="popularNextMoves.length">
+							Next suggestion: {{ popularNextMoves[0]?.san }} ({{
+							popularNextMoves[0]?.count }})
+						</span>
+					</div>
+
+					<div
+						class="documents-main-row"
+						*ngIf="historySan.length"
+						style="font-family: monospace"
+					>
+						Moves: {{ historySan.join(' ') }}
 					</div>
 				</div>
 			</div>

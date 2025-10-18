@@ -18,17 +18,30 @@ import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { GuestGuard } from './core/guards/guest.guard';
 
 const routes: Routes = [
-	{
-		path: '',
-		redirectTo: '/sign',
-		pathMatch: 'full'
-	},
+	// {
+	// 	path: '',
+	// 	redirectTo: '/sign',
+	// 	pathMatch: 'full'
+	// },
 	{
 		path: '',
 		canActivate: [GuestGuard],
 		component: GuestComponent,
 		children: [
 			/* guest */
+			{
+				path: '',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Game'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/game/game.module').then(
+						(m) => m.GameModule
+					)
+			},
 			{
 				path: 'sign',
 				canActivate: [MetaGuard],
@@ -58,8 +71,11 @@ const routes: Routes = [
 						title: 'Player'
 					}
 				},
-				loadChildren: () => import('./pages/user/player/player.module').then(m => m.PlayerModule)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/player/player.module').then(
+						(m) => m.PlayerModule
+					)
+			},
 			{
 				path: 'game',
 				canActivate: [MetaGuard],

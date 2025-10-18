@@ -1,0 +1,87 @@
+<div class="documents-wrapper">
+	<div class="documents-container">
+		<div class="documents-list">
+			<div class="documents-header">
+				<div class="documents-header-left">
+					<div
+						class="documents-header-left__avatar"
+						routerLink="/profile"
+					>
+						<img [src]="userService.thumb" alt="" />
+					</div>
+				</div>
+				<div class="documents-header__title">Title header</div>
+				<div class="burger-wrap">
+					<div class="burger"></div>
+				</div>
+			</div>
+			<div class="documents-main pl0">
+				<div class="documents-main-content">
+					<!-- <div class="documents-main-row">
+						<div class="documents__title">
+							Player One White - Player Two Black
+						</div>
+					</div> -->
+					<div class="documents-main-row">
+						<div
+							#board
+							class="cg-board"
+							aria-label="Chess board"
+						></div>
+					</div>
+					<div
+						class="documents-main-row"
+						style="display: flex; align-items: center; gap: 0.75rem"
+					>
+						<button
+							type="button"
+							(click)="first()"
+							[disabled]="playing || moveIndex===0"
+						>
+							⏮ First
+						</button>
+						<button
+							type="button"
+							(click)="prev()"
+							[disabled]="playing || moveIndex===0"
+						>
+							◀ Prev
+						</button>
+						<button
+							type="button"
+							(click)="play()"
+							[disabled]="playing || moveIndex>=session.moves.length"
+						>
+							⏵ Play
+						</button>
+						<button
+							type="button"
+							(click)="pause()"
+							[disabled]="!playing"
+						>
+							⏸ Pause
+						</button>
+						<button
+							type="button"
+							(click)="next()"
+							[disabled]="playing || moveIndex>=session.moves.length"
+						>
+							Next ▶
+						</button>
+						<button
+							type="button"
+							(click)="last()"
+							[disabled]="playing || moveIndex>=session.moves.length"
+						>
+							⏭ Last
+						</button>
+						<span
+							>Move {{ moveIndex }} / {{ session.moves.length
+							}}</span
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
