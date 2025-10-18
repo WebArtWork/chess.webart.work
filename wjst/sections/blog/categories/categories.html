@@ -1,0 +1,27 @@
+<div class="categories">
+	{% if section.title %}
+	<div class="categories__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="categories__description">{{{section.description}}}</div>
+	{% endif %} {% if section.categories %}
+	<ul class="categories__list">
+		{% for category in section.categories %}
+		<li class="categories__item">
+			{% if category.url %}
+			<a href="{{{category.url}}}" class="categories__link">
+				{{{category.title}}} {% if category.count %}
+				<span class="categories__count">{{{category.count}}}</span>
+				{% endif %}
+			</a>
+			{% else %}
+			<span class="categories__link">
+				{{{category.title}}} {% if category.count %}
+				<span class="categories__count">{{{category.count}}}</span>
+				{% endif %}
+			</span>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

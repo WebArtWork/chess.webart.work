@@ -1,0 +1,23 @@
+<div class="testimonial-block">
+	{% if section.title %}
+	<div class="testimonial-block__title">{{{section.title}}}</div>
+	{% endif %} {% if section.items %}
+	<div class="testimonial-block__items">
+		{% for item in section.items %}
+		<div class="testimonial-block__item">
+			{% if item.img %}
+			<div class="testimonial-block__img">
+				<img src="{{{item.img}}}" alt="" />
+			</div>
+			{% endif %} {% if item.quote %}
+			<div class="testimonial-block__quote">{{{item.quote}}}</div>
+			{% endif %} {% if item.author %}
+			<div class="testimonial-block__author">{{{item.author}}}</div>
+			{% endif %} {% if item.role %}
+			<div class="testimonial-block__role">{{{item.role}}}</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>

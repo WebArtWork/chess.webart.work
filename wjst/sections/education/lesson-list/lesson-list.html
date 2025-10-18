@@ -1,0 +1,23 @@
+<div class="lesson-list">
+	{% if section.title %}
+	<div class="lesson-list__title">{{{section.title}}}</div>
+	{% endif %} {% if section.lessons %}
+	<ul class="lesson-list__items">
+		{% for lesson in section.lessons %}
+		<li
+			class="lesson-list__item{% if lesson.completed %} lesson-list__item--completed{% endif %}"
+		>
+			<div class="lesson-list__info">
+				<span class="lesson-list__index">{{ loop.index }}</span>
+				{% if lesson.name %}
+				<span class="lesson-list__name">{{{lesson.name}}}</span>
+				{% endif %}
+			</div>
+			{% if lesson.duration %}
+			<span class="lesson-list__duration">{{{lesson.duration}}}</span>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

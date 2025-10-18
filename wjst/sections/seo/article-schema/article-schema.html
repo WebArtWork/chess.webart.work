@@ -1,0 +1,28 @@
+<div class="article-schema">
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Article",
+			"headline": "{{{section.headline}}}",
+			"image": "{{{section.image}}}",
+			"datePublished": "{{{section.datePublished}}}",
+			"dateModified": "{{{section.dateModified}}}",
+			"author": {
+				"@type": "Person",
+				"name": "{{{section.author}}}"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "{{{section.publisherName}}}",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "{{{section.publisherLogo}}}"
+				}
+			},
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": "{{{section.url}}}"
+			}
+		}
+	</script>
+</div>

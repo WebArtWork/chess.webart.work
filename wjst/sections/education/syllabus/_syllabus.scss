@@ -1,0 +1,84 @@
+// syllabus section
+
+.syllabus {
+	padding: calc(40px * var(--padding-scale)) 0;
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 32px;
+		font-weight: 600;
+		text-align: center;
+		color: var(--c-text-primary);
+		margin-bottom: calc(24px * var(--margin-scale));
+	}
+
+	&__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	&__module {
+		border-bottom: 1px solid var(--c-border);
+		padding: calc(16px * var(--padding-scale)) 0;
+	}
+
+	&__module-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	&__module-title {
+		font-size: 20px;
+		font-weight: 500;
+		color: var(--c-text-primary);
+	}
+
+	&__module-duration {
+		font-size: 14px;
+		color: var(--c-text-secondary);
+	}
+
+	&__module-description {
+		margin-top: calc(8px * var(--margin-scale));
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		color: var(--c-text-body-secondary);
+	}
+
+	&__lessons {
+		list-style: none;
+		margin: calc(12px * var(--margin-scale)) 0 0;
+		padding-left: 0;
+	}
+
+	&__lesson {
+		display: flex;
+		justify-content: space-between;
+		padding: calc(4px * var(--padding-scale)) 0;
+	}
+
+	&__lesson-title {
+		color: var(--c-text-primary);
+		font-size: var(--font-size);
+	}
+
+	&__lesson-duration {
+		color: var(--c-text-secondary);
+		font-size: calc(var(--font-size) * 0.9);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.syllabus__title {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.syllabus__title {
+		font-size: 24px;
+	}
+}

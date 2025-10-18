@@ -1,0 +1,39 @@
+<div class="rsvp">
+	{% if section.title %}
+	<div class="rsvp__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="rsvp__description">{{{section.description}}}</div>
+	{% endif %}
+	<form class="rsvp__form" action="{{{section.action}}}" method="post">
+		<div class="rsvp__field">
+			<label class="rsvp__label" for="rsvp-name">Name</label>
+			<input
+				class="rsvp__input"
+				type="text"
+				id="rsvp-name"
+				name="name"
+				required
+			/>
+		</div>
+		<div class="rsvp__field">
+			<label class="rsvp__label" for="rsvp-email">Email</label>
+			<input
+				class="rsvp__input"
+				type="email"
+				id="rsvp-email"
+				name="email"
+				required
+			/>
+		</div>
+		<div class="rsvp__field">
+			<label class="rsvp__label" for="rsvp-attending">Attending</label>
+			<select class="rsvp__select" id="rsvp-attending" name="attending">
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
+			</select>
+		</div>
+		<button class="rsvp__button" type="submit">
+			{{{section.buttonText}}}
+		</button>
+	</form>
+</div>

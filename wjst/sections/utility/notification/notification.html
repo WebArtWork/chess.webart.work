@@ -1,0 +1,20 @@
+<div
+	class="notification{% if section.type %} notification--{{{section.type}}}{% endif %}"
+	data-notification
+>
+	<div class="notification__message">{{{section.message}}}</div>
+	<button class="notification__close" aria-label="Close notification">
+		&times;
+	</button>
+</div>
+<script>
+	(function () {
+		document.querySelectorAll("[data-notification]").forEach(function (el) {
+			var close = el.querySelector(".notification__close");
+			if (!close) return;
+			close.addEventListener("click", function () {
+				el.classList.add("notification--hidden");
+			});
+		});
+	})();
+</script>

@@ -1,0 +1,31 @@
+// sticky layout section
+
+.sticky {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	padding: calc(12px * var(--padding-scale));
+	background-color: var(--c-bg-item);
+	color: var(--c-text-primary);
+	font-family: var(--ff-base);
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+	border-radius: var(--b-radius);
+	transition: background-color var(--transition), box-shadow var(--transition);
+
+	&__content {
+		width: 100%;
+	}
+
+	&--stuck {
+		background-color: var(--c-secondary);
+		box-shadow: 0 2px 4px var(--c-shadow);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.sticky {
+		padding: calc(8px * var(--padding-scale));
+	}
+}

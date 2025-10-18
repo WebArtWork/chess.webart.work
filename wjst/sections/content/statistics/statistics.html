@@ -1,0 +1,19 @@
+<div class="statistics">
+	{% if section.title %}
+	<div class="statistics__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="statistics__description">{{{section.description}}}</div>
+	{% endif %} {% if section.items %}
+	<ul class="statistics__items">
+		{% for item in section.items %}
+		<li class="statistics__item">
+			{% if item.value %}
+			<div class="statistics__value">{{{item.value}}}</div>
+			{% endif %} {% if item.label %}
+			<div class="statistics__label">{{{item.label}}}</div>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

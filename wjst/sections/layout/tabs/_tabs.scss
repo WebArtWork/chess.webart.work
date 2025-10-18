@@ -1,0 +1,43 @@
+// tabs section
+
+.tabs {
+	font-family: var(--ff-base);
+
+	&__nav {
+		display: flex;
+		border-bottom: 2px solid var(--c-border);
+	}
+
+	&__nav-button {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: calc(10px * var(--padding-scale))
+			calc(20px * var(--padding-scale));
+		font-size: var(--font-size);
+		color: var(--c-text-primary);
+		border-bottom: 2px solid transparent;
+		transition: color var(--transition), border-color var(--transition);
+
+		&.active {
+			border-color: var(--c-primary);
+			color: var(--c-primary);
+		}
+
+		&:hover {
+			color: var(--c-primary-hover);
+		}
+	}
+
+	&__content {
+		padding-top: calc(20px * var(--padding-scale));
+	}
+
+	&__pane {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+}

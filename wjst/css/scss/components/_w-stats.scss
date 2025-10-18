@@ -1,0 +1,80 @@
+.stats {
+	&-wrapper {
+		text-align: center;
+		background-color: #fff;
+		padding: 50px;
+	}
+	&__title {
+		font-weight: 600;
+		text-align: center;
+		color: #000000;
+		padding: 0 0 40px 0;
+		font-size: 45px;
+	}
+	&__description {
+		color: #626262;
+		padding: 0 50px 35px 50px;
+		font-size: 30px;
+	}
+	&-triggers {
+		display: flex;
+		flex-flow: row wrap;
+		padding: 0 40px;
+		&__wrap {
+			flex: 0 0 25%;
+			max-width: 25%;
+			padding: 0 10px;
+			margin-bottom: 25px;
+		}
+		&__title {
+			background: linear-gradient(
+				95.96deg,
+				#f5e920 0%,
+				rgba(171, 163, 30, 0.94) 100.79%
+			);
+			-webkit-background-clip: text; /* Для WebKit-браузерів */
+			-webkit-text-fill-color: transparent; /* Робить текст прозорим */
+			font-weight: 700;
+			font-size: 60px;
+		}
+		&__description {
+			font-size: 25px;
+			font-weight: 500;
+			color: black;
+		}
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	.stats-triggers {
+		justify-content: center;
+		padding: 0;
+	}
+	.stats-triggers__wrap {
+		max-width: 33.333%;
+		flex: 0 0 33.333%;
+	}
+	.stats__title {
+		padding: 0 0 28px 0;
+		font-size: 35px;
+	}
+	.stats__description {
+		padding: 0 50px 25px 50px;
+		font-size: 26px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.stats-triggers__wrap {
+		max-width: 50%;
+		flex: 0 0 50%;
+	}
+	.stats-wrapper {
+		padding: 30px;
+	}
+	.stats-triggers__title {
+		font-size: 48px;
+	}
+	.stats-triggers__description {
+		font-size: 22px;
+	}
+}

@@ -1,0 +1,7 @@
+<div class="discount-badge">
+	{% if section.discount %}
+	<span class="discount-badge__value">-{{{section.discount}}}%</span>
+	{% endif %} {% if section.label %}
+	<span class="discount-badge__label">{{{section.label}}}</span>
+	{% endif %}
+</div>

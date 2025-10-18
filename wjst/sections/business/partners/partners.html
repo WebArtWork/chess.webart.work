@@ -1,0 +1,19 @@
+<div class="partners">
+	{% if section.title %}
+	<div class="partners__title">{{{section.title}}}</div>
+	{% endif %} {% if section.items %}
+	<ul class="partners__items">
+		{% for item in section.items %}
+		<li class="partners__item">
+			{% if item.url %}
+			<a href="{{{item.url}}}" target="_blank" rel="noopener">
+				<img src="{{{item.img}}}" alt="{{{item.alt}}}" />
+			</a>
+			{% else %}
+			<img src="{{{item.img}}}" alt="{{{item.alt}}}" />
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

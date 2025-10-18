@@ -1,0 +1,30 @@
+<nav class="pagination">
+	{% if section.prev %}
+	<a class="pagination__prev" href="{{{section.prev}}}"
+		>{{{section.prevLabel || 'Prev'}}}</a
+	>
+	{% endif %} {% if section.pages %}
+	<ul class="pagination__list">
+		{% for page in section.pages %}
+		<li class="pagination__item">
+			{% if page.url %}
+			<a
+				href="{{{page.url}}}"
+				class="pagination__link{% if page.current %} is-current{% endif %}"
+				>{{{page.label}}}</a
+			>
+			{% else %}
+			<span
+				class="pagination__link{% if page.current %} is-current{% endif %}"
+				>{{{page.label}}}</span
+			>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %} {% if section.next %}
+	<a class="pagination__next" href="{{{section.next}}}"
+		>{{{section.nextLabel || 'Next'}}}</a
+	>
+	{% endif %}
+</nav>

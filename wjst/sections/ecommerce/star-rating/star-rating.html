@@ -1,0 +1,21 @@
+<div class="star-rating" style="--rating: {{{section.rating}}};">
+	<div class="star-rating__stars">
+		<div class="star-rating__base">
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+		</div>
+		<div class="star-rating__fill">
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+			<span class="material-icons">star</span>
+		</div>
+	</div>
+	{% if section.text %}
+	<div class="star-rating__text">{{{section.text}}}</div>
+	{% endif %}
+</div>

@@ -1,0 +1,21 @@
+<div class="api-layout">
+	{% if section.title %}
+	<div class="api-layout__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="api-layout__description">{{{section.description}}}</div>
+	{% endif %} {% if section.endpoints %}
+	<div class="api-layout__endpoints">
+		{% for endpoint in section.endpoints %}
+		<div class="api-layout__endpoint">
+			<span class="api-layout__method">{{{endpoint.method}}}</span>
+			<span class="api-layout__path">{{{endpoint.path}}}</span>
+			{% if endpoint.description %}
+			<div class="api-layout__endpoint-description">
+				{{{endpoint.description}}}
+			</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>

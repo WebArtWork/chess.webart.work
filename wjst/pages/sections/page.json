@@ -1,0 +1,1138 @@
+{
+	"layout": "/layouts/topbar.html",
+	"title": "Develop and Demo Sections which we can quickly use | Web Art Work",
+	"description": "This page contains all the reusable sections available in the project. Each section is a self-contained block of content (e.g., hero, features, testimonials) that can be inserted into any layout. Use them to quickly build consistent, modular pages across your website.",
+	"sections": [
+		{
+			"src": "/sections/content/accordion/accordion.html",
+			"items": [
+				{
+					"title": "First item",
+					"content": "<p>Item text</p>"
+				},
+				{
+					"title": "Second item",
+					"content": "<p>Item text</p>",
+					"active": true
+				}
+			],
+			"sections": [
+				{
+					"src": "/sections/content/markdown/markdown.html",
+					"content": "/sections/content/markdown/readme.MD"
+				}
+			]
+		},
+		{
+			"src": "/sections/content/callout-box/callout-box.html",
+			"title": "Callout title",
+			"description": "Important information or message"
+		},
+		{
+			"src": "/sections/content/code-block/code-block.html",
+			"title": "Console Output",
+			"code": "console.log('Hello, world!');"
+		},
+		{
+			"src": "/sections/content/feature-list/feature-list.html",
+			"title": "Features",
+			"description": "What makes us great",
+			"items": [
+				{
+					"icon": "/img/icon.svg",
+					"title": "Fast",
+					"text": "Speedy performance with low latency"
+				},
+				{
+					"icon": "/img/icon.svg",
+					"title": "Reliable",
+					"text": "Trusted by thousands"
+				}
+			]
+		},
+		{
+			"src": "/sections/content/hero/hero.html",
+			"title": "Welcome to Our Platform",
+			"description": "We help you build better websites",
+			"img": "img/spider.svg",
+			"imgs": ["img/spider.svg", "img/spider.svg"]
+		},
+		{
+			"src": "/sections/content/intro/intro.html",
+			"img": "img/spider.svg",
+			"title": "Get Started",
+			"description": "This is an introduction to the page"
+		},
+		{
+			"src": "/sections/content/markdown/markdown.html",
+			"content": "##Getting Started\\nThis is a paragraph from markdown"
+		},
+		{
+			"src": "/sections/content/media-text/media-text.html",
+			"img": "img/spider.svg",
+			"title": "Powerful Tools",
+			"text": "Integrate with your existing workflow easily."
+		},
+		{
+			"src": "/sections/content/statistics/statistics.html",
+			"title": "Our Impact",
+			"description": "Metrics that matter",
+			"items": [
+				{
+					"value": "98%",
+					"label": "Customer Satisfaction"
+				},
+				{
+					"value": "2M+",
+					"label": "Downloads"
+				}
+			]
+		},
+		{
+			"src": "/sections/content/testimonial/testimonial.html",
+			"img": "img/spider.svg",
+			"quote": "This product changed my life!",
+			"author": "Jane Doe"
+		},
+		{
+			"src": "/sections/feedback/quote/quote.html",
+			"img": "img/spider.svg",
+			"quote": "Design is thinking made visual.",
+			"author": "Saul Bass"
+		},
+		{
+			"src": "/sections/content/text-block/text-block.html",
+			"title": "About Us",
+			"description": "We are committed to delivering the best digital experience."
+		},
+		{
+			"src": "/sections/content/timeline/timeline.html",
+			"title": "Our Journey",
+			"description": "Milestones and growth",
+			"items": [
+				{
+					"time": "2021",
+					"label": "Founded",
+					"text": "Our story begins"
+				},
+				{
+					"time": "2023",
+					"label": "Expansion",
+					"text": "Reached new markets"
+				}
+			]
+		},
+		{
+			"src": "/sections/content/two-column-text/two-column-text.html",
+			"title": "Compare Plans",
+			"columns": [
+				{
+					"title": "Free Plan",
+					"text": "Basic features included"
+				},
+				{
+					"title": "Pro Plan",
+					"text": "Advanced features for power users"
+				}
+			]
+		},
+		{
+			"src": "/sections/horizontal-visual.html",
+			"img": "img/spider.svg",
+			"title": "Main title for gallery",
+			"imgs": [
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg"
+			]
+		},
+		{
+			"src": "/sections/vertical-visual.html",
+			"img": "img/spider.svg",
+			"title": "Title for visual block",
+			"imgs": [
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg",
+				"img/spider.svg"
+			],
+			"subtitle": "text for instagram link",
+			"socials": [
+				{
+					"img": "img/spider.svg",
+					"href": "https://www.instagram.com/potiercake/"
+				}
+			]
+		},
+		{
+			"src": "/sections/get-in-touch.html",
+			"map": "img/spider.svg",
+			"iloc": "img/spider.svg",
+			"iphone": "img/spider.svg",
+			"title": "Get in touch block",
+			"subtitle": "We are here",
+			"socials": [
+				{
+					"img": "img/spider.svg",
+					"href": "https://www.instagram.com/potiercake/"
+				}
+			],
+			"phone": "+380971862487",
+			"address": "Drai-Khmary St, 50, Kam'yanets'-Podil's'kyi, Khmelnytskyi Oblast, 32313"
+		},
+		{
+			"src": "/sections/business/team/team.html",
+			"title": "Team",
+			"description": "Meet our amazing team",
+			"teams": [
+				{
+					"name": "Leadership",
+					"users": [
+						{
+							"img": "img/avatar.png",
+							"name": "Jane Doe",
+							"username": "jdoe",
+							"socials": [
+								{
+									"href": "https://github.com/jdoe",
+									"img": "img/git.svg"
+								}
+							]
+						},
+						{
+							"img": "img/avatar.png",
+							"name": "John Smith",
+							"username": "jsmith"
+						}
+					]
+				}
+			]
+		},
+		{
+			"src": "/sections/blog/meta/meta.html",
+			"date": "2024-05-01",
+			"author": "John Doe",
+			"readTime": "5 min read",
+			"categories": [
+				{
+					"name": "Tech",
+					"url": "/category/tech"
+				},
+				{
+					"name": "AI",
+					"url": "/category/ai"
+				}
+			]
+		},
+		{
+			"src": "/sections/blog/post-card/post-card.html",
+			"img": "/img/post.jpg",
+			"category": "Tech",
+			"title": "Blog post title",
+			"excerpt": "Optional short preview of the article content.",
+			"author": "John Doe",
+			"date": "2024-01-01"
+		},
+		{
+			"src": "/sections/blog/post-grid/post-grid.html",
+			"items": [
+				{
+					"img": "/img/post.jpg",
+					"title": "Post title",
+					"description": "Short summary",
+					"url": "/post-url"
+				}
+			]
+		},
+		{
+			"src": "/sections/blog/author/author.html",
+			"avatar": "/img/avatar.png",
+			"name": "Author name",
+			"bio": "Short author description or tagline"
+		},
+		{
+			"src": "/sections/blog/categories/categories.html",
+			"title": "Browse by category",
+			"description": "Optional helper text",
+			"categories": [
+				{
+					"title": "News",
+					"url": "/blog/news",
+					"count": 3
+				},
+				{
+					"title": "Events",
+					"url": "/blog/events"
+				},
+				{
+					"title": "Tutorials",
+					"url": "/blog/tutorials",
+					"count": 12
+				}
+			]
+		},
+		{
+			"src": "/sections/blog/comments/comments.html",
+			"title": "Comments",
+			"items": [
+				{
+					"avatar": "/img/avatar.png",
+					"author": "Jane Doe",
+					"date": "2024-08-30",
+					"text": "This is a comment",
+					"replies": [
+						{
+							"avatar": "/img/avatar2.png",
+							"author": "John Doe",
+							"date": "2024-08-31",
+							"text": "A reply"
+						}
+					]
+				}
+			]
+		},
+		{
+			"src": "/sections/blog/related-posts/related-posts.html",
+			"title": "Related posts",
+			"posts": [
+				{
+					"href": "/blog/post-1",
+					"img": "/img/post-1.jpg",
+					"title": "First post",
+					"date": "Jan 1, 2024"
+				},
+				{
+					"href": "/blog/post-2",
+					"img": "/img/post-2.jpg",
+					"title": "Second post"
+				}
+			]
+		},
+		{
+			"src": "/sections/business/about/about.html",
+			"img": "/img/about.svg",
+			"title": "Optional section title",
+			"description": "Optional paragraph describing the business"
+		},
+		{
+			"src": "/sections/business/awards/awards.html",
+			"title": "Awards",
+			"description": "Highlights of our achievements",
+			"items": [
+				{
+					"img": "/img/trophy.svg",
+					"title": "Best Startup",
+					"year": "2023",
+					"description": "Awarded by Example Organization"
+				}
+			]
+		},
+		{
+			"src": "/sections/business/careers/careers.html",
+			"title": "Join our team",
+			"description": "We are hiring across multiple roles",
+			"positions": [
+				{
+					"title": "Frontend Developer",
+					"location": "Remote",
+					"type": "Full-Time",
+					"link": "/careers/frontend",
+					"linkLabel": "Apply now"
+				}
+			]
+		},
+		{
+			"src": "/sections/business/contact/contact.html",
+			"title": "Get in touch",
+			"description": "We would love to hear from you.",
+			"address": "123 Main St, Anytown",
+			"phone": "+1 (555) 123-4567",
+			"email": "info@example.com"
+		},
+		{
+			"src": "/sections/business/map/map.html",
+			"lat": 50.4501,
+			"lng": 30.5234,
+			"zoom": 14,
+			"apiKey": "GOOGLE_MAPS_API_KEY",
+			"title": "Our Location",
+			"description": "Find us on the map"
+		},
+		{
+			"src": "/sections/business/milestones/milestones.html",
+			"title": "Company milestones",
+			"description": "Our journey so far",
+			"items": [
+				{
+					"year": "2019",
+					"title": "Founded",
+					"text": "Company started"
+				},
+				{
+					"year": "2020",
+					"title": "First product",
+					"text": "Released v1"
+				}
+			]
+		},
+		{
+			"src": "/sections/business/mission/mission.html",
+			"title": "Our Mission",
+			"statement": "Short mission statement here.",
+			"items": [
+				{
+					"icon": "/img/target.svg",
+					"title": "Value title",
+					"text": "Supporting text for this mission point"
+				}
+			]
+		},
+		{
+			"src": "/sections/business/partners/partners.html",
+			"title": "Our Partners",
+			"items": [
+				{
+					"img": "/img/partner1.svg",
+					"alt": "Partner 1",
+					"url": "https://partner1.com"
+				},
+				{
+					"img": "/img/partner2.svg",
+					"alt": "Partner 2"
+				}
+			]
+		},
+		{
+			"src": "/sections/cta/banner/banner.html",
+			"title": "Ready to get started?",
+			"description": "Sign up today and enjoy all the benefits.",
+			"button": {
+				"url": "/signup",
+				"label": "Get Started"
+			}
+		},
+		{
+			"src": "/sections/cta/button-group/button-group.html",
+			"title": "Optional heading",
+			"description": "Optional supporting text",
+			"buttons": [
+				{
+					"text": "Primary action",
+					"href": "#",
+					"modifier": "btn--success"
+				},
+				{
+					"text": "Secondary",
+					"href": "#",
+					"modifier": "btn--second"
+				}
+			]
+		},
+		{
+			"src": "/sections/cta/countdown/countdown.html",
+			"title": "Event starts soon",
+			"description": "Join us before time runs out!",
+			"endDate": "2024-12-31T23:59:59",
+			"buttonText": "Register now",
+			"buttonUrl": "/register"
+		},
+		{
+			"src": "/sections/cta/exit-modal/exit-modal.html",
+			"title": "Wait, before you go!",
+			"description": "Sign up to stay updated",
+			"button": {
+				"label": "Subscribe",
+				"url": "/signup"
+			}
+		},
+		{
+			"src": "/sections/cta/promo/promo.html",
+			"img": "/img/promo.png",
+			"title": "Special Offer",
+			"description": "Short promo or marketing message",
+			"button": {
+				"text": "Get started",
+				"href": "/signup"
+			}
+		},
+		{
+			"src": "/sections/cta/sticky-footer/sticky-footer.html",
+			"text": "Promotional message",
+			"button": {
+				"url": "/signup",
+				"label": "Sign Up"
+			}
+		},
+		{
+			"src": "/sections/docs/search-bar/search-bar.html",
+			"placeholder": "Search docs...",
+			"index": "/search-index.json"
+		},
+		{
+			"src": "/sections/docs/version-switcher/version-switcher.html",
+			"label": "Version",
+			"versions": [
+				{
+					"label": "v1.0",
+					"url": "/docs/v1"
+				},
+				{
+					"label": "v2.0",
+					"url": "/docs/v2",
+					"current": true
+				}
+			]
+		},
+		{
+			"src": "/sections/docs/glossary/glossary.html",
+			"title": "Glossary",
+			"items": [
+				{
+					"term": "API",
+					"definition": "Application Programming Interface"
+				},
+				{
+					"term": "CLI",
+					"definition": "Command Line Interface"
+				}
+			]
+		},
+		{
+			"src": "/sections/docs/page-layout/page-layout.html",
+			"sidebar": "<nav>...</nav>",
+			"content": "<article>...</article>",
+			"toc": "<nav>...</nav>"
+		},
+		{
+			"src": "/sections/docs/code-snippet/code-snippet.html",
+			"label": "Optional file name",
+			"code": "npm install ngx"
+		},
+		{
+			"src": "/sections/docs/sidebar/sidebar.html",
+			"items": [
+				{
+					"name": "Guide",
+					"url": "/guide",
+					"items": [
+						{
+							"name": "Intro",
+							"url": "/guide#intro"
+						}
+					]
+				}
+			]
+		},
+		{
+			"src": "/sections/docs/api-layout/api-layout.html",
+			"title": "API Reference",
+			"description": "Endpoints and methods",
+			"endpoints": [
+				{
+					"method": "GET",
+					"path": "/items",
+					"description": "List items"
+				},
+				{
+					"method": "POST",
+					"path": "/items",
+					"description": "Create item"
+				}
+			]
+		},
+		{
+			"src": "/sections/docs/edit-link/edit-link.html",
+			"href": "https://github.com/owner/repo/edit/main/docs/page.md",
+			"text": "Edit on GitHub",
+			"icon": "/img/git.svg"
+		},
+		{
+			"src": "/sections/ecommerce/product-details/product-details.html",
+			"img": "/img/product.jpg",
+			"title": "Sample product title",
+			"description": "Optional detailed description of the product",
+			"price": "$99.99",
+			"rating": "⭐️⭐️⭐️⭐️☆",
+			"cta": {
+				"text": "Add to cart",
+				"href": "#add-to-cart"
+			}
+		},
+		{
+			"src": "/sections/ecommerce/price/price.html",
+			"currency": "$",
+			"current": "19.99",
+			"original": "24.99",
+			"note": "per item"
+		},
+		{
+			"src": "/sections/ecommerce/add-to-cart/add-to-cart.html",
+			"id": "sku-1",
+			"price": "$19.99",
+			"button": "Add to cart"
+		},
+		{
+			"src": "/sections/ecommerce/variant-selector/variant-selector.html",
+			"title": "Choose a variant",
+			"options": [
+				{
+					"label": "Red",
+					"color": "#ff0000",
+					"img": "/img/red.jpg",
+					"price": "$19.99"
+				},
+				{
+					"label": "Blue",
+					"color": "#0000ff",
+					"img": "/img/blue.jpg",
+					"price": "$21.99"
+				}
+			]
+		},
+		{
+			"src": "/sections/ecommerce/stock-indicator/stock-indicator.html",
+			"quantity": 42,
+			"max": 100,
+			"low": 10,
+			"labels": {
+				"in": "In stock",
+				"low": "Low stock",
+				"out": "Out of stock"
+			}
+		},
+		{
+			"src": "/sections/ecommerce/payment-logos/payment-logos.html",
+			"logos": [
+				{
+					"img": "/img/payments/visa.svg",
+					"alt": "Visa"
+				},
+				{
+					"img": "/img/payments/mastercard.svg",
+					"alt": "Mastercard"
+				}
+			]
+		},
+		{
+			"src": "/sections/ecommerce/review-section/review-section.html",
+			"title": "Customer Reviews",
+			"reviews": [
+				{
+					"avatar": "/img/user.jpg",
+					"name": "Jane Doe",
+					"rating": "5",
+					"comment": "Great product!"
+				}
+			]
+		},
+		{
+			"src": "/sections/ecommerce/star-rating/star-rating.html",
+			"rating": 4.5,
+			"text": "4.5/5"
+		},
+		{
+			"src": "/sections/ecommerce/product-grid/product-grid.html",
+			"items": [
+				{
+					"img": "/img/product.png",
+					"title": "Product name",
+					"url": "/product-url",
+					"price": "$49",
+					"rating": "★★★★☆"
+				}
+			]
+		},
+		{
+			"src": "/sections/ecommerce/product-card/product-card.html",
+			"img": "/img/product.jpg",
+			"title": "Product name",
+			"price": "$19.99",
+			"rating": "4.5/5",
+			"btnText": "Add to cart"
+		},
+		{
+			"src": "/sections/ecommerce/discount-badge/discount-badge.html",
+			"discount": 20,
+			"label": "OFF"
+		},
+                {
+                        "src": "/sections/media/video-embed/video-embed.html",
+                        "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+                        "poster": "img/spider.svg",
+                        "title": "Embedded Video",
+                        "description": "Example of the video embed section",
+                        "autoplay": false,
+                        "loop": false,
+                        "muted": false
+                },
+                {
+                        "src": "/sections/education/certificate/certificate.html",
+                        "title": "Certificate of Completion",
+                        "recipient": "Jane Doe",
+                        "course": "Intro to AI",
+                        "issuer": "Web Academy",
+                        "date": "2024-01-01",
+                        "id": "CERT-12345"
+                },
+                {
+                        "src": "/sections/education/comparison-table/comparison-table.html",
+                        "headers": ["Basic", "Pro"],
+                        "rows": [
+                                { "feature": "Lessons", "values": ["10", "20"] },
+                                { "feature": "Support", "values": ["Email", "24/7"] }
+                        ]
+                },
+                {
+                        "src": "/sections/education/instructor/instructor.html",
+                        "img": "/img/instructor.jpg",
+                        "name": "Dr. Smith",
+                        "role": "Professor",
+                        "bio": "Expert in web technologies.",
+                        "socials": [
+                                { "href": "https://twitter.com", "img": "/img/twitter.svg", "name": "Twitter" }
+                        ]
+                },
+                {
+                        "src": "/sections/education/lesson-list/lesson-list.html",
+                        "title": "Course Lessons",
+                        "lessons": [
+                                { "name": "Introduction", "duration": "5m" },
+                                { "name": "Advanced Topics", "duration": "15m", "completed": true }
+                        ]
+                },
+                {
+                        "src": "/sections/education/progress/progress.html",
+                        "title": "Course Progress",
+                        "description": "Track completion",
+                        "items": [
+                                { "label": "Module 1", "value": 40 },
+                                { "label": "Module 2", "value": 80 }
+                        ]
+                },
+                {
+                        "src": "/sections/education/quiz/quiz.html",
+                        "question": "What is 2 + 2?",
+                        "options": ["3", "4", "5"],
+                        "answer": 1
+                },
+                {
+                        "src": "/sections/education/syllabus/syllabus.html",
+                        "title": "Syllabus",
+                        "modules": [
+                                {
+                                        "title": "Module 1",
+                                        "duration": "1h",
+                                        "description": "Overview",
+                                        "lessons": [
+                                                { "title": "Lesson 1", "duration": "10m" },
+                                                { "title": "Lesson 2", "duration": "20m" }
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "src": "/sections/education/timeline/timeline.html",
+                        "title": "Timeline",
+                        "description": "Learning path",
+                        "items": [
+                                { "time": "Week 1", "label": "Start", "text": "Basics" },
+                                { "time": "Week 2", "label": "Practice", "text": "Exercises" }
+                        ]
+                },
+                {
+                        "src": "/sections/feedback/press-logos/press-logos.html",
+                        "title": "As Seen In",
+                        "logos": [
+                                { "img": "/img/logo1.png", "alt": "Logo 1" },
+                                { "img": "/img/logo2.png", "alt": "Logo 2" }
+                        ]
+                },
+                {
+                        "src": "/sections/feedback/review-carousel/review-carousel.html",
+                        "title": "Reviews",
+                        "reviews": [
+                                { "text": "Great course!", "author": "Alice" },
+                                { "text": "Loved it!", "author": "Bob" }
+                        ]
+                },
+                {
+                        "src": "/sections/feedback/testimonial-block/testimonial-block.html",
+                        "title": "Testimonials",
+                        "items": [
+                                { "img": "/img/user1.jpg", "quote": "Fantastic!", "author": "Carol", "role": "Designer" },
+                                { "img": "/img/user2.jpg", "quote": "Very useful", "author": "Dave", "role": "Developer" }
+                        ]
+                },
+                {
+                        "src": "/sections/feedback/trust-badges/trust-badges.html",
+                        "badges": [
+                                { "img": "/img/badge1.png", "alt": "Badge 1", "href": "#" },
+                                { "img": "/img/badge2.png", "alt": "Badge 2" }
+                        ]
+                },
+                {
+                        "src": "/sections/forms/application/application.html",
+                        "title": "Job Application",
+                        "description": "Apply for position",
+                        "submit": "Send Application"
+                },
+                {
+                        "src": "/sections/forms/contact/contact.html",
+                        "title": "Contact Us",
+                        "description": "We'd love to hear from you",
+                        "action": "/contact",
+                        "namePlaceholder": "Your name",
+                        "emailPlaceholder": "you@example.com",
+                        "messagePlaceholder": "Your message",
+                        "buttonText": "Send"
+                },
+                {
+                        "src": "/sections/forms/multistep/multistep.html"
+                },
+                {
+                        "src": "/sections/forms/newsletter/newsletter.html",
+                        "title": "Newsletter",
+                        "description": "Get updates",
+                        "action": "/subscribe",
+                        "placeholder": "Email address",
+                        "button": "Subscribe"
+                },
+                {
+                        "src": "/sections/forms/rsvp/rsvp.html",
+                        "title": "RSVP",
+                        "description": "Let us know",
+                        "action": "/rsvp",
+                        "buttonText": "Submit"
+                },
+                {
+                        "src": "/sections/forms/survey/survey.html",
+                        "title": "Survey",
+                        "description": "Tell us more",
+                        "questions": [
+                                { "name": "name", "label": "Your Name", "type": "text", "placeholder": "Name" },
+                                { "name": "feedback", "label": "Feedback", "type": "textarea", "placeholder": "Comment" },
+                                {
+                                        "name": "rating",
+                                        "label": "Rate",
+                                        "type": "select",
+                                        "options": [
+                                                { "value": "1", "label": "1" },
+                                                { "value": "2", "label": "2" }
+                                        ]
+                                }
+                        ],
+                        "submitText": "Send"
+                },
+                {
+                        "src": "/sections/forms/upload/upload.html",
+                        "action": "/upload",
+                        "buttonLabel": "Upload File"
+                },
+                {
+                        "src": "/sections/hero.html",
+                        "title": "Welcome",
+                        "description": "Start your journey",
+                        "img": "/img/hero-main.jpg",
+                        "imgs": ["/img/hero-1.jpg", "/img/hero-2.jpg"]
+                },
+                {
+                        "src": "/sections/layout/background/background.html",
+                        "color": "#f0f0f0",
+                        "image": "/img/bg.png",
+                        "size": "cover",
+                        "position": "center",
+                        "content": "<p>Background content</p>"
+                },
+                {
+                        "src": "/sections/layout/collapse/collapse.html",
+                        "title": "Details",
+                        "content": "<p>Hidden text</p>",
+                        "open": false
+                },
+                {
+                        "src": "/sections/layout/container/container.html",
+                        "size": "md",
+                        "content": "<p>Contained content</p>"
+                },
+                {
+                        "src": "/sections/layout/divider/divider.html",
+                        "text": "OR"
+                },
+                {
+                        "src": "/sections/layout/grid/grid.html",
+                        "min": "200px",
+                        "items": [
+                                { "content": "<p>Item 1</p>" },
+                                { "content": "<p>Item 2</p>" }
+                        ]
+                },
+                {
+                        "src": "/sections/layout/responsive-visibility/responsive-visibility.html"
+                },
+                {
+                        "src": "/sections/layout/scroll-area/scroll-area.html",
+                        "height": "200px",
+                        "content": "<p>Scrollable content</p>"
+                },
+                {
+                        "src": "/sections/layout/spacer/spacer.html",
+                        "size": "60px"
+                },
+                {
+                        "src": "/sections/layout/sticky/sticky.html",
+                        "id": "sticky-1",
+                        "content": "<p>Sticky content</p>"
+                },
+                {
+                        "src": "/sections/layout/tabs/tabs.html",
+                        "tabs": [
+                                { "label": "Tab 1", "content": "<p>Content 1</p>" },
+                                { "label": "Tab 2", "content": "<p>Content 2</p>" }
+                        ]
+                },
+                {
+                        "src": "/sections/media/animated-banner/animated-banner.html",
+                        "img": "/img/banner.jpg",
+                        "title": "Banner Title",
+                        "subtitle": "Subheading"
+                },
+                {
+                        "src": "/sections/media/audio-player/audio-player.html",
+                        "audio": "/media/sample.mp3",
+                        "title": "Sample Audio",
+                        "description": "Listen to this clip",
+                        "autoplay": false,
+                        "loop": false
+                },
+                {
+                        "src": "/sections/media/gallery/gallery.html",
+                        "items": [
+                                { "img": "/img/photo1.jpg", "alt": "Photo 1" },
+                                { "img": "/img/photo2.jpg", "alt": "Photo 2" }
+                        ],
+                        "caption": "Gallery caption"
+                },
+                {
+                        "src": "/sections/media/image-caption/image-caption.html",
+                        "img": "/img/pic.jpg",
+                        "caption": "Image caption"
+                },
+                {
+                        "src": "/sections/media/image/image.html",
+                        "img": "/img/pic.jpg",
+                        "alt": "Sample image",
+                        "caption": "Caption"
+                },
+                {
+                        "src": "/sections/media/lightbox/lightbox.html",
+                        "thumbnail": "/img/thumb.jpg",
+                        "image": "/img/full.jpg",
+                        "alt": "Lightbox image",
+                        "caption": "Click to enlarge"
+                },
+                {
+                        "src": "/sections/media/slider/slider.html",
+                        "slides": [
+                                { "img": "/img/slide1.jpg", "alt": "Slide 1" },
+                                { "img": "/img/slide2.jpg", "alt": "Slide 2" }
+                        ]
+                },
+                {
+                        "src": "/sections/navigation/anchor-links/anchor-links.html",
+                        "links": [
+                                { "href": "#section1", "label": "Section 1" },
+                                { "href": "#section2", "label": "Section 2" }
+                        ]
+                },
+                {
+                        "src": "/sections/navigation/breadcrumbs/breadcrumbs.html",
+                        "items": [
+                                { "url": "/", "label": "Home" },
+                                { "url": "/blog", "label": "Blog" },
+                                { "label": "Post" }
+                        ]
+                },
+                {
+                        "src": "/sections/navigation/mega-menu/mega-menu.html",
+                        "items": [
+                                {
+                                        "url": "/products",
+                                        "title": "Products",
+                                        "columns": [
+                                                {
+                                                        "title": "Category",
+                                                        "links": [
+                                                                { "url": "/products/a", "title": "Product A" },
+                                                                { "url": "/products/b", "title": "Product B" }
+                                                        ]
+                                                }
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "src": "/sections/navigation/navbar/navbar.html",
+                        "logo": "/img/logo.png",
+                        "logoUrl": "/",
+                        "logoAlt": "Logo",
+                        "items": [
+                                { "url": "/about", "label": "About" },
+                                { "url": "/contact", "label": "Contact" }
+                        ]
+                },
+                {
+                        "src": "/sections/navigation/pagination/pagination.html",
+                        "prev": "/page/1",
+                        "next": "/page/3",
+                        "pages": [
+                                { "url": "/page/1", "label": "1" },
+                                { "url": "/page/2", "label": "2", "current": true },
+                                { "label": "3" }
+                        ]
+                },
+                {
+                        "src": "/sections/navigation/scroll-to-top/scroll-to-top.html"
+                },
+                {
+                        "src": "/sections/navigation/sidebar/sidebar.html",
+                        "items": [
+                                { "url": "/dashboard", "name": "Dashboard", "active": true },
+                                {
+                                        "url": "/settings",
+                                        "name": "Settings",
+                                        "items": [
+                                                { "url": "/settings/profile", "name": "Profile" },
+                                                { "url": "/settings/billing", "name": "Billing", "active": true }
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "src": "/sections/navigation/table-of-contents/table-of-contents.html",
+                        "title": "Contents",
+                        "items": [
+                                { "id": "intro", "text": "Introduction" },
+                                { "id": "usage", "text": "Usage", "children": [ { "id": "install", "text": "Install" } ] }
+                        ]
+                },
+                {
+                        "src": "/sections/seo/article-schema/article-schema.html",
+                        "headline": "Sample Article",
+                        "image": "/img/article.jpg",
+                        "datePublished": "2024-01-01",
+                        "dateModified": "2024-01-02",
+                        "author": "Author Name",
+                        "publisherName": "Publisher",
+                        "publisherLogo": "/img/logo.png",
+                        "url": "https://example.com/article"
+                },
+                {
+                        "src": "/sections/seo/breadcrumb-schema/breadcrumb-schema.html",
+                        "items": [
+                                { "name": "Home", "url": "/" },
+                                { "name": "Blog", "url": "/blog" },
+                                { "name": "Post" }
+                        ]
+                },
+                {
+                        "src": "/sections/seo/faq-schema/faq-schema.html",
+                        "items": [
+                                { "question": "Q1?", "answer": "A1" },
+                                { "question": "Q2?", "answer": "A2" }
+                        ]
+                },
+                {
+                        "src": "/sections/seo/meta-preview/meta-preview.html",
+                        "image": "/img/meta.png",
+                        "title": "Meta Title",
+                        "url": "https://example.com",
+                        "description": "Meta description"
+                },
+                {
+                        "src": "/sections/seo/og-preview/og-preview.html",
+                        "image": "/img/og.png",
+                        "url": "https://example.com",
+                        "title": "OG Title",
+                        "description": "OG description"
+                },
+                {
+                        "src": "/sections/seo/product-schema/product-schema.html",
+                        "name": "Product",
+                        "description": "Product description",
+                        "image": "/img/product.png",
+                        "sku": "SKU123",
+                        "brand": "Brand",
+                        "url": "https://example.com/product",
+                        "price": "99.99",
+                        "priceCurrency": "USD",
+                        "availability": "InStock"
+                },
+                {
+                        "src": "/sections/seo/structured-data/structured-data.html",
+                        "data": "{\"@context\":\"https://schema.org\",\"@type\":\"Thing\",\"name\":\"Example\"}"
+                },
+                {
+                        "src": "/sections/utility/alert/alert.html",
+                        "type": "info",
+                        "close": true,
+                        "title": "Notice",
+                        "message": "This is an alert"
+                },
+                {
+                        "src": "/sections/utility/cookie-banner/cookie-banner.html",
+                        "text": "We use cookies",
+                        "link": { "url": "/privacy", "label": "Learn more" },
+                        "button": "Accept"
+                },
+                {
+                        "src": "/sections/utility/countdown/countdown.html",
+                        "title": "Countdown",
+                        "description": "Event starts in",
+                        "endDate": "2024-12-31T23:59:59Z"
+                },
+                {
+                        "src": "/sections/utility/embed/embed.html",
+                        "title": "Embedded Content",
+                        "embed": "<iframe src='https://example.com'></iframe>",
+                        "caption": "Embedded iframe"
+                },
+                {
+                        "src": "/sections/utility/language-switcher/language-switcher.html",
+                        "label": "Language",
+                        "languages": [
+                                { "url": "/en", "label": "EN", "current": true },
+                                { "url": "/es", "label": "ES" }
+                        ]
+                },
+                {
+                        "src": "/sections/utility/notification/notification.html",
+                        "type": "success",
+                        "message": "Saved successfully"
+                },
+                {
+                        "src": "/sections/utility/progress-bar/progress-bar.html",
+                        "value": 30,
+                        "max": 100,
+                        "label": "30% Complete"
+                },
+                {
+                        "src": "/sections/utility/social-feed/social-feed.html",
+                        "items": [
+                                { "avatar": "/img/user1.jpg", "name": "Alice", "handle": "@alice", "time": "1h", "text": "Hello world" },
+                                { "avatar": "/img/user2.jpg", "name": "Bob", "text": "Nice post" }
+                        ]
+                },
+                {
+                        "src": "/sections/utility/social-share/social-share.html",
+                        "url": "https://example.com",
+                        "networks": ["facebook", "linkedin", "telegram"]
+                }
+        ]
+}

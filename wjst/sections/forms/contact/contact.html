@@ -1,0 +1,42 @@
+<div class="contact-form">
+	{% if section.title %}
+	<div class="contact-form__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="contact-form__description">{{{section.description}}}</div>
+	{% endif %}
+	<form
+		class="w-forms"
+		method="post"
+		{%
+		if
+		section.action
+		%}
+		action="{{{section.action}}}"
+		{%
+		endif
+		%}
+	>
+		<input
+			class="w-forms__input"
+			type="text"
+			name="name"
+			placeholder="{{{section.namePlaceholder || 'Your name'}}}"
+		/>
+		<input
+			class="w-forms__input"
+			type="email"
+			name="email"
+			placeholder="{{{section.emailPlaceholder || 'you@example.com'}}}"
+		/>
+		<textarea
+			class="w-forms__input"
+			name="message"
+			placeholder="{{{section.messagePlaceholder || 'Your message'}}}"
+		></textarea>
+		<div class="w-forms__btn">
+			<button type="submit" class="btn btn-primary">
+				{{{section.buttonText || 'Send'}}}
+			</button>
+		</div>
+	</form>
+</div>

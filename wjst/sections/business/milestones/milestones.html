@@ -1,0 +1,21 @@
+<div class="milestones">
+	{% if section.title %}
+	<div class="milestones__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="milestones__description">{{{section.description}}}</div>
+	{% endif %} {% if section.items %}
+	<ul class="milestones__items">
+		{% for item in section.items %}
+		<li class="milestones__item">
+			{% if item.year %}
+			<div class="milestones__year">{{{item.year}}}</div>
+			{% endif %} {% if item.title %}
+			<div class="milestones__label">{{{item.title}}}</div>
+			{% endif %} {% if item.text %}
+			<div class="milestones__text">{{{item.text}}}</div>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

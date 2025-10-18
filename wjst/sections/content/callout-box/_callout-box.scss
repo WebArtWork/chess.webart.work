@@ -1,0 +1,48 @@
+// callout-box section
+
+.callout-box {
+	padding: calc(20px * var(--padding-scale));
+	background-color: var(--c-bg-item);
+	border-left: 4px solid var(--c-primary-border);
+	border-radius: var(--b-radius);
+	color: var(--c-text-primary);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 24px;
+		font-weight: 600;
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		margin-bottom: calc(8px * var(--margin-scale));
+	}
+
+	&__description {
+		font-family: var(--ff-base);
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.callout-box {
+		&__title {
+			font-size: 20px;
+		}
+		&__description {
+			font-size: calc(var(--font-size) * 0.9);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.callout-box {
+		&__title {
+			font-size: 18px;
+		}
+		&__description {
+			font-size: calc(var(--font-size) * 0.875);
+		}
+	}
+}

@@ -1,0 +1,20 @@
+<div class="price">
+	{% if section.original %}
+	<div class="price__original">
+		{% if section.currency %}<span class="price__currency"
+			>{{{section.currency}}}</span
+		>{% endif %}{{{section.original}}}
+	</div>
+	{% endif %}
+	<div class="price__current">
+		{% if section.currency %}<span class="price__currency"
+			>{{{section.currency}}}</span
+		>{% endif %}{{{section.current}}}
+	</div>
+	{% if section.note %}
+	<div class="price__note">{{{section.note}}}</div>
+	{% endif %}
+</div>
+
+
+

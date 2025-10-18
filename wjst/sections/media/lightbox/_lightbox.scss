@@ -1,0 +1,73 @@
+// lightbox section
+
+.lightbox {
+	font-family: var(--ff-base);
+
+	&__thumb {
+		cursor: pointer;
+		img {
+			display: block;
+			width: 100%;
+			border-radius: var(--b-radius);
+		}
+	}
+
+	&__overlay {
+		position: fixed;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(0, 0, 0, 0.8);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity var(--transition);
+	}
+
+	&__overlay--active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	&__dialog {
+		position: relative;
+		max-width: 90%;
+		max-height: 90%;
+	}
+
+	&__image {
+		width: 100%;
+		height: auto;
+		display: block;
+		border-radius: var(--b-radius);
+	}
+
+	&__caption {
+		margin-top: calc(8px * var(--margin-scale));
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-primary);
+		text-align: center;
+	}
+
+	&__close {
+		position: absolute;
+		top: calc(8px * var(--padding-scale));
+		right: calc(8px * var(--padding-scale));
+		background: var(--c-primary);
+		color: var(--c-white);
+		border: none;
+		border-radius: var(--b-radius);
+		cursor: pointer;
+		padding: calc(4px * var(--padding-scale))
+			calc(8px * var(--padding-scale));
+		font-size: calc(var(--font-size) * 1.2);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.lightbox__dialog {
+		max-width: 95%;
+	}
+}

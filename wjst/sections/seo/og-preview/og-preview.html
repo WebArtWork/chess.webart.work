@@ -1,0 +1,16 @@
+<div class="og-preview">
+	{% if section.image %}
+	<div class="og-preview__image">
+		<img src="{{{section.image}}}" alt="" />
+	</div>
+	{% endif %}
+	<div class="og-preview__content">
+		{% if section.url %}
+		<div class="og-preview__url">{{{section.url}}}</div>
+		{% endif %} {% if section.title %}
+		<div class="og-preview__title">{{{section.title}}}</div>
+		{% endif %} {% if section.description %}
+		<div class="og-preview__description">{{{section.description}}}</div>
+		{% endif %}
+	</div>
+</div>

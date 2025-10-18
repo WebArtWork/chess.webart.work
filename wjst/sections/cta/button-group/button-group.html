@@ -1,0 +1,22 @@
+<div class="button-group">
+	{% if section.title %}
+	<div class="button-group__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="button-group__description">{{{section.description}}}</div>
+	{% endif %} {% if section.buttons %}
+	<div class="button-group__wrapper">
+		{% for btn in section.buttons %} {% if btn.href %}
+		<a
+			href="{{{btn.href}}}"
+			class="btn{% if btn.modifier %} {{{btn.modifier}}}{% endif %}"
+		>
+			{{{btn.text}}}
+		</a>
+		{% else %}
+		<button class="btn{% if btn.modifier %} {{{btn.modifier}}}{% endif %}">
+			{{{btn.text}}}
+		</button>
+		{% endif %} {% endfor %}
+	</div>
+	{% endif %}
+</div>

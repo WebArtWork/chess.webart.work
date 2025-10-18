@@ -1,0 +1,25 @@
+<div class="comparison-table">
+	<table class="comparison-table__table">
+		{% if section.headers %}
+		<thead>
+			<tr>
+				<th></th>
+				{% for head in section.headers %}
+				<th>{{{head}}}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		{% endif %} {% if section.rows %}
+		<tbody>
+			{% for row in section.rows %}
+			<tr>
+				<th>{{{row.feature}}}</th>
+				{% for value in row.values %}
+				<td>{{{value}}}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% endif %}
+	</table>
+</div>

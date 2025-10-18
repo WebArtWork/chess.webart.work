@@ -1,0 +1,23 @@
+<div class="awards">
+	{% if section.title %}
+	<div class="awards__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="awards__description">{{{section.description}}}</div>
+	{% endif %} {% if section.items %}
+	<ul class="awards__items">
+		{% for item in section.items %}
+		<li class="awards__item">
+			{% if item.img %}
+			<img src="{{{item.img}}}" alt="" class="awards__img" />
+			{% endif %} {% if item.title %}
+			<div class="awards__item-title">{{{item.title}}}</div>
+			{% endif %} {% if item.year %}
+			<div class="awards__year">{{{item.year}}}</div>
+			{% endif %} {% if item.description %}
+			<div class="awards__item-text">{{{item.description}}}</div>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

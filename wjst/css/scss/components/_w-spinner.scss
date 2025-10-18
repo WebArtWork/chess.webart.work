@@ -1,0 +1,17 @@
+.spinner {
+	width: 100px; /* Размер спиннера */
+	height: 100px;
+	border: 16px solid #504e4e; /* Светлый цвет фона спиннера */
+	border-top: 16px solid var(--c-primary-hover); /* Цвет спиннера */
+	border-radius: 50%;
+	animation: spin 1s linear infinite; /* Анимация вращения */
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

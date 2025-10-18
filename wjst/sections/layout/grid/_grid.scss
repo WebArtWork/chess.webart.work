@@ -1,0 +1,17 @@
+// grid section
+
+.grid {
+	padding-bottom: calc(50px * var(--padding-scale));
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(var(--grid-min, 280px), 1fr)
+	);
+	gap: calc(20px * var(--margin-scale));
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}

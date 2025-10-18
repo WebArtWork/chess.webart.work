@@ -1,0 +1,9 @@
+<div class="gallery">
+	{% for item in section.items %}
+	<div class="gallery__item">
+		<img src="{{{item.img}}}" alt="{{{item.alt}}}" />
+	</div>
+	{% endfor %} {% if section.caption %}
+	<div class="gallery__caption">{{{section.caption}}}</div>
+	{% endif %}
+</div>

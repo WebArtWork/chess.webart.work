@@ -1,0 +1,22 @@
+<div class="tabs">
+	<div class="tabs__nav">
+		{% for tab in section.tabs %}
+		<button
+			class="tabs__nav-button{% if loop.index0 == 0 %} active{% endif %}"
+			data-tab="{{ loop.index0 }}"
+		>
+			{{{tab.label}}}
+		</button>
+		{% endfor %}
+	</div>
+	<div class="tabs__content">
+		{% for tab in section.tabs %}
+		<div
+			class="tabs__pane{% if loop.index0 == 0 %} active{% endif %}"
+			data-pane="{{ loop.index0 }}"
+		>
+			{{{tab.content}}}
+		</div>
+		{% endfor %}
+	</div>
+</div>

@@ -1,0 +1,92 @@
+// animated-banner section
+
+.animated-banner {
+	position: relative;
+	overflow: hidden;
+	padding: calc(60px * var(--padding-scale)) calc(20px * var(--padding-scale));
+	border-radius: var(--b-radius);
+	color: var(--c-text-primary);
+	font-family: var(--ff-base);
+	text-align: center;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-color: var(--c-primary);
+		opacity: 0.4;
+		z-index: 1;
+	}
+
+	&__media {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			animation: banner-zoom 20s ease-in-out infinite alternate;
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 36px;
+		font-weight: 600;
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		margin: 0;
+		transition: color var(--transition);
+	}
+
+	&__subtitle {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		margin-top: calc(12px * var(--margin-scale));
+	}
+
+	&:hover {
+		.animated-banner__title {
+			color: var(--c-primary-hover);
+		}
+	}
+}
+
+@keyframes banner-zoom {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.1);
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.animated-banner__title {
+		font-size: 32px;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.animated-banner {
+		padding: calc(40px * var(--padding-scale))
+			calc(15px * var(--padding-scale));
+	}
+	.animated-banner__title {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.animated-banner__title {
+		font-size: 24px;
+	}
+}

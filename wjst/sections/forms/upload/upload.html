@@ -1,0 +1,52 @@
+<div class="upload">
+	<input class="upload__input" type="file" id="uploadInput" />
+	<button class="upload__button" id="uploadButton">
+		{{{section.buttonLabel || 'Upload'}}}
+	</button>
+	<div class="upload__progress" id="uploadProgress"></div>
+	<div class="upload__status" id="uploadStatus"></div>
+</div>
+<script>
+	(function () {
+		var input = document.getElementById("uploadInput");
+		var button = document.getElementById("uploadButton");
+		var progress = document.getElementById("uploadProgress");
+		var status = document.getElementById("uploadStatus");
+		if (!input || !button) return;
+		var url = '{{{section.action || "/api/upload"}}}';
+		button.addEventListener("click", function () {
+			var file = input.files[0];
+			if (!file) {
+				status.textContent = "Please select a file.";
+				status.className = "upload__status upload__status--error";
+				return;
+			}
+			var data = new FormData();
+			data.append("file", file);
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", url, true);
+			xhr.upload.addEventListener("progress", function (e) {
+				if (e.lengthComputable) {
+					var percent = Math.round((e.loaded / e.total) * 100);
+					progress.style.width = percent + "%";
+				}
+			});
+			xhr.onload = function () {
+				if (xhr.status >= 200 && xhr.status < 300) {
+					status.textContent = "Upload complete";
+					status.className = "upload__status upload__status--success";
+				} else {
+					status.textContent = "Upload failed";
+					status.className = "upload__status upload__status--error";
+				}
+			};
+			xhr.onerror = function () {
+				status.textContent = "Upload error";
+				status.className = "upload__status upload__status--error";
+			};
+			xhr.send(data);
+			progress.style.width = "0";
+			status.textContent = "";
+		});
+	})();
+</script>

@@ -1,0 +1,125 @@
+// team section
+
+.team {
+	padding-bottom: calc(50px * var(--padding-scale));
+	font-family: var(--ff-base);
+
+	&__title {
+		text-align: center;
+		font-family: var(--ff-title);
+		font-size: 36px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__description {
+		text-align: center;
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		margin-top: calc(12px * var(--margin-scale));
+		max-width: 70ch;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__group {
+		margin-top: calc(40px * var(--margin-scale));
+	}
+
+	&__group-name {
+		text-align: center;
+		font-family: var(--ff-title);
+		font-size: 24px;
+		font-weight: 600;
+		color: var(--c-text-primary);
+		margin-bottom: calc(24px * var(--margin-scale));
+	}
+
+	&__members {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: calc(20px * var(--margin-scale));
+	}
+
+	&__member {
+		text-align: center;
+		max-width: 180px;
+	}
+
+	&__avatar {
+		width: 120px;
+		height: 120px;
+		margin: 0 auto;
+		border-radius: 50%;
+		overflow: hidden;
+		margin-bottom: calc(12px * var(--margin-scale));
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			object-fit: cover;
+		}
+	}
+
+	&__name {
+		font-family: var(--ff-title);
+		font-size: 18px;
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__username {
+		font-size: calc(var(--font-size) * 0.9);
+		color: var(--c-text-secondary);
+		margin-top: calc(4px * var(--margin-scale));
+	}
+
+	&__socials {
+		margin-top: calc(8px * var(--margin-scale));
+		display: flex;
+		justify-content: center;
+		gap: calc(8px * var(--margin-scale));
+		a {
+			display: inline-block;
+			width: var(--icon-size);
+			height: var(--icon-size);
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.team__title {
+		font-size: 28px;
+	}
+	.team__group-name {
+		font-size: 20px;
+	}
+	.team__avatar {
+		width: 100px;
+		height: 100px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.team__title {
+		font-size: 24px;
+	}
+	.team__group-name {
+		font-size: 18px;
+	}
+	.team__avatar {
+		width: 80px;
+		height: 80px;
+	}
+}

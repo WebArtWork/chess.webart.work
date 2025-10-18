@@ -1,0 +1,78 @@
+// certificate section
+
+.certificate {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: calc(40px * var(--padding-scale));
+	border: 1px solid var(--c-border);
+	border-radius: var(--b-radius);
+	background-color: var(--c-bg-item);
+	text-align: center;
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 32px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__recipient {
+		margin-top: calc(20px * var(--margin-scale));
+		font-size: 24px;
+		font-weight: 500;
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__course {
+		margin-top: calc(12px * var(--margin-scale));
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+	}
+
+	&__meta {
+		margin-top: calc(20px * var(--margin-scale));
+		font-size: calc(var(--font-size) * 0.875);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		display: flex;
+		justify-content: center;
+		gap: calc(12px * var(--padding-scale));
+	}
+
+	&__id {
+		margin-top: calc(12px * var(--margin-scale));
+		font-size: calc(var(--font-size) * 0.75);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.certificate {
+		padding: calc(30px * var(--padding-scale));
+	}
+	.certificate__title {
+		font-size: 28px;
+	}
+	.certificate__recipient {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.certificate__title {
+		font-size: 24px;
+	}
+	.certificate__recipient {
+		font-size: 18px;
+	}
+}

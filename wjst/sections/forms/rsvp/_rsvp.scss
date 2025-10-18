@@ -1,0 +1,115 @@
+// rsvp section
+
+.rsvp {
+	padding: calc(40px * var(--padding-scale)) 0;
+	text-align: center;
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 32px;
+		font-weight: 600;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__description {
+		margin-top: calc(12px * var(--margin-scale));
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		max-width: 70ch;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__form {
+		margin-top: calc(20px * var(--margin-scale));
+		display: grid;
+		gap: calc(12px * var(--margin-scale));
+		max-width: 480px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__field {
+		text-align: left;
+	}
+
+	&__label {
+		display: block;
+		margin-bottom: calc(4px * var(--margin-scale));
+		font-size: calc(var(--font-size) * 0.9);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__input,
+	&__select {
+		width: 100%;
+		padding: calc(8px * var(--padding-scale))
+			calc(12px * var(--padding-scale));
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background-color: var(--c-bg-item);
+		color: var(--c-text-secondary);
+		transition: border-color var(--transition),
+			background-color var(--transition);
+		&::placeholder {
+			color: var(--c-placeholder);
+		}
+		&:focus {
+			outline: none;
+			border-color: var(--c-primary-border);
+			background-color: var(--c-white);
+		}
+	}
+
+	&__button {
+		margin-top: calc(8px * var(--margin-scale));
+		padding: calc(10px * var(--padding-scale))
+			calc(16px * var(--padding-scale));
+		font-size: var(--font-size);
+		font-family: var(--ff-base);
+		border: none;
+		border-radius: var(--b-radius);
+		background-color: var(--c-primary);
+		color: var(--c-text-primary);
+		cursor: pointer;
+		transition: background-color var(--transition);
+		&:hover {
+			background-color: var(--c-primary-hover);
+		}
+		&:active {
+			background-color: var(--c-primary-cursor);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.rsvp__title {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.rsvp__title {
+		font-size: 24px;
+	}
+	.rsvp__description {
+		font-size: calc(var(--font-size) * 0.9);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.rsvp__title {
+		font-size: 20px;
+	}
+	.rsvp__description {
+		font-size: calc(var(--font-size) * 0.875);
+	}
+}

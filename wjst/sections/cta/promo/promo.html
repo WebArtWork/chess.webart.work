@@ -1,0 +1,17 @@
+<div class="promo">
+	{% if section.img %}
+	<div class="promo__img">
+		<img src="{{{section.img}}}" alt="" />
+	</div>
+	{% endif %} {% if section.title %}
+	<div class="promo__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="promo__description">{{{section.description}}}</div>
+	{% endif %} {% if section.button %}
+	<div class="promo__action">
+		<a href="{{{section.button.href}}}" class="promo__btn"
+			>{{{section.button.text}}}</a
+		>
+	</div>
+	{% endif %}
+</div>

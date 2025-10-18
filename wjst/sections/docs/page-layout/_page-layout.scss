@@ -1,0 +1,40 @@
+// page-layout section
+
+.page-layout {
+	display: grid;
+	grid-template-columns: 250px 1fr 200px;
+	gap: calc(30px * var(--margin-scale));
+	padding-bottom: calc(50px * var(--padding-scale));
+	font-family: var(--ff-base);
+
+	&__sidebar,
+	&__toc {
+		background-color: var(--c-bg-item);
+		border-radius: var(--b-radius);
+		padding: calc(20px * var(--padding-scale));
+		color: var(--c-text-secondary);
+		height: max-content;
+		position: sticky;
+		top: calc(20px * var(--padding-scale));
+	}
+
+	&__content {
+		padding: calc(20px * var(--padding-scale));
+		color: var(--c-text-body-secondary);
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.page-layout {
+		grid-template-columns: 1fr;
+	}
+	.page-layout__toc {
+		display: none;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.page-layout__sidebar {
+		order: -1;
+	}
+}

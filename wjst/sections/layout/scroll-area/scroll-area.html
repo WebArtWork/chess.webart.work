@@ -1,0 +1,15 @@
+<div class="scroll-area">
+	<div
+		class="scroll-area__viewport"
+		{%
+		if
+		section.height
+		%}
+		style="--scroll-area-height: {{{section.height}}}"
+		{%
+		endif
+		%}
+	>
+		{{{section.content}}}
+	</div>
+</div>

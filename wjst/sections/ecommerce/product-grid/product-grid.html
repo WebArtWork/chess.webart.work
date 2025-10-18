@@ -1,0 +1,24 @@
+<div class="product-grid">
+	{% for item in section.items %}
+	<article class="product-grid__item">
+		{% if item.img %}
+		<div class="product-grid__image">
+			<img src="{{{item.img}}}" alt="{{{item.title}}}" />
+		</div>
+		{% endif %}
+		<div class="product-grid__body">
+			{% if item.title %}
+			<h3 class="product-grid__title">
+				{% if item.url %}
+				<a href="{{{item.url}}}">{{{item.title}}}</a>
+				{% else %} {{{item.title}}} {% endif %}
+			</h3>
+			{% endif %} {% if item.price %}
+			<div class="product-grid__price">{{{item.price}}}</div>
+			{% endif %} {% if item.rating %}
+			<div class="product-grid__rating">{{{item.rating}}}</div>
+			{% endif %}
+		</div>
+	</article>
+	{% endfor %}
+</div>

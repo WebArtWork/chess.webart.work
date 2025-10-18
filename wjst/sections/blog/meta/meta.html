@@ -1,0 +1,19 @@
+<div class="blog-meta">
+	{% if section.date %}
+	<div class="blog-meta__item blog-meta__date">
+		<time datetime="{{{section.date}}}">{{{section.date}}}</time>
+	</div>
+	{% endif %} {% if section.author %}
+	<div class="blog-meta__item blog-meta__author">{{{section.author}}}</div>
+	{% endif %} {% if section.readTime %}
+	<div class="blog-meta__item blog-meta__read-time">
+		{{{section.readTime}}}
+	</div>
+	{% endif %} {% if section.categories %}
+	<div class="blog-meta__item blog-meta__categories">
+		{% for category in section.categories %}
+		<a href="{{{category.url}}}">{{{category.name}}}</a>{% if not loop.last
+		%}, {% endif %} {% endfor %}
+	</div>
+	{% endif %}
+</div>

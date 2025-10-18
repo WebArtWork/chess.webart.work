@@ -1,0 +1,54 @@
+// responsive visibility section
+
+.responsive-visibility {
+	font-family: var(--ff-base);
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+	text-align: center;
+
+	&__lg,
+	&__md,
+	&__sm,
+	&__xs {
+		padding: calc(20px * var(--padding-scale));
+		margin: calc(10px * var(--margin-scale)) auto;
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		background: var(--c-bg-item);
+		color: var(--c-text-primary);
+	}
+
+	&__md,
+	&__sm,
+	&__xs {
+		display: none;
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.responsive-visibility__lg {
+		display: none;
+	}
+	.responsive-visibility__md {
+		display: block;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.responsive-visibility__md {
+		display: none;
+	}
+	.responsive-visibility__sm {
+		display: block;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.responsive-visibility__sm {
+		display: none;
+	}
+	.responsive-visibility__xs {
+		display: block;
+	}
+}

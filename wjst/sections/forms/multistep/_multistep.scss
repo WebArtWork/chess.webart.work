@@ -1,0 +1,93 @@
+// multistep form section
+
+.multistep {
+	background: var(--c-bg-item);
+	padding: calc(20px * var(--padding-scale));
+	border-radius: var(--b-radius);
+	font-family: var(--ff-base);
+	color: var(--c-text-primary);
+	max-width: 480px;
+	margin: 0 auto;
+}
+
+.multistep__progress {
+	display: flex;
+	gap: calc(8px * var(--margin-scale));
+	justify-content: center;
+	margin-bottom: calc(20px * var(--margin-scale));
+}
+
+.multistep__progress-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--c-border);
+	transition: background var(--transition);
+}
+
+.multistep__progress-dot--active {
+	background: var(--c-primary);
+}
+
+.multistep__step {
+	display: none;
+}
+
+.multistep__step--active {
+	display: block;
+}
+
+.multistep__label {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+	color: var(--c-text-primary);
+}
+
+.multistep__input {
+	margin-top: calc(8px * var(--margin-scale));
+	padding: calc(8px * var(--padding-scale));
+	border: 1px solid var(--c-border);
+	border-radius: var(--b-radius);
+	font-family: var(--ff-base);
+	font-size: var(--font-size);
+	color: var(--c-text-secondary);
+	background: var(--c-body);
+}
+
+.multistep__buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: calc(20px * var(--margin-scale));
+}
+
+.multistep__btn {
+	padding: calc(8px * var(--padding-scale)) calc(16px * var(--padding-scale));
+	border: none;
+	border-radius: var(--b-radius);
+	background: var(--c-primary);
+	color: var(--c-text-primary);
+	cursor: pointer;
+	transition: background var(--transition);
+}
+
+.multistep__btn:hover {
+	background: var(--c-primary-hover);
+}
+
+.multistep__btn--prev {
+	background: var(--c-secondary);
+}
+
+.multistep__btn--prev:hover {
+	background: var(--c-primary-hover);
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.multistep {
+		padding: calc(16px * var(--padding-scale));
+	}
+}

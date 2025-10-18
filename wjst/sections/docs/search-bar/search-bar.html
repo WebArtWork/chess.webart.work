@@ -1,0 +1,44 @@
+<div class="search-bar">
+	<input
+		type="search"
+		class="search-bar__input"
+		placeholder="{{{section.placeholder || 'Search...'}}}"
+	/>
+	<ul class="search-bar__results"></ul>
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const input = document.querySelector(".search-bar__input");
+		const results = document.querySelector(".search-bar__results");
+		let index = [];
+
+		fetch("{{{section.index || '/search-index.json'}}}")
+			.then((res) => res.json())
+			.then((data) => (index = data))
+			.catch((err) => console.error("Failed to load search index", err));
+
+		input.addEventListener("input", function () {
+			const query = this.value.toLowerCase();
+			results.innerHTML = "";
+			if (!query) {
+				return;
+			}
+			const matches = index
+				.filter(
+					(item) =>
+						item.title.toLowerCase().includes(query) ||
+						(item.content &&
+							item.content.toLowerCase().includes(query))
+				)
+				.slice(0, 5);
+
+			for (const match of matches) {
+				const li = document.createElement("li");
+				li.className = "search-bar__result";
+				li.innerHTML = `<a href="${match.url}">${match.title}</a>`;
+				results.appendChild(li);
+			}
+		});
+	});
+</script>

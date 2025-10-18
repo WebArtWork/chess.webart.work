@@ -1,0 +1,33 @@
+<div class="social-share">
+	{% for network in section.networks %} {% if network == 'facebook' %}
+	<a
+		href="https://www.facebook.com/sharer/sharer.php?u={{{section.url}}}"
+		class="social-share__link social-share__facebook"
+		target="_blank"
+		rel="noopener"
+		aria-label="Share on Facebook"
+	>
+		<img src="/img/fb.svg" alt="facebook" />
+	</a>
+	{% elseif network == 'linkedin' %}
+	<a
+		href="https://www.linkedin.com/sharing/share-offsite/?url={{{section.url}}}"
+		class="social-share__link social-share__linkedin"
+		target="_blank"
+		rel="noopener"
+		aria-label="Share on LinkedIn"
+	>
+		<img src="/img/in.svg" alt="linkedin" />
+	</a>
+	{% elseif network == 'telegram' %}
+	<a
+		href="https://t.me/share/url?url={{{section.url}}}"
+		class="social-share__link social-share__telegram"
+		target="_blank"
+		rel="noopener"
+		aria-label="Share on Telegram"
+	>
+		<img src="/img/tg.svg" alt="telegram" />
+	</a>
+	{% endif %} {% endfor %}
+</div>

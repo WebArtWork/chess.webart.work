@@ -1,0 +1,81 @@
+<form class="multistep" id="multistep-form">
+	<div class="multistep__progress">
+		<div
+			class="multistep__progress-dot multistep__progress-dot--active"
+		></div>
+		<div class="multistep__progress-dot"></div>
+		<div class="multistep__progress-dot"></div>
+	</div>
+
+	<div class="multistep__step multistep__step--active">
+		<label class="multistep__label">
+			<span>First name</span>
+			<input type="text" name="first" class="multistep__input" />
+		</label>
+	</div>
+
+	<div class="multistep__step">
+		<label class="multistep__label">
+			<span>Email</span>
+			<input type="email" name="email" class="multistep__input" />
+		</label>
+	</div>
+
+	<div class="multistep__step">
+		<p>Thanks for providing the details.</p>
+	</div>
+
+	<div class="multistep__buttons">
+		<button type="button" class="multistep__btn multistep__btn--prev">
+			Prev
+		</button>
+		<button type="button" class="multistep__btn multistep__btn--next">
+			Next
+		</button>
+	</div>
+</form>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const form = document.getElementById("multistep-form");
+		const steps = form.querySelectorAll(".multistep__step");
+		const nextBtn = form.querySelector(".multistep__btn--next");
+		const prevBtn = form.querySelector(".multistep__btn--prev");
+		const dots = form.querySelectorAll(".multistep__progress-dot");
+		let current = 0;
+
+		function updateSteps() {
+			steps.forEach((step, index) => {
+				step.classList.toggle(
+					"multistep__step--active",
+					index === current
+				);
+				dots[index]?.classList.toggle(
+					"multistep__progress-dot--active",
+					index <= current
+				);
+			});
+			prevBtn.style.display = current === 0 ? "none" : "inline-block";
+			nextBtn.textContent =
+				current === steps.length - 1 ? "Submit" : "Next";
+		}
+
+		nextBtn.addEventListener("click", () => {
+			if (current < steps.length - 1) {
+				current++;
+				updateSteps();
+			} else {
+				form.submit();
+			}
+		});
+
+		prevBtn.addEventListener("click", () => {
+			if (current > 0) {
+				current--;
+				updateSteps();
+			}
+		});
+
+		updateSteps();
+	});
+</script>

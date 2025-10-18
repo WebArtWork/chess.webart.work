@@ -1,0 +1,83 @@
+// countdown section
+
+.countdown {
+	text-align: center;
+	padding: calc(40px * var(--padding-scale)) 0;
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 32px;
+		font-weight: 600;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+		text-transform: uppercase;
+	}
+
+	&__description {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		margin-top: calc(12px * var(--margin-scale));
+		max-width: 70ch;
+		margin-left: auto;
+		margin-right: auto;
+		transition: color var(--transition);
+	}
+
+	&__timer {
+		display: flex;
+		justify-content: center;
+		gap: calc(20px * var(--margin-scale));
+		margin-top: calc(24px * var(--margin-scale));
+		font-family: var(--ff-second);
+	}
+
+	&__unit {
+		text-align: center;
+	}
+
+	&__value {
+		font-size: 36px;
+		font-weight: 600;
+		color: var(--c-text-primary);
+	}
+
+	&__label {
+		font-size: calc(var(--font-size) * 0.75);
+		color: var(--c-text-secondary);
+		margin-top: calc(4px * var(--margin-scale));
+	}
+
+	&__button {
+		display: inline-block;
+		margin-top: calc(24px * var(--margin-scale));
+		padding: calc(12px * var(--padding-scale))
+			calc(24px * var(--padding-scale));
+		background-color: var(--c-primary);
+		color: var(--c-text-primary);
+		text-decoration: none;
+		border-radius: var(--b-radius);
+		transition: background-color var(--transition);
+		font-family: var(--ff-second);
+	}
+
+	&__button:hover {
+		background-color: var(--c-primary-hover);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.countdown__value {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.countdown__timer {
+		flex-direction: column;
+		gap: calc(10px * var(--margin-scale));
+	}
+}

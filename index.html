@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="/wjst/" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Honchar Denys" />
+
+		<title>Welcome to waw Template</title>
+		<meta itemprop="name" content="Welcome to waw Template" />
+		<meta name="twitter:title" content="Welcome to waw Template" />
+		<meta property="og:title" content="Welcome to waw Template" />
+
+		<meta name="description" content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place." />
+		<meta itemprop="description" content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place." />
+		<meta name="twitter:description" content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place." />
+		<meta property="og:description" content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place." />
+
+		<meta itemprop="image" content="https://webartwork.github.io/wjst-default/img/avatar.png" />
+		<meta name="twitter:image:src" content="https://webartwork.github.io/wjst-default/img/avatar.png" />
+		<meta property="og:image" content="https://webartwork.github.io/wjst-default/img/avatar.png" />
+
+		<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+
+		<style>
+			:root {
+			  /* =======================
+			     📱 Breakpoints
+			     Used in media queries
+			  ======================= */
+			  --bp-lg: 0;   /* Max width for large devices (e.g. tablets) */
+			  --bp-md: 0;   /* Max width for medium devices (e.g. phones) */
+			  --bp-sm: 0;   /* Max width for small devices */
+
+			  /* =======================
+			     🔠 Typography
+			  ======================= */
+			  --fs: 16px;                      /* Base font size */
+			  --font-size: 16px;         /* Alias for base font size */
+			  --line-height: 1.5;     /* Default line height */
+			  --letter-spacing: 0.5px; /* Default letter spacing */
+			  --ff-base: Roboto, sans-serif;           /* Font for body text */
+			  --ff-title: Lato, sans-serif;         /* Font for titles/headings */
+			  --ff-second: Roboto, sans-serif;       /* Secondary font */
+
+			  /* =======================
+			     📐 Layout & Spacing
+			  ======================= */
+			  --icon-size: 16px;         /* Default icon size */
+			  --padding-scale: 1; /* Padding scale multiplier */
+			  --margin-scale: 1;   /* Margin scale multiplier */
+			  --b-radius: 4px;      /* Border radius */
+			  --transition: 0.3s ease-in-out;      /* Global transition */
+
+			  /* =======================
+			     🎨 Base Colors
+			  ======================= */
+			     --c-primary: #212529;             /* Main brand color */
+			     --c-secondary: #24373d;         /* Secondary UI color */
+			     --c-text-primary: #fff;    /* Primary text color */
+			     --c-text-secondary: #000;/* Secondary text color */
+			     --c-text-body-secondary: #6c757d;/* Body secondary text color */
+			     --c-body: #242b36;                   /* Background/body color */
+			     --c-bg-item: #1c1c1c;              /* Background of items/cards */
+			     --c-placeholder: #666666;     /* Placeholder/input hint color */
+			     --c-border: #495057;               /* Default border color */
+
+			  /* =======================
+			     🎯 States & Feedback
+			  ======================= */
+			  --c-primary-hover: #f8ec20;       /* Hover state for primary */
+			  --c-primary-cursor: #cfc720;     /* Cursor/pressed state */
+			  --c-success: #2bb729;                  /* Success state */
+			  --c-successhover: #358834;        /* Success hover */
+			  --c-error: #ff4d4d;                      /* Error color */
+			  --c-error-hover: #d73535;           /* Error hover */
+			  --c-alert: #363636;                      /* Warning/alert color */
+
+			  /* =======================
+			     🎨 Border Colors
+			  ======================= */
+			  --c-primary-border: #0028ffcc;
+			  --c-secondary-border: #a0a0a0;
+			  --c-success-border: #00ff00;
+			  --c-danger-border: #ff0000;
+			  --c-warning-border: #ffff00;
+			  --c-info-border: #00ffff;
+
+			  /* =======================
+			     🧱 Table & Shadow
+			  ======================= */
+			  --c-shadow: rgba(0, 0, 0, 0.5);             /* Generic shadow */
+			  --c-table-shadow: rgba(0, 0, 0, 0.15);  /* Shadow used in tables */
+			  --c-shadow-table: rgba(0, 0, 0, 0.2);  /* Alternate table shadow */
+			  --c-table-striped: #2c3034;/* Zebra-stripe row color */
+
+			  --c-primary-table: #cfe2ff;
+			  --c-secondary-table: #e2e3e5;
+			  --c-success-table: #d1e7dd;
+			  --c-danger-table: #f8d7da;
+			  --c-warning-table: #fff3cd;
+			  --c-info-table: #cff4fc;
+			  --c-light-table: #f8f9fa;
+
+			  /* =======================
+			     🌈 Extended Palette
+			  ======================= */
+			  --c-blue: #334d6e;
+			  --c-sky: #3498db;
+			  --c-sky-light: #58acf5;
+			  --c-grey: #bdbdbd;
+			  --c-grey-light: #f2f2f2;
+			  --c-red: #a31010;
+			  --c-red-dark: #8c1b0f;
+			  --c-green: #089227;
+			  --c-dark: #000;
+			  --c-white: #fff;
+			  --c-black: #000;
+			  --c-orange: #ffa500;
+			  --c-yellow: #e0dc10;
+			  --c-yellow-darken: #8b890d;
+			  --c-green-darken: #0a5803;
+			  --c-blue-gray: #425155;
+			  --c-blue-gray-darken: #262d2e;
+
+			  /* =======================
+			     💬 UI Utility Colors
+			  ======================= */
+			  --c-question: #4da6ff;     /* Used in Q&A blocks */
+			  --c-loading: #a0a0a0;       /* Loading spinner or loaders */
+			  --c-code-hover: #007eff;  /* Hover color in code examples */
+			}
+		</style>
+
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<div class="goTop" onclick="toTop()">
+	<svg
+		width="70"
+		height="70"
+		viewBox="0 0 108 108"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<g filter="url(#filter0_d_11_1802)">
+			<rect x="4" width="100" height="100" rx="13" fill="#F8EC20" />
+		</g>
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M82.514 61.7718C81.9358 62.3058 81.0343 62.27 80.5003 61.6918L53.4394 32.3918C52.9054 31.8137 52.9412 30.9121 53.5194 30.3782C54.0975 29.8442 54.999 29.88 55.533 30.4582L82.594 59.7582C83.128 60.3363 83.0921 61.2379 82.514 61.7718Z"
+			fill="black"
+		/>
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M55.453 30.3782C56.0311 30.9121 56.0669 31.8137 55.533 32.3918L28.472 61.6918C27.938 62.27 27.0365 62.3058 26.4583 61.7718C25.8802 61.2379 25.8444 60.3363 26.3783 59.7582L53.4393 30.4582C53.9733 29.88 54.8748 29.8442 55.453 30.3782Z"
+			fill="black"
+		/>
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M76.6244 67.2763C76.1678 67.698 75.4557 67.6698 75.0339 67.2131L53.6595 44.0701C53.2377 43.6135 53.266 42.9014 53.7227 42.4796C54.1793 42.0579 54.8914 42.0861 55.3132 42.5428L76.6876 65.6858C77.1094 66.1424 77.0811 66.8545 76.6244 67.2763Z"
+			fill="black"
+		/>
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M55.2499 42.4796C55.7066 42.9014 55.7349 43.6135 55.3131 44.0701L33.9387 67.2131C33.5169 67.6698 32.8048 67.698 32.3482 67.2763C31.8915 66.8545 31.8632 66.1424 32.285 65.6858L53.6594 42.5428C54.0812 42.0861 54.7933 42.0579 55.2499 42.4796Z"
+			fill="black"
+		/>
+		<defs>
+			<filter
+				id="filter0_d_11_1802"
+				x="0"
+				y="0"
+				width="108"
+				height="108"
+				filterUnits="userSpaceOnUse"
+				color-interpolation-filters="sRGB"
+			>
+				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feColorMatrix
+					in="SourceAlpha"
+					type="matrix"
+					values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+					result="hardAlpha"
+				/>
+				<feOffset dy="4" />
+				<feGaussianBlur stdDeviation="2" />
+				<feComposite in2="hardAlpha" operator="out" />
+				<feColorMatrix
+					type="matrix"
+					values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+				/>
+				<feBlend
+					mode="normal"
+					in2="BackgroundImageFix"
+					result="effect1_dropShadow_11_1802"
+				/>
+				<feBlend
+					mode="normal"
+					in="SourceGraphic"
+					in2="effect1_dropShadow_11_1802"
+					result="shape"
+				/>
+			</filter>
+		</defs>
+	</svg>
+</div>
+<header class="header">
+	<span class="header__left">
+		<a href="/" class="header__logo-link">
+			<img class="header__logo" src="img/logo.svg" alt="WAW" width="45" />
+		</a>
+		<h1 class="header__title">Wjst</h1>
+	</span>
+	<span class="header__right">
+		<ul class="header__nav">
+			<li class="header__nav-item">
+				<a href="/" class="header__nav-link">Getting started</a>
+			</li>
+		</ul>
+
+		<ul class="header__nav">
+			<li class="header__nav-item">
+				<a
+					class="header__nav-link header__nav-link--github"
+					href="https://github.com/WebArtWork/wjst"
+					data-original-title="GitHub"
+					target="_blank"
+				>
+					<img
+						class="header__nav-icon"
+						src="img/github.svg"
+						alt="github"
+					/>
+				</a>
+			</li>
+		</ul>
+
+		<span
+			onclick="
+				toggleClass('sidebar', 'main-content__nav--show');
+				toggleClass('burger', 'burger--close')
+			"
+			class="header__nav header__nav--mobile"
+		>
+			<a
+				class="header__nav-link header__nav-link--github-mobile"
+				href="https://github.com/WebArtWork/wjst"
+				data-original-title="GitHub"
+				target="_blank"
+			>
+				<img
+					class="header__nav-icon"
+					src="img/github.svg"
+					alt="github"
+				/>
+			</a>
+			<div class="burger-wrap">
+				<div class="burger" id="burger"></div>
+			</div>
+		</span>
+	</span>
+</header>
+
+<div class="main-content">
+	<aside id="sidebar" class="main-content__nav">
+	<ul class="main-content__nav-wrap">
+		<li
+			class="main-content__nav-item main-content__nav-item--mobile"
+			item-url="/"
+		>
+			<a href="/" class="header__nav-link">Getting started</a>
+		</li>
+		
+	</ul>
+</aside>
+
+	<main class="main-content__section">
+		<!--
+<div class="index">
+	<img class="index-avatar" src="img/avatar.png" alt="" />
+
+	<div class="index-title">Welcome to WAW Template</div>
+	<div class="index-readme">
+		<div class="index-readme__item">
+			To create new page you can type in terminal:
+			<span class="index-readme__code">waw page NAME</span>
+		</div>
+		<div class="index-readme__item">
+			You can change port in
+			<span class="index-readme__code">config.json</span>
+			of development webiste
+			<a class="index-readme__link" href="http://localhost:8000">localhost:8000</a>
+		</div>
+		<div class="index-readme__item">
+			JSON in template.json is accesible over all pages
+		</div>
+		<div class="index-readme__item">
+			JSON in page.json of each page is accesible only of that specific
+			page
+		</div>
+		<div class="index-readme__item">
+			To build project you can type in terminal:
+			<span class="index-readme__code">waw build</span>
+			which will take JSON info and put it into html of dist folder.
+		</div>
+		<div class="index-readme__item">
+			General idea of variables, is that you can modify those on back-end or over
+			<span class="index-readme__code">config.json</span>
+		</div>
+		<div class="index-readme__item">
+			More details of how to use template you can find in
+			<a class="index-readme__link" href="https://webartwork.github.io/wjst/docs">Wjst Documentation</a>
+		</div>
+		<div class="index-readme__item">
+			Styles: You should import each file to
+			<span class="index-readme__code">index.scss </span> located in
+			<span class="index-readme__code">css</span> folder and write SCSS
+			files in <span class="index-readme__code">css/scss</span>.
+		</div>
+	</div>
+	<div class="index-readme">
+		<div class="index-readme__title">Prefix:</div>
+		<div class="index-readme__item">
+			Prefix which we have in template.json serve as root id for the
+			template
+		</div>
+		<div class="index-readme__item">
+			For example file
+			<span class="index-readme__code">img/avatar.png</span>
+			can be served in html
+			<span class="index-readme__code">src="img/avatar.png"</span>
+			were our path is
+			<span class="index-readme__code">{prefix}{path}</span>
+		</div>
+		<div class="index-readme__item">
+			Prefix should be unique on project where we have more then one
+			template to serve files properly
+		</div>
+		<div class="index-readme__item">
+			To change prefix, you need simply to replace all in editor phrase
+			`/wjst-default` into new prefix `/newPrefixName`
+		</div>
+		<div class="index-readme__item">
+			To get served template by github pages, you simply have to replace
+			prefix to name of the repo and do
+			<span class="index-readme__code">waw build</span>
+			and then commit to branch which you set in settings > pages
+			<span class="index-readme__code">{repo}/settings/pages</span>
+			and after that you should able to see your wesite online, similar
+			this default repo is shown
+			<a class="index-readme__link"
+				href="https://webartwork.github.io/wjst-default">webartwork.github.io/wjst-default</a>
+		</div>
+	</div>
+</div>
+-->
+
+<div class="conference-wrapper">
+	<div class="conference-join">
+		<div class="conference-join__text">
+			Joing on event? Enter your id here
+		</div>
+		<form action="">
+			<div class="conference-join__input">
+				<input type="text" placeholder="Enter id" />
+				<button class="conference-join__btn">
+					<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+						<title />
+						<g data-name="Layer 2" id="Layer_2">
+							<path
+								d="M22,9a1,1,0,0,0,0,1.42l4.6,4.6H3.06a1,1,0,1,0,0,2H26.58L22,21.59A1,1,0,0,0,22,23a1,1,0,0,0,1.41,0l6.36-6.36a.88.88,0,0,0,0-1.27L23.42,9A1,1,0,0,0,22,9Z"
+							/>
+						</g>
+					</svg>
+				</button>
+			</div>
+		</form>
+	</div>
+	<div class="conference-about">
+		<div class="conference-about-text">
+			<div class="conference-about-text__title">
+				Your ultimate app for participant engagement!
+			</div>
+			<div class="conference-about-text__description">
+				Effortlessly receive questions, design presentations, and create
+				interactive polls, quizzes, word clouds, and more with our
+				all-in-one platform. Build impactful and engaging participant
+				experiences without the hassle.
+			</div>
+		</div>
+		<div class="conference-about-img">
+			<img src="img/about.svg" alt="" />
+		</div>
+	</div>
+	<div class="conference-triggers">
+		<div class="conference-triggers__title">
+			The essential app for all your events and seminars whether
+			in-person, virtual, or hybrid.
+		</div>
+		<div class="conference-triggers-list">
+			<div class="conference-triggers__wrap">
+				<div class="conference-triggers__item">
+					<div class="conference-triggers__img">
+						<img src="img/conf/1.svg" alt="" />
+					</div>
+					<div class="conference-triggers__text">Conferences</div>
+				</div>
+			</div>
+			<div class="conference-triggers__wrap">
+				<div class="conference-triggers__item">
+					<div class="conference-triggers__img">
+						<img src="img/conf/2.svg" alt="" />
+					</div>
+					<div class="conference-triggers__text">
+						Workshops & seminars
+					</div>
+				</div>
+			</div>
+			<div class="conference-triggers__wrap">
+				<div class="conference-triggers__item">
+					<div class="conference-triggers__img">
+						<img src="img/conf/3.svg" alt="" />
+					</div>
+					<div class="conference-triggers__text">
+						Trade shows & exhibitions
+					</div>
+				</div>
+			</div>
+			<div class="conference-triggers__wrap">
+				<div class="conference-triggers__item">
+					<div class="conference-triggers__img">
+						<img src="img/conf/4.svg" alt="" />
+					</div>
+					<div class="conference-triggers__text">Training events</div>
+				</div>
+			</div>
+			<div class="conference-triggers__wrap">
+				<div class="conference-triggers__item">
+					<div class="conference-triggers__img">
+						<img src="img/conf/5.svg" alt="" />
+					</div>
+					<div class="conference-triggers__text">
+						Networking events
+					</div>
+				</div>
+			</div>
+			<div class="conference-triggers__wrap">
+				<div class="conference-triggers__item">
+					<div class="conference-triggers__img">
+						<img src="img/conf/6.svg" alt="" />
+					</div>
+					<div class="conference-triggers__text">
+						Registration & Check in
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="conference-why">
+		<div class="conference-why__title">Why Conference WAW?</div>
+		<div class="conference-why-text">
+			<ul class="conference-why-text-list">
+				<li>
+					<div class="conference-why-text-list__img">
+						<svg
+							width="28"
+							height="28"
+							viewBox="0 0 28 28"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<g clip-path="url(#clip0_21_631)">
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M24.8889 0H3.11111C1.4 0 0 1.4 0 3.11111V24.8889C0 26.6 1.4 28 3.11111 28H24.8889C26.6 28 28 26.6 28 24.8889V3.11111C28 1.4 26.6 0 24.8889 0ZM10.8889 21.7778L3.11111 14L5.28889 11.8222L10.8889 17.4222L22.7111 5.6L24.8889 7.77778L10.8889 21.7778Z"
+									fill="#F8EC20"
+								/>
+							</g>
+							<defs>
+								<clipPath id="clip0_21_631">
+									<rect width="28" height="28" fill="white" />
+								</clipPath>
+							</defs>
+						</svg>
+					</div>
+					<div class="conference-why-text-list__text">
+						<div class="conference-why-text-list__text-title">
+							Exceptional Value
+						</div>
+						<div class="conference-why-text-list__text-description">
+							Get more for less without compromising quality.
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="conference-why-text-list__img">
+						<svg
+							width="28"
+							height="28"
+							viewBox="0 0 28 28"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<g clip-path="url(#clip0_21_631)">
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M24.8889 0H3.11111C1.4 0 0 1.4 0 3.11111V24.8889C0 26.6 1.4 28 3.11111 28H24.8889C26.6 28 28 26.6 28 24.8889V3.11111C28 1.4 26.6 0 24.8889 0ZM10.8889 21.7778L3.11111 14L5.28889 11.8222L10.8889 17.4222L22.7111 5.6L24.8889 7.77778L10.8889 21.7778Z"
+									fill="#F8EC20"
+								/>
+							</g>
+							<defs>
+								<clipPath id="clip0_21_631">
+									<rect width="28" height="28" fill="white" />
+								</clipPath>
+							</defs>
+						</svg>
+					</div>
+					<div class="conference-why-text-list__text">
+						<div class="conference-why-text-list__text-title">
+							Effortless Setup
+						</div>
+						<div class="conference-why-text-list__text-description">
+							Launch your app within minutes—no technical skills
+							needed.
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="conference-why-text-list__img">
+						<svg
+							width="28"
+							height="28"
+							viewBox="0 0 28 28"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<g clip-path="url(#clip0_21_631)">
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M24.8889 0H3.11111C1.4 0 0 1.4 0 3.11111V24.8889C0 26.6 1.4 28 3.11111 28H24.8889C26.6 28 28 26.6 28 24.8889V3.11111C28 1.4 26.6 0 24.8889 0ZM10.8889 21.7778L3.11111 14L5.28889 11.8222L10.8889 17.4222L22.7111 5.6L24.8889 7.77778L10.8889 21.7778Z"
+									fill="#F8EC20"
+								/>
+							</g>
+							<defs>
+								<clipPath id="clip0_21_631">
+									<rect width="28" height="28" fill="white" />
+								</clipPath>
+							</defs>
+						</svg>
+					</div>
+					<div class="conference-why-text-list__text">
+						<div class="conference-why-text-list__text-title">
+							Comprehensive Solution
+						</div>
+						<div class="conference-why-text-list__text-description">
+							Streamline your needs with a single platform,
+							eliminating the hassle of juggling multiple links.
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="conference-why-text-list__img">
+						<svg
+							width="28"
+							height="28"
+							viewBox="0 0 28 28"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<g clip-path="url(#clip0_21_631)">
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M24.8889 0H3.11111C1.4 0 0 1.4 0 3.11111V24.8889C0 26.6 1.4 28 3.11111 28H24.8889C26.6 28 28 26.6 28 24.8889V3.11111C28 1.4 26.6 0 24.8889 0ZM10.8889 21.7778L3.11111 14L5.28889 11.8222L10.8889 17.4222L22.7111 5.6L24.8889 7.77778L10.8889 21.7778Z"
+									fill="#F8EC20"
+								/>
+							</g>
+							<defs>
+								<clipPath id="clip0_21_631">
+									<rect width="28" height="28" fill="white" />
+								</clipPath>
+							</defs>
+						</svg>
+					</div>
+					<div class="conference-why-text-list__text">
+						<div class="conference-why-text-list__text-title">
+							Limitless Customization
+						</div>
+						<div class="conference-why-text-list__text-description">
+							Tailor your app with versatile features and
+							extensive personalization options to match your
+							vision.
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="conference-why-img">
+			<img src="img/why.svg" alt="" />
+		</div>
+	</div>
+	<div class="what-get">
+		<div class="what-get__title">What You Get ?</div>
+		<div class="what-get-list">
+			<div class="what-get__wrap">
+				<div class="what-get__item">
+					<div class="what-get-img">1</div>
+					<div class="what-get-text">
+						<div class="what-get-text__title">
+							Full Interactivity
+						</div>
+						<div class="what-get-text__description">
+							Live chats, polls, Q&A lists, and instant reactions
+							turn participants into active contributors, not
+							passive spectators.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="what-get__wrap">
+				<div class="what-get__item">
+					<div class="what-get-img">2</div>
+					<div class="what-get-text">
+						<div class="what-get-text__title">
+							Professional Tools for Speakers
+						</div>
+						<div class="what-get-text__description">
+							Speakers gain personalized dashboards to manage
+							presentations, collect questions, and conduct polls
+							in real time.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="what-get__wrap">
+				<div class="what-get__item">
+					<div class="what-get-img">3</div>
+					<div class="what-get-text">
+						<div class="what-get-text__title">
+							Audience Engagement
+						</div>
+						<div class="what-get-text__description">
+							Participants can ask questions, vote, and share
+							ideas, creating a dynamic and lively atmosphere.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="what-get__wrap">
+				<div class="what-get__item">
+					<div class="what-get-img">4</div>
+					<div class="what-get-text">
+						<div class="what-get-text__title">
+							Maximum Convenience
+						</div>
+						<div class="what-get-text__description">
+							Intuitive tools make event planning seamless, saving
+							you time and ensuring a smooth preparation process.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="contacts">
+		<div class="contacts__title">Contacts</div>
+		<div class="contacts-wrap">
+			<div class="contacts-img">
+				<img src="img/contact.svg" alt="" />
+			</div>
+			<div class="contacts-form">
+				<form action="">
+					<div class="contacts-name">
+						<div class="contacts-name__input">
+							<label for="">
+								<span>First name</span>
+								<input type="text" placeholder="" />
+							</label>
+						</div>
+						<div class="contacts-name__input">
+							<label for="">
+								<span>Last name</span>
+								<input type="text" placeholder="" />
+							</label>
+						</div>
+					</div>
+					<div class="contacts-email">
+						<label for="">
+							<span>Email adress</span>
+							<input type="text" />
+						</label>
+					</div>
+					<div class="contacts-subject">
+						<label for="">
+							<span>Subject</span>
+							<input type="text" />
+						</label>
+					</div>
+					<div class="contacts-message">
+						<label for="">
+							<span>Message</span>
+							<textarea name="" id=""></textarea>
+						</label>
+					</div>
+					<div class="contacts-btn">
+						<button class="btn">Send message</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+ <script>
+	const themes = {
+		dark: JSON.parse(`{"bp-lg":"991px","bp-md":"767px","bp-sm":"479px","fs":"16px","fontSize":"16px","lineHeight":"1.5","letterSpacing":"0.5px","iconSize":"16px","paddingScale":"1","marginScale":"1","borderRadius":"4px","transition":"0.3s ease-in-out","fontBase":"Roboto, sans-serif","fontTitle":"Lato, sans-serif","fontSecond":"Roboto, sans-serif","colors":{"primary":"#212529","textPrimary":"#fff","secondary":"#24373d","textSecondary":"#000","primaryHover":"#f8ec20","primaryCursor":"#cfc720","error":"#ff4d4d","alert":"#363636","errorHover":"#d73535","success":"#2bb729","successHover":"#358834","primaryBorder":"#0028ffcc","secondaryBorder":"#a0a0a0","successBorder":"#00ff00","dangerBorder":"#ff0000","warningBorder":"#ffff00","infoBorder":"#00ffff","shadow":"rgba(0, 0, 0, 0.5)","tableShadow":"rgba(0, 0, 0, 0.15)","shadowTable":"rgba(0, 0, 0, 0.2)","placeholder":"#666666","bgItem":"#1c1c1c","textBodySecondary":"#6c757d","codeHover":"#007eff","fontTitle":"#ffffff","tablePrimary":"#cfe2ff","tableSecondary":"#e2e3e5","tableSuccess":"#d1e7dd","tableDanger":"#f8d7da","tableWarning":"#fff3cd","tableInfo":"#cff4fc","tableLight":"#f8f9fa","tableStriped":"#2c3034","border":"#495057","orange":"#ffa500","question":"#4da6ff","loading":"#a0a0a0","blue":"#334d6e","sky":"#3498db","skyLight":"#58acf5","grey":"#bdbdbd","greyLight":"#f2f2f2","red":"#a31010","redDark":"#8c1b0f","green":"#089227","dark":"#000","white":"#fff","black":"#000","body":"#242b36","blueGray":"#425155","blueGrayDarken":"#262d2e","yellow":"#e0dc10","yellowDarken":"#8b890d","greenDarken":"#0a5803"}}`),
+		light: JSON.parse(`{"bp-lg":"991px","bp-md":"767px","bp-sm":"479px","fs":"16px","fontSize":"16px","lineHeight":"1.5","letterSpacing":"0.5px","iconSize":"16px","paddingScale":"1","marginScale":"1","borderRadius":"4px","transition":"0.3s ease-in-out","fontBase":"Roboto, sans-serif","fontTitle":"Lato, sans-serif","fontSecond":"Roboto, sans-serif","colors":{"primary":"#000","textPrimary":"#fff","secondary":"#24373d","textSecondary":"#000","primaryHover":"#f8ec20","primaryCursor":"#cfc720","error":"#ff4d4d","alert":"#363636","errorHover":"#d73535","success":"#2bb729","successHover":"#358834","primaryBorder":"#0028ffcc","secondaryBorder":"#a0a0a0","successBorder":"#00ff00","dangerBorder":"#ff0000","warningBorder":"#ffff00","infoBorder":"#00ffff","shadow":"rgba(0, 0, 0, 0.5)","tableShadow":"rgba(0, 0, 0, 0.15)","shadowTable":"rgba(0, 0, 0, 0.2)","placeholder":"#666666","bgItem":"#1c1c1c","textBodySecondary":"#6c757d","codeHover":"#007eff","fontTitle":"#ffffff","tablePrimary":"#cfe2ff","tableSecondary":"#e2e3e5","tableSuccess":"#d1e7dd","tableDanger":"#f8d7da","tableWarning":"#fff3cd","tableInfo":"#cff4fc","tableLight":"#f8f9fa","tableStriped":"#2c3034","border":"#495057","orange":"#ffa500","question":"#4da6ff","loading":"#a0a0a0","blue":"#334d6e","sky":"#3498db","skyLight":"#58acf5","grey":"#bdbdbd","greyLight":"#f2f2f2","red":"#a31010","redDark":"#8c1b0f","green":"#089227","dark":"#000","white":"#fff","black":"#000","body":"#242b36","blueGray":"#425155","blueGrayDarken":"#262d2e","yellow":"#e0dc10","yellowDarken":"#8b890d","greenDarken":"#0a5803"}}`),
+	};
+
+	function updateThemeVars(theme) {
+		const root = document.documentElement;
+
+		// Update top-level keys
+		for (const key in themes[theme]) {
+			if (key === "colors") continue; // handle separately
+			root.style.setProperty(
+				`--${key.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())}`,
+				themes[theme][key]
+			);
+		}
+
+		// Update colors.* keys
+		if (themes[theme].colors) {
+			for (const colorKey in themes[theme].colors) {
+				root.style.setProperty(
+					`--c-${colorKey.replace(
+						/[A-Z]/g,
+						(m) => "-" + m.toLowerCase()
+					)}`,
+					themes[theme].colors[colorKey]
+				);
+			}
+		}
+	}
+</script>
+
+<footer class="footer">
+	<p class="footer__text">
+		<span class="footer__text-part"
+			>Wjst is copyright ©2024 Web Art Work</span
+		>
+		<span class="footer__text-part">
+			Licensed for use under the permissive MIT Open Source License.</span
+		>
+		<span class="footer__text-part"> Architected by Honchar Denys</span>
+	</p>
+	<div class="footer-wrap">
+		<div class="footer__item-link">
+			<div class="footer__link-title">Themes</div>
+			<button class="footer__link" onclick="updateThemeVars('dark')">
+				Dark
+			</button>
+			<button class="footer__link" onclick="updateThemeVars('light')">
+				Light
+			</button>
+		</div>
+		<div class="footer__item-link footer__item-link--center">
+			<div class="footer__link-title">Title for links</div>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+		</div>
+		<div class="footer__item-link footer__item-link--end">
+			<div class="footer__link-title">Title for links</div>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+			<a href="" class="footer__link"> - Link here </a>
+		</div>
+	</div>
+</footer>
+
+	</main>
+</div>
+
+		<script src="js/index.js"></script>
+	</body>
+</html>

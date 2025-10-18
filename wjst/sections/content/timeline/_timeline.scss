@@ -1,0 +1,100 @@
+// timeline section
+
+.timeline {
+	font-family: var(--ff-base);
+	padding-left: calc(20px * var(--padding-scale));
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 36px;
+		font-weight: 600;
+		text-transform: uppercase;
+		
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+		text-align: center;
+		margin-bottom: calc(20px * var(--margin-scale));
+	}
+
+	&__description {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		text-align: center;
+		margin: 0 auto calc(40px * var(--margin-scale));
+		max-width: 70ch;
+		transition: color var(--transition);
+	}
+
+	&__items {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+
+	&__item {
+		position: relative;
+		padding: 0 0 calc(30px * var(--padding-scale))
+			calc(30px * var(--padding-scale));
+		border-left: 2px solid var(--c-border);
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: -6px;
+			top: 0;
+			width: 12px;
+			height: 12px;
+			background: var(--c-primary);
+			border-radius: 50%;
+		}
+
+		&:last-child {
+			border-left: none;
+			padding-bottom: 0;
+		}
+	}
+
+	&__time {
+		font-family: var(--ff-title);
+		font-weight: 600;
+		color: var(--c-primary-hover);
+		margin-bottom: calc(4px * var(--margin-scale));
+	}
+
+	&__label {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__text {
+		font-size: calc(var(--font-size) * 0.95);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		margin-top: calc(4px * var(--margin-scale));
+		transition: color var(--transition);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.timeline__title {
+		font-size: 28px;
+	}
+	.timeline__description {
+		font-size: calc(var(--font-size) * 0.95);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.timeline__title {
+		font-size: 24px;
+	}
+	.timeline__description {
+		font-size: calc(var(--font-size) * 0.9);
+	}
+}

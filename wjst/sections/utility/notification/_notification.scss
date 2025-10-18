@@ -1,0 +1,70 @@
+// notification section
+
+.notification {
+	position: relative;
+	padding: calc(16px * var(--padding-scale));
+	border-left: 4px solid var(--c-primary);
+	background: var(--c-bg-item);
+	color: var(--c-text-primary);
+	font-family: var(--ff-base);
+	display: flex;
+	align-items: center;
+
+	&__message {
+		margin-right: calc(20px * var(--margin-scale));
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		flex: 1;
+	}
+
+	&__close {
+		position: absolute;
+		top: calc(8px * var(--padding-scale));
+		right: calc(8px * var(--padding-scale));
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: inherit;
+		font-size: calc(var(--font-size) * 1.25);
+		line-height: 1;
+		transition: color var(--transition);
+
+		&:hover {
+			color: var(--c-primary-hover);
+		}
+	}
+
+	&--success {
+		border-color: var(--c-success);
+		background: var(--c-success);
+	}
+
+	&--error {
+		border-color: var(--c-error);
+		background: var(--c-error);
+	}
+
+	&--alert {
+		border-color: var(--c-alert);
+		background: var(--c-alert);
+	}
+
+	&--hidden {
+		display: none;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.notification {
+		padding: calc(12px * var(--padding-scale));
+		&__message {
+			font-size: calc(var(--font-size) * 0.95);
+		}
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.notification__message {
+		font-size: calc(var(--font-size) * 0.9);
+	}
+}

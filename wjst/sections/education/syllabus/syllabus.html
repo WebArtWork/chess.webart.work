@@ -1,0 +1,41 @@
+<div class="syllabus">
+	{% if section.title %}
+	<div class="syllabus__title">{{{section.title}}}</div>
+	{% endif %} {% if section.modules %}
+	<ul class="syllabus__list">
+		{% for module in section.modules %}
+		<li class="syllabus__module">
+			<div class="syllabus__module-header">
+				{% if module.title %}
+				<div class="syllabus__module-title">{{{module.title}}}</div>
+				{% endif %} {% if module.duration %}
+				<div class="syllabus__module-duration">
+					{{{module.duration}}}
+				</div>
+				{% endif %}
+			</div>
+			{% if module.description %}
+			<div class="syllabus__module-description">
+				{{{module.description}}}
+			</div>
+			{% endif %} {% if module.lessons %}
+			<ul class="syllabus__lessons">
+				{% for lesson in module.lessons %}
+				<li class="syllabus__lesson">
+					<span class="syllabus__lesson-title"
+						>{{{lesson.title}}}</span
+					>
+					{% if lesson.duration %}
+					<span class="syllabus__lesson-duration"
+						>{{{lesson.duration}}}</span
+					>
+					{% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

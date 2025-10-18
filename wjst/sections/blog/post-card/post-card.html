@@ -1,0 +1,27 @@
+<article class="post-card">
+	{% if section.img %}
+	<div class="post-card__img">
+		<img src="{{{section.img}}}" alt="{{{section.title}}}" />
+	</div>
+	{% endif %}
+
+	<div class="post-card__content">
+		{% if section.category %}
+		<div class="post-card__category">{{{section.category}}}</div>
+		{% endif %}
+
+		<h2 class="post-card__title">{{{section.title}}}</h2>
+
+		{% if section.excerpt %}
+		<p class="post-card__excerpt">{{{section.excerpt}}}</p>
+		{% endif %} {% if section.author || section.date %}
+		<div class="post-card__meta">
+			{% if section.author %}
+			<span class="post-card__author">{{{section.author}}}</span>
+			{% endif %} {% if section.date %}
+			<time class="post-card__date">{{{section.date}}}</time>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+</article>

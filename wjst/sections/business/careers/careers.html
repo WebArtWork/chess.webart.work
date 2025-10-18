@@ -1,0 +1,29 @@
+<div class="careers">
+	{% if section.title %}
+	<div class="careers__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="careers__description">{{{section.description}}}</div>
+	{% endif %} {% if section.positions %}
+	<ul class="careers__list">
+		{% for item in section.positions %}
+		<li class="careers__item">
+			{% if item.title %}
+			<div class="careers__item-title">{{{item.title}}}</div>
+			{% endif %} {% if item.location || item.type %}
+			<div class="careers__item-meta">
+				{% if item.location %}
+				<span class="careers__item-location">{{{item.location}}}</span>
+				{% endif %} {% if item.type %}
+				<span class="careers__item-type">{{{item.type}}}</span>
+				{% endif %}
+			</div>
+			{% endif %} {% if item.link %}
+			<a class="careers__item-link" href="{{{item.link}}}"
+				>{{{item.linkLabel || 'Apply Now'}}}</a
+			>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</div>

@@ -1,0 +1,42 @@
+<div class="exit-modal" id="exitModal">
+	<div class="exit-modal__content">
+		<div class="exit-modal__close" id="exitModalClose">&times;</div>
+		{% if section.title %}
+		<div class="exit-modal__title">{{{section.title}}}</div>
+		{% endif %} {% if section.description %}
+		<div class="exit-modal__description">{{{section.description}}}</div>
+		{% endif %} {% if section.button %}
+		<a href="{{{section.button.url}}}" class="exit-modal__button"
+			>{{{section.button.label}}}</a
+		>
+		{% endif %}
+	</div>
+</div>
+<script>
+	(function () {
+		var shown = false;
+		var modal = document.getElementById("exitModal");
+		if (!modal) return;
+		var close = document.getElementById("exitModalClose");
+		function show() {
+			if (!shown) {
+				modal.classList.add("exit-modal--visible");
+				shown = true;
+			}
+		}
+		function hide() {
+			modal.classList.remove("exit-modal--visible");
+		}
+		document.addEventListener("mouseleave", function (e) {
+			if (e.clientY <= 0) {
+				show();
+			}
+		});
+		document.addEventListener("scroll", function () {
+			if (window.scrollY > window.innerHeight) {
+				show();
+			}
+		});
+		close.addEventListener("click", hide);
+	})();
+</script>

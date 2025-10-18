@@ -1,0 +1,6 @@
+// spacer section
+
+.spacer {
+	width: 100%;
+	height: calc(var(--spacer-size, 40px) * var(--margin-scale));
+}

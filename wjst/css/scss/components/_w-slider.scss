@@ -1,0 +1,92 @@
+.slider {
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	background-color: #fff;
+	border-radius: 8px;
+}
+
+/* Контейнер для слайдов */
+.slider__container {
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+}
+
+/* Каждый слайд */
+.slider__slide {
+	min-width: 100%;
+	height: 300px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.slider__slide--1 {
+	background-color: #ff6347;
+}
+
+.slider__slide--2 {
+	background-color: #4caf50;
+}
+
+.slider__slide--3 {
+	background-color: #1e90ff;
+}
+
+.slider__slide--4 {
+	background-color: #f39c12;
+}
+
+/* Кнопки перехода */
+.slider__button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: transparent;
+	color: rgba(255, 255, 255, 0.664);
+	border: none;
+	font-size: 2rem;
+	padding: 10px;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.slider__button:hover {
+	color: rgb(255, 255, 255);
+}
+
+.slider__button--prev {
+	left: 10px;
+}
+
+.slider__button--next {
+	right: 10px;
+}
+
+/* Контейнер для точек */
+.slider__dots {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+}
+
+/* Точка */
+.slider__dot {
+	height: 5px;
+	width: 32px;
+	margin: 0 5px;
+	background-color: #ffffff98;
+	border-radius: 12px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.slider__dot--active {
+	background-color: #ffffff;
+}

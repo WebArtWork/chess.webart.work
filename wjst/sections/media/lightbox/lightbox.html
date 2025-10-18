@@ -1,0 +1,18 @@
+<div class="lightbox">
+	<div class="lightbox__thumb">
+		<img src="{{{section.thumbnail}}}" alt="{{{section.alt || ''}}}" />
+	</div>
+	<div class="lightbox__overlay">
+		<div class="lightbox__dialog">
+			<img
+				class="lightbox__image"
+				src="{{{section.image}}}"
+				alt="{{{section.alt || ''}}}"
+			/>
+			{% if section.caption %}
+			<div class="lightbox__caption">{{{section.caption}}}</div>
+			{% endif %}
+			<button class="lightbox__close" aria-label="Close">&times;</button>
+		</div>
+	</div>
+</div>

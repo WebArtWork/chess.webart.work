@@ -1,0 +1,129 @@
+<button onclick="toggleVisibility('readme-section')">Toggle readme</button>
+<button onclick="toggleVisibility('hrs')">Toggle horizontal lines</button>
+<button onclick="toggleVisibility('controllers')">Toggle controllers</button>
+<select id="addSection"></select>
+<button onclick="addSection()">Add</button>
+
+<script>
+	const sections = JSON.parse(`{{{sections|json|safe}}}`);
+
+	let structure = JSON.parse(`{{{sections|json|safe}}}`);
+
+	const select = document.getElementById("addSection");
+
+	for (let i = 0; i < structure.length; i++) {
+		structure[i].__id = sections[i].__id = "sectionId" + (i + 1);
+
+		sections[i].__name = structure[i].src
+			.split("/")
+			.pop()
+			.replace(".html", "");
+
+		const option = document.createElement("option");
+		option.value = sections[i].__name;
+		option.textContent = sections[i].__name;
+		select.appendChild(option);
+	}
+
+	function addSection() {
+		const name = document.getElementById("addSection").value;
+		const section = JSON.parse(
+			JSON.stringify(sections.find((s) => s.__name === name))
+		);
+		const oldId = section.__id;
+		section.__id = "sectionId" + Date.now();
+		const target = document.getElementById("start");
+		const container = document.createElement("div");
+		container.setAttribute("id", section.__id);
+		container.setAttribute("class", section.__id);
+		container.innerHTML = section.__html.split(oldId).join(section.__id);
+
+		delete section.__html;
+		structure.unshift(section);
+		document.getElementById("structure").value = JSON.stringify(structure);
+
+		target.parentNode.insertBefore(container, target.nextSibling);
+	}
+
+	function toggleVisibility(className) {
+		const elements = document.querySelectorAll(`.${className}`);
+		elements.forEach((el) => {
+			el.style.display = el.style.display === "none" ? "" : "none";
+		});
+	}
+
+	function removeElements(id) {
+		const elements = document.querySelectorAll(`.${id}`);
+
+		elements.forEach((el) => el.remove());
+
+		structure = structure.filter((s) => s.__id !== id);
+
+		document.getElementById("structure").value = JSON.stringify(structure);
+	}
+
+	function upElement(id) {
+		const current = document.getElementById(id);
+
+		let upId = "";
+
+		for (const section of structure) {
+			if (section.__id === id) {
+				break;
+			}
+
+			upId = section.__id;
+		}
+
+		const index = structure.findIndex((item) => item.__id === id);
+
+		if (index > 0) {
+			[structure[index - 1], structure[index]] = [
+				structure[index],
+				structure[index - 1],
+			];
+		}
+
+		const target = document.getElementById(upId);
+
+		if (current && target && target.parentNode) {
+			target.parentNode.insertBefore(current, target);
+		}
+	}
+</script>
+
+<div id="start"></div>
+
+{% for section in sections %}
+<div id="sectionId{{{loop.index}}}" class="sectionId{{{loop.index}}}">
+	<hr class="hrs" />
+	{% if section.sections.length %}
+	<div class="readme-section" style="display: none">
+		<h2>Readme</h2>
+		{% for section in section.sections %} {% include section.src %} {%
+		endfor %}
+		<hr />
+	</div>
+	{% endif %}
+	<div class="controllers" style="display: none">
+		<button onclick="removeElements('sectionId{{{loop.index}}}')">
+			Remove section
+		</button>
+		<button onclick="upElement('sectionId{{{loop.index}}}')">
+			Move section up
+		</button>
+	</div>
+	{% include section.src %}
+</div>
+{% endfor %}
+
+<textarea id="structure"></textarea>
+<script>
+	document.getElementById("structure").value = JSON.stringify(structure);
+
+	for (const section of sections) {
+		if (document.getElementById(section.__id)) {
+			section.__html = document.getElementById(section.__id).innerHTML;
+		}
+	}
+</script>

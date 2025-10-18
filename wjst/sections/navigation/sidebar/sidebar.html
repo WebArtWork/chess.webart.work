@@ -1,0 +1,24 @@
+<nav class="sidebar">
+	<ul class="sidebar__list">
+		{% for item in section.items %}
+		<li
+			class="sidebar__item{% if item.active %} sidebar__item--active{% endif %}"
+		>
+			<a href="{{{item.url}}}" class="sidebar__link">{{{item.name}}}</a>
+			{% if item.items %}
+			<ul class="sidebar__sublist">
+				{% for _item in item.items %}
+				<li
+					class="sidebar__subitem{% if _item.active %} sidebar__subitem--active{% endif %}"
+				>
+					<a href="{{{_item.url}}}" class="sidebar__sublink"
+						>{{{_item.name}}}</a
+					>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+</nav>

@@ -1,0 +1,16 @@
+{% if section.href %}
+<div class="edit-link">
+	<a
+		class="edit-link__link"
+		href="{{{section.href}}}"
+		target="_blank"
+		rel="noopener"
+	>
+		{% if section.icon %}
+		<img src="{{{section.icon}}}" alt="" class="edit-link__icon" />
+		{% endif %} {% if section.text %}
+		<span class="edit-link__text">{{{section.text}}}</span>
+		{% endif %}
+	</a>
+</div>
+{% endif %}

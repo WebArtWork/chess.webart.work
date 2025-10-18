@@ -1,0 +1,24 @@
+<div class="glossary">
+        {% if section.title %}
+        <div class="glossary__title">{{{section.title}}}</div>
+        {% endif %}
+        {% if section.items %}
+        {% set currentLetter = '' %}
+        <div class="glossary__groups">
+                {% for item in section.items %}
+                {% set letter = item.term[0] | upper %}
+                {% if letter != currentLetter %}
+                {% if not loop.first %}</div>{% endif %}
+                <div class="glossary__group">
+                        <div class="glossary__letter">{{{letter}}}</div>
+                {% set currentLetter = letter %}
+                {% endif %}
+                <div class="glossary__entry">
+                        <div class="glossary__term">{{{item.term}}}</div>
+                        <div class="glossary__definition">{{{item.definition}}}</div>
+                </div>
+                {% if loop.last %}</div>{% endif %}
+                {% endfor %}
+        </div>
+        {% endif %}
+</div>

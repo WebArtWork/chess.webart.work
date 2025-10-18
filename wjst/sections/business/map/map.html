@@ -1,0 +1,24 @@
+<div class="map">
+	<div id="map" class="map__container"></div>
+
+	{% if section.title %}
+	<div class="map__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="map__description">{{{section.description}}}</div>
+	{% endif %}
+</div>
+<script>
+	function initMap() {
+	        const position = { lat: {{{section.lat}}}, lng: {{{section.lng}}} };
+	        const map = new google.maps.Map(document.getElementById('map'), {
+	                zoom: {{{section.zoom}}},
+	                center: position,
+	        });
+	        new google.maps.Marker({ position, map });
+	}
+</script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key={{{section.apiKey}}}&callback=initMap"
+	async
+	defer
+></script>

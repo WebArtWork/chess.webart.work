@@ -1,0 +1,21 @@
+<nav class="navbar">
+	{% if section.logo %}
+	<div class="navbar__logo">
+		<a href="{{{section.logoUrl || '/'}}}">
+			<img src="{{{section.logo}}}" alt="{{{section.logoAlt || ''}}}" />
+		</a>
+	</div>
+	{% endif %}
+	<button class="navbar__toggle" aria-label="Toggle navigation">
+		<span></span>
+		<span></span>
+		<span></span>
+	</button>
+	<ul class="navbar__menu">
+		{% for item in section.items %}
+		<li class="navbar__item">
+			<a href="{{{item.url}}}" class="navbar__link">{{{item.label}}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</nav>

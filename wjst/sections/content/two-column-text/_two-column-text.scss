@@ -1,0 +1,58 @@
+// two-column-text section
+
+.two-column-text {
+	padding-bottom: calc(50px * var(--padding-scale));
+	font-family: var(--ff-base);
+
+	&__title {
+		text-align: center;
+		font-family: var(--ff-title);
+		font-size: 36px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+	}
+
+	&__columns {
+		margin-top: calc(30px * var(--margin-scale));
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: calc(20px * var(--margin-scale));
+	}
+
+	&__column-title {
+		font-family: var(--ff-title);
+		font-size: 20px;
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-primary);
+	}
+
+	&__column-text {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		margin-top: calc(8px * var(--margin-scale));
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.two-column-text__title {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.two-column-text__title {
+		font-size: 24px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.two-column-text__title {
+		font-size: 20px;
+	}
+}

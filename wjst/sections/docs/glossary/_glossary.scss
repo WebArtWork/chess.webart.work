@@ -1,0 +1,77 @@
+// glossary section
+
+.glossary {
+	padding-bottom: calc(50px * var(--padding-scale));
+	font-family: var(--ff-base);
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 36px;
+		font-weight: 600;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+		margin-bottom: calc(20px * var(--margin-scale));
+	}
+
+	&__letter {
+		font-family: var(--ff-title);
+		font-size: 24px;
+		font-weight: 600;
+		margin-top: calc(32px * var(--margin-scale));
+		color: var(--c-text-primary);
+	}
+
+	&__entry {
+		margin-top: calc(12px * var(--margin-scale));
+	}
+
+	&__term {
+		font-weight: 600;
+		color: var(--c-text-primary);
+	}
+
+	&__definition {
+		margin-top: calc(4px * var(--margin-scale));
+		color: var(--c-text-body-secondary);
+		line-height: var(--line-height);
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.glossary__title {
+		font-size: 28px;
+	}
+	.glossary__letter {
+		font-size: 20px;
+	}
+	.glossary__definition {
+		font-size: calc(var(--font-size) * 0.95);
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.glossary__title {
+		font-size: 24px;
+	}
+	.glossary__letter {
+		font-size: 18px;
+	}
+	.glossary__definition {
+		font-size: calc(var(--font-size) * 0.9);
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.glossary__title {
+		font-size: 20px;
+	}
+	.glossary__letter {
+		font-size: 16px;
+	}
+	.glossary__definition {
+		font-size: calc(var(--font-size) * 0.875);
+	}
+}

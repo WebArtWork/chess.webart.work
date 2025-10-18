@@ -1,0 +1,18 @@
+<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Product",
+	  "name": "{{{section.name}}}",
+	  "description": "{{{section.description}}}",
+	  {% if section.image %}"image": "{{{section.image}}}",{% endif %}
+	  "sku": "{{{section.sku}}}",
+	  {% if section.brand %}"brand": { "@type": "Brand", "name": "{{{section.brand}}}" },{% endif %}
+	  "offers": {
+	    "@type": "Offer",
+	    "url": "{{{section.url}}}",
+	    "price": "{{{section.price}}}",
+	    "priceCurrency": "{{{section.priceCurrency}}}",
+	    "availability": "{{{section.availability}}}"
+	  }
+	}
+</script>

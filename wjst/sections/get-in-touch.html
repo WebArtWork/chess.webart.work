@@ -1,0 +1,38 @@
+<div class="in-touch">
+	<div class="in-touch-wrapper">
+		<div class="in-touch-text">
+			<div class="in-touch__title">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+				aliquid dolo
+			</div>
+			{% for social in section.socials %}
+			<a href="{{{social.href}}}" class="in-touch-socials">
+				<div class="in-touch-socials__icon">
+					<img src="{{{social.img}}}" alt="" />
+				</div>
+				<div class="in-touch-socials__text">Instagram link</div>
+			</a>
+			{% for social in section.socials %}
+			<div class="in-touch__subtitle">{{{section.subtitle}}}</div>
+			<div class="in-touch-link">
+				<div class="in-touch-link__img">
+					<img src="{{{section.iloc}}}" alt="" />
+				</div>
+				<div class="in-touch-link__text">{{{section.address}}}</div>
+			</div>
+			<div class="in-touch-link">
+				<div class="in-touch-link__img">
+					<img src="{{{section.iphone}}}" alt="" />
+				</div>
+				<div class="in-touch-link__text">{{{section.phone}}}</div>
+			</div>
+		</div>
+		<div class="in-touch-img">
+			<img src="{{{section.map}}}" alt="" />
+		</div>
+	</div>
+</div>
+
+<script>
+	document.querySelector('.main-content_nav');
+</script>

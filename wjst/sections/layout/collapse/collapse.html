@@ -1,0 +1,37 @@
+<div class="collapse">
+	<button
+		class="collapse__header{% if section.open %} collapse__header--open{% endif %}"
+	>
+		<div class="collapse__title">{{{section.title}}}</div>
+		<div class="collapse__arrow">
+			<svg
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M6 9L12 15L18 9"
+					stroke="var(--c-primary-hover)"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</div>
+	</button>
+	<div
+		class="collapse__body"
+		{%
+		if
+		section.open
+		%}
+		style="max-height: fit-content"
+		{%
+		endif
+		%}
+	>
+		{{{section.content}}}
+	</div>
+</div>

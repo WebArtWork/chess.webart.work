@@ -1,0 +1,65 @@
+// embed utility section
+
+.embed {
+	padding-bottom: calc(50px * var(--padding-scale));
+	font-family: var(--ff-base);
+	text-align: center;
+
+	&__title {
+		font-family: var(--ff-title);
+		font-size: 24px;
+		font-weight: 600;
+		letter-spacing: var(--letter-spacing);
+		line-height: var(--line-height);
+		color: var(--c-text-primary);
+		margin-bottom: calc(12px * var(--margin-scale));
+	}
+
+	&__wrapper {
+		position: relative;
+		width: 100%;
+		max-width: 800px;
+		margin: 0 auto;
+		overflow: hidden;
+		border-radius: var(--b-radius);
+		padding-top: 56.25%;
+
+		iframe,
+		embed,
+		object {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+	}
+
+	&__caption {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+		color: var(--c-text-body-secondary);
+		margin-top: calc(12px * var(--margin-scale));
+		transition: color var(--transition);
+	}
+}
+
+@media screen and (max-width: var(--bp-lg)) {
+	.embed__title {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: var(--bp-md)) {
+	.embed__title {
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: var(--bp-sm)) {
+	.embed__title {
+		font-size: 16px;
+	}
+}

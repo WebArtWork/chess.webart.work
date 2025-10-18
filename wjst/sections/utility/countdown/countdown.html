@@ -1,0 +1,25 @@
+<div class="countdown">
+	{% if section.title %}
+	<div class="countdown__title">{{{section.title}}}</div>
+	{% endif %} {% if section.description %}
+	<div class="countdown__description">{{{section.description}}}</div>
+	{% endif %}
+	<div class="countdown__timer" data-countdown="{{{section.endDate}}}">
+		<div class="countdown__unit">
+			<div class="countdown__value countdown__days">00</div>
+			<div class="countdown__label">Days</div>
+		</div>
+		<div class="countdown__unit">
+			<div class="countdown__value countdown__hours">00</div>
+			<div class="countdown__label">Hours</div>
+		</div>
+		<div class="countdown__unit">
+			<div class="countdown__value countdown__minutes">00</div>
+			<div class="countdown__label">Minutes</div>
+		</div>
+		<div class="countdown__unit">
+			<div class="countdown__value countdown__seconds">00</div>
+			<div class="countdown__label">Seconds</div>
+		</div>
+	</div>
+</div>

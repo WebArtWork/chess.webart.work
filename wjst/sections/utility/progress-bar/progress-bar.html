@@ -1,0 +1,12 @@
+<div class="progress-bar">
+	<div class="progress-bar__bar">
+		<div
+			class="progress-bar__progress"
+			style="width: {{{section.value / section.max * 100}}}%"
+		></div>
+	</div>
+
+	{% if section.label %}
+	<div class="progress-bar__label">{{{section.label}}}</div>
+	{% endif %}
+</div>

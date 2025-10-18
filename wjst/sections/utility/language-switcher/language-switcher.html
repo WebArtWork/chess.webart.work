@@ -1,0 +1,19 @@
+<div class="language-switcher">
+	{% if section.label %}
+	<label for="language-switcher__select" class="language-switcher__label">
+		{{{section.label}}}
+	</label>
+	{% endif %} {% if section.languages %}
+	<select
+		id="language-switcher__select"
+		class="language-switcher__select"
+		onchange="if(this.value){window.location.href=this.value}"
+	>
+		{% for l in section.languages %}
+		<option value="{{{l.url}}}" {% if l.current %}selected{% endif %}>
+			{{{l.label}}}
+		</option>
+		{% endfor %}
+	</select>
+	{% endif %}
+</div>

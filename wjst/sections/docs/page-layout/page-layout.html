@@ -1,0 +1,9 @@
+<div class="page-layout">
+	{% if section.sidebar %}
+	<aside class="page-layout__sidebar">{{{section.sidebar}}}</aside>
+	{% endif %} {% if section.content %}
+	<div class="page-layout__content">{{{section.content}}}</div>
+	{% endif %} {% if section.toc %}
+	<nav class="page-layout__toc">{{{section.toc}}}</nav>
+	{% endif %}
+</div>
