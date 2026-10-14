@@ -1,0 +1,151 @@
+<!--
+	Phones: the board and its controls are pinned above the footer; the game details scroll above.
+	Large screens: board on the left, details on the right.
+-->
+<section
+	class="mx-auto flex h-full w-full max-w-[72rem] flex-col lg:grid lg:h-full lg:grid-cols-[minmax(0,34rem)_1fr] lg:grid-rows-[minmax(0,1fr)] lg:items-stretch lg:gap-8 lg:px-6 lg:pb-4 lg:pt-3"
+>
+	@if (loading()) {
+		<h1 class="sr-only">Game</h1>
+		<div class="mx-auto my-auto aspect-square w-[min(100%,46dvh)] animate-pulse bg-soft sm:rounded-xl lg:w-[min(100%,calc(100dvh-8.5rem))]" role="status" aria-label="Loading game"></div>
+	} @else if (failed() || !game()) {
+		<h1 class="sr-only">Game not found</h1>
+		<div class="ds-card m-4 items-start gap-3 p-5 lg:col-span-2 lg:m-0">
+			<p>This game is not in the collection.</p>
+			<a class="ds-btn ds-btn-primary" routerLink="/games">Browse games</a>
+		</div>
+	} @else {
+		@let data = game()!;
+
+		<div class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-2 pt-[3px] lg:order-2 lg:overflow-y-auto lg:p-0">
+			<div class="flex flex-col gap-3">
+				<header class="text-sm">
+					<h1 class="text-base font-semibold">
+						{{ data.white.name }} ({{ data.white.rating }}) vs {{ data.black.name }} ({{ data.black.rating }})
+					</h1>
+					<p>
+						{{ family(data.opening) }}
+						@if (variation(data.opening); as detail) {
+							<span class="text-mute">· {{ detail }}</span>
+						}
+					</p>
+					<p class="text-mute">
+						{{ resultLabel(data.result) }} · {{ data.date.slice(0, 10) }} · {{ data.speed }} {{ data.timeControl }} ·
+						<a [href]="data.url" target="_blank" rel="noopener">Lichess</a>
+					</p>
+				</header>
+
+				@if (run(); as attempt) {
+					<app-puzzle-panel [run]="attempt">
+						<div class="flex flex-wrap gap-2" actions>
+							<button class="ds-btn ds-btn-outline" type="button" (click)="closePuzzle()">Back to the game</button>
+							@if (nextPuzzle(attempt.puzzle.ply); as next) {
+								<button class="ds-btn ds-btn-primary" type="button" (click)="startPuzzle(next)">Next puzzle</button>
+							}
+						</div>
+					</app-puzzle-panel>
+					@if (!attempt.done()) {
+						<button class="ds-btn ds-btn-ghost self-start" type="button" (click)="closePuzzle()">Back to the game</button>
+					}
+				} @else {
+					@if (puzzleHere(); as puzzle) {
+						<div class="ds-card flex-row! items-center justify-between gap-3 p-3">
+							<p class="text-sm">
+								<span class="font-medium">Training position.</span>
+								{{ modeLabels[puzzle.mode] }} · {{ categoryLabels[puzzle.category] }}
+							</p>
+							<button class="ds-btn ds-btn-primary shrink-0" type="button" (click)="startPuzzle(puzzle)">Solve</button>
+						</div>
+					}
+
+					<section aria-labelledby="moves-title">
+						<h2 id="moves-title" class="mb-2 text-base font-semibold">Moves</h2>
+						<ol #moveList class="relative grid max-h-64 grid-cols-[2.5rem_1fr_1fr] overflow-y-auto rounded-xl border border-line bg-card p-1 text-sm lg:max-h-[40dvh]">
+							@for (row of rows(); track row.number) {
+								<li class="contents">
+									<span class="flex min-h-10 items-center px-2 text-mute">{{ row.number }}.</span>
+									@for (move of [row.white, row.black]; track $index) {
+										@if (move) {
+											<button
+												class="flex min-h-10 items-center gap-1 rounded-md px-2 text-left hover:bg-soft aria-[current=true]:bg-brand aria-[current=true]:text-brand-fg"
+												type="button"
+												[attr.aria-current]="move.ply === current()"
+												(click)="go(move.ply)"
+											>
+												{{ move.san }}
+												@if (puzzlePlies().has(move.ply - 1)) {
+													<span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+													<span class="sr-only">(training position before this move)</span>
+												}
+											</button>
+										} @else {
+											<span></span>
+										}
+									}
+								</li>
+							}
+						</ol>
+						<p class="mt-1 text-xs text-mute">Use the arrow keys to step through. A dot marks a training position.</p>
+					</section>
+
+					<section aria-labelledby="puzzles-title">
+						<h2 id="puzzles-title" class="mb-2 text-base font-semibold">Training positions</h2>
+						<ul class="flex flex-col gap-2">
+							@for (puzzle of data.puzzles; track puzzle.ply) {
+								@let result = finished().get(puzzle.ply);
+								<li class="ds-card gap-2 p-3">
+									<div class="flex items-center justify-between gap-3">
+										<button class="min-h-11 min-w-0 text-left" type="button" (click)="go(puzzle.ply)">
+											<span class="block text-sm font-medium">{{ moveLabel(puzzle.ply) }}</span>
+											<span class="block text-xs text-mute">
+												{{ modeLabels[puzzle.mode] }} · {{ categoryLabels[puzzle.category] }} · {{ levelLabels[puzzle.level] }}
+											</span>
+										</button>
+										@if (result !== undefined) {
+											<span class="ds-badge" [class]="result ? 'ds-badge-safe' : 'ds-badge-danger'">{{ result ? 'Solved' : 'Missed' }}</span>
+										} @else {
+											<button class="ds-btn ds-btn-outline shrink-0" type="button" (click)="startPuzzle(puzzle)">Solve</button>
+										}
+									</div>
+									@if (result !== undefined) {
+										<p class="text-xs text-mute">{{ summary(puzzle) }}</p>
+									}
+								</li>
+							}
+						</ul>
+					</section>
+				}
+			</div>
+		</div>
+
+		<div class="shrink-0 pb-2 lg:order-1 lg:self-start lg:pb-0">
+			<div class="mx-auto w-[min(100%,46dvh)] lg:mx-0 lg:w-[min(100%,calc(100dvh-11rem))]">
+				<app-board
+					[fen]="fen()"
+					[orientation]="orientation()"
+					[interactive]="!!run()?.interactive()"
+					[viewOnly]="!run()"
+					[arrows]="run()?.arrows() ?? []"
+					[lastMove]="lastMove()"
+					(moved)="onMove($event)"
+				/>
+				<div class="mt-2 flex items-center justify-between gap-1 px-4 lg:px-0" role="group" aria-label="Replay">
+					<div class="flex gap-1">
+						<button class="ds-btn ds-btn-ghost h-11 px-3" type="button" aria-label="Start position" [disabled]="!!run() || current() === 0" (click)="go(0)">Start</button>
+						<button class="ds-btn ds-btn-ghost size-11 !p-0" type="button" aria-label="Previous move" [disabled]="!!run() || current() === 0" (click)="go(current() - 1)">
+							<app-icon name="prev" />
+						</button>
+						<button class="ds-btn ds-btn-ghost size-11 !p-0" type="button" aria-label="Next move" [disabled]="!!run() || current() === total()" (click)="go(current() + 1)">
+							<app-icon name="next" />
+						</button>
+						<button class="ds-btn ds-btn-ghost h-11 px-3" type="button" aria-label="End position" [disabled]="!!run() || current() === total()" (click)="go(total())">End</button>
+					</div>
+					<p class="text-xs text-mute" aria-live="polite">{{ current() }} / {{ total() }}</p>
+					<button class="ds-btn ds-btn-ghost size-11 !p-0" type="button" aria-label="Flip board" (click)="flip()">
+						<app-icon name="flip" />
+					</button>
+				</div>
+			</div>
+		</div>
+	}
+</section>

@@ -1,0 +1,66 @@
+<section class="mx-auto flex w-full max-w-md flex-col gap-8 px-4 pb-8 pt-6 sm:px-6 sm:pt-10">
+	<div class="flex items-center gap-4">
+		@if (user()?.photoURL; as photo) {
+			<img class="size-20 shrink-0 rounded-full object-cover" [src]="photo" alt="" referrerpolicy="no-referrer" width="80" height="80" />
+		} @else {
+			<span class="flex size-20 shrink-0 items-center justify-center rounded-full bg-soft text-2xl font-semibold" aria-hidden="true">
+				{{ initial() }}
+			</span>
+		}
+		<div class="min-w-0">
+			<h1 class="truncate text-xl font-semibold tracking-tight">{{ name() }}</h1>
+			@if (user()?.email; as email) {
+				<p class="truncate text-sm text-mute">{{ email }}</p>
+			}
+		</div>
+	</div>
+
+	<section class="flex flex-col gap-3" aria-labelledby="record-title">
+		<h2 id="record-title" class="text-sm font-medium text-mute">All time</h2>
+		<dl class="ds-card grid! grid-cols-2 gap-px bg-line!">
+			<div class="bg-card p-4">
+				<dd class="text-2xl font-semibold tracking-tight">{{ stats().played }}</dd>
+				<dt class="mt-1 text-sm text-mute">Days played</dt>
+			</div>
+			<div class="bg-card p-4">
+				<dd class="text-2xl font-semibold tracking-tight">{{ stats().won }}</dd>
+				<dt class="mt-1 text-sm text-mute">Days won</dt>
+			</div>
+			<div class="bg-card p-4">
+				<dd class="text-2xl font-semibold tracking-tight">{{ stats().bestWin }}</dd>
+				<dt class="mt-1 text-sm text-mute">Best win streak</dt>
+			</div>
+			<div class="bg-card p-4">
+				<dd class="text-2xl font-semibold tracking-tight">{{ stats().found === null ? '–' : stats().found + '%' }}</dd>
+				<dt class="mt-1 text-sm text-mute">Moves found</dt>
+			</div>
+		</dl>
+		<dl class="ds-card grid! grid-cols-2 gap-px bg-line!" aria-label="Quiz">
+			<div class="bg-card p-4">
+				<dd class="text-2xl font-semibold tracking-tight">{{ quiz().rating }}</dd>
+				<dt class="mt-1 text-sm text-mute">Quiz rating (best {{ quiz().best }})</dt>
+			</div>
+			<div class="bg-card p-4">
+				<dd class="text-2xl font-semibold tracking-tight">{{ quiz().solved }} / {{ quiz().played }}</dd>
+				<dt class="mt-1 text-sm text-mute">Quiz puzzles solved</dt>
+			</div>
+		</dl>
+	</section>
+
+	<a
+		class="ds-card flex-row! items-center justify-between gap-3 p-4 text-fg! no-underline"
+		routerLink="/my-games"
+	>
+		<span class="flex items-center gap-3">
+			<app-icon name="saved" />
+			<span class="font-semibold">My games</span>
+		</span>
+		<app-icon name="next" />
+	</a>
+
+	<app-preferences />
+
+	<button class="ds-btn ds-btn-outline ds-btn-lg w-full" type="button" [disabled]="signingOut()" (click)="signOut()">
+		Sign out
+	</button>
+</section>

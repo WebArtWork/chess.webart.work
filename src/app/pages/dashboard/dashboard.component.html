@@ -1,0 +1,135 @@
+<section class="mx-auto flex w-full max-w-[72rem] flex-col gap-8 px-4 pb-8 pt-4 sm:px-6 lg:h-full lg:gap-2 lg:pb-4 lg:pt-2">
+	<div>
+		<h1 class="text-xl font-semibold tracking-tight">Dashboard</h1>
+		<p class="mt-0.5 text-sm text-mute">Your weekly plan to get better at chess.</p>
+	</div>
+
+	<div class="grid gap-8 lg:min-h-0 lg:flex-1 lg:grid-cols-[1fr_1fr_1.4fr] lg:content-start lg:items-start lg:gap-x-6 lg:gap-y-4 lg:overflow-y-auto">
+		<div class="flex flex-col gap-8 lg:contents">
+			@if (todayPlan(); as plan) {
+				<section class="ds-card gap-4 p-5 lg:col-start-1 lg:row-start-1" aria-labelledby="today-title">
+					<div>
+						<h2 id="today-title" class="text-xl font-semibold tracking-tight">Today: {{ plan.title }}</h2>
+						<p class="mt-1 text-mute">{{ plan.detail }}</p>
+					</div>
+
+					<ol class="flex flex-col gap-3">
+						<li class="flex items-center justify-between gap-3">
+							<span>
+								<span class="block font-medium">Daily puzzle</span>
+								<span class="text-sm text-mute">
+									@if (dailyResult(); as result) {
+										{{ result }}. A new puzzle tomorrow.
+									} @else {
+										{{ dailyMinutes }} min
+									}
+								</span>
+							</span>
+							@if (dailyDone()) {
+								<span class="ds-badge ds-badge-safe">
+									<app-icon name="check" />
+									Done
+								</span>
+							} @else {
+								<a class="ds-btn ds-btn-primary" routerLink="/daily">Play</a>
+							}
+						</li>
+						<li class="flex items-center justify-between gap-3">
+							<span>
+								<span class="block font-medium">{{ plan.title }}</span>
+								<span class="text-sm text-mute">{{ plan.minutes }} min</span>
+							</span>
+							<a
+								class="ds-btn"
+								[class]="dailyDone() ? 'ds-btn-primary' : 'ds-btn-outline'"
+								[routerLink]="plan.path"
+								[queryParams]="plan.query"
+							>
+								{{ plan.action }}
+							</a>
+						</li>
+					</ol>
+				</section>
+			}
+
+			<section class="flex flex-col gap-4 lg:col-start-2 lg:row-span-2 lg:row-start-1" aria-labelledby="progress-title">
+				<div class="flex items-center gap-2">
+					<h2 id="progress-title" class="text-base font-semibold">Last 7 days</h2>
+					@if (isGuest()) {
+						<span class="ds-badge">Sample data</span>
+					}
+				</div>
+
+				@if (progress(); as p) {
+					<ol class="grid grid-cols-7 gap-2" aria-label="Daily results">
+						@for (day of p.days; track day.date) {
+							<li class="flex flex-col items-center gap-1.5">
+								<span
+									class="size-9 rounded-lg"
+									[class]="
+										day.state === 'won'
+											? 'bg-ok'
+											: day.state === 'played'
+												? 'bg-brand'
+												: 'border border-dashed border-line'
+									"
+								></span>
+								<span class="sr-only">{{ day.weekday }}: {{ dayLabel(day.state) }}</span>
+								<span class="text-xs text-mute" aria-hidden="true">{{ day.weekday }}</span>
+							</li>
+						}
+					</ol>
+					<p class="text-xs text-mute">Green: solved. Blue: played. Dashed: not played.</p>
+
+					<dl class="ds-card grid! grid-cols-2 gap-px bg-line!">
+						<div class="bg-card p-4">
+							<dd class="text-2xl font-semibold tracking-tight">{{ p.playedStreak }}</dd>
+							<dt class="mt-1 text-sm text-mute">Day streak</dt>
+						</div>
+						<div class="bg-card p-4">
+							<dd class="text-2xl font-semibold tracking-tight">{{ p.found === null ? '–' : p.found + '%' }}</dd>
+							<dt class="mt-1 text-sm text-mute">Moves found</dt>
+						</div>
+					</dl>
+				} @else {
+					<div class="h-40 animate-pulse rounded-xl bg-soft" role="status" aria-label="Loading progress"></div>
+				}
+			</section>
+		</div>
+
+		<section class="flex flex-col gap-3 lg:col-start-3 lg:row-span-2 lg:row-start-1" aria-labelledby="week-title">
+			<div>
+				<h2 id="week-title" class="text-base font-semibold">This week</h2>
+				<p class="text-sm text-mute">Daily puzzle first, then the day's focus.</p>
+			</div>
+
+			<ol class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card">
+				@for (day of week; track day.day) {
+					<li>
+						<a
+							class="flex items-start gap-4 px-4 py-3 text-fg! no-underline lg:py-1.5"
+							[class.bg-soft]="day.day === weekday()"
+							[routerLink]="day.path"
+							[queryParams]="day.query"
+							[attr.aria-current]="day.day === weekday() ? 'date' : null"
+						>
+							<span class="w-9 shrink-0 pt-0.5 text-sm font-medium text-mute">{{ day.label }}</span>
+							<span class="min-w-0 flex-1">
+								<span class="block font-semibold leading-snug">{{ day.title }}</span>
+								<span class="block text-sm leading-snug text-mute [@media(max-height:760px)]:hidden">{{ day.detail }}</span>
+							</span>
+							<span class="shrink-0 pt-0.5 text-sm text-mute">{{ day.minutes }} min</span>
+						</a>
+					</li>
+				}
+			</ol>
+		</section>
+		@if (isGuest()) {
+			<section class="ds-card gap-3 p-5 lg:col-start-1 lg:row-start-2" aria-labelledby="signin-title">
+				<h2 id="signin-title" class="text-base font-semibold">Get your own numbers</h2>
+				<p class="text-mute">The progress above is sample data. Sign in to see your own results.</p>
+				<a class="ds-btn ds-btn-primary self-start" routerLink="/sign-in">Sign in with Google</a>
+			</section>
+		}
+	</div>
+</section>

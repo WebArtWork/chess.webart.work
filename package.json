@@ -1,59 +1,56 @@
 {
 	"name": "app",
-	"version": "1.0.0",
+	"version": "22.0.1",
 	"scripts": {
-		"start": "ng serve -o --proxy-config proxy.conf.json",
-		"build": "ng build --configuration production"
+		"start": "ng serve",
+		"build": "ng build --configuration=production && node tools/seo/generate-static-seo.mjs",
+		"rules": "firebase deploy --only firestore:rules --project chess-d92e1",
+		"games:extract": "node tools/games/extract-games.mjs",
+		"games:analyze": "node tools/games/analyze-games.mjs",
+		"games:import": "tsc -p tools/chess-import/tsconfig.json && vitest run --config tools/chess-import/vitest.config.ts --silent && node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts",
+		"games:clear": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts clear",
+		"games:wipe": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts wipe",
+		"games:refresh": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts refresh",
+		"games:lookahead": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts lookahead",
+		"games:import:sample": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts --max-scan 3000 --max-export 20 --work-dir tools/chess-import/.work/sample --output tools/chess-import/.work/sample/out/games.json"
 	},
-	"private": true,
 	"dependencies": {
-		"@angular/animations": "20.2.3",
-		"@angular/cdk": "20.2.1",
-		"@angular/common": "20.2.3",
-		"@angular/core": "20.2.3",
-		"@angular/forms": "20.2.3",
-		"@angular/platform-browser": "20.2.3",
-		"@angular/platform-browser-dynamic": "20.2.3",
-		"@angular/router": "20.2.3",
-		"@lichess-org/chessground": "^9.7.4",
+		"@angular/common": "22.2.1",
+		"@angular/compiler": "22.2.1",
+		"@angular/core": "22.2.1",
+		"@angular/forms": "22.2.1",
+		"@angular/platform-browser": "22.2.1",
+		"@angular/platform-server": "22.2.1",
+		"@angular/router": "22.2.1",
+		"@angular/ssr": "22.2.2",
+		"@lichess-org/chessground": "^10.1.0",
+		"@wawjs/ngx-core": "22.0.9",
+		"@wawjs/ngx-default": "22.0.3",
+		"@wawjs/ngx-translate": "22.0.9",
+		"@wawjs/ngx-ui": "22.0.9",
 		"chess.js": "^1.4.0",
-		"ngx-ace-wrapper": "17.0.0",
-		"ngx-image-cropper": "7.2.1",
-		"ngx-tinymce": "19.0.0",
-		"rxjs": "7.8.2",
-		"socket.io-client": "4.5.1",
-		"tinymce": "7.5.1",
-		"wacom": "20.0.22",
-		"zone.js": "0.15.0"
+		"express": "5.1.0",
+		"firebase": "^13.0.0",
+		"rxjs": "7.8.0",
+		"stockfish": "^18.0.5",
+		"tslib": "2.3.0"
 	},
 	"devDependencies": {
-		"@angular-eslint/builder": "20.2.0",
-		"@angular-eslint/eslint-plugin": "20.2.0",
-		"@angular-eslint/eslint-plugin-template": "20.2.0",
-		"@angular-eslint/schematics": "20.2.0",
-		"@angular-eslint/template-parser": "20.2.0",
-		"@angular/build": "20.2.1",
-		"@angular/cli": "20.2.1",
-		"@angular/compiler": "20.2.3",
-		"@angular/compiler-cli": "20.2.3",
-		"@eslint/config-array": "0.19.2",
-		"@eslint/object-schema": "2.1.6",
-		"@typescript-eslint/eslint-plugin": "^8.33.1",
-		"@typescript-eslint/parser": "^8.33.1",
-		"eslint": "^9.28.0",
-		"eslint-config-prettier": "10.0.1",
-		"eslint-plugin-prettier": "5.2.3",
-		"prettier": "3.5.1",
-		"typescript": "5.8.2"
+		"@angular/build": "22.2.2",
+		"@angular/cli": "22.2.2",
+		"@angular/compiler-cli": "22.2.1",
+		"@tailwindcss/postcss": "4.1.12",
+		"@types/express": "5.0.1",
+		"@types/node": "25.9.3",
+		"ng-packagr": "22.2.4",
+		"postcss": "8.5.26",
+		"prettier": "3.8.1",
+		"tailwindcss": "4.1.12",
+		"typescript": "6.0.3",
+		"vitest": "5.0.3"
 	},
 	"overrides": {
-		"@typescript-eslint/parser": {
-			"typescript": "5.8.2"
-		},
-		"@typescript-eslint/eslint-plugin": {
-			"typescript": "5.8.2"
-		},
-		"jsdom": "26.0.0",
-		"glob": "11.0.1"
+		"esbuild": "0.28.2",
+		"@hono/node-server": "2.1.4"
 	}
 }

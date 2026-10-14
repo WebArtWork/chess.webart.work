@@ -1,0 +1,61 @@
+rules_version = '2';
+
+// waw chess. Everything is denied unless a rule below allows it.
+// Deploy with: npm run rules
+service cloud.firestore {
+	match /databases/{database}/documents {
+		function signedIn() {
+			return request.auth != null;
+		}
+
+		function isOwner(uid) {
+			return signedIn() && request.auth.uid == uid;
+		}
+
+		function stringUpTo(value, max) {
+			return value is string && value.size() <= max;
+		}
+
+		// users/{uid}: identity copied from the Google account. Mirrors src/app/feature/account.
+		function validProfile(data) {
+			return data.keys().hasOnly(['displayName', 'email', 'photoUrl', 'createdAt', 'updatedAt'])
+				&& stringUpTo(data.displayName, 200)
+				&& stringUpTo(data.email, 320)
+				&& stringUpTo(data.photoUrl, 2048)
+				&& data.createdAt is timestamp
+				&& data.updatedAt is timestamp;
+		}
+
+		// users/{uid}/games/{id}: a game saved from the Library. Never edited after saving.
+		function validGame(data) {
+			return data.keys().hasOnly(['title', 'startFen', 'sans', 'fen', 'createdAt'])
+				&& stringUpTo(data.title, 200)
+				&& stringUpTo(data.startFen, 100)
+				&& stringUpTo(data.fen, 100)
+				&& data.sans is list
+				&& data.sans.size() <= 600
+				&& data.createdAt is timestamp;
+		}
+
+		match /users/{uid}/games/{gameId} {
+			allow read: if isOwner(uid);
+			allow create: if isOwner(uid)
+				&& validGame(request.resource.data)
+				&& request.resource.data.createdAt == request.time;
+			allow delete: if isOwner(uid);
+		}
+
+		match /users/{uid} {
+			allow read: if isOwner(uid);
+			allow create: if isOwner(uid)
+				&& validProfile(request.resource.data)
+				&& request.resource.data.createdAt == request.time
+				&& request.resource.data.updatedAt == request.time;
+			allow update: if isOwner(uid)
+				&& validProfile(request.resource.data)
+				&& request.resource.data.createdAt == resource.data.createdAt
+				&& request.resource.data.updatedAt == request.time;
+			allow delete: if isOwner(uid);
+		}
+	}
+}

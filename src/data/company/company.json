@@ -1,0 +1,11 @@
+{
+  "_id": "",
+  "name": "waw chess",
+  "title": "waw chess",
+  "description": "Chess puzzles from real games: daily and random puzzles, full games to replay and solve, free analysis and move-by-move study.",
+  "image": "https://chess.webart.work/logo.png",
+  "siteUrl": "https://chess.webart.work",
+  "defaultSeo": {
+    "image": "https://chess.webart.work/chess-knight.png"
+  }
+}

@@ -1,39 +1,70 @@
 <!doctype html>
-<html id="html" lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<base href="/" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>waw chess</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script>
+      try {
+        const storedMode = localStorage.getItem('app-mode');
+        const preferredMode =
+          storedMode === 'dark' || storedMode === 'light'
+            ? storedMode
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.setAttribute('data-mode', preferredMode);
+      } catch {}
+    </script>
 
-		<title>Chess wiki | Web Art Work</title>
-		<meta itemprop="name" content="Chess wiki | Web Art Work" />
-		<meta name="twitter:title" content="Chess wiki | Web Art Work" />
-		<meta property="og:title" content="Chess wiki | Web Art Work" />
+    <meta
+      name="description"
+      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
+    />
+    <meta name="author" content="waw chess" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f0f11" media="(prefers-color-scheme: dark)" />
 
-		<meta
-			name="description"
-			content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place."
-		/>
-		<meta
-			itemprop="description"
-			content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place."
-		/>
-		<meta
-			name="twitter:description"
-			content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place."
-		/>
-		<meta
-			property="og:description"
-			content="Play, watch, and analyze chess games from around the world. Explore tournaments, follow player rankings, study openings, and relive classic matches — all in one place."
-		/>
+    <meta itemprop="name" content="waw chess" />
+    <meta
+      itemprop="description"
+      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
+    />
+    <meta itemprop="image" content="https://chess.webart.work/chess-knight.png" />
 
-		<meta itemprop="image" content="assets/logo.png" />
-		<meta name="twitter:image:src" content="assets/logo.png" />
-		<meta property="og:image" content="assets/logo.png" />
-	</head>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="waw chess" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://chess.webart.work/" />
+    <meta property="og:title" content="waw chess" />
+    <meta
+      property="og:description"
+      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
+    />
+    <meta property="og:image" content="https://chess.webart.work/chess-knight.png" />
 
-	<body>
-		<app-root></app-root>
-	</body>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="waw chess" />
+    <meta
+      name="twitter:description"
+      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
+    />
+    <meta name="twitter:image" content="https://chess.webart.work/chess-knight.png" />
+    <meta name="twitter:image:src" content="https://chess.webart.work/chess-knight.png" />
+
+    <link rel="canonical" href="https://chess.webart.work/" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>
