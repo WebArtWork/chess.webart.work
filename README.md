@@ -174,7 +174,8 @@ Requires Node.js 24+ (the importer uses built-in SQLite and zstd).
 ```bash
 npm i
 npm start            # dev server at http://localhost:4200
-npm run build        # production build with prerendering → dist/app/browser
+npm run build        # production build with prerendering → dist/app/browser (used by mobile apps)
+npm run build:seo    # build + sitemap.xml and robots.txt (used by GitHub Pages deploy)
 ```
 
 - Angular 22, standalone components, signals, zoneless, Tailwind CSS 4 plus the shared `ds-*`
