@@ -20,13 +20,15 @@ import { CATEGORY_LABELS, levelOf, themeLabel } from '../../feature/game/game.co
 import { PuzzleData, QuizItem } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { ProgressService } from '../../feature/progress/progress.service';
 import { QuizService } from '../../feature/quiz/quiz.service';
 
-export type QuizType = 'mate1' | 'mixed';
+export type QuizType = 'mate1' | 'mate3' | 'mixed';
 
 /** Quiz types, in the order of the chips; the first is the default. */
 const QUIZ_TYPES: { value: QuizType; label: string }[] = [
 	{ value: 'mate1', label: 'Mate in 1' },
+	{ value: 'mate3', label: 'Mate in 3' },
 	{ value: 'mixed', label: 'Tactics' },
 ];
 
@@ -39,8 +41,10 @@ interface QuizPuzzle {
 
 interface QuizOutcome {
 	solved: boolean;
-	/** Rating change; null when the attempt was a retry and not rated. */
+	/** Rating change; null when not rated: a retry, or a puzzle played before. */
 	delta: number | null;
+	pawns: number;
+	retry: boolean;
 }
 
 /** A candidate for the next puzzle; `load` fetches what it needs to be played. */
@@ -67,6 +71,7 @@ export class QuizComponent {
 	private readonly _playMode = inject(PlayModeService);
 	private readonly _router = inject(Router);
 	protected readonly quiz = inject(QuizService);
+	protected readonly player = inject(ProgressService);
 	private readonly _next = viewChild<ElementRef<HTMLElement>>('nextButton');
 
 	protected readonly types = QUIZ_TYPES;
@@ -85,6 +90,7 @@ export class QuizComponent {
 	protected readonly side = computed(() => (this.current()?.puzzle.side === 'black' ? 'Black' : 'White'));
 	protected readonly task = computed(() => {
 		if (this.type() === 'mate1') return 'Mate in 1. Find the mating move.';
+		if (this.type() === 'mate3') return 'Mate in 3. Play the mating line, move by move.';
 		return this.current()?.puzzle.mode === 'line' ? 'Play the best line, move by move.' : 'Find the best move.';
 	});
 	/** The line as played or as it should have been, e.g. "Nxe5 dxe5 Qh5+". */
@@ -127,8 +133,8 @@ export class QuizComponent {
 		if (isPlatformBrowser(inject(PLATFORM_ID))) void this.next();
 	}
 
-	protected onMove({ from, to }: BoardMove) {
-		this.run()?.submit(from, to);
+	protected onMove({ from, to, promotion }: BoardMove) {
+		this.run()?.submit(from, to, promotion);
 	}
 
 	protected chooseType(type: QuizType) {
@@ -165,8 +171,8 @@ export class QuizComponent {
 		const cached = this._pools.get(type);
 		if (cached) return cached;
 		let pool: QuizEntry[] = [];
-		if (type === 'mate1') {
-			const items = (await this._games.quiz())?.mate1 ?? [];
+		if (type === 'mate1' || type === 'mate3') {
+			const items = (await this._games.quiz())?.[type] ?? [];
 			pool = items.map((item) => ({ id: item.id, rating: item.rating, load: async () => fromQuizItem(item) }));
 		} else {
 			const puzzles = (await this._games.catalog())?.puzzles ?? [];
@@ -199,12 +205,12 @@ export class QuizComponent {
 		if (!puzzle) return;
 		const solved = run.won();
 		if (this.retrying()) {
-			this.outcome.set({ solved, delta: null });
+			this.outcome.set({ solved, delta: null, pawns: 0, retry: true });
 			return;
 		}
-		const delta = this.quiz.record({ id: puzzle.id, rating: puzzle.puzzle.rating }, solved);
+		const award = this.quiz.record({ id: puzzle.id, rating: puzzle.puzzle.rating }, solved);
 		this.session.update((list) => [...list, solved]);
-		this.outcome.set({ solved, delta });
+		this.outcome.set({ solved, delta: award?.delta ?? null, pawns: award?.pawns ?? 0, retry: false });
 	}
 }
 
@@ -212,10 +218,11 @@ function readType(value: string | null): QuizType {
 	return QUIZ_TYPES.some((type) => type.value === value) ? (value as QuizType) : QUIZ_TYPES[0].value;
 }
 
-/** A mate-in-1 item as a playable puzzle: one line, mate for the side to move. */
+/** A mate-in-N item as a playable puzzle: one line, mate for the side to move. */
 function fromQuizItem(item: QuizItem): QuizPuzzle {
-	const mate = item.side === 'white' ? 1 : -1;
-	const line = { uci: item.move, cp: null, mate };
+	const solution = item.line ?? [item.move];
+	const moves = Math.ceil(solution.length / 2);
+	const line = { uci: solution.join(' '), cp: null, mate: item.side === 'white' ? moves : -moves };
 	return {
 		id: item.id,
 		game: item.game,
@@ -224,15 +231,15 @@ function fromQuizItem(item: QuizItem): QuizPuzzle {
 			ply: item.ply,
 			fen: item.fen,
 			side: item.side,
-			mode: 'best',
+			mode: moves > 1 ? 'line' : 'best',
 			target: 1,
 			category: 'tactics',
 			categories: ['tactics'],
-			themes: ['mate', 'mateIn1'],
+			themes: ['mate', `mateIn${moves}`],
 			level: levelOf(item.rating),
 			rating: item.rating,
 			quality: 0,
-			solution: [],
+			solution: moves > 1 ? solution : [],
 			lines: [line],
 			played: line,
 		},

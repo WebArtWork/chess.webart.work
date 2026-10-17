@@ -1,12 +1,14 @@
 import { Component, computed, input } from '@angular/core';
 import { CATEGORY_LABELS, instruction, LEVEL_LABELS, LEVEL_RANGES, MODE_LABELS, themeLabel } from '../../feature/game/game.const';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { Award } from '../../feature/progress/progress.service';
 import { GamePanelComponent } from '../game-panel/game-panel.component';
 import { LinePanelComponent } from '../line-panel/line-panel.component';
 
 /**
  * A puzzle's task and progress, whatever its exercise. Themes stay hidden until it is finished,
- * since they would give the answer away. Content marked `actions` shows once it is finished.
+ * since they would give the answer away. Content marked `actions` shows once it is finished, and
+ * so does `award`, what the attempt earned.
  */
 @Component({
 	selector: 'app-puzzle-panel',
@@ -21,6 +23,16 @@ import { LinePanelComponent } from '../line-panel/line-panel.component';
 				@if (current.done()) {
 					@for (theme of themes(); track theme) {
 						<span class="ds-badge ds-badge-verified">{{ theme }}</span>
+					}
+					@if (award(); as earned) {
+						@if (earned.pawns) {
+							<span class="ds-badge">+{{ earned.pawns }} ♟</span>
+						}
+						@if (earned.delta !== null) {
+							<span class="ds-badge" [class]="earned.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'" title="Rating change">
+								{{ earned.delta >= 0 ? '+' : '' }}{{ earned.delta }}
+							</span>
+						}
 					}
 				}
 			</div>
@@ -47,6 +59,7 @@ import { LinePanelComponent } from '../line-panel/line-panel.component';
 })
 export class PuzzlePanelComponent {
 	readonly run = input.required<PuzzleRun>();
+	readonly award = input<Award | null>(null);
 
 	protected readonly task = computed(() => {
 		const puzzle = this.run().puzzle;

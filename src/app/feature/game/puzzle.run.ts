@@ -103,9 +103,9 @@ export class PuzzleRun {
 		}
 	}
 
-	submit(from: string, to: string) {
-		if (this.line) this.line.submitMove(from, to);
-		else this.moves?.submitMove(from, to);
+	submit(from: string, to: string, promotion?: string) {
+		if (this.line) this.line.submitMove(from, to, promotion);
+		else this.moves?.submitMove(from, to, promotion);
 	}
 
 	result(): PuzzleResult {
@@ -134,6 +134,16 @@ export class PuzzleRun {
 			candidates: [],
 			answers,
 		};
+	}
+
+	/** For the rating, 0 to 1: the share of good moves found, or 1 for solved cleanly, ½ after a strike. */
+	score(): number {
+		if (this.moves && this.puzzle.mode === 'candidates') {
+			const target = this.moves.targetMoves();
+			return target > 0 ? Math.min(1, this.moves.hits() / target) : 0;
+		}
+		if (!this.won()) return 0;
+		return this.strikes() ? 0.5 : 1;
 	}
 
 	dispose() {

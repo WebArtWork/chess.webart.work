@@ -62,8 +62,8 @@ export class LibraryComponent {
 		this.session.set(new StudySession(analysis, settings.minCandidates, settings.topMoves));
 	}
 
-	protected onMove({ from, to }: BoardMove) {
-		this.session()?.addCandidate(from, to);
+	protected onMove({ from, to, promotion }: BoardMove) {
+		this.session()?.addCandidate(from, to, promotion);
 	}
 
 	protected reset() {

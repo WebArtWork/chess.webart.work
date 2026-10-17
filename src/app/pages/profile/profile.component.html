@@ -35,16 +35,51 @@
 				<dt class="mt-1 text-sm text-mute">Moves found</dt>
 			</div>
 		</dl>
-		<dl class="ds-card grid! grid-cols-2 gap-px bg-line!" aria-label="Quiz">
+		<dl class="ds-card grid! grid-cols-2 gap-px bg-line!" aria-label="Puzzles">
 			<div class="bg-card p-4">
-				<dd class="text-2xl font-semibold tracking-tight">{{ quiz().rating }}</dd>
-				<dt class="mt-1 text-sm text-mute">Quiz rating (best {{ quiz().best }})</dt>
+				<dd class="text-2xl font-semibold tracking-tight">{{ progress.progress().rating }}{{ progress.provisional() ? '?' : '' }}</dd>
+				<dt class="mt-1 text-sm text-mute">Elo rating (best {{ progress.progress().best }})</dt>
 			</div>
 			<div class="bg-card p-4">
 				<dd class="text-2xl font-semibold tracking-tight">{{ quiz().solved }} / {{ quiz().played }}</dd>
 				<dt class="mt-1 text-sm text-mute">Quiz puzzles solved</dt>
 			</div>
 		</dl>
+		@if (progress.provisional()) {
+			<p class="text-xs text-mute">The ? goes once you have played 20 rated puzzles.</p>
+		}
+	</section>
+
+	<section class="flex flex-col gap-3" aria-labelledby="rank-title">
+		<h2 id="rank-title" class="text-sm font-medium text-mute">Rank</h2>
+		@let rank = progress.rank();
+		<div class="ds-card gap-3 p-4">
+			<div class="flex items-center gap-3">
+				<span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-soft text-3xl leading-none" aria-hidden="true">
+					{{ rank.rank.symbol }}
+				</span>
+				<div class="min-w-0">
+					<p class="text-lg font-semibold">{{ rank.rank.name }}</p>
+					<p class="text-sm text-mute">{{ progress.progress().pawns }} pawns earned</p>
+				</div>
+			</div>
+			@if (rank.next; as next) {
+				<div
+					class="h-2 overflow-hidden rounded-full bg-soft"
+					role="progressbar"
+					aria-label="Progress to the next rank"
+					aria-valuemin="0"
+					aria-valuemax="100"
+					[attr.aria-valuenow]="round(rank.share * 100)"
+				>
+					<div class="h-full rounded-full bg-brand" [style.width.%]="rank.share * 100"></div>
+				</div>
+				<p class="text-sm text-mute">{{ rank.toNext }} more to promote to {{ next.name }} {{ next.symbol }}</p>
+			} @else {
+				<p class="text-sm text-mute">The top rank. Every piece promoted.</p>
+			}
+			<p class="text-xs text-mute">Earn pawns by playing: puzzles, the daily, Look Ahead and whole games.</p>
+		</div>
 	</section>
 
 	<a

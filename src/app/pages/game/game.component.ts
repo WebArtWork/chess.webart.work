@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { afterRenderEffect, Component, computed, DestroyRef, ElementRef, inject, PLATFORM_ID, signal, viewChild } from '@angular/core';
+import { afterRenderEffect, Component, computed, DestroyRef, effect, ElementRef, inject, PLATFORM_ID, signal, untracked, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BoardComponent, BoardMove } from '../../components/board/board.component';
@@ -19,6 +19,8 @@ import { GameData, PuzzleData } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { lineEval, Replay, replayGame } from '../../feature/game/game.util';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { PAWNS } from '../../feature/progress/progress.const';
+import { Award, ProgressService } from '../../feature/progress/progress.service';
 
 interface MoveRow {
 	number: number;
@@ -38,6 +40,7 @@ interface MoveRow {
 export class GameComponent {
 	private readonly _games = inject(GameService);
 	private readonly _engine = inject(EngineService);
+	private readonly _progress = inject(ProgressService);
 
 	private readonly _route = inject(ActivatedRoute);
 	private readonly _moveList = viewChild<ElementRef<HTMLElement>>('moveList');
@@ -53,6 +56,10 @@ export class GameComponent {
 	protected readonly run = signal<PuzzleRun | null>(null);
 	/** Plies of the puzzles finished on this visit, and whether they were solved. */
 	protected readonly finished = signal<Map<number, boolean>>(new Map());
+	/** What the open puzzle earned once finished. */
+	protected readonly award = signal<Award | null>(null);
+	/** Pawns for finishing every puzzle of the game; null until then, or when it earned before. */
+	protected readonly gameAward = signal<number | null>(null);
 
 	protected readonly family = openingFamily;
 	protected readonly variation = openingVariation;
@@ -97,6 +104,12 @@ export class GameComponent {
 				list.scrollTop = item.offsetTop + item.offsetHeight - list.clientHeight;
 			}
 		});
+		// a finished puzzle earns once, and so does finishing them all
+		effect(() => {
+			const run = this.run();
+			if (!run?.done()) return;
+			untracked(() => this._earn(run));
+		});
 		if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
 		this._route.paramMap.pipe(takeUntilDestroyed(destroyRef)).subscribe((params) => {
 			const id = params.get('id') ?? '';
@@ -113,6 +126,7 @@ export class GameComponent {
 
 	protected startPuzzle(puzzle: PuzzleData) {
 		this.run()?.dispose();
+		this.award.set(null);
 		this.current.set(puzzle.ply);
 		this.orientation.set(puzzle.side);
 		this.run.set(new PuzzleRun(puzzle, this._engine));
@@ -122,18 +136,33 @@ export class GameComponent {
 	protected closePuzzle() {
 		const run = this.run();
 		if (!run) return;
-		if (run.done()) this.finished.update((map) => new Map(map).set(run.puzzle.ply, run.won()));
 		run.dispose();
 		this.run.set(null);
 		this.current.set(Math.min(this.total(), run.puzzle.ply + 1));
+	}
+
+	private _earn(run: PuzzleRun) {
+		const game = this.game();
+		if (!game || this.finished().has(run.puzzle.ply)) return;
+		this.finished.update((map) => new Map(map).set(run.puzzle.ply, run.won()));
+		this.award.set(
+			this._progress.complete({
+				key: `${game.id}-${run.puzzle.ply}`,
+				rated: { rating: run.puzzle.rating, score: run.score() },
+				pawns: run.won() ? PAWNS.puzzleSolved : PAWNS.puzzle,
+			}),
+		);
+		if (this.finished().size < game.puzzles.length) return;
+		const award = this._progress.complete({ key: `game-${game.id}`, pawns: PAWNS.game });
+		this.gameAward.set(award?.pawns ?? null);
 	}
 
 	protected nextPuzzle(after: number): PuzzleData | null {
 		return this.game()?.puzzles.find((puzzle) => puzzle.ply > after) ?? null;
 	}
 
-	protected onMove({ from, to }: BoardMove) {
-		this.run()?.submit(from, to);
+	protected onMove({ from, to, promotion }: BoardMove) {
+		this.run()?.submit(from, to, promotion);
 	}
 
 	protected flip() {
@@ -178,6 +207,7 @@ export class GameComponent {
 		this.run()?.dispose();
 		this.run.set(null);
 		this.finished.set(new Map());
+		this.gameAward.set(null);
 		this.loading.set(true);
 		this.failed.set(false);
 		this.current.set(0);

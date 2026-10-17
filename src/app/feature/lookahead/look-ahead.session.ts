@@ -1,6 +1,6 @@
 import { computed, signal } from '@angular/core';
 import { Chess } from 'chess.js';
-import { uciToSans } from '../chess/chess.util';
+import { sameMove, uciToSans } from '../chess/chess.util';
 import { LookAheadItem, LookAheadMove } from '../game/game.interface';
 
 export type LookAheadStatus = 'playing' | 'replying' | 'checked' | 'done';
@@ -60,10 +60,10 @@ export class LookAheadSession {
 	}
 
 	/** Returns false when the move is illegal or no move is expected. */
-	submitMove(from: string, to: string): boolean {
+	submitMove(from: string, to: string, promotion?: string): boolean {
 		if (this.status() !== 'playing') return false;
-		const node = this._nodes.find((candidate) => candidate.move.slice(0, 4) === `${from}${to}`);
-		const san = this._play(node?.move ?? `${from}${to}`);
+		const node = this._nodes.find((candidate) => sameMove(candidate.move, from, to, promotion));
+		const san = this._play(node?.move ?? `${from}${to}${promotion ?? ''}`);
 		if (!san) return false;
 		this.verdict.set(null);
 

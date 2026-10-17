@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { exercise, mateInOne, planDaily, type CatalogPuzzle } from '../src/output/app.ts';
+import { exercise, mateInOne, mateInThree, planDaily, type CatalogPuzzle } from '../src/output/app.ts';
 import { replay } from '../src/chess/replay.ts';
 import { OPERA_GAME } from './helpers.ts';
 import type { GameRecord } from '../src/output/record.ts';
@@ -83,5 +83,48 @@ describe('mate-in-1 quiz set', () => {
 		expect(item.fen).toBe(plies.at(-1)!.fen);
 		expect(item.rating).toBeGreaterThanOrEqual(400);
 		expect(item.rating).toBeLessThanOrEqual(1200);
+	});
+});
+
+describe('mate-in-3 quiz set', () => {
+	const plies = replay(OPERA_GAME).plies;
+	// Bxd7+ Nxd7 Qb8+ Nxb8 Rd8#, and Rd1 Qe6 before it
+	const gameWith = (start: number, mate: number, second: number | null = null) =>
+		({
+			id: 'opera123',
+			opening: 'Philidor Defense',
+			moves: OPERA_GAME,
+			uciMoves: plies.map((ply) => ply.uci),
+			trainingPositions: [
+				position({
+					ply: start,
+					fen: plies[start].fen,
+					principalVariations: [
+						{ rank: 1, cp: null, mate, san: [], uci: plies.slice(start).map((ply) => ply.uci) },
+						{ rank: 2, cp: null, mate: second, san: [], uci: [] },
+					],
+				}),
+			],
+		}) as unknown as GameRecord;
+	const mateStart = OPERA_GAME.length - 5;
+
+	it('takes training positions whose best line mates in three', () => {
+		const [item] = mateInThree([gameWith(mateStart, 3)]);
+		expect(item).toMatchObject({ id: `opera123-${mateStart}`, ply: mateStart, side: 'white', move: 'b5d7' });
+		expect(item.line).toHaveLength(5);
+		expect(item.line!.at(-1)).toBe('d1d8');
+		expect(item.rating).toBeGreaterThanOrEqual(1000);
+		expect(item.rating).toBeLessThanOrEqual(1900);
+	});
+
+	it('takes the last three moves of a longer mate, linked to the game position', () => {
+		const [item] = mateInThree([gameWith(mateStart - 2, 4)]);
+		expect(item).toMatchObject({ id: `opera123-${mateStart}`, ply: mateStart - 2, move: 'b5d7' });
+		expect(item.fen).toBe(plies[mateStart].fen);
+	});
+
+	it('skips positions where another move mates as fast', () => {
+		expect(mateInThree([gameWith(mateStart, 3, 3)])).toEqual([]);
+		expect(mateInThree([gameWith(mateStart, 3, 4)])).toHaveLength(1);
 	});
 });

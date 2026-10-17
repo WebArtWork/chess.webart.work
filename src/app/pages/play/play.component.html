@@ -53,7 +53,7 @@
 						<p class="text-sm text-mute">A new daily puzzle tomorrow.</p>
 					</section>
 				} @else if (run(); as attempt) {
-					<app-puzzle-panel [run]="attempt">
+					<app-puzzle-panel [run]="attempt" [award]="award()">
 						<div class="flex flex-wrap gap-2" actions>
 							<a class="ds-btn ds-btn-outline" [routerLink]="['/games', game.id]" [queryParams]="{ ply: current.puzzle.ply }">See the game</a>
 							<a class="ds-btn ds-btn-primary" routerLink="/random" [queryParams]="nextParams()">Next puzzle</a>

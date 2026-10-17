@@ -9,6 +9,7 @@ import { GamesToolbarService } from '../../feature/chess/games-toolbar.service';
 import { PlayModeService } from '../../feature/chess/play-mode.service';
 import { PositionInputService } from '../../feature/chess/position-input.service';
 import { AuthService } from '../../feature/auth/auth.service';
+import { ProgressService } from '../../feature/progress/progress.service';
 import { NavStateService } from '../nav-state.service';
 import { NAV_LINKS } from '../nav.const';
 
@@ -33,6 +34,7 @@ export class TopbarComponent {
 
 	protected readonly links = NAV_LINKS;
 	protected readonly user = this._auth.user;
+	protected readonly progress = inject(ProgressService);
 	/** Name of the current page, from the active route's `pageName` data. */
 	protected openEditor() {
 		this.input.error.set('');

@@ -101,15 +101,28 @@
 					</a>
 				</div>
 
-				<a class="ds-btn ds-btn-ghost size-10 !p-0" routerLink="/random" aria-label="Play a random puzzle">
-					<app-icon name="shuffle" />
-				</a>
 				@if (playMode.fen(); as fen) {
 					<a class="ds-btn ds-btn-ghost size-10 !p-0" routerLink="/library" [queryParams]="{ fen: fen }" aria-label="Study this position">
 						<app-icon name="library" />
 					</a>
 				}
 			}
+
+			@let rank = progress.rank();
+			@let rating = progress.progress().rating + (progress.provisional() ? '?' : '');
+			<a
+				class="inline-flex h-10 shrink-0 flex-col items-center justify-center rounded-xl bg-soft px-2 text-[0.6875rem] font-medium leading-tight tabular-nums text-fg! no-underline sm:h-9 sm:flex-row sm:gap-1.5 sm:rounded-full sm:px-3 sm:text-sm"
+				routerLink="/profile"
+				[attr.aria-label]="'Rating ' + rating + ', ' + rank.rank.name + ', ' + progress.progress().pawns + ' pawns'"
+				[attr.title]="'Rating ' + rating + ' · ' + rank.rank.name"
+			>
+				<span>{{ rating }}</span>
+				<span class="hidden h-4 w-px bg-line sm:block" aria-hidden="true"></span>
+				<span class="flex items-center gap-0.5 sm:gap-1">
+					<span class="leading-none sm:text-base" aria-hidden="true">{{ rank.rank.symbol }}</span>
+					{{ progress.progress().pawns }}
+				</span>
+			</a>
 
 			<a
 				class="ds-btn ds-btn-outline size-10 overflow-hidden rounded-full !p-0 sm:size-11"

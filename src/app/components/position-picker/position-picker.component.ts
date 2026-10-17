@@ -310,10 +310,10 @@ export class PositionPickerComponent implements OnInit {
 		this.orientation.set(this.fen().includes(' b ') ? 'black' : 'white');
 	}
 
-	protected onMove({ from, to }: BoardMove) {
+	protected onMove({ from, to, promotion }: BoardMove) {
 		try {
 			const game = new Chess(this.fen());
-			const move = game.move({ from, to, promotion: 'q' });
+			const move = game.move({ from, to, promotion: promotion ?? 'q' });
 			// playing from the middle of a line replaces the rest of it
 			this.moves.update((list) => [
 				...list.slice(0, this.index() + 1),

@@ -63,17 +63,17 @@ export class GameSession {
 	}
 
 	/** Returns false when the move is illegal or was already tried. */
-	submitMove(from: string, to: string): boolean {
+	submitMove(from: string, to: string, promotion?: string): boolean {
 		if (this.done()) return false;
 
 		let san: string;
 		try {
-			san = new Chess(this.fen).move({ from, to, promotion: 'q' }).san;
+			san = new Chess(this.fen).move({ from, to, promotion: promotion ?? 'q' }).san;
 		} catch {
 			return false;
 		}
 
-		const uci = `${from}${to}`;
+		const uci = `${from}${to}${promotion ?? ''}`;
 		if (this.candidates().some((c) => c.move === uci)) return false;
 
 		this.candidates.update((list) => [...list, { move: uci, san, status: 'pending' }]);

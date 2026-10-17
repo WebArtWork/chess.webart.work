@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { Chess } from 'chess.js';
+import { Chess, type Move } from 'chess.js';
 import type { LookAheadMove } from '../analysis/lookahead.ts';
 import type { GameRecord, TrainingPosition } from './record.ts';
 
@@ -10,7 +10,7 @@ import type { GameRecord, TrainingPosition } from './record.ts';
  *
  *   catalog.json   every game and puzzle in brief, plus filter counts: lists, filters, random picks
  *   daily.json     date → puzzle id, stable for past days
- *   quiz.json      self-contained quiz sets, e.g. every mate in 1 found in the games
+ *   quiz.json      self-contained quiz sets: every mate in 1 and mate in 3 found in the games
  *   lookahead.json Look Ahead trees, built separately by `games:lookahead` and kept across rebuilds
  *   g/<id>.json    one game: moves and its puzzles with engine lines (~1 KB gzipped)
  *
@@ -126,12 +126,15 @@ export interface QuizItem {
 	side: 'white' | 'black';
 	/** A winning move in UCI; for mate-in-1 sets any mating move is accepted. */
 	move: string;
+	/** Mate in more than one: the whole line in UCI, defender's replies included, `move` first. */
+	line?: string[];
 	rating: number;
 	opening: string;
 }
 
 export interface QuizSets {
 	mate1: QuizItem[];
+	mate3: QuizItem[];
 }
 
 /** A Look Ahead position: find the paths through its tree of good moves. Needs no game file. */
@@ -330,6 +333,78 @@ export function mateInOne(games: GameRecord[]): QuizItem[] {
 	return [...items.values()].sort((a, b) => a.id.localeCompare(b.id));
 }
 
+/** Plies of a mate in 3: your three moves and the two replies between them. */
+const MATE3_PLIES = 5;
+
+/**
+ * Every forced mate in 3 in the engine lines: training positions whose best line mates in three,
+ * and the point where a longer mating line has three moves left (`ply` stays at the game position
+ * the line starts from, so "See the game" still finds it). Positions where a second move also
+ * mates that fast are skipped: the quiz accepts only the line or an immediate mate. Rated by how
+ * quiet the first move is and which piece makes it.
+ */
+export function mateInThree(games: GameRecord[]): QuizItem[] {
+	const items = new Map<string, QuizItem>();
+	for (const game of games) {
+		for (const position of game.trainingPositions) {
+			const [best, second] = position.principalVariations;
+			if (!best || best.mate === null || Math.abs(best.mate) < 3) continue;
+			if (second?.mate != null && Math.sign(second.mate) === Math.sign(best.mate) && Math.abs(second.mate) <= Math.abs(best.mate)) continue;
+			const skip = 2 * (Math.abs(best.mate) - 3);
+			const line = best.uci.slice(skip, skip + MATE3_PLIES);
+			if (line.length < MATE3_PLIES) continue;
+			const chess = new Chess(position.fen);
+			try {
+				for (const uci of best.uci.slice(0, skip)) playUci(chess, uci);
+			} catch {
+				continue;
+			}
+			const fen = chess.fen();
+			const id = puzzleId(game.id, position.ply + skip);
+			if (items.has(id)) continue;
+			const rating = mateInThreeRating(fen, line);
+			if (rating === null) continue;
+			items.set(id, {
+				id,
+				game: game.id,
+				ply: position.ply,
+				fen,
+				side: chess.turn() === 'w' ? 'white' : 'black',
+				move: line[0],
+				line,
+				rating,
+				opening: openingFamily(game.opening),
+			});
+		}
+	}
+	return [...items.values()].sort((a, b) => a.id.localeCompare(b.id));
+}
+
+/** Null when the line does not end in mate. */
+function mateInThreeRating(fen: string, line: string[]): number | null {
+	const chess = new Chess(fen);
+	const moves: Move[] = [];
+	try {
+		for (const uci of line) moves.push(playUci(chess, uci));
+	} catch {
+		return null;
+	}
+	if (!chess.isCheckmate()) return null;
+	const [first, , second] = moves;
+	let rating = 1300;
+	if (!first.san.includes('+')) rating += 150;
+	if (!first.captured) rating += 80;
+	if (first.piece === 'q') rating -= 80;
+	if (first.piece === 'n' || first.piece === 'b' || first.piece === 'p') rating += 60;
+	if (!second.san.includes('+')) rating += 80;
+	if (first.promotion || second.promotion) rating += 60;
+	return Math.max(1000, Math.min(1900, Math.round(rating / 10) * 10));
+}
+
+function playUci(chess: Chess, uci: string) {
+	return chess.move({ from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: uci[4] });
+}
+
 /**
  * Date → puzzle id. Past days keep their puzzle (even if its game was removed since); today and
  * later keep theirs while the puzzle exists. Open days get an unused puzzle near the weekday's
@@ -380,7 +455,7 @@ export async function writeAppData(games: GameRecord[], dir: string, today = new
 	for (const game of appGames) await writeFile(path.join(staging, 'g', `${game.id}.json`), JSON.stringify(game));
 	const catalog = buildCatalog(appGames, new Date().toISOString());
 	await writeFile(path.join(staging, 'catalog.json'), JSON.stringify(catalog));
-	const quiz: QuizSets = { mate1: mateInOne(games) };
+	const quiz: QuizSets = { mate1: mateInOne(games), mate3: mateInThree(games) };
 	await writeFile(path.join(staging, 'quiz.json'), JSON.stringify(quiz));
 
 	// Look Ahead trees take long to build: keep the ones whose game is still here

@@ -1,11 +1,13 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, computed, DestroyRef, inject, PLATFORM_ID, signal } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, PLATFORM_ID, signal, untracked } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BoardComponent, BoardMove } from '../../components/board/board.component';
 import { LEVEL_LABELS } from '../../feature/game/game.const';
 import { LookAheadItem } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { LookAheadPath, LookAheadSession } from '../../feature/lookahead/look-ahead.session';
+import { PAWNS } from '../../feature/progress/progress.const';
+import { Award, ProgressService } from '../../feature/progress/progress.service';
 
 /** A line of the tree as shown in the list. */
 interface PathRow {
@@ -26,12 +28,15 @@ interface PathRow {
 export class LookAheadComponent {
 	private readonly _games = inject(GameService);
 	private readonly _router = inject(Router);
+	private readonly _progress = inject(ProgressService);
 
 	protected readonly loading = signal(true);
 	protected readonly failed = signal(false);
 	/** The file loaded but holds no positions yet. */
 	protected readonly empty = signal(false);
 	protected readonly session = signal<LookAheadSession | null>(null);
+	/** What the finished position earned. */
+	protected readonly award = signal<Award | null>(null);
 
 	protected readonly side = computed(() => (this.session()?.item.side === 'black' ? 'Black' : 'White'));
 	protected readonly total = computed(() => this.session()?.paths.length ?? 0);
@@ -82,12 +87,27 @@ export class LookAheadComponent {
 	constructor() {
 		const destroyRef = inject(DestroyRef);
 		destroyRef.onDestroy(() => this.session()?.dispose());
+		// a position earns once, when every line is found or the rest are shown
+		effect(() => {
+			const session = this.session();
+			if (!session?.done()) return;
+			untracked(() => {
+				const found = session.found().size;
+				this.award.set(
+					this._progress.complete({
+						key: `la-${session.item.id}`,
+						rated: { rating: session.item.rating, score: session.paths.length ? found / session.paths.length : 0 },
+						pawns: Math.min(PAWNS.lookAheadMax, found * PAWNS.lookAheadPath),
+					}),
+				);
+			});
+		});
 		const id = inject(ActivatedRoute).snapshot.queryParamMap.get('id');
 		if (isPlatformBrowser(inject(PLATFORM_ID))) void this._start(id);
 	}
 
-	protected onMove({ from, to }: BoardMove) {
-		this.session()?.submitMove(from, to);
+	protected onMove({ from, to, promotion }: BoardMove) {
+		this.session()?.submitMove(from, to, promotion);
 	}
 
 	protected next() {
@@ -123,6 +143,7 @@ export class LookAheadComponent {
 
 	private _present(item: LookAheadItem) {
 		this.session()?.dispose();
+		this.award.set(null);
 		this._seen.add(item.id);
 		this.session.set(new LookAheadSession(item));
 		void this._router.navigate([], { queryParams: { id: item.id }, replaceUrl: true });

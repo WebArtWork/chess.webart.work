@@ -154,6 +154,8 @@ export interface QuizItem {
 	side: Side;
 	/** A winning move in UCI; in mate-in-1 sets any mating move counts. */
 	move: string;
+	/** Mate in more than one: the whole line in UCI, defender's replies included, `move` first. */
+	line?: string[];
 	rating: number;
 	opening: string;
 }
@@ -161,6 +163,7 @@ export interface QuizItem {
 /** quiz.json: self-contained quiz sets. */
 export interface QuizSets {
 	mate1: QuizItem[];
+	mate3: QuizItem[];
 }
 
 /** A Look Ahead move: yours, the opponent's best reply, and your good moves after it. */

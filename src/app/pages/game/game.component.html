@@ -36,7 +36,7 @@
 				</header>
 
 				@if (run(); as attempt) {
-					<app-puzzle-panel [run]="attempt">
+					<app-puzzle-panel [run]="attempt" [award]="award()">
 						<div class="flex flex-wrap gap-2" actions>
 							<button class="ds-btn ds-btn-outline" type="button" (click)="closePuzzle()">Back to the game</button>
 							@if (nextPuzzle(attempt.puzzle.ply); as next) {
@@ -44,6 +44,9 @@
 							}
 						</div>
 					</app-puzzle-panel>
+					@if (attempt.done() && gameAward(); as pawns) {
+						<p class="text-sm" role="status">Every puzzle of this game done: <span class="font-medium">+{{ pawns }} ♟</span></p>
+					}
 					@if (!attempt.done()) {
 						<button class="ds-btn ds-btn-ghost self-start" type="button" (click)="closePuzzle()">Back to the game</button>
 					}

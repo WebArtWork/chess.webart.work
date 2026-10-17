@@ -1,6 +1,6 @@
 import { computed, signal } from '@angular/core';
 import { Chess } from 'chess.js';
-import { evalToWinPercent, isBlackToMove, uciToSans } from './chess.util';
+import { evalToWinPercent, isBlackToMove, sameMove, uciToSans } from './chess.util';
 import { EngineService } from './engine.service';
 
 export type LineStatus = 'playing' | 'checking' | 'replying' | 'won' | 'lost';
@@ -62,10 +62,10 @@ export class LineSession {
 	}
 
 	/** Returns false when the move is illegal or the session is not waiting for a move. */
-	submitMove(from: string, to: string): boolean {
+	submitMove(from: string, to: string, promotion?: string): boolean {
 		if (this.status() !== 'playing') return false;
 		const expected = this.solution[this._step];
-		if (expected && expected.slice(0, 4) === `${from}${to}`) {
+		if (expected && sameMove(expected, from, to, promotion)) {
 			this._play(expected, 'you');
 			this._afterYourMove();
 			return true;
@@ -74,11 +74,11 @@ export class LineSession {
 		let san: string;
 		const before = this.fen();
 		try {
-			san = new Chess(before).move({ from, to, promotion: 'q' }).san;
+			san = new Chess(before).move({ from, to, promotion: promotion ?? 'q' }).san;
 		} catch {
 			return false;
 		}
-		const uci = `${from}${to}`;
+		const uci = `${from}${to}${promotion ?? ''}`;
 		if (this.misses().some((move) => move.uci === uci)) return false;
 		this.status.set('checking');
 		void this._checkAlternative(before, uci, san);
@@ -92,7 +92,7 @@ export class LineSession {
 
 	private async _checkAlternative(fen: string, uci: string, san: string) {
 		const chess = new Chess(fen);
-		chess.move({ from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: 'q' });
+		chess.move({ from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: uci[4] ?? 'q' });
 		let good = chess.isCheckmate();
 		if (!good && this._acceptEqual) {
 			const sign = isBlackToMove(fen) ? -1 : 1;

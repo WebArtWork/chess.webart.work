@@ -20,6 +20,11 @@ export function sideToMove(fen: string): Side {
 	return isBlackToMove(fen) ? 'black' : 'white';
 }
 
+/** Whether a UCI move is from→to; a missing promotion piece counts as a queen. */
+export function sameMove(uci: string, from: string, to: string, promotion?: string): boolean {
+	return uci.slice(0, 4) === `${from}${to}` && (uci[4] ?? 'q') === (promotion ?? 'q');
+}
+
 export function formatEval(value: number | undefined | null): string {
 	if (value === undefined || value === null) return '-';
 	if (value >= 9000) return `M${10000 - Math.round(value)}`;

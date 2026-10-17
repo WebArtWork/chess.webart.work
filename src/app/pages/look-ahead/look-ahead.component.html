@@ -40,6 +40,18 @@
 						</ol>
 					</div>
 					@if (run.done()) {
+						@if (award(); as earned) {
+							<p class="flex flex-wrap gap-1.5" role="status">
+								@if (earned.pawns) {
+									<span class="ds-badge">+{{ earned.pawns }} ♟</span>
+								}
+								@if (earned.delta !== null) {
+									<span class="ds-badge" [class]="earned.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'" title="Rating change">
+										{{ earned.delta >= 0 ? '+' : '' }}{{ earned.delta }}
+									</span>
+								}
+							</p>
+						}
 						<p class="text-sm text-mute">Tap a line to play it on the board.</p>
 					} @else {
 						<p class="text-sm" [class.text-mute]="run.status() !== 'checked'" role="status">{{ status() }}</p>

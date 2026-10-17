@@ -45,6 +45,86 @@ service cloud.firestore {
 			allow delete: if isOwner(uid);
 		}
 
+		// Puzzle rating and pawns. Mirrors src/app/feature/progress. The app works out each change;
+		// the rules only let it through as one step: a new users/{uid}/events/{id} (created once,
+		// never edited, so nothing earns twice) and the matching update of progress/current in the
+		// same batch. A rated event must follow the Elo formula of progress.const.ts.
+		function progressPath(uid) {
+			return /databases/$(database)/documents/users/$(uid)/progress/current;
+		}
+
+		function eventPath(uid, id) {
+			return /databases/$(database)/documents/users/$(uid)/events/$(id);
+		}
+
+		function validProgress(data) {
+			return data.keys().hasOnly(['rating', 'best', 'rated', 'pawns', 'lastEvent', 'updatedAt'])
+				&& data.rating is int && data.rating >= 100 && data.rating <= 4000
+				&& data.best is int && data.best >= data.rating && data.best <= 4000
+				&& data.rated is int && data.rated >= 0
+				&& data.pawns is int && data.pawns >= 0
+				&& stringUpTo(data.lastEvent, 150)
+				&& data.updatedAt == request.time;
+		}
+
+		// pawns up to MAX_PAWNS; unrated events change only pawns
+		function validEvent(data) {
+			return data.keys().hasOnly(['delta', 'score', 'puzzleRating', 'pawns', 'createdAt'])
+				&& data.pawns is int && data.pawns >= 0 && data.pawns <= 40
+				&& data.delta is int
+				&& (
+					(data.puzzleRating == null && data.score == null && data.delta == 0)
+					|| (data.puzzleRating is int && data.puzzleRating >= 100 && data.puzzleRating <= 4000
+						&& data.score is number && data.score >= 0 && data.score <= 1)
+				)
+				&& data.createdAt == request.time;
+		}
+
+		// Elo with K 48 for the first 20 rated puzzles, then 24; rounding and the ±1 minimum
+		// stay within 1.5, the floor of 100 may cut a loss short
+		function fairDelta(before, event) {
+			let k = before.rated < 20 ? 48 : 24;
+			let expected = 1 / (1 + math.pow(10, (event.puzzleRating - before.rating) / 400.0));
+			return math.abs(event.delta - k * (event.score - expected)) <= 1.5
+				|| (before.rating + event.delta == 100 && event.delta >= -k);
+		}
+
+		function progressStep(uid, before, after) {
+			let path = eventPath(uid, after.lastEvent);
+			return after.lastEvent != before.lastEvent
+				&& !exists(path)
+				&& existsAfter(path)
+				&& progressMatches(before, after, getAfter(path).data);
+		}
+
+		function progressMatches(before, after, event) {
+			return after.pawns == before.pawns + event.pawns
+				&& after.rating == before.rating + event.delta
+				&& after.rated == before.rated + (event.puzzleRating == null ? 0 : 1)
+				&& after.best == (after.rating > before.best ? after.rating : before.best)
+				&& (event.puzzleRating == null || fairDelta(before, event));
+		}
+
+		match /users/{uid}/progress/{docId} {
+			allow read: if isOwner(uid);
+			// a new account starts from what was earned as a guest
+			allow create: if isOwner(uid)
+				&& docId == 'current'
+				&& validProgress(request.resource.data)
+				&& request.resource.data.lastEvent == '';
+			allow update: if isOwner(uid)
+				&& docId == 'current'
+				&& validProgress(request.resource.data)
+				&& progressStep(uid, resource.data, request.resource.data);
+		}
+
+		match /users/{uid}/events/{eventId} {
+			allow read: if isOwner(uid);
+			allow create: if isOwner(uid)
+				&& validEvent(request.resource.data)
+				&& getAfter(progressPath(uid)).data.lastEvent == eventId;
+		}
+
 		match /users/{uid} {
 			allow read: if isOwner(uid);
 			allow create: if isOwner(uid)

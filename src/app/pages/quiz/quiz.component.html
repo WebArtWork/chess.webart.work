@@ -32,8 +32,8 @@
 				<!-- Rating, streak and this visit's results -->
 				<div class="flex items-center justify-between gap-3">
 					<p class="flex items-baseline gap-2">
-						<span class="text-sm text-mute">Quiz rating</span>
-						<span class="text-xl font-semibold tracking-tight">{{ stats().rating }}</span>
+						<span class="text-sm text-mute">Your rating</span>
+						<span class="text-xl font-semibold tracking-tight">{{ player.progress().rating }}{{ player.provisional() ? '?' : '' }}</span>
 						@if (stats().streak > 1) {
 							<span class="text-sm text-mute">· {{ stats().streak }} in a row</span>
 						}
@@ -53,13 +53,18 @@
 					<section class="ds-card gap-3 p-4" aria-live="polite">
 						<div class="flex items-center justify-between gap-3">
 							<p class="text-lg font-semibold">{{ result.solved ? 'Correct' : 'Incorrect' }}</p>
-							@if (result.delta === null) {
-								<span class="ds-badge">Retry, not rated</span>
-							} @else {
-								<span class="ds-badge" [class]="result.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'">
-									{{ result.delta >= 0 ? '+' : '' }}{{ result.delta }}
-								</span>
-							}
+							<span class="flex gap-1.5">
+								@if (result.pawns) {
+									<span class="ds-badge">+{{ result.pawns }} ♟</span>
+								}
+								@if (result.delta === null) {
+									<span class="ds-badge">{{ result.retry ? 'Retry, not rated' : 'Played before, not rated' }}</span>
+								} @else {
+									<span class="ds-badge" [class]="result.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'">
+										{{ result.delta >= 0 ? '+' : '' }}{{ result.delta }}
+									</span>
+								}
+							</span>
 						</div>
 						@if (attempt.line?.alternative(); as alternative) {
 							<p class="text-sm">{{ alternative }} works too. The line was: {{ solution() }}</p>

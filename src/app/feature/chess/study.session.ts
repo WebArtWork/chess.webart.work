@@ -35,17 +35,17 @@ export class StudySession {
 		return this.analysis.fen;
 	}
 
-	addCandidate(from: string, to: string): boolean {
+	addCandidate(from: string, to: string, promotion?: string): boolean {
 		if (this.phase() !== 'active' || this.candidates().length >= MAX_CANDIDATES) return false;
 
 		let san: string;
 		try {
-			san = new Chess(this.fen).move({ from, to, promotion: 'q' }).san;
+			san = new Chess(this.fen).move({ from, to, promotion: promotion ?? 'q' }).san;
 		} catch {
 			return false;
 		}
 
-		const uci = `${from}${to}`;
+		const uci = `${from}${to}${promotion ?? ''}`;
 		if (this.candidates().some((c) => c.move === uci)) return false;
 		this.candidates.update((list) => [...list, { move: uci, san, status: 'pending' }]);
 		return true;

@@ -14,6 +14,8 @@ import { filterParams, openingFamily, openingVariation, readFilters } from '../.
 import { Puzzle, PuzzleFilters } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { PAWNS } from '../../feature/progress/progress.const';
+import { Award, ProgressService } from '../../feature/progress/progress.service';
 
 @Component({
 	imports: [BoardComponent, PuzzlePanelComponent, RouterLink],
@@ -27,12 +29,15 @@ export class PlayComponent {
 	private readonly _route = inject(ActivatedRoute);
 	private readonly _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 	private readonly _playMode = inject(PlayModeService);
+	private readonly _progress = inject(ProgressService);
 
 	protected readonly today = todayString();
 	protected readonly mode = this._playMode.mode;
 	protected readonly puzzle = signal<Puzzle | null>(null);
 	protected readonly run = signal<PuzzleRun | null>(null);
 	protected readonly record = signal<DailyRecord | null>(null);
+	/** What the finished attempt earned. */
+	protected readonly award = signal<Award | null>(null);
 	protected readonly loading = signal(true);
 	protected readonly failed = signal(false);
 	/** Random puzzles keep to these filters, e.g. /random?category=endgame. */
@@ -71,13 +76,13 @@ export class PlayComponent {
 
 		effect(() => {
 			const run = this.run();
-			if (!run?.done() || this.mode() !== 'daily') return;
-			untracked(() => this._saveDaily(run));
+			if (!run?.done()) return;
+			untracked(() => (this.mode() === 'daily' ? this._saveDaily(run) : this._earn(run)));
 		});
 	}
 
-	protected onMove({ from, to }: BoardMove) {
-		this.run()?.submit(from, to);
+	protected onMove({ from, to, promotion }: BoardMove) {
+		this.run()?.submit(from, to, promotion);
 	}
 
 	private _onRoute() {
@@ -135,6 +140,7 @@ export class PlayComponent {
 		this.run()?.dispose();
 		this.run.set(null);
 		this.record.set(null);
+		this.award.set(null);
 	}
 
 	private _showFailed() {
@@ -154,6 +160,29 @@ export class PlayComponent {
 	private _saveDaily(run: PuzzleRun) {
 		const puzzle = this.puzzle();
 		if (!puzzle || this._daily.get(this.today)) return;
-		this._daily.save({ date: this.today, id: puzzle.id, mode: puzzle.puzzle.mode, ...run.result() });
+		const result = run.result();
+		this._daily.save({ date: this.today, id: puzzle.id, mode: puzzle.puzzle.mode, ...result });
+		// every 7th day in a row earns a bonus
+		const week = this._daily.streaks(this.today).participation % 7 === 0;
+		this.award.set(
+			this._progress.complete({
+				key: `daily-${this.today}`,
+				rated: { rating: puzzle.puzzle.rating, score: run.score() },
+				pawns: (result.won ? PAWNS.dailyWon : PAWNS.daily) + (week ? PAWNS.weekStreak : 0),
+			}),
+		);
+	}
+
+	/** A random puzzle earns once, on the first attempt. */
+	private _earn(run: PuzzleRun) {
+		const puzzle = this.puzzle();
+		if (!puzzle || this.award()) return;
+		this.award.set(
+			this._progress.complete({
+				key: puzzle.id,
+				rated: { rating: puzzle.puzzle.rating, score: run.score() },
+				pawns: run.won() ? PAWNS.puzzleSolved : PAWNS.puzzle,
+			}),
+		);
 	}
 }
