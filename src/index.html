@@ -1,70 +1,79 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>waw chess</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <script>
-      try {
-        const storedMode = localStorage.getItem('app-mode');
-        const preferredMode =
-          storedMode === 'dark' || storedMode === 'light'
-            ? storedMode
-            : window.matchMedia('(prefers-color-scheme: dark)').matches
-              ? 'dark'
-              : 'light';
-        document.documentElement.setAttribute('data-mode', preferredMode);
-      } catch {}
-    </script>
+	<head>
+		<meta charset="utf-8" />
+		<title>Chess training | Daily puzzles, tactics and game analysis</title>
+		<base href="/" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<script>
+			try {
+				const storedMode = localStorage.getItem('app-mode');
+				const preferredMode =
+					storedMode === 'dark' || storedMode === 'light'
+						? storedMode
+						: window.matchMedia('(prefers-color-scheme: dark)').matches
+							? 'dark'
+							: 'light';
+				document.documentElement.setAttribute('data-mode', preferredMode);
+			} catch {}
+		</script>
 
-    <meta
-      name="description"
-      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
-    />
-    <meta name="author" content="waw chess" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0f0f11" media="(prefers-color-scheme: dark)" />
+		<meta
+			name="description"
+			content="Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit."
+		/>
+		<meta name="author" content="Chess training" />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0f0f11" media="(prefers-color-scheme: dark)" />
 
-    <meta itemprop="name" content="waw chess" />
-    <meta
-      itemprop="description"
-      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
-    />
-    <meta itemprop="image" content="https://chess.webart.work/chess-knight.png" />
+		<meta itemprop="name" content="Chess training | Daily puzzles, tactics and game analysis" />
+		<meta
+			itemprop="description"
+			content="Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit."
+		/>
+		<meta itemprop="image" content="https://chess.webart.work/seo/dashboard.jpg" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="waw chess" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://chess.webart.work/" />
-    <meta property="og:title" content="waw chess" />
-    <meta
-      property="og:description"
-      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
-    />
-    <meta property="og:image" content="https://chess.webart.work/chess-knight.png" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Chess training" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:url" content="https://chess.webart.work/" />
+		<meta
+			property="og:title"
+			content="Chess training | Daily puzzles, tactics and game analysis"
+		/>
+		<meta
+			property="og:description"
+			content="Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit."
+		/>
+		<meta property="og:image" content="https://chess.webart.work/seo/dashboard.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:type" content="image/jpeg" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="waw chess" />
-    <meta
-      name="twitter:description"
-      content="waw chess: chess puzzles from real games. Daily and random puzzles, full games to replay and solve, analysis and study."
-    />
-    <meta name="twitter:image" content="https://chess.webart.work/chess-knight.png" />
-    <meta name="twitter:image:src" content="https://chess.webart.work/chess-knight.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="Chess training | Daily puzzles, tactics and game analysis"
+		/>
+		<meta
+			name="twitter:description"
+			content="Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit."
+		/>
+		<meta name="twitter:image" content="https://chess.webart.work/seo/dashboard.jpg" />
+		<meta name="twitter:image:src" content="https://chess.webart.work/seo/dashboard.jpg" />
 
-    <link rel="canonical" href="https://chess.webart.work/" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+		<link rel="canonical" href="https://chess.webart.work/" />
+		<link rel="icon" type="image/x-icon" href="favicon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <app-root></app-root>
-  </body>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<app-root></app-root>
+	</body>
 </html>

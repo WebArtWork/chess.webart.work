@@ -1,4 +1,4 @@
-# waw chess
+# Chess training
 
 A chess training site at [chess.webart.work](https://chess.webart.work). It trains **candidate move
 thinking**: before you move, name the few strong options in the position. Most exercises ask for

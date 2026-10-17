@@ -1,11 +1,71 @@
 {
-  "_id": "",
-  "name": "waw chess",
-  "title": "waw chess",
-  "description": "Chess puzzles from real games: daily and random puzzles, full games to replay and solve, free analysis and move-by-move study.",
-  "image": "https://chess.webart.work/logo.png",
-  "siteUrl": "https://chess.webart.work",
-  "defaultSeo": {
-    "image": "https://chess.webart.work/chess-knight.png"
-  }
+	"_id": "",
+	"name": "Chess training",
+	"title": "Chess training | Daily puzzles, tactics and game analysis",
+	"description": "Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit.",
+	"image": "https://chess.webart.work/logo.png",
+	"siteUrl": "https://chess.webart.work",
+	"defaultSeo": {
+		"image": "/seo/dashboard.jpg"
+	},
+	"pageSeo": {
+		"/": {
+			"title": "Chess training | Daily puzzles, tactics and game analysis",
+			"description": "Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit.",
+			"image": "/seo/dashboard.jpg"
+		},
+		"/daily": {
+			"title": "Daily chess puzzle",
+			"description": "Solve a new daily chess puzzle from a real game. Find the best move, explore candidate moves and practice the winning line to sharpen your tactics.",
+			"image": "/seo/daily.jpg"
+		},
+		"/random": {
+			"title": "Random chess puzzles",
+			"description": "Practice random chess puzzles from real games. Explore tactical themes, find candidate moves and solve winning lines at your own pace.",
+			"image": "/seo/random.jpg"
+		},
+		"/quiz": {
+			"title": "Chess puzzle quiz",
+			"description": "Test your tactics with a chess puzzle quiz from real games. Solve each position in one try and track how your quiz rating changes as you practice.",
+			"image": "/seo/quiz.jpg"
+		},
+		"/look-ahead": {
+			"title": "Look ahead: chess calculation practice",
+			"description": "Practice calculating three moves ahead. Find good lines in real chess positions and consider your opponent's best replies before making your move.",
+			"image": "/seo/look-ahead.jpg"
+		},
+		"/games": {
+			"title": "Chess games to study and solve",
+			"description": "Browse real chess games by theme, level, opening and training focus. Replay each game, study its ideas and solve the key positions along the way.",
+			"image": "/seo/games.jpg"
+		},
+		"/games/:id": {
+			"title": "Chess game replay and training",
+			"description": "Replay a real chess game move by move. Explore its critical positions, compare candidate moves and practice finding the best continuation.",
+			"image": "/seo/game.jpg"
+		},
+		"/library": {
+			"title": "Chess analysis and study library",
+			"description": "Analyze chess positions and games with Stockfish. Set up a board, compare candidate moves with engine analysis and save games for further study.",
+			"image": "/seo/library.jpg"
+		},
+		"/my-games": {
+			"title": "My saved chess games",
+			"description": "Return to your saved chess games and positions. Review your analysis and continue studying in your personal Chess training library.",
+			"image": "/seo/my-games.jpg",
+			"robots": "noindex, nofollow"
+		},
+		"/sign-in": {
+			"title": "Sign in",
+			"description": "Sign in to Chess training with your Google account to save games and keep track of your chess practice.",
+			"image": "/seo/sign-in.jpg",
+			"robots": "noindex, nofollow"
+		},
+		"/profile": {
+			"title": "Your chess training profile",
+			"description": "View your Chess training profile, review your practice progress and manage your account preferences.",
+			"image": "/seo/profile.jpg",
+			"robots": "noindex, nofollow"
+		}
+	}
 }

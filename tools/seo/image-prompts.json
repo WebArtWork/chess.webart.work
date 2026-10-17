@@ -1,0 +1,57 @@
+[
+	{
+		"file": "src/assets/seo/dashboard.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Your next best move\". Scene: an ivory knight beside a charcoal king on a checkerboard with one cobalt blue square."
+	},
+	{
+		"file": "src/assets/seo/daily.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Daily chess puzzle\". Scene: an ivory knight on a blue highlighted board square, a charcoal rook behind it, a small blank calendar tile subtly suggesting a daily habit."
+	},
+	{
+		"file": "src/assets/seo/random.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Random chess puzzles\". Scene: ivory bishop and knight on a checkerboard with three different blue highlighted candidate squares."
+	},
+	{
+		"file": "src/assets/seo/quiz.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Chess puzzle quiz\". Scene: an ivory queen with a charcoal pawn and a subtle cobalt blue ascending three-step plinth, suggesting a growing puzzle rating."
+	},
+	{
+		"file": "src/assets/seo/look-ahead.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Look three moves ahead\". Scene: an ivory knight in the foreground and three clean cobalt blue connected stepping squares receding across a chessboard toward a charcoal king."
+	},
+	{
+		"file": "src/assets/seo/games.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Learn from real games\". Scene: an elegant ivory king and charcoal queen on a small chessboard beside a folded blank score sheet."
+	},
+	{
+		"file": "src/assets/seo/game.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Replay. Solve. Improve.\". Scene: an ivory rook and charcoal bishop on a chessboard, one cobalt blue directional path between two squares."
+	},
+	{
+		"file": "src/assets/seo/library.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Analyze your next move\". Scene: ivory knight and charcoal rook beside a blank open notebook on a checkerboard with a cobalt blue candidate square."
+	},
+	{
+		"file": "src/assets/seo/my-games.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Your saved games\". Scene: two ivory chess pieces beside a neat stack of blank game score sheets held with a cobalt blue bookmark."
+	},
+	{
+		"file": "src/assets/seo/sign-in.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Continue your training\". Scene: an ivory knight in front of a simple cobalt blue open doorway shape, soft bright inviting backdrop."
+	},
+	{
+		"file": "src/assets/seo/profile.jpg",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Your chess progress\". Scene: an ivory pawn and queen on two ascending cobalt blue plinths, a small charcoal knight beside them."
+	}
+]
