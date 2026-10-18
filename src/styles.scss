@@ -1,0 +1,77 @@
+@use 'tailwindcss';
+@use './styles/theme';
+@use './styles/ds-base';
+@use './styles/ds-light';
+@use './styles/ds-dark';
+
+/* Short Tailwind names for the active skin's tokens, so utilities follow light/dark. */
+@theme inline {
+	--color-bg: var(--background);
+	--color-fg: var(--foreground);
+	--color-card: var(--card);
+	--color-soft: var(--muted);
+	--color-mute: var(--muted-foreground);
+	--color-line: var(--border);
+	--color-brand: var(--primary);
+	--color-brand-fg: var(--primary-foreground);
+	--color-danger: var(--destructive);
+	--color-ok: var(--success);
+	--color-warn: var(--warning);
+}
+
+html,
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans);
+	font-size: 16px;
+}
+
+body {
+	min-height: 100dvh;
+	margin: 0;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* Keyboard focus stays visible on every interactive element, including plain links. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+dialog:focus-visible {
+	outline: 2px solid var(--ring);
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+.sr-only-focusable:not(:focus) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+}
+
+/* Chessground: square board, no layout shift while the library loads. */
+.cg-wrap {
+	width: 100%;
+	height: 100%;
+}
+
+/* Daily / Random are real links styled as the kit's selectable chip. */
+.ds a.ds-chip {
+	color: inherit;
+	text-decoration: none;
+}
+.ds a.ds-chip[aria-current='page'] {
+	background: var(--primary);
+	border-color: var(--primary);
+	color: var(--primary-foreground);
+}

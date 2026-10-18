@@ -1,0 +1,111 @@
+{
+	"_id": "",
+	"name": "Chess training",
+	"title": "Chess training | Daily puzzles, tactics and game analysis",
+	"description": "Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit.",
+	"image": "https://chess.webart.work/logo.png",
+	"siteUrl": "https://chess.webart.work",
+	"defaultSeo": {
+		"image": "/seo/dashboard.jpg"
+	},
+	"pageSeo": {
+		"/": {
+			"title": "Chess training | Daily puzzles, tactics and game analysis",
+			"description": "Improve your chess with daily puzzles, tactics quizzes and calculation practice. Study real games, analyze positions and build a weekly training habit.",
+			"image": "/seo/dashboard.jpg"
+		},
+		"/practice": {
+			"title": "Chess practice",
+			"description": "Pick a chess training mode: the daily puzzle, good moves, mate in 1, mate in 3, tactics or calculation practice. Every puzzle comes from a real game.",
+			"image": "/seo/quiz.jpg"
+		},
+		"/practice/daily": {
+			"title": "Daily chess puzzle",
+			"description": "Solve a new daily chess puzzle from a real game. Find the best move, explore candidate moves and practice the winning line to sharpen your tactics.",
+			"image": "/seo/daily.jpg"
+		},
+		"/practice/good-moves": {
+			"title": "Good moves: chess candidate move puzzles",
+			"description": "Practice chess positions with several good moves and find them all. Puzzles from real games train candidate move thinking.",
+			"image": "/seo/random.jpg"
+		},
+		"/practice/mate-in-one": {
+			"title": "Mate in 1 chess puzzles",
+			"description": "Find the mating move in positions from real games. One try per puzzle, with a rating that follows your results.",
+			"image": "/seo/quiz.jpg"
+		},
+		"/practice/mate-in-three": {
+			"title": "Mate in 3 chess puzzles",
+			"description": "Play the mating line move by move in positions from real games. One try per puzzle, with a rating that follows your results.",
+			"image": "/seo/quiz.jpg"
+		},
+		"/practice/tactics": {
+			"title": "Chess tactics quiz",
+			"description": "Test your tactics with a chess puzzle quiz from real games. Solve each position in one try and track how your quiz rating changes as you practice.",
+			"image": "/seo/quiz.jpg"
+		},
+		"/practice/look-ahead": {
+			"title": "Look ahead: chess calculation practice",
+			"description": "Practice calculating three moves ahead. Find good lines in real chess positions and consider your opponent's best replies before making your move.",
+			"image": "/seo/look-ahead.jpg"
+		},
+		"/theory": {
+			"title": "Chess theory",
+			"description": "Learn how strong players think, one training method at a time, and practise each one on real positions.",
+			"image": "/seo/library.jpg"
+		},
+		"/theory/kotov": {
+			"title": "Candidate moves and the tree of analysis",
+			"description": "Alexander Kotov’s method: list your candidate moves, calculate each one once, then compare and choose. With exercises to practise every step.",
+			"image": "/seo/library.jpg"
+		},
+		"/library": {
+			"title": "Chess library",
+			"description": "Replay real chess games, analyze positions with Stockfish and keep your saved games in one place.",
+			"image": "/seo/library.jpg"
+		},
+		"/library/board": {
+			"title": "Chess analysis board",
+			"description": "Analyze chess positions and games with Stockfish. Set up a board, compare candidate moves with engine analysis and save games for further study.",
+			"image": "/seo/library.jpg"
+		},
+		"/library/games": {
+			"title": "Chess games to study and solve",
+			"description": "Browse real chess games by theme, level, opening and training focus. Replay each game, study its ideas and solve the key positions along the way.",
+			"image": "/seo/games.jpg"
+		},
+		"/library/games/:id": {
+			"title": "Chess game replay and training",
+			"description": "Replay a real chess game move by move. Explore its critical positions, compare candidate moves and practice finding the best continuation.",
+			"image": "/seo/game.jpg"
+		},
+		"/library/saved": {
+			"title": "My saved chess games",
+			"description": "Return to your saved chess games and positions. Review your analysis and continue studying in your personal Chess training library.",
+			"image": "/seo/my-games.jpg",
+			"robots": "noindex, nofollow"
+		},
+		"/privacy": {
+			"title": "Privacy policy",
+			"description": "What Chess training stores, why, and how to delete your account and data.",
+			"image": "/seo/profile.jpg"
+		},
+		"/licenses": {
+			"title": "Licenses and credits",
+			"description": "Chess training is free software under the GPL-3.0. Its source code and the projects it builds on, such as Stockfish and Chessground.",
+			"image": "/seo/library.jpg"
+		},
+		"/sign-in": {
+			"title": "Sign in",
+			"description": "Sign in to Chess training with your Google account to save games and keep track of your chess practice.",
+			"image": "/seo/sign-in.jpg",
+			"robots": "noindex, nofollow"
+		},
+		"/profile": {
+			"title": "Your chess training profile",
+			"description": "View your Chess training profile, review your practice progress and manage your account preferences.",
+			"image": "/seo/profile.jpg",
+			"robots": "noindex, nofollow"
+		}
+	}
+}

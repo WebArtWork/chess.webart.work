@@ -1,0 +1,27 @@
+<article class="mx-auto flex w-full max-w-2xl flex-col gap-8 px-4 pb-10 pt-4 sm:px-6">
+	<header>
+		<p class="text-sm font-medium text-mute">{{ lesson.author }}</p>
+		<h1 class="m-0! mt-1! text-2xl font-semibold leading-tight tracking-tight">{{ lesson.title }}</h1>
+	</header>
+
+	@for (section of lesson.sections; track section.heading) {
+		<section class="flex flex-col gap-3">
+			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ section.heading }}</h2>
+			@for (paragraph of section.paragraphs; track $index) {
+				<p class="leading-relaxed">{{ paragraph }}</p>
+			}
+			@if (section.points; as points) {
+				<ul class="flex list-disc flex-col gap-2 pl-5 leading-relaxed marker:text-mute">
+					@for (point of points; track $index) {
+						<li>{{ point }}</li>
+					}
+				</ul>
+			}
+		</section>
+	}
+
+	<section class="flex flex-col gap-3" aria-labelledby="practice-title">
+		<h2 id="practice-title" class="m-0! text-lg font-semibold tracking-tight">Practice it</h2>
+		<app-hub-list [items]="lesson.practice" />
+	</section>
+</article>

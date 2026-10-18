@@ -1,0 +1,182 @@
+<header class="z-40 shrink-0 border-b border-line bg-bg md:sticky md:top-0 md:bg-bg/90 md:backdrop-blur">
+	<div class="mx-auto flex h-14 w-full max-w-[72rem] items-center justify-between gap-2 px-2 sm:gap-4 sm:px-6">
+		<div class="flex min-w-0 items-center sm:gap-2.5">
+			<a class="inline-flex size-9 shrink-0 items-center justify-center rounded-lg no-underline sm:size-10" routerLink="/" aria-label="Dashboard">
+				<img class="size-8 rounded-lg" ngSrc="logo.png" width="32" height="32" alt="" priority />
+			</a>
+			@if (route().parent; as parent) {
+				<a class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0" [routerLink]="parent.path" [attr.aria-label]="'Back to ' + parent.label">
+					<app-icon name="prev" />
+				</a>
+			}
+			<span class="truncate text-base font-semibold tracking-tight max-[360px]:hidden">{{ route().pageName }}</span>
+		</div>
+
+		<!-- Phones, Study setup: the position inputs live here instead of in the page. -->
+		@if (input.active()) {
+			<div class="flex min-w-0 flex-1 items-center justify-end gap-1 md:hidden">
+				<button
+					class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0"
+					type="button"
+					aria-haspopup="dialog"
+					aria-label="Enter a position or game"
+					(click)="openEditor()"
+				>
+					<app-icon name="edit" />
+				</button>
+				@if (user()) {
+					<button
+						class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0"
+						type="button"
+						aria-label="Save to my library"
+						[disabled]="input.saveState() === 'saving'"
+						(click)="input.save()"
+					>
+						<app-icon [name]="input.saveState() === 'saved' ? 'check' : 'save'" />
+					</button>
+				}
+				<button class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0" type="button" aria-haspopup="dialog" aria-label="Engine settings" (click)="openSettings()">
+					<app-icon name="settings" />
+				</button>
+				<button
+					class="ds-btn ds-btn-primary size-10 shrink-0 !p-0"
+					type="button"
+					[attr.aria-label]="input.startLabel()"
+					(click)="input.start()"
+				>
+					<app-icon name="play" />
+				</button>
+			</div>
+		}
+
+		<!-- Phones, Games: count, shuffle and filters live here instead of in the page. -->
+		@if (games.active()) {
+			<div class="flex min-w-0 flex-1 items-center justify-end gap-1 md:hidden">
+				<p class="m-0! min-w-0 truncate pr-1 text-xs leading-none text-mute" role="status">
+					@if (games.count() === null) {
+						Loading…
+					} @else {
+						{{ games.count() }} {{ games.count() === 1 ? 'game' : 'games' }}
+					}
+				</p>
+				<button class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0" type="button" aria-label="Show other games" (click)="games.shuffle$.next()">
+					<app-icon name="shuffle" />
+				</button>
+				<button class="ds-btn ds-btn-ghost relative size-10 shrink-0 !p-0" type="button" aria-haspopup="dialog" aria-label="Filters" (click)="games.filters$.next()">
+					<app-icon name="filter" />
+					@if (games.filterCount()) {
+						<span class="absolute right-0.5 top-0.5 grid size-4 place-items-center rounded-full bg-brand text-[0.625rem] font-semibold leading-none text-brand-fg">
+							{{ games.filterCount() }}
+						</span>
+					}
+				</button>
+			</div>
+		}
+
+		<!-- On phones the same links live in the footer bar. -->
+		<nav class="hidden items-center gap-1 md:flex" aria-label="Main">
+			@for (link of links; track link.path) {
+				<a
+					class="inline-flex h-9 items-center gap-2 rounded-lg px-3 text-sm font-medium text-mute! aria-[current=page]:bg-soft aria-[current=page]:text-fg!"
+					[routerLink]="link.path"
+					[attr.aria-current]="nav.isActive(link) ? 'page' : null"
+				>
+					<app-icon [name]="link.icon" />
+					{{ link.label }}
+				</a>
+			}
+		</nav>
+
+		<div class="flex shrink-0 items-center gap-1 sm:gap-2">
+			@if (route().studyLink && playMode.fen(); as fen) {
+				<a class="ds-btn ds-btn-ghost size-10 !p-0" routerLink="/library/board" [queryParams]="{ fen: fen }" aria-label="Study this position">
+					<app-icon name="library" />
+				</a>
+			}
+
+			@let rank = progress.rank();
+			@let rating = progress.progress().rating + (progress.provisional() ? '?' : '');
+			<a
+				class="inline-flex h-10 shrink-0 flex-col items-center justify-center rounded-xl bg-soft px-2 text-[0.6875rem] font-medium leading-tight tabular-nums text-fg! no-underline sm:h-9 sm:flex-row sm:gap-1.5 sm:rounded-full sm:px-3 sm:text-sm"
+				routerLink="/profile"
+				[attr.aria-label]="'Rating ' + rating + ', ' + rank.rank.name + ', ' + progress.progress().pawns + ' pawns'"
+				[attr.title]="'Rating ' + rating + ' · ' + rank.rank.name"
+			>
+				<span>{{ rating }}</span>
+				<span class="hidden h-4 w-px bg-line sm:block" aria-hidden="true"></span>
+				<span class="flex items-center gap-0.5 sm:gap-1">
+					<span class="leading-none sm:text-base" aria-hidden="true">{{ rank.rank.symbol }}</span>
+					{{ progress.progress().pawns }}
+				</span>
+			</a>
+
+			<a
+				class="ds-btn ds-btn-outline size-10 overflow-hidden rounded-full !p-0 sm:size-11"
+				routerLink="/profile"
+				[attr.aria-label]="user() ? 'Your profile' : 'Sign in'"
+			>
+				@if (user()?.photoURL; as photo) {
+					<img class="size-full object-cover" [src]="photo" alt="" referrerpolicy="no-referrer" width="44" height="44" />
+				} @else {
+					<app-icon name="profile" />
+				}
+			</a>
+		</div>
+	</div>
+</header>
+
+<!-- Full-screen editor for the position field: opens when the field is tapped, Load sits below it. -->
+<dialog
+	#editor
+	class="m-0 h-dvh max-h-none w-dvw max-w-none bg-bg p-0 text-fg backdrop:bg-black/50"
+	aria-label="Load a position"
+>
+	<div class="flex h-full flex-col gap-3 p-4">
+		<div class="flex items-center justify-between">
+			<div class="flex gap-2" role="group" aria-label="Import a position">
+				<button class="ds-chip" type="button" [attr.aria-pressed]="input.tab() === 'fen'" (click)="pickTab('fen')">FEN</button>
+				<button class="ds-chip" type="button" [attr.aria-pressed]="input.tab() === 'pgn'" (click)="pickTab('pgn')">PGN</button>
+			</div>
+			<button class="ds-btn ds-btn-ghost size-10 !p-0" type="button" aria-label="Close" (click)="closeEditor()">
+				<app-icon name="close" />
+			</button>
+		</div>
+
+		<label class="sr-only" for="position-editor">{{ input.tab() === 'fen' ? 'Position (FEN)' : 'Game (PGN)' }}</label>
+		<textarea
+			id="position-editor"
+			class="ds-textarea min-h-0 flex-1 font-mono"
+			autofocus
+			spellcheck="false"
+			[placeholder]="input.tab() === 'fen' ? 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1' : '1. e4 e5 2. Nf3 Nc6 ...'"
+			[value]="draft()"
+			(input)="draft.set($any($event.target).value)"
+		></textarea>
+
+		@if (input.error()) {
+			<p class="text-sm text-danger" role="alert">{{ input.error() }}</p>
+		}
+
+		<button class="ds-btn ds-btn-primary ds-btn-lg w-full" type="button" (click)="load()">Load</button>
+	</div>
+</dialog>
+
+<!-- Full-screen engine settings, opened by the settings icon. -->
+<dialog
+	#settingsDialog
+	class="m-0 h-dvh max-h-none w-dvw max-w-none bg-bg p-0 text-fg backdrop:bg-black/50"
+	aria-labelledby="engine-settings-title"
+>
+	<div class="flex h-full flex-col gap-4 p-4">
+		<div class="flex items-center justify-between">
+			<h2 id="engine-settings-title" class="text-xl font-semibold tracking-tight">Engine settings</h2>
+			<button class="ds-btn ds-btn-ghost size-10 !p-0" type="button" aria-label="Close" (click)="closeSettings()">
+				<app-icon name="close" />
+			</button>
+		</div>
+		<div class="flex-1 overflow-y-auto">
+			<app-analysis-settings [(settings)]="input.settings" />
+		</div>
+		<button class="ds-btn ds-btn-primary ds-btn-lg w-full" type="button" (click)="closeSettings()">Done</button>
+	</div>
+</dialog>

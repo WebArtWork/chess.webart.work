@@ -1,0 +1,66 @@
+<section class="mx-auto w-full max-w-[72rem] px-4 pb-8 pt-4 sm:px-6 lg:flex lg:h-full lg:flex-col lg:pb-4 lg:pt-3">
+	<h1 class="sr-only md:not-sr-only md:mb-3 md:shrink-0 md:text-xl md:font-semibold md:tracking-tight">My games</h1>
+
+	@if (failed()) {
+		<p class="mb-4 rounded-xl border border-danger p-4 text-sm" role="alert">
+			Something went wrong with your games. Check your connection and try again.
+		</p>
+	}
+
+	@if (loading()) {
+		<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" role="status" aria-label="Loading your games">
+			@for (item of [1, 2, 3]; track item) {
+				<div class="h-36 animate-pulse rounded-xl bg-soft"></div>
+			}
+		</div>
+	} @else if (!games().length && !failed()) {
+		<div class="ds-card items-start gap-3 p-5">
+			<p>No games yet. Set up a game on the analysis board and press the save icon.</p>
+			<a class="ds-btn ds-btn-primary" routerLink="/library/board">Open the analysis board</a>
+		</div>
+	} @else {
+		<ul class="grid gap-3 sm:grid-cols-2 lg:min-h-0 lg:flex-1 lg:grid-cols-3 lg:content-start lg:overflow-y-auto xl:grid-cols-4">
+			@for (game of games(); track game.id) {
+				<li class="min-w-0">
+					<div class="ds-card h-full flex-row! items-stretch gap-3 p-3">
+						<a
+							class="block size-24 shrink-0 overflow-hidden rounded-lg"
+							routerLink="/library/board"
+							[queryParams]="{ game: game.id }"
+							[attr.aria-label]="'Open ' + game.title"
+						>
+							<app-board [fen]="game.fen" [orientation]="side(game.fen)" [viewOnly]="true" [interactive]="false" />
+						</a>
+						<div class="flex min-w-0 flex-1 flex-col justify-between gap-2">
+							<div>
+								<p class="font-semibold leading-snug [overflow-wrap:anywhere]">{{ game.title }}</p>
+								<p class="mt-0.5 text-sm text-mute">
+									{{ game.sans.length }} {{ game.sans.length === 1 ? 'move' : 'moves' }}
+									@if (game.createdAt) {
+										· {{ game.createdAt | date: 'mediumDate' }}
+									}
+								</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<a class="ds-btn ds-btn-primary h-10 px-4" routerLink="/library/board" [queryParams]="{ game: game.id }">Open</a>
+								<button
+									class="ds-btn h-10 !p-0"
+									[class]="confirming() === game.id ? 'ds-btn-outline w-auto border-danger px-3 text-danger' : 'ds-btn-ghost w-10'"
+									type="button"
+									[attr.aria-label]="confirming() === game.id ? 'Confirm delete' : 'Delete ' + game.title"
+									(click)="remove(game)"
+								>
+									@if (confirming() === game.id) {
+										Delete?
+									} @else {
+										<app-icon name="trash" />
+									}
+								</button>
+							</div>
+						</div>
+					</div>
+				</li>
+			}
+		</ul>
+	}
+</section>

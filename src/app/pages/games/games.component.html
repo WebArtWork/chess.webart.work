@@ -1,0 +1,134 @@
+<section class="mx-auto w-full max-w-[72rem] px-4 pb-8 pt-4 sm:px-6 lg:flex lg:h-full lg:flex-col lg:pb-4 lg:pt-3">
+	<h1 class="sr-only md:not-sr-only md:mb-2 md:shrink-0 md:text-xl md:font-semibold md:tracking-tight">Games</h1>
+
+	<!-- Larger screens: count, shuffle and filters here. On phones they are in the topbar. -->
+	<div class="mb-3 flex shrink-0 items-center justify-between gap-3 max-md:hidden">
+		<p class="text-sm text-mute" role="status">
+			@if (loading()) {
+				Loading games…
+			} @else {
+				{{ matches().length }} {{ matches().length === 1 ? 'game' : 'games' }}
+			}
+		</p>
+
+		<div class="flex gap-2">
+			<button class="ds-btn ds-btn-outline size-11 !p-0" type="button" aria-label="Show other games" (click)="shuffle()">
+				<app-icon name="shuffle" />
+			</button>
+			<button class="ds-btn ds-btn-outline h-11" type="button" aria-haspopup="dialog" (click)="openSheet()">
+				<app-icon name="filter" />
+				Filters
+				@if (activeCount()) {
+					<span class="ds-badge ds-badge-primary">{{ activeCount() }}</span>
+				}
+			</button>
+		</div>
+	</div>
+
+	<ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:min-h-0 lg:flex-1 lg:grid-cols-3 lg:content-start lg:gap-2 lg:overflow-y-auto xl:grid-cols-4">
+		@for (card of samples(); track card.game.id) {
+			@let game = card.game;
+			<li class="min-w-0">
+				<!-- The kit's .ds-card sets a column layout, so the row direction needs ! -->
+				<a class="ds-card h-full flex-row! items-center gap-3 p-3 text-fg! no-underline" [routerLink]="['/library/games', game.id]">
+					<span class="block size-24 shrink-0 overflow-hidden rounded-lg">
+						@if (card.preview; as preview) {
+							<app-board [fen]="preview.fen" [orientation]="preview.side" [viewOnly]="true" [interactive]="false" />
+						}
+					</span>
+					<span class="flex min-w-0 flex-1 flex-col gap-1.5">
+						<span class="line-clamp-2 font-semibold leading-snug">{{ family(game.opening) }}</span>
+						@if (variation(game.opening); as detail) {
+							<span class="line-clamp-1 text-sm leading-snug text-mute">{{ detail }}</span>
+						}
+						<span class="line-clamp-1 text-xs text-mute">
+							{{ game.white }} ({{ game.whiteRating }}) vs {{ game.black }} ({{ game.blackRating }}) · {{ resultLabel(game.result) }}
+						</span>
+						<span class="flex flex-wrap gap-1.5">
+							<span class="ds-badge">{{ levelLabels[game.level] }}</span>
+							<span class="ds-badge">{{ game.puzzles.length }} {{ game.puzzles.length === 1 ? 'puzzle' : 'puzzles' }}</span>
+							@if (game.categories[0]; as focus) {
+								<span class="ds-badge">{{ categoryLabels[focus] }}</span>
+							}
+						</span>
+					</span>
+				</a>
+			</li>
+		} @empty {
+			@if (!loading()) {
+				<li class="ds-card p-5 sm:col-span-2 lg:col-span-3">
+					@if (catalog()) {
+						<p>No games match these filters.</p>
+						<button class="ds-btn ds-btn-outline mt-3 self-start" type="button" (click)="clear()">Clear filters</button>
+					} @else {
+						<p>Could not load the games. Check your connection and reload the page.</p>
+					}
+				</li>
+			}
+		}
+	</ul>
+</section>
+
+<!-- Filters: a bottom sheet on phones, a centered dialog on larger screens. -->
+<dialog
+	#sheet
+	class="m-0 mt-auto w-full max-w-none rounded-t-2xl border border-line bg-card p-0 text-fg backdrop:bg-black/50 sm:m-auto sm:max-w-md sm:rounded-2xl"
+	aria-labelledby="filters-title"
+	(click)="onSheetClick($event)"
+>
+	<div class="flex max-h-[85dvh] flex-col">
+		<div class="flex items-center justify-between px-4 pb-2 pt-4">
+			<h2 id="filters-title" class="text-lg font-semibold">Filters</h2>
+			<button class="ds-btn ds-btn-ghost size-10 !p-0" type="button" aria-label="Close filters" (click)="closeSheet()">
+				<app-icon name="close" />
+			</button>
+		</div>
+
+		<div class="flex flex-col gap-5 overflow-y-auto px-4 py-2">
+			<p class="text-sm text-mute">Games with at least one puzzle that matches. Numbers show how many puzzles each option has.</p>
+
+			<fieldset class="flex flex-col gap-2">
+				<legend class="mb-2 text-sm font-medium text-mute">Opening or player</legend>
+				<div class="ds-field !mb-0">
+					<label class="sr-only" for="game-search">Search openings and players</label>
+					<input
+						id="game-search"
+						class="ds-input"
+						type="search"
+						placeholder="Search, e.g. Najdorf"
+						autocomplete="off"
+						[value]="filters().search"
+						(input)="setSearch($any($event.target).value)"
+					/>
+				</div>
+				<div class="flex flex-wrap gap-2">
+					@for (option of openings(); track option.value) {
+						<button class="ds-chip" type="button" [attr.aria-pressed]="isActive('opening', option.value)" (click)="toggle('opening', option.value)">
+							{{ option.label }}
+						</button>
+					}
+				</div>
+			</fieldset>
+
+			@for (group of groups(); track group.key) {
+				<fieldset class="flex flex-col gap-2">
+					<legend class="mb-2 text-sm font-medium text-mute">{{ group.label }}</legend>
+					<div class="flex flex-wrap gap-2">
+						@for (option of group.options; track option.value) {
+							<button class="ds-chip" type="button" [attr.aria-pressed]="isActive(group.key, option.value)" (click)="toggle(group.key, option.value)">
+								{{ option.label }}
+							</button>
+						}
+					</div>
+				</fieldset>
+			}
+		</div>
+
+		<div class="grid grid-cols-[auto_1fr] gap-2 border-t border-line p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+			<button class="ds-btn ds-btn-outline" type="button" [disabled]="!activeCount()" (click)="clear()">Clear</button>
+			<button class="ds-btn ds-btn-primary" type="button" (click)="closeSheet()">
+				Show {{ matches().length }} {{ matches().length === 1 ? 'game' : 'games' }}
+			</button>
+		</div>
+	</div>
+</dialog>

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "217823458694",
+    "project_id": "chess-d92e1",
+    "storage_bucket": "chess-d92e1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217823458694:android:06b576139e9c7f5f896807",
+        "android_client_info": {
+          "package_name": "work.webart.chess"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217823458694-jvo0ntgov5v6g712uio641v7lrgvb97i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkVnoMeL_4VSuyKvgnsvowLC3m5p4abdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217823458694-jvo0ntgov5v6g712uio641v7lrgvb97i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "217823458694-7uflg9cb7pda0ob7qtlukel4bejkb3rp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "work.webart.chess"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
