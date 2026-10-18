@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HubListComponent } from '../../components/hub-list/hub-list.component';
 import { AuthService } from '../../feature/auth/auth.service';
 import { LIBRARY_ITEMS } from '../../feature/hub/hub.const';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 /** The Library hub: the analysis board, the games and your saved games. */
 @Component({
-	imports: [HubListComponent],
+	imports: [HubListComponent, TPipe],
 	templateUrl: './library.component.html',
 })
 export class LibraryComponent {

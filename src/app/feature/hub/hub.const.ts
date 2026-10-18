@@ -34,15 +34,6 @@ export const PRACTICE_ITEMS: HubItem[] = [
 	},
 ];
 
-/** The Theory hub, in order. Each lesson's text is in THEORY_LESSONS under the same slug. */
-export const THEORY_ITEMS: HubItem[] = [
-	{
-		title: 'Candidate moves',
-		detail: 'Alexander Kotov: list your options first, then calculate each one once.',
-		path: '/theory/kotov',
-	},
-];
-
 /** The Library hub, in order. */
 export const LIBRARY_ITEMS: HubItem[] = [
 	{

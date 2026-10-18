@@ -6,7 +6,7 @@ export const SOURCE_URL = 'https://github.com/WebArtWork/chess.webart.work';
 
 export interface Credit {
 	name: string;
-	/** What it does in this app. */
+	/** What it does in this app. English; the licenses page translates it, like `author`. */
 	use: string;
 	author: string;
 	license: string;

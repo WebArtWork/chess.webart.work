@@ -1,7 +1,9 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Candidate } from '../../feature/chess/chess.interface';
 import { formatEval } from '../../feature/chess/chess.util';
 import { GameSession } from '../../feature/chess/game.session';
+import { I18nService } from '../../feature/i18n/i18n.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 interface Slot {
 	rank: number;
@@ -15,14 +17,15 @@ interface Slot {
  */
 @Component({
 	selector: 'app-game-panel',
+	imports: [TPipe],
 	template: `
 		@let game = session();
 		<div class="flex flex-col gap-[3px]">
-			<section class="flex flex-col gap-[3px]" aria-label="Progress">
+			<section class="flex flex-col gap-[3px]" [attr.aria-label]="'Progress' | t">
 				<ol
 					class="grid gap-1"
 					[style.grid-template-columns]="'repeat(' + game.targetMoves() + ', minmax(0, 1fr))'"
-					aria-label="Top moves"
+					[attr.aria-label]="'Top moves' | t"
 				>
 					@for (slot of slots(); track slot.rank) {
 						<li
@@ -38,9 +41,9 @@ interface Slot {
 							<span class="text-[0.6875rem] font-medium leading-none opacity-80">{{ slot.rank }}</span>
 							<span class="mt-1 text-sm font-semibold leading-none">{{ slot.san ?? '' }}</span>
 							@if (slot.found) {
-								<span class="sr-only">found</span>
+								<span class="sr-only">{{ 'found' | t }}</span>
 							} @else if (slot.san) {
-								<span class="sr-only">missed</span>
+								<span class="sr-only">{{ 'missed' | t }}</span>
 							}
 						</li>
 					}
@@ -53,7 +56,7 @@ interface Slot {
 
 			@if (game.candidates().length) {
 				<!-- Your guesses: one row of cells (a second row only past five guesses). -->
-				<ul class="grid grid-cols-5 gap-1" aria-label="Your guesses">
+				<ul class="grid grid-cols-5 gap-1" [attr.aria-label]="'Your guesses' | t">
 					@for (candidate of game.candidates(); track candidate.move) {
 						<li class="flex min-w-0 flex-col items-center gap-1.5 rounded-xl border border-line bg-card px-0.5 py-3 text-center">
 							<span class="text-base font-semibold leading-none">{{ candidate.san }}</span>
@@ -72,7 +75,7 @@ interface Slot {
 											[style.background-color]="category.color"
 											aria-hidden="true"
 										></span>
-										{{ category.label }}
+										{{ category.label | t }}
 									</span>
 								}
 							}
@@ -83,7 +86,7 @@ interface Slot {
 
 			@if (game.done()) {
 				<section aria-labelledby="answers-title">
-					<h2 id="answers-title" class="mb-2 text-base font-semibold">Engine's top moves</h2>
+					<h2 id="answers-title" class="mb-2 text-base font-semibold">{{ "Engine's top moves" | t }}</h2>
 					<ol class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card">
 						@for (move of game.answers(); track move.move; let i = $index) {
 							<li class="flex gap-3 px-4 py-3">
@@ -107,6 +110,7 @@ interface Slot {
 })
 export class GamePanelComponent {
 	readonly session = input.required<GameSession>();
+	private readonly _i18n = inject(I18nService);
 
 	protected readonly format = formatEval;
 
@@ -130,11 +134,11 @@ export class GamePanelComponent {
 	protected badgeText(candidate: Candidate): string {
 		switch (candidate.status) {
 			case 'hit':
-				return `Top ${this.session().rankOf(candidate.move)}`;
+				return this._i18n.t('Top {rank}', { rank: this.session().rankOf(candidate.move) });
 			case 'hidden_gem':
-				return 'Gem';
+				return this._i18n.t('Gem');
 			case 'miss':
-				return 'Miss';
+				return this._i18n.t('Miss');
 			case 'pending':
 				return '…';
 			default:
@@ -147,13 +151,13 @@ export class GamePanelComponent {
 	protected badgeTitle(candidate: Candidate): string {
 		switch (candidate.status) {
 			case 'hit':
-				return `Top ${this.session().rankOf(candidate.move)} move`;
+				return this._i18n.t('Top {rank} move', { rank: this.session().rankOf(candidate.move) });
 			case 'hidden_gem':
-				return 'Hidden gem: as good as the top moves';
+				return this._i18n.t('Hidden gem: as good as the top moves');
 			case 'miss':
-				return 'Not in the top moves';
+				return this._i18n.t('Not in the top moves');
 			case 'pending':
-				return 'Checking';
+				return this._i18n.t('Checking');
 			default:
 				candidate.status satisfies never;
 				return '';

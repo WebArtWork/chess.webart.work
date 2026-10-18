@@ -5,6 +5,8 @@ import { BoardComponent, BoardMove } from '../../components/board/board.componen
 import { LEVEL_LABELS } from '../../feature/game/game.const';
 import { LookAheadItem } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
+import { I18nService } from '../../feature/i18n/i18n.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { LookAheadPath, LookAheadSession } from '../../feature/lookahead/look-ahead.session';
 import { PAWNS } from '../../feature/progress/progress.const';
 import { Award, ProgressService } from '../../feature/progress/progress.service';
@@ -22,13 +24,14 @@ interface PathRow {
  * to the start. Find every line, or show the ones left.
  */
 @Component({
-	imports: [BoardComponent, RouterLink],
+	imports: [BoardComponent, RouterLink, TPipe],
 	templateUrl: './look-ahead.component.html',
 })
 export class LookAheadComponent {
 	private readonly _games = inject(GameService);
 	private readonly _router = inject(Router);
 	private readonly _progress = inject(ProgressService);
+	private readonly _i18n = inject(I18nService);
 
 	protected readonly loading = signal(true);
 	protected readonly failed = signal(false);
@@ -38,12 +41,14 @@ export class LookAheadComponent {
 	/** What the finished position earned. */
 	protected readonly award = signal<Award | null>(null);
 
-	protected readonly side = computed(() => (this.session()?.item.side === 'black' ? 'Black' : 'White'));
+	protected readonly side = computed(() => (this.session()?.item.side === 'black' ? 'Black to move' : 'White to move'));
 	protected readonly total = computed(() => this.session()?.paths.length ?? 0);
 	protected readonly foundCount = computed(() => this.session()?.found().size ?? 0);
 	protected readonly details = computed(() => {
 		const item = this.session()?.item;
-		return item ? `Rating ${item.rating} · ${LEVEL_LABELS[item.level]} · ${item.opening}` : '';
+		if (!item) return '';
+		const rating = this._i18n.t('Rating {rating}', { rating: item.rating });
+		return `${rating} · ${this._i18n.t(LEVEL_LABELS[item.level])} · ${item.opening}`;
 	});
 	/** What is going on right now, under the heading. */
 	protected readonly status = computed(() => {
@@ -53,20 +58,20 @@ export class LookAheadComponent {
 		if (session.status() === 'checked' && verdict) {
 			switch (verdict.kind) {
 				case 'found':
-					return `Found a line: ${formatLine(session.item.fen, verdict.path.san)}`;
+					return this._i18n.t('Found a line: {line}', { line: formatLine(session.item.fen, verdict.path.san) });
 				case 'again':
-					return 'You found this line already. Try another one.';
+					return this._i18n.t('You found this line already. Try another one.');
 				case 'miss':
-					return `${verdict.san.at(-1)} is not one of the good moves here. Back to the start.`;
+					return this._i18n.t('{move} is not one of the good moves here. Back to the start.', { move: verdict.san.at(-1) });
 				default:
 					verdict satisfies never;
 					return '';
 			}
 		}
-		if (session.status() === 'replying') return 'Your opponent is replying…';
+		if (session.status() === 'replying') return this._i18n.t('Your opponent is replying…');
 		const step = session.step();
-		if (step === 1) return 'Play up to 3 moves. Your opponent answers each one with the best reply.';
-		return `Good. Move ${step} of 3.`;
+		if (step === 1) return this._i18n.t('Play up to 3 moves. Your opponent answers each one with the best reply.');
+		return this._i18n.t('Good. Move {step} of 3.', { step });
 	});
 	protected readonly rows = computed<PathRow[]>(() => {
 		const session = this.session();

@@ -14,11 +14,12 @@ import { filterParams, openingFamily, openingVariation, readFilters } from '../.
 import { Puzzle, PuzzleFilters } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { PAWNS } from '../../feature/progress/progress.const';
 import { Award, ProgressService } from '../../feature/progress/progress.service';
 
 @Component({
-	imports: [BoardComponent, PuzzlePanelComponent, RouterLink],
+	imports: [BoardComponent, PuzzlePanelComponent, RouterLink, TPipe],
 	templateUrl: './play.component.html',
 })
 export class PlayComponent {

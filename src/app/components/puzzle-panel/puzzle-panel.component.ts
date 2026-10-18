@@ -1,6 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { CATEGORY_LABELS, instruction, LEVEL_LABELS, LEVEL_RANGES, MODE_LABELS, themeLabel } from '../../feature/game/game.const';
-import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { PuzzleRun, RunMessage } from '../../feature/game/puzzle.run';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { Award } from '../../feature/progress/progress.service';
 import { GamePanelComponent } from '../game-panel/game-panel.component';
 import { LinePanelComponent } from '../line-panel/line-panel.component';
@@ -12,24 +13,24 @@ import { LinePanelComponent } from '../line-panel/line-panel.component';
  */
 @Component({
 	selector: 'app-puzzle-panel',
-	imports: [GamePanelComponent, LinePanelComponent],
+	imports: [GamePanelComponent, LinePanelComponent, TPipe],
 	template: `
 		@let current = run();
 		<div class="flex flex-col gap-[3px]">
 			<div class="flex flex-wrap items-center gap-1.5">
-				<span class="ds-badge">{{ modeLabel() }}</span>
-				<span class="ds-badge">{{ categoryLabel() }}</span>
-				<span class="ds-badge" [attr.title]="'Estimated training level ' + levelRange()">{{ levelLabel() }}</span>
+				<span class="ds-badge">{{ modeLabel() | t }}</span>
+				<span class="ds-badge">{{ categoryLabel() | t }}</span>
+				<span class="ds-badge" [attr.title]="'Estimated training level {range}' | t: { range: levelRange() }">{{ levelLabel() | t }}</span>
 				@if (current.done()) {
 					@for (theme of themes(); track theme) {
-						<span class="ds-badge ds-badge-verified">{{ theme }}</span>
+						<span class="ds-badge ds-badge-verified">{{ theme | t }}</span>
 					}
 					@if (award(); as earned) {
 						@if (earned.pawns) {
 							<span class="ds-badge">+{{ earned.pawns }} ♟</span>
 						}
 						@if (earned.delta !== null) {
-							<span class="ds-badge" [class]="earned.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'" title="Rating change">
+							<span class="ds-badge" [class]="earned.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'" [attr.title]="'Rating change' | t">
 								{{ earned.delta >= 0 ? '+' : '' }}{{ earned.delta }}
 							</span>
 						}
@@ -37,8 +38,12 @@ import { LinePanelComponent } from '../line-panel/line-panel.component';
 				}
 			</div>
 			<div class="flex items-center justify-between gap-3">
-				<p class="text-sm font-medium" role="status">{{ current.outcome() ?? task() }}</p>
-				<p class="flex shrink-0 items-center gap-1.5" [attr.aria-label]="current.strikes() + ' of ' + current.maxStrikes + ' strikes used'">
+				@let message = current.outcome() ?? task();
+				<p class="text-sm font-medium" role="status">{{ message.text | t: message.vars }}</p>
+				<p
+					class="flex shrink-0 items-center gap-1.5"
+					[attr.aria-label]="'{used} of {count} strike used|{used} of {count} strikes used' | t: { used: current.strikes(), count: current.maxStrikes }"
+				>
 					@for (used of pips(); track $index) {
 						<span class="size-2.5 rounded-full border-2" [class]="used ? 'border-danger bg-danger' : 'border-line'" aria-hidden="true"></span>
 					}
@@ -61,7 +66,7 @@ export class PuzzlePanelComponent {
 	readonly run = input.required<PuzzleRun>();
 	readonly award = input<Award | null>(null);
 
-	protected readonly task = computed(() => {
+	protected readonly task = computed<RunMessage>(() => {
 		const puzzle = this.run().puzzle;
 		return instruction(puzzle.mode, puzzle.target, puzzle.side);
 	});

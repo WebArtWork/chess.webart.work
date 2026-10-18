@@ -6,10 +6,11 @@ import { IconComponent } from '../../components/icon/icon.component';
 import { SavedGame } from '../../feature/chess/chess.interface';
 import { SavedGamesService } from '../../feature/chess/saved-games.service';
 import { sideToMove } from '../../feature/chess/chess.util';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 /** The signed-in user's saved games. */
 @Component({
-	imports: [BoardComponent, DatePipe, IconComponent, RouterLink],
+	imports: [BoardComponent, DatePipe, IconComponent, RouterLink, TPipe],
 	templateUrl: './saved.component.html',
 })
 export class SavedComponent {

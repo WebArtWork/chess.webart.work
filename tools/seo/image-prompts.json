@@ -53,5 +53,215 @@
 		"file": "src/assets/seo/profile.jpg",
 		"mode": "built-in image_gen",
 		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Your chess progress\". Scene: an ivory pawn and queen on two ascending cobalt blue plinths, a small charcoal knight beside them."
+	},
+	{
+		"file": "src/assets/seo/theory.jpg",
+		"route": "/theory",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Generate a single 1200:630 Open Graph cover for Chess training. Premium minimalist editorial 3D ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, large readable title left, sculptural ivory knight and open study book on right. Small brand text \"Chess training\" above title. Text verbatim: \"Chess theory\". All words 70px from edges. No other words, watermarks, screenshots. Save image for project asset."
+	},
+	{
+		"file": "src/assets/seo/practice.jpg",
+		"route": "/practice",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess practice\". Scene: a restrained chess still life specifically communicating this page subject: Pick a chess training mode: the daily puzzle, good moves, mate in 1, mate in 3, tactics or calculation practice. Every puzzle comes from a real game. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-tactics.jpg",
+		"route": "/practice/tactics",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess tactics quiz\". Scene: a restrained chess still life specifically communicating this page subject: Test your tactics with a chess puzzle quiz from real games. Solve each position in one try and track how your quiz rating changes as you practice. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-good-moves.jpg",
+		"route": "/practice/good-moves",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Good moves: chess candidate move puzzles\". Scene: a restrained chess still life specifically communicating this page subject: Practice chess positions with several good moves and find them all. Puzzles from real games train candidate move thinking. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-mate-in-one.jpg",
+		"route": "/practice/mate-in-one",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Mate in 1 chess puzzles\". Scene: a restrained chess still life specifically communicating this page subject: Find the mating move in positions from real games. One try per puzzle, with a rating that follows your results. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-opening-principles.jpg",
+		"route": "/theory/opening-principles",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Opening principles\". Scene: a restrained chess still life specifically communicating this page subject: How to start a chess game well: control the center, develop your pieces, keep your king safe and understand why each move is played. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-decision-making.jpg",
+		"route": "/theory/decision-making",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Making decisions during a game\". Scene: a restrained chess still life specifically communicating this page subject: Spot the critical moments, choose what to calculate and manage your clock: a practical decision routine for chess games. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-mate-in-three.jpg",
+		"route": "/practice/mate-in-three",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Mate in 3 chess puzzles\". Scene: a restrained chess still life specifically communicating this page subject: Play the mating line move by move in positions from real games. One try per puzzle, with a rating that follows your results. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-chess-psychology.jpg",
+		"route": "/theory/chess-psychology",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess psychology and focus\". Scene: a restrained chess still life specifically communicating this page subject: Play the position, not the rating: how to stay focused, recover after a mistake and keep a clear head in chess games. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-pawn-structures.jpg",
+		"route": "/theory/pawn-structures",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Pawn structures\". Scene: a restrained chess still life specifically communicating this page subject: Isolated, doubled, backward and passed pawns and pawn chains: how the pawns point to the right plan in a chess game. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-analyzing-your-games.jpg",
+		"route": "/theory/analyzing-your-games",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Analyzing your own games\". Scene: a restrained chess still life specifically communicating this page subject: Analyze your chess games before the engine, sort your mistakes by type and turn them into a personal training plan. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-structured-improvement.jpg",
+		"route": "/theory/structured-improvement",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Learn, then check yourself\". Scene: a restrained chess still life specifically communicating this page subject: Studying on your own: a short chess lesson inspired by the ideas of Artur Yusupov, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-candidate-moves.jpg",
+		"route": "/theory/candidate-moves",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Find your candidate moves\". Scene: a restrained chess still life specifically communicating this page subject: Organizing your calculation: a short chess lesson inspired by the ideas of Alexander Kotov, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-position-imbalances.jpg",
+		"route": "/theory/position-imbalances",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"What is unequal in the position?\". Scene: a restrained chess still life specifically communicating this page subject: Making a strategic plan: a short chess lesson inspired by the ideas of Jeremy Silman, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-explain-every-move.jpg",
+		"route": "/theory/explain-every-move",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Explain every move\". Scene: a restrained chess still life specifically communicating this page subject: Playing with purpose: a short chess lesson inspired by the ideas of John Nunn, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-step-by-step-training.jpg",
+		"route": "/theory/step-by-step-training",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Train in small steps\". Scene: a restrained chess still life specifically communicating this page subject: Learning tactical motifs: a short chess lesson inspired by the ideas of Rob Brunia and Cor van Wijgerden, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-prophylaxis.jpg",
+		"route": "/theory/prophylaxis",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Foresee your opponent’s plan\". Scene: a restrained chess still life specifically communicating this page subject: Prophylaxis and defense: a short chess lesson inspired by the ideas of Tigran Petrosian, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-practical-endgames.jpg",
+		"route": "/theory/practical-endgames",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"A plan beats haste\". Scene: a restrained chess still life specifically communicating this page subject: Practical endgames: a short chess lesson inspired by the ideas of Mikhail Shereshevsky, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-blockade-and-outposts.jpg",
+		"route": "/theory/blockade-and-outposts",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Blockade and strengthen your pieces\". Scene: a restrained chess still life specifically communicating this page subject: Restricting the opponent: a short chess lesson inspired by the ideas of Aron Nimzowitsch, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-calculate-critical-lines.jpg",
+		"route": "/theory/calculate-critical-lines",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Check the critical line\". Scene: a restrained chess still life specifically communicating this page subject: Accurate calculation: a short chess lesson inspired by the ideas of Mark Dvoretsky, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-clear-endgame-thinking.jpg",
+		"route": "/theory/clear-endgame-thinking",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Simplify to win\". Scene: a restrained chess still life specifically communicating this page subject: Simplification and technique: a short chess lesson inspired by the ideas of José Raúl Capablanca, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-board-visualization.jpg",
+		"route": "/theory/board-visualization",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"See the board in your head\". Scene: a restrained chess still life specifically communicating this page subject: Picturing the position without moving pieces: a short chess lesson inspired by the ideas of János Flesch, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-initiative-and-sacrifice.jpg",
+		"route": "/theory/initiative-and-sacrifice",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Initiative and sacrifice\". Scene: a restrained chess still life specifically communicating this page subject: Attacking and judging compensation: a short chess lesson inspired by the ideas of Mikhail Tal, with a self-check and practice on real positions. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/library-hub.jpg",
+		"route": "/library",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess library\". Scene: a restrained chess still life specifically communicating this page subject: Replay real chess games, analyze positions with Stockfish and keep your saved games in one place. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/licenses.jpg",
+		"route": "/licenses",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Licenses and credits\". Scene: a restrained chess still life specifically communicating this page subject: Chess training is free software under the GPL-3.0. Its source code and the projects it builds on, such as Stockfish and Chessground. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/library-board.jpg",
+		"route": "/library/board",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Analysis board\". Spell exactly A n a l y s i s, plain English without any accents or marks above letters. Scene: ivory knight and charcoal rook on a chessboard, one blue candidate square, a blue pencil and blank notebook; no numerical evaluation labels."
+	},
+	{
+		"file": "src/assets/seo/theory-ccto.jpg",
+		"route": "/theory/ccto",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"CCTO: checks, captures, threats, optimization\". Scene: a restrained chess still life specifically communicating this page subject: A simple order for finding chess moves: look at checks, captures and threats, then improve your worst piece. With examples and exercises. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/privacy.jpg",
+		"route": "/privacy",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Privacy policy\". Scene: a restrained chess still life specifically communicating this page subject: What Chess training stores, why, and how to delete your account and data. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-practical-improvement.jpg",
+		"route": "/theory/practical-improvement",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Practical chess improvement\". Scene: a restrained chess still life specifically communicating this page subject: Why many players stop improving, and a five-step training loop that turns your own mistakes into targeted practice. Inspired by IM Yevhenii Yelisieiev. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-positions-without-hints.jpg",
+		"route": "/theory/positions-without-hints",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Find the best move without a hint\". Scene: a restrained chess still life specifically communicating this page subject: Real games have no puzzle titles. Learn to tell whether a position needs attack, defense, a positional move or technique before you look for the move. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-sacrifice-compensation.jpg",
+		"route": "/theory/sacrifice-compensation",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"When is a chess sacrifice justified?\". Scene: a restrained chess still life specifically communicating this page subject: Tactical, positional and speculative sacrifices: how to check that your compensation survives the best defense. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-piece-maneuvering.jpg",
+		"route": "/theory/piece-maneuvering",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"The art of maneuvering in chess\". Scene: a restrained chess still life specifically communicating this page subject: Improve your worst piece with a real route: knight transfers, open diagonals, open files and a second weakness. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-strategic-plans.jpg",
+		"route": "/theory/strategic-plans",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"How to find a strategic plan in chess\". Scene: a restrained chess still life specifically communicating this page subject: When no tactic is in sight: read the weak squares, piece activity, pawn breaks and trades, then pick a plan with a concrete first move. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-calculation-discipline.jpg",
+		"route": "/theory/calculation-discipline",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Disciplined calculation in chess\". Scene: a restrained chess still life specifically communicating this page subject: Choose candidates first, keep the board in your head accurate, check the strongest defense and judge the final position. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-stop-repeating-mistakes.jpg",
+		"route": "/theory/stop-repeating-mistakes",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"How to stop repeating chess mistakes\". Scene: a restrained chess still life specifically communicating this page subject: A five-step pre-move check, the usual causes of blunders and a simple loop to stop making the same mistakes. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
 	}
 ]

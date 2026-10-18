@@ -56,6 +56,8 @@ export const appConfig: ApplicationConfig = {
 			defaultLanguage: environment.defaultLanguage,
 			languages: environment.languages,
 			folder: '/i18n/',
+			// a Ukrainian browser starts in Ukrainian; everyone else in English until they pick
+			detectLanguage: ['browser'],
 		}),
 		{
 			provide: APP_INITIALIZER,

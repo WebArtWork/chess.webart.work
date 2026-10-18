@@ -4,16 +4,19 @@ import { IconComponent } from '../../components/icon/icon.component';
 import { PreferencesComponent } from '../../components/preferences/preferences.component';
 import { AuthService } from '../../feature/auth/auth.service';
 import { DailyService } from '../../feature/chess/daily.service';
+import { I18nService } from '../../feature/i18n/i18n.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { ProgressService } from '../../feature/progress/progress.service';
 import { QuizService } from '../../feature/quiz/quiz.service';
 
 @Component({
-	imports: [IconComponent, PreferencesComponent, RouterLink],
+	imports: [IconComponent, PreferencesComponent, RouterLink, TPipe],
 	templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
 	private readonly _auth = inject(AuthService);
 	private readonly _router = inject(Router);
+	private readonly _i18n = inject(I18nService);
 
 	protected readonly user = this._auth.user;
 	protected readonly stats = signal(inject(DailyService).summary());
@@ -24,7 +27,7 @@ export class ProfileComponent {
 	protected readonly deleting = signal(false);
 	protected readonly deleteError = signal<string | null>(null);
 	protected readonly round = Math.round;
-	protected readonly name = computed(() => this.user()?.displayName || this.user()?.email || 'Player');
+	protected readonly name = computed(() => this.user()?.displayName || this.user()?.email || this._i18n.t('Player'));
 	protected readonly initial = computed(() => this.name().trim().charAt(0).toUpperCase());
 
 	protected async signOut() {

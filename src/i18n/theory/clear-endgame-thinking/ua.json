@@ -1,0 +1,18 @@
+{
+	"When you have an advantage, you do not always need to attack. Sometimes the safest way is to trade active enemy pieces, activate your king and push a pawn through. But simplifying only helps when the final position is really good for you.": "Коли маєте перевагу, не завжди потрібно атакувати. Інколи найнадійніше розміняти активні фігури суперника, активізувати короля і провести пішака. Але спрощення допомагає лише тоді, коли кінцева позиція справді вигідна.",
+	"Name your advantage: extra material, an active king, a strong passed pawn.": "Визначте свою перевагу: матеріальна, активний король, сильний прохідний пішак.",
+	"Picture the position after the trade you are considering.": "Уявіть позицію після запропонованого обміну.",
+	"Ask which pawns will remain and who will create a passed pawn first.": "Запитайте себе, які пішаки залишаться і хто першим створить прохідного.",
+	"Don’t trade pieces automatically: some trades turn a win into a draw.": "Не міняйте фігури автоматично: деякі обміни перетворюють виграш на нічию.",
+	"Before entering a pawn endgame, calculate king routes, pawn races and whose move it will be. Opposition is a tool for reaching useful squares, not a guarantee of a win.": "Перш ніж переходити в пішаковий ендшпіль, розрахуйте маршрути королів, перегони пішаків і те, чий буде хід. Опозиція є засобом зайняти корисні поля, а не гарантією виграшу.",
+	"You are a pawn up. Trading queens often lowers the risk of an attack on your king. But king activity, pawn structure and access to targets decide whether the extra pawn is enough.": "Ви маєте зайвого пішака. Обмін ферзів часто зменшує ризик атаки на вашого короля. Але чи вистачить зайвого пішака, вирішують активність королів, пішакова структура й доступ до цілей.",
+	"Try this complete position: White king c6, pawn c7; Black king a7; White to move. There are no other pieces. What happens after 1.c8=Q?": "Спробуйте повну позицію: білі: король c6, пішак c7; чорні: король a7; хід білих. Інших фігур немає. Що станеться після 1.c8=Q?",
+	"Answer: it is stalemate. Black is not in check, but a8 and b8 are controlled by the queen, b7 and b6 by White’s king, and a6 by the queen. Instead, 1.c8=R avoids stalemate: Black must play 1...Ka6, and White has a winning king-and-rook ending. Check the opponent’s legal replies even when promotion looks routine.": "Відповідь: це пат. Чорному королю не оголошено шаху, але поля a8 і b8 контролює ферзь, b7 і b6 білий король, а a6 знову ферзь. Натомість 1.c8=R уникає пату: чорні змушені зіграти 1...Ka6, і в білих виграшний ендшпіль короля й тури проти короля. Перевіряйте можливі відповіді суперника, навіть коли перетворення пішака здається звичайною справою.",
+	"Rushing to trade without seeing the drawing fortress.": "Поспішати з обміном, не бачачи нічийної фортеці.",
+	"Is it always good to trade pieces when you are a pawn up?": "Чи завжди вигідно міняти фігури, коли у вас зайвий пішак?",
+	"No. You need to evaluate the specific endgame.": "Ні. Потрібно оцінити конкретний ендшпіль.",
+	"Endgame puzzles": "Задачі на ендшпіль",
+	"Before you trade, picture the position after the trade and judge it.": "Перш ніж міняти, уявіть позицію після обміну й оцініть її.",
+	"Endgame games": "Ендшпільні партії",
+	"At each trade, judge whether the endgame after it is really better.": "Під час кожного обміну оцінюйте, чи справді ендшпіль після нього кращий."
+}

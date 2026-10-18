@@ -1,5 +1,6 @@
 import { Component, model } from '@angular/core';
 import { AnalysisSettings } from '../../feature/chess/chess.interface';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 export const DEFAULT_SETTINGS: AnalysisSettings = {
 	depth: 15,
@@ -12,23 +13,24 @@ export const DEFAULT_SETTINGS: AnalysisSettings = {
 /** Engine and game limits, shown inside a collapsed disclosure by the pages. */
 @Component({
 	selector: 'app-analysis-settings',
+	imports: [TPipe],
 	template: `
 		<div class="grid grid-cols-2 gap-4">
 			<div class="ds-field !mb-0">
-				<label class="ds-label" for="setting-limit">Limit search by</label>
+				<label class="ds-label" for="setting-limit">{{ 'Limit search by' | t }}</label>
 				<select
 					id="setting-limit"
 					class="ds-select"
 					(change)="set('useMovetime', $any($event.target).value === 'time')"
 				>
-					<option value="depth" [selected]="!settings().useMovetime">Depth</option>
-					<option value="time" [selected]="settings().useMovetime">Time</option>
+					<option value="depth" [selected]="!settings().useMovetime">{{ 'Depth' | t }}</option>
+					<option value="time" [selected]="settings().useMovetime">{{ 'Time' | t }}</option>
 				</select>
 			</div>
 
 			@if (settings().useMovetime) {
 				<div class="ds-field !mb-0">
-					<label class="ds-label" for="setting-time">Time per search (ms)</label>
+					<label class="ds-label" for="setting-time">{{ 'Time per search (ms)' | t }}</label>
 					<input
 						id="setting-time"
 						class="ds-input"
@@ -43,7 +45,7 @@ export const DEFAULT_SETTINGS: AnalysisSettings = {
 				</div>
 			} @else {
 				<div class="ds-field !mb-0">
-					<label class="ds-label" for="setting-depth">Search depth</label>
+					<label class="ds-label" for="setting-depth">{{ 'Search depth' | t }}</label>
 					<input
 						id="setting-depth"
 						class="ds-input"
@@ -58,7 +60,7 @@ export const DEFAULT_SETTINGS: AnalysisSettings = {
 			}
 
 			<div class="ds-field !mb-0">
-				<label class="ds-label" for="setting-top">Top moves to find</label>
+				<label class="ds-label" for="setting-top">{{ 'Top moves to find' | t }}</label>
 				<input
 					id="setting-top"
 					class="ds-input"
@@ -72,7 +74,7 @@ export const DEFAULT_SETTINGS: AnalysisSettings = {
 			</div>
 
 			<div class="ds-field !mb-0">
-				<label class="ds-label" for="setting-min">Candidates required</label>
+				<label class="ds-label" for="setting-min">{{ 'Candidates required' | t }}</label>
 				<input
 					id="setting-min"
 					class="ds-input"

@@ -82,19 +82,37 @@ export function themeLabel(theme: string): string {
 	return THEME_LABELS[theme] ?? theme;
 }
 
-/** What to do in a puzzle, e.g. "White to move: find the best move." */
-export function instruction(mode: PuzzleMode, target: number, side: 'white' | 'black'): string {
-	const who = side === 'white' ? 'White' : 'Black';
+/**
+ * What to do in a puzzle, e.g. "White to move. Find the best move.", as an English text to translate
+ * with its `count`, the number of moves to find or play.
+ */
+export function instruction(
+	mode: PuzzleMode,
+	target: number,
+	side: 'white' | 'black',
+): { text: string; vars: { count: number } } {
+	const vars = { count: target };
+	const white = side === 'white';
 	switch (mode) {
 		case 'best':
-			return `${who} to move. Find the best move.`;
+			return { text: white ? 'White to move. Find the best move.' : 'Black to move. Find the best move.', vars };
 		case 'candidates':
-			return `${who} to move. Find the ${target} good moves.`;
+			return {
+				text: white
+					? 'White to move. Find the {count} good move.|White to move. Find the {count} good moves.'
+					: 'Black to move. Find the {count} good move.|Black to move. Find the {count} good moves.',
+				vars,
+			};
 		case 'line':
-			return `${who} to move. Play the best line: ${target} moves.`;
+			return {
+				text: white
+					? 'White to move. Play the best line: {count} move.|White to move. Play the best line: {count} moves.'
+					: 'Black to move. Play the best line: {count} move.|Black to move. Play the best line: {count} moves.',
+				vars,
+			};
 		default:
 			mode satisfies never;
-			return '';
+			return { text: '', vars };
 	}
 }
 

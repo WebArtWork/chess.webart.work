@@ -6,13 +6,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '../..');
 const outputDirs = [path.join(rootDir, 'dist/app/browser')];
 
-const staticRoutes = ['/'];
 
 const company = await readJson('src/data/company/company.json');
 const siteUrl = trimTrailingSlash(company.siteUrl || 'https://example.com');
 const pageSeo = company.pageSeo ?? {};
 
-const routes = staticRoutes.filter((route) => isIndexable(route, pageSeo));
+// every page with SEO data that search engines may index; routes with parameters (/library/games/:id) are left out
+const routes = Object.keys(pageSeo).filter((route) => !route.includes(':') && isIndexable(route, pageSeo));
 const lastmod = new Date().toISOString().slice(0, 10);
 
 await Promise.all(

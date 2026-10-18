@@ -1,20 +1,20 @@
 <!-- Phones: the board is pinned above the footer, everything else scrolls above it. -->
 <section class="mx-auto flex h-full w-full max-w-[72rem] flex-col lg:px-6 lg:pb-4 lg:pt-3">
-	<h1 class="sr-only lg:not-sr-only lg:mb-3 lg:shrink-0 lg:text-xl lg:font-semibold lg:tracking-tight">Library</h1>
+	<h1 class="sr-only lg:not-sr-only lg:mb-3 lg:shrink-0 lg:text-xl lg:font-semibold lg:tracking-tight">{{ 'Library' | t }}</h1>
 
 	@if (session(); as study) {
 		<div class="flex min-h-0 flex-1 flex-col lg:grid lg:grid-cols-[minmax(0,34rem)_1fr] lg:grid-rows-[minmax(0,1fr)] lg:items-stretch lg:gap-8">
 			<div class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3 lg:order-2 lg:overflow-y-auto lg:p-0">
 				<div class="flex flex-col gap-4">
-					<section class="flex flex-col gap-3" aria-label="Your candidates">
+					<section class="flex flex-col gap-3" [attr.aria-label]="'Your candidates' | t">
 						<p class="text-sm text-mute" role="status">
 							@if (study.phase() === 'active') {
-								Choose at least {{ study.minCandidates }} candidate moves: tap a piece, then its square, or drag it.
-								({{ study.candidates().length }} chosen)
+								{{ 'Choose at least {count} candidate move: tap a piece, then its square, or drag it.|Choose at least {count} candidate moves: tap a piece, then its square, or drag it.' | t: { count: study.minCandidates } }}
+								{{ '({count} chosen)' | t: { count: study.candidates().length } }}
 							} @else if (study.phase() === 'comparing') {
-								Comparing your moves…
+								{{ 'Comparing your moves…' | t }}
 							} @else {
-								Your moves, best first.
+								{{ 'Your moves, best first.' | t }}
 							}
 						</p>
 
@@ -26,7 +26,7 @@
 										<button
 											class="inline-flex size-8 items-center justify-center rounded-full text-mute"
 											type="button"
-											[attr.aria-label]="'Remove ' + candidate.san"
+											[attr.aria-label]="'Remove {move}' | t: { move: candidate.san }"
 											(click)="study.removeCandidate(candidate.move)"
 										>
 											<app-icon name="close" />
@@ -44,12 +44,11 @@
 								(click)="study.compare()"
 							>
 								@if (study.candidates().length < study.minCandidates) {
-									Choose {{ study.minCandidates - study.candidates().length }} more
-									{{ study.minCandidates - study.candidates().length === 1 ? 'move' : 'moves' }}
+									{{ 'Choose {count} more move|Choose {count} more moves' | t: { count: study.minCandidates - study.candidates().length } }}
 								} @else if (!study.ready()) {
-									Engine is analysing…
+									{{ 'Engine is analysing…' | t }}
 								} @else {
-									Compare with engine
+									{{ 'Compare with engine' | t }}
 								}
 							</button>
 						}
@@ -58,7 +57,7 @@
 					@if (study.phase() === 'done') {
 						<ol
 							class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card"
-							aria-label="Your candidates, best first"
+							[attr.aria-label]="'Your candidates, best first' | t"
 						>
 							@for (candidate of study.candidates(); track candidate.move) {
 								<li class="px-4 py-3">
@@ -69,7 +68,7 @@
 											@if (candidate.category; as category) {
 												<span class="inline-flex items-center gap-1.5">
 													<span class="size-2 rounded-full" [style.background-color]="category.color" aria-hidden="true"></span>
-													{{ category.label }}
+													{{ category.label | t }}
 												</span>
 											}
 										</span>
@@ -80,7 +79,7 @@
 						</ol>
 
 						<section aria-labelledby="engine-top">
-							<h2 id="engine-top" class="mb-2 text-base font-semibold">Engine's top moves</h2>
+							<h2 id="engine-top" class="mb-2 text-base font-semibold">{{ "Engine's top moves" | t }}</h2>
 							<ol class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card">
 								@for (move of study.topMoves(); track move.move; let i = $index) {
 									<li class="px-4 py-3">
@@ -99,7 +98,7 @@
 					}
 
 					<div>
-						<button class="ds-btn ds-btn-outline" type="button" (click)="reset()">New position</button>
+						<button class="ds-btn ds-btn-outline" type="button" (click)="reset()">{{ 'New position' | t }}</button>
 					</div>
 				</div>
 			</div>
@@ -117,7 +116,7 @@
 			</div>
 		</div>
 	} @else if (loadingGame()) {
-		<div class="mx-auto my-auto aspect-square w-[min(80%,46dvh)] animate-pulse rounded-xl bg-soft" role="status" aria-label="Opening your game"></div>
+		<div class="mx-auto my-auto aspect-square w-[min(80%,46dvh)] animate-pulse rounded-xl bg-soft" role="status" [attr.aria-label]="'Opening your game' | t"></div>
 	} @else {
 		<app-position-picker
 			class="block min-h-0 flex-1"
@@ -127,7 +126,7 @@
 			(start)="start($event)"
 		>
 			<details class="ds-card max-md:hidden!">
-				<summary class="cursor-pointer px-4 py-3 text-sm font-medium">Engine settings</summary>
+				<summary class="cursor-pointer px-4 py-3 text-sm font-medium">{{ 'Engine settings' | t }}</summary>
 				<div class="px-4 pb-4"><app-analysis-settings [(settings)]="settings" /></div>
 			</details>
 		</app-position-picker>

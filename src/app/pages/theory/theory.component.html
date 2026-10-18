@@ -1,8 +1,60 @@
 <section class="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6">
 	<div>
-		<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">Theory</h1>
-		<p class="text-sm text-mute md:mt-0.5">How strong players think, one method at a time.</p>
+		<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">{{ 'Theory' | t }}</h1>
+		<p class="text-sm text-mute md:mt-0.5">{{ 'How strong players think, one method at a time.' | t }}</p>
 	</div>
 
-	<app-hub-list [items]="items" />
+	<details class="ds-card">
+		<summary class="cursor-pointer px-4 py-3 text-sm font-medium">{{ 'How to use these lessons' | t }}</summary>
+		<div class="flex flex-col gap-2 px-4 pb-4 text-sm text-mute">
+			@for (paragraph of intro; track $index) {
+				<p>{{ paragraph | t }}</p>
+			}
+		</div>
+	</details>
+
+	<div class="flex flex-wrap gap-2" role="group" [attr.aria-label]="'Category' | t">
+		<button class="ds-chip" type="button" [attr.aria-pressed]="!category()" (click)="pickCategory(null)">{{ 'All' | t }}</button>
+		@for (item of categories; track item) {
+			<button class="ds-chip" type="button" [attr.aria-pressed]="category() === item" (click)="pickCategory(item)">
+				{{ categoryLabels[item] | t }}
+			</button>
+		}
+	</div>
+
+	@for (group of groups(); track group.value) {
+		<section class="mt-2 flex flex-col gap-3" [attr.aria-labelledby]="'group-' + group.value">
+			<div>
+				<h2 [id]="'group-' + group.value" class="m-0! text-base font-semibold">{{ group.label | t }}</h2>
+				<p class="text-sm text-mute">{{ group.detail | t }}</p>
+			</div>
+			<ul class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card">
+				@for (card of group.cards; track card.slug) {
+					<li>
+						<a class="flex items-center gap-4 px-4 py-3.5 text-fg! no-underline hover:bg-soft" [routerLink]="['/theory', card.slug]">
+							<span class="min-w-0 flex-1">
+								<span class="flex flex-wrap items-center gap-x-2 gap-y-1">
+									<span class="font-semibold leading-snug">{{ card.title | t }}</span>
+									@if (card.passed) {
+										<span class="ds-badge ds-badge-safe">{{ 'Self-check passed' | t }}</span>
+									}
+								</span>
+								<span class="block text-sm leading-snug text-mute">
+									@if (card.inspiredBy; as name) {
+										{{ 'Inspired by {name}' | t: { name: (name | t) } }}
+									} @else {
+										{{ card.skill | t }}
+									}
+								</span>
+								<span class="mt-1 block text-xs text-mute">
+									{{ categoryLabels[card.category] | t }} · {{ card.level[0] }}–{{ card.level[1] }} · {{ '{n} min' | t: { n: card.minutes } }}
+								</span>
+							</span>
+							<app-icon class="shrink-0 text-mute" name="next" />
+						</a>
+					</li>
+				}
+			</ul>
+		</section>
+	}
 </section>

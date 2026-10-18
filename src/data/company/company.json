@@ -15,59 +15,179 @@
 			"image": "/seo/dashboard.jpg"
 		},
 		"/practice": {
-			"title": "Chess practice",
+			"title": "Chess practice modes",
 			"description": "Pick a chess training mode: the daily puzzle, good moves, mate in 1, mate in 3, tactics or calculation practice. Every puzzle comes from a real game.",
-			"image": "/seo/quiz.jpg"
+			"image": "/seo/practice.jpg"
 		},
 		"/practice/daily": {
 			"title": "Daily chess puzzle",
-			"description": "Solve a new daily chess puzzle from a real game. Find the best move, explore candidate moves and practice the winning line to sharpen your tactics.",
+			"description": "Solve a new chess puzzle every day, the same for everyone. Each one comes from a real game and asks you to find every good move in the position.",
 			"image": "/seo/daily.jpg"
 		},
 		"/practice/good-moves": {
 			"title": "Good moves: chess candidate move puzzles",
-			"description": "Practice chess positions with several good moves and find them all. Puzzles from real games train candidate move thinking.",
-			"image": "/seo/random.jpg"
+			"description": "Chess positions with several good moves: find them all before you commit. Puzzles from real games that train candidate move thinking.",
+			"image": "/seo/practice-good-moves.jpg"
 		},
 		"/practice/mate-in-one": {
 			"title": "Mate in 1 chess puzzles",
-			"description": "Find the mating move in positions from real games. One try per puzzle, with a rating that follows your results.",
-			"image": "/seo/quiz.jpg"
+			"description": "Find the mating move in positions from real games. One try per puzzle, with a rating that follows your results as you practice.",
+			"image": "/seo/practice-mate-in-one.jpg"
 		},
 		"/practice/mate-in-three": {
 			"title": "Mate in 3 chess puzzles",
-			"description": "Play the mating line move by move in positions from real games. One try per puzzle, with a rating that follows your results.",
-			"image": "/seo/quiz.jpg"
+			"description": "Play the mating line move by move in positions from real games. One try per puzzle, with a rating that follows your results as you practice.",
+			"image": "/seo/practice-mate-in-three.jpg"
 		},
 		"/practice/tactics": {
 			"title": "Chess tactics quiz",
-			"description": "Test your tactics with a chess puzzle quiz from real games. Solve each position in one try and track how your quiz rating changes as you practice.",
-			"image": "/seo/quiz.jpg"
+			"description": "Test your tactics with puzzles from real games: find the best move or play the winning line. One try each, and your quiz rating follows your results.",
+			"image": "/seo/practice-tactics.jpg"
 		},
 		"/practice/look-ahead": {
 			"title": "Look ahead: chess calculation practice",
-			"description": "Practice calculating three moves ahead. Find good lines in real chess positions and consider your opponent's best replies before making your move.",
+			"description": "Practice calculating three moves ahead. Find every good line in real chess positions and meet your opponent’s best replies before you make your move.",
 			"image": "/seo/look-ahead.jpg"
 		},
 		"/theory": {
-			"title": "Chess theory",
-			"description": "Learn how strong players think, one training method at a time, and practise each one on real positions.",
-			"image": "/seo/library.jpg"
+			"title": "Chess theory lessons",
+			"description": "25 short chess lessons on how strong players think: openings, pawn structures, calculation, strategy, endgames and psychology, with practice on real positions.",
+			"image": "/seo/theory.jpg"
 		},
-		"/theory/kotov": {
-			"title": "Candidate moves and the tree of analysis",
-			"description": "Alexander Kotov’s method: list your candidate moves, calculate each one once, then compare and choose. With exercises to practise every step.",
-			"image": "/seo/library.jpg"
+		"/theory/opening-principles": {
+			"title": "Chess opening principles",
+			"description": "How to start a chess game well: control the center, develop your pieces, keep your king safe and know why each opening move is played.",
+			"image": "/seo/theory-opening-principles.jpg"
+		},
+		"/theory/pawn-structures": {
+			"title": "Chess pawn structures explained",
+			"description": "Isolated, doubled, backward and passed pawns and pawn chains: how the pawn structure points to the right plan in a chess game.",
+			"image": "/seo/theory-pawn-structures.jpg"
+		},
+		"/theory/ccto": {
+			"title": "CCTO: a method for finding chess moves",
+			"description": "Checks, captures, threats, optimization: a simple order for finding chess moves, with examples, common mistakes and five exercises.",
+			"image": "/seo/theory-ccto.jpg"
+		},
+		"/theory/decision-making": {
+			"title": "Making decisions in a chess game",
+			"description": "Spot the critical moments, choose what to calculate and manage your clock: a practical decision routine for every chess game you play.",
+			"image": "/seo/theory-decision-making.jpg"
+		},
+		"/theory/chess-psychology": {
+			"title": "Chess psychology and focus",
+			"description": "Play the position, not the rating: how to stay focused, recover after a mistake and keep a clear head in your chess games and tournaments.",
+			"image": "/seo/theory-chess-psychology.jpg"
+		},
+		"/theory/analyzing-your-games": {
+			"title": "How to analyze your own chess games",
+			"description": "Analyze your chess games before the engine, sort your mistakes by type and turn them into a personal training plan with a simple game journal.",
+			"image": "/seo/theory-analyzing-your-games.jpg"
+		},
+		"/theory/candidate-moves": {
+			"title": "Candidate moves in chess",
+			"description": "Before you calculate, list the two to four moves worth checking. Candidate moves and the tree of analysis, inspired by Alexander Kotov, with an example.",
+			"image": "/seo/theory-candidate-moves.jpg"
+		},
+		"/theory/explain-every-move": {
+			"title": "Explain every chess move",
+			"description": "A move teaches you something only when you can say why it was played. Learn to name the problem each move solves. Inspired by John Nunn.",
+			"image": "/seo/theory-explain-every-move.jpg"
+		},
+		"/theory/step-by-step-training": {
+			"title": "Learn chess tactics in small steps",
+			"description": "Master one tactical motif at a time: recognize it, apply it, then combine it with another. Inspired by Rob Brunia and Cor van Wijgerden.",
+			"image": "/seo/theory-step-by-step-training.jpg"
+		},
+		"/theory/structured-improvement": {
+			"title": "Study chess, then check yourself",
+			"description": "A training loop that works: one topic, one example, five puzzles without hints, then a review of every mistake. Inspired by Artur Yusupov.",
+			"image": "/seo/theory-structured-improvement.jpg"
+		},
+		"/theory/position-imbalances": {
+			"title": "Chess imbalances and planning",
+			"description": "Not every advantage is counted in pawns. Compare activity, pawn structure, open files and weak squares to find your plan. Inspired by Jeremy Silman.",
+			"image": "/seo/theory-position-imbalances.jpg"
+		},
+		"/theory/prophylaxis": {
+			"title": "Prophylaxis in chess",
+			"description": "Ask what your opponent wants, then take it away. Prophylactic thinking and active defense in chess, inspired by Tigran Petrosian.",
+			"image": "/seo/theory-prophylaxis.jpg"
+		},
+		"/theory/blockade-and-outposts": {
+			"title": "Blockades and outposts in chess",
+			"description": "Stop a weak pawn with a strong piece in front of it and give your knights secure outposts. Positional play inspired by Aron Nimzowitsch.",
+			"image": "/seo/theory-blockade-and-outposts.jpg"
+		},
+		"/theory/clear-endgame-thinking": {
+			"title": "Simplify to win chess endgames",
+			"description": "When you are ahead, the right trades make winning easier. Learn which exchanges help and which lead to a draw. Inspired by José Raúl Capablanca.",
+			"image": "/seo/theory-clear-endgame-thinking.jpg"
+		},
+		"/theory/practical-endgames": {
+			"title": "Chess endgame strategy: plan first",
+			"description": "In the endgame there is often no hurry: improve your king and pieces, create a second weakness, then strike. Inspired by Mikhail Shereshevsky.",
+			"image": "/seo/theory-practical-endgames.jpg"
+		},
+		"/theory/calculate-critical-lines": {
+			"title": "Calculate the critical line in chess",
+			"description": "Find the moment when one exact move decides the game, then calculate it to a clear position against the best defense. Inspired by Mark Dvoretsky.",
+			"image": "/seo/theory-calculate-critical-lines.jpg"
+		},
+		"/theory/initiative-and-sacrifice": {
+			"title": "Initiative and sacrifice in chess",
+			"description": "A beautiful sacrifice is not always a correct one. Name what you give up, what you get back and how the opponent defends. Inspired by Mikhail Tal.",
+			"image": "/seo/theory-initiative-and-sacrifice.jpg"
+		},
+		"/theory/board-visualization": {
+			"title": "Chess visualization training",
+			"description": "Hold the position in your head: short memorize, hide and check exercises that build the board vision you need to calculate. Inspired by János Flesch.",
+			"image": "/seo/theory-board-visualization.jpg"
+		},
+		"/theory/practical-improvement": {
+			"title": "Practical chess improvement",
+			"description": "Why many players stop improving, and a five-step training loop that turns your own mistakes into targeted practice. Inspired by IM Yevhenii Yelisieiev.",
+			"image": "/seo/theory-practical-improvement.jpg"
+		},
+		"/theory/strategic-plans": {
+			"title": "How to find a strategic plan in chess",
+			"description": "When no tactic is in sight, read the weak squares, piece activity, pawn breaks and trades, then pick a plan with a concrete first move.",
+			"image": "/seo/theory-strategic-plans.jpg"
+		},
+		"/theory/positions-without-hints": {
+			"title": "Find the best chess move without a hint",
+			"description": "Real games have no puzzle titles. Learn to tell whether a position needs attack, defense, a positional move or technique before you look for the move.",
+			"image": "/seo/theory-positions-without-hints.jpg"
+		},
+		"/theory/sacrifice-compensation": {
+			"title": "When is a chess sacrifice justified?",
+			"description": "Tactical, positional and speculative sacrifices: how to check that your compensation survives the best defense. Inspired by Andrei Volokitin.",
+			"image": "/seo/theory-sacrifice-compensation.jpg"
+		},
+		"/theory/piece-maneuvering": {
+			"title": "The art of maneuvering in chess",
+			"description": "Improve your worst piece with a real route: knight transfers, open diagonals, open files and a second weakness. Inspired by Adrian Mikhalchishin.",
+			"image": "/seo/theory-piece-maneuvering.jpg"
+		},
+		"/theory/calculation-discipline": {
+			"title": "Disciplined calculation in chess",
+			"description": "Choose candidates first, keep the board in your head accurate, check the strongest defense and judge the final position. Inspired by Mykhaylo Oleksiyenko.",
+			"image": "/seo/theory-calculation-discipline.jpg"
+		},
+		"/theory/stop-repeating-mistakes": {
+			"title": "How to stop repeating chess mistakes",
+			"description": "A five-step pre-move check, the usual causes of blunders and a simple loop to stop making the same chess mistakes. Inspired by Igor Smirnov.",
+			"image": "/seo/theory-stop-repeating-mistakes.jpg"
 		},
 		"/library": {
 			"title": "Chess library",
-			"description": "Replay real chess games, analyze positions with Stockfish and keep your saved games in one place.",
-			"image": "/seo/library.jpg"
+			"description": "Replay real chess games, analyze any position with Stockfish and keep your saved games in one place: everything you need to study chess.",
+			"image": "/seo/library-hub.jpg"
 		},
 		"/library/board": {
 			"title": "Chess analysis board",
-			"description": "Analyze chess positions and games with Stockfish. Set up a board, compare candidate moves with engine analysis and save games for further study.",
-			"image": "/seo/library.jpg"
+			"description": "Analyze chess positions and games with Stockfish. Set up a board or paste a PGN, pick your candidate moves and compare them with the engine.",
+			"image": "/seo/library-board.jpg"
 		},
 		"/library/games": {
 			"title": "Chess games to study and solve",
@@ -87,13 +207,13 @@
 		},
 		"/privacy": {
 			"title": "Privacy policy",
-			"description": "What Chess training stores, why, and how to delete your account and data.",
-			"image": "/seo/profile.jpg"
+			"description": "What Chess training stores, why it stores it, which services it uses and how to delete your account and all of your data.",
+			"image": "/seo/privacy.jpg"
 		},
 		"/licenses": {
 			"title": "Licenses and credits",
-			"description": "Chess training is free software under the GPL-3.0. Its source code and the projects it builds on, such as Stockfish and Chessground.",
-			"image": "/seo/library.jpg"
+			"description": "Chess training is free software under the GPL-3.0. See its source code and the projects it builds on, such as Stockfish and Chessground.",
+			"image": "/seo/licenses.jpg"
 		},
 		"/sign-in": {
 			"title": "Sign in",

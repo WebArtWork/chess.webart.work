@@ -3,11 +3,12 @@ import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { PreferencesComponent } from '../../components/preferences/preferences.component';
 import { AuthService } from '../../feature/auth/auth.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 const SILENT_ERROR_CODES = new Set(['auth/popup-closed-by-user', 'auth/cancelled-popup-request']);
 
 @Component({
-	imports: [NgOptimizedImage, PreferencesComponent],
+	imports: [NgOptimizedImage, PreferencesComponent, TPipe],
 	templateUrl: './sign-in.component.html',
 })
 export class SignInComponent {
@@ -36,6 +37,7 @@ export class SignInComponent {
 	}
 }
 
+/** In English; the template translates it. */
 function _errorMessage(code: string): string {
 	switch (code) {
 		case 'auth/popup-blocked':

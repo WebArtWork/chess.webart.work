@@ -1,27 +1,204 @@
+<!-- A text block: heading, paragraphs, a list, paragraphs after it, and nested parts one level down. -->
+<ng-template #block let-section let-level="level">
+	@switch (level) {
+		@case (2) {
+			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ section.heading | t }}</h2>
+		}
+		@case (3) {
+			<h3 class="m-0! -mb-1! text-base font-semibold">{{ section.heading | t }}</h3>
+		}
+		@default {
+			<p class="m-0! -mb-2! text-sm font-semibold">{{ section.heading | t }}</p>
+		}
+	}
+	@for (paragraph of section.paragraphs; track $index) {
+		<p class="leading-relaxed">{{ paragraph | t }}</p>
+	}
+	@if (section.points; as points) {
+		@if (section.ordered) {
+			<ol class="flex list-decimal flex-col gap-2 pl-5 leading-relaxed marker:text-mute">
+				@for (point of points; track $index) {
+					<li>{{ point | t }}</li>
+				}
+			</ol>
+		} @else {
+			<ul class="flex list-disc flex-col gap-2 pl-5 leading-relaxed marker:text-mute">
+				@for (point of points; track $index) {
+					<li>{{ point | t }}</li>
+				}
+			</ul>
+		}
+	}
+	@for (paragraph of section.after; track $index) {
+		<p class="leading-relaxed">{{ paragraph | t }}</p>
+	}
+	@for (part of section.parts; track part.heading) {
+		<div class="flex flex-col gap-3" [class.pt-1]="level === 2">
+			<ng-container *ngTemplateOutlet="block; context: { $implicit: part, level: level + 1 }" />
+		</div>
+	}
+</ng-template>
+
 <article class="mx-auto flex w-full max-w-2xl flex-col gap-8 px-4 pb-10 pt-4 sm:px-6">
-	<header>
-		<p class="text-sm font-medium text-mute">{{ lesson.author }}</p>
-		<h1 class="m-0! mt-1! text-2xl font-semibold leading-tight tracking-tight">{{ lesson.title }}</h1>
+	<header class="flex flex-col gap-2">
+		<p class="text-sm font-medium text-mute">
+			@if (card.inspiredBy; as name) {
+				{{ 'Inspired by {name}' | t: { name: (name | t) } }}
+			} @else {
+				{{ 'Fundamentals' | t }}
+			}
+		</p>
+		<!-- the topbar already shows the title; the heading stays for screen readers and SEO -->
+		<h1 class="sr-only">{{ card.title | t }}</h1>
+		<p class="flex flex-wrap gap-x-3 gap-y-1 text-sm text-mute">
+			<span>{{ categoryLabel | t }}</span>
+			<span>{{ card.skill | t }}</span>
+			<span>{{ 'Rating {from}–{to}' | t: { from: card.level[0], to: card.level[1] } }}</span>
+			<span>{{ '{n} min' | t: { n: card.minutes } }}</span>
+		</p>
 	</header>
 
-	@for (section of lesson.sections; track section.heading) {
+	@if (lesson.note; as note) {
+		<section class="ds-card gap-3 p-4">
+			<ng-container *ngTemplateOutlet="block; context: { $implicit: note, level: 3 }" />
+		</section>
+	}
+
+	@if (lesson.idea; as idea) {
 		<section class="flex flex-col gap-3">
-			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ section.heading }}</h2>
-			@for (paragraph of section.paragraphs; track $index) {
-				<p class="leading-relaxed">{{ paragraph }}</p>
-			}
-			@if (section.points; as points) {
-				<ul class="flex list-disc flex-col gap-2 pl-5 leading-relaxed marker:text-mute">
-					@for (point of points; track $index) {
-						<li>{{ point }}</li>
-					}
-				</ul>
+			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ 'Main idea' | t }}</h2>
+			@for (paragraph of idea; track $index) {
+				<p class="leading-relaxed">{{ paragraph | t }}</p>
 			}
 		</section>
 	}
 
+	@if (lesson.steps; as steps) {
+		<section class="flex flex-col gap-3">
+			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ (lesson.stepsHeading ?? 'How to think') | t }}</h2>
+			<ol class="flex list-decimal flex-col gap-2 pl-5 leading-relaxed marker:text-mute">
+				@for (step of steps; track $index) {
+					<li>{{ step | t }}</li>
+				}
+			</ol>
+		</section>
+	}
+
+	@if (lesson.example; as example) {
+		<section class="flex flex-col gap-3">
+			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ 'Example' | t }}</h2>
+			@for (paragraph of example; track $index) {
+				<p class="leading-relaxed">{{ paragraph | t }}</p>
+			}
+		</section>
+	}
+
+	@for (section of lesson.sections; track section.heading) {
+		<section class="flex flex-col gap-3">
+			<ng-container *ngTemplateOutlet="block; context: { $implicit: section, level: 2 }" />
+		</section>
+	}
+
+	@if (lesson.mistakes; as mistakes) {
+		<section class="flex flex-col gap-3">
+			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ (mistakes.length === 1 ? 'Common mistake' : 'Common mistakes') | t }}</h2>
+			<ul class="flex list-disc flex-col gap-2 pl-5 leading-relaxed marker:text-mute">
+				@for (mistake of mistakes; track $index) {
+					<li>{{ mistake | t }}</li>
+				}
+			</ul>
+		</section>
+	}
+
+	@if (lesson.selfCheck; as check) {
+		<section class="ds-card gap-3 p-4" aria-labelledby="check-title">
+			<h2 id="check-title" class="m-0! text-lg font-semibold tracking-tight">{{ 'Check yourself' | t }}</h2>
+			<p class="font-medium leading-relaxed">{{ check.question | t }}</p>
+			@if (revealed()) {
+				<p class="leading-relaxed" aria-live="polite">{{ check.answer | t }}</p>
+				@if (progress().checked === undefined) {
+					<div class="flex flex-col gap-2">
+						<p class="text-sm text-mute">{{ 'Did your answer match?' | t }}</p>
+						<div class="flex flex-wrap gap-2">
+							<button class="ds-btn ds-btn-primary" type="button" (click)="answer(true)">{{ 'Yes' | t }}</button>
+							<button class="ds-btn ds-btn-outline" type="button" (click)="answer(false)">{{ 'Not yet' | t }}</button>
+						</div>
+					</div>
+				} @else if (progress().checked) {
+					<p class="flex items-center gap-2 text-sm font-medium" role="status">
+						<app-icon name="check" />
+						{{ 'Self-check passed' | t }}
+					</p>
+				} @else {
+					<div class="flex flex-col items-start gap-2" role="status">
+						<p class="text-sm">{{ 'Reread the steps above, then try again.' | t }}</p>
+						<button class="ds-btn ds-btn-outline" type="button" (click)="answer(true)">{{ 'I get it now' | t }}</button>
+					</div>
+				}
+			} @else {
+				<p class="text-sm text-mute">{{ 'Answer in your head first, then compare.' | t }}</p>
+				<button class="ds-btn ds-btn-outline self-start" type="button" (click)="revealed.set(true)">{{ 'Show answer' | t }}</button>
+			}
+		</section>
+	}
+
+	@if (lesson.exercise; as exercise) {
+		<section class="ds-card gap-3 p-4">
+			<ng-container *ngTemplateOutlet="block; context: { $implicit: exercise, level: 2 }" />
+		</section>
+	}
+
+	@if (lesson.questions; as questions) {
+		<section class="flex flex-col gap-3" aria-labelledby="questions-title">
+			<h2 id="questions-title" class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ 'Questions to check yourself' | t }}</h2>
+			<ol class="flex list-decimal flex-col gap-3 pl-5 leading-relaxed marker:text-mute">
+				@for (item of questions; track $index) {
+					<li>
+						<p class="font-medium">{{ item.question | t }}</p>
+						<details class="mt-1">
+							<summary class="cursor-pointer text-sm text-brand">{{ 'Show answer' | t }}</summary>
+							<p class="mt-1">{{ item.answer | t }}</p>
+						</details>
+					</li>
+				}
+			</ol>
+		</section>
+	}
+
+	@if (lesson.takeaway; as takeaway) {
+		<section class="flex flex-col gap-2 border-l-4 border-brand pl-4" aria-labelledby="takeaway-title">
+			<h2 id="takeaway-title" class="m-0! text-sm font-semibold text-mute">{{ 'Key takeaway' | t }}</h2>
+			<p class="text-lg font-semibold leading-snug">{{ takeaway | t }}</p>
+		</section>
+	}
+
 	<section class="flex flex-col gap-3" aria-labelledby="practice-title">
-		<h2 id="practice-title" class="m-0! text-lg font-semibold tracking-tight">Practice it</h2>
+		<h2 id="practice-title" class="m-0! text-lg font-semibold tracking-tight">{{ 'Practice it' | t }}</h2>
+		<p class="text-sm text-mute">{{ 'Reading a lesson is not the same as having the skill. Practice it on real positions.' | t }}</p>
 		<app-hub-list [items]="lesson.practice" />
 	</section>
+
+	<footer class="flex flex-col gap-3 border-t border-line pt-6">
+		@if (lesson.sources?.length) {
+			<h2 class="m-0! text-base font-semibold">{{ 'Further reading' | t }}</h2>
+			<ul class="flex flex-col gap-1.5 text-sm">
+				@for (source of lesson.sources; track source.url) {
+					<li>
+						<a [href]="source.url" target="_blank" rel="noopener"><cite>{{ source.title }}</cite></a>
+						<span class="text-mute"> · {{ source.author | t }}@if (source.site !== source.author) { · {{ source.site | t }}}</span>
+					</li>
+				}
+			</ul>
+		}
+		@if (card.inspiredBy; as name) {
+			<p class="text-xs leading-relaxed text-mute">
+				{{ 'Original Chess Training material inspired by the chess ideas of {name}. Not affiliated with the author, rights holders or publishers.' | t: { name: (name | t) } }}
+			</p>
+		} @else if (lesson.sources?.length) {
+			<p class="text-xs leading-relaxed text-mute">
+				{{ 'Original Chess Training material. The sources are listed for further reading; it does not copy them and is not affiliated with their authors.' | t }}
+			</p>
+		}
+		<a class="self-start text-sm" routerLink="/theory">{{ 'All lessons' | t }}</a>
+	</footer>
 </article>

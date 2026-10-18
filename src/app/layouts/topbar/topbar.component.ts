@@ -9,14 +9,15 @@ import { GamesToolbarService } from '../../feature/chess/games-toolbar.service';
 import { PlayModeService } from '../../feature/chess/play-mode.service';
 import { PositionInputService } from '../../feature/chess/position-input.service';
 import { AuthService } from '../../feature/auth/auth.service';
-import { HubParent } from '../../feature/hub/hub.interface';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { ProgressService } from '../../feature/progress/progress.service';
+import { ShareService } from '../../feature/share/share.service';
 import { NavStateService } from '../nav-state.service';
 import { NAV_LINKS } from '../nav.const';
 
 @Component({
 	selector: 'app-topbar',
-	imports: [AnalysisSettingsComponent, IconComponent, NgOptimizedImage, RouterLink],
+	imports: [AnalysisSettingsComponent, IconComponent, NgOptimizedImage, RouterLink, TPipe],
 	templateUrl: './topbar.component.html',
 	// no box of its own, so the sticky header sticks to the page, not to this element
 	host: { class: 'contents' },
@@ -36,6 +37,8 @@ export class TopbarComponent {
 	protected readonly links = NAV_LINKS;
 	protected readonly user = this._auth.user;
 	protected readonly progress = inject(ProgressService);
+	protected readonly sharing = inject(ShareService);
+
 	protected openEditor() {
 		this.input.error.set('');
 		this.draft.set(this.input.tab() === 'fen' ? this.input.fen() : '');
@@ -65,7 +68,7 @@ export class TopbarComponent {
 		this.input.error.set('');
 	}
 
-	/** The active route's data, deepest level winning: page name, hub to go back to, Study link. */
+	/** The active route's data, deepest level winning: page name and Study link. */
 	protected readonly route = toSignal(
 		this._router.events.pipe(
 			filter((event) => event instanceof NavigationEnd),
@@ -83,7 +86,6 @@ export class TopbarComponent {
 
 interface TopbarData {
 	pageName?: string;
-	parent?: HubParent;
 	/** Puzzle pages that offer "Study this position". */
 	studyLink?: boolean;
 }

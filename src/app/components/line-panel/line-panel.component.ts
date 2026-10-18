@@ -1,5 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { LineSession } from '../../feature/chess/line.session';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 interface Ply {
 	number: string;
@@ -13,14 +14,15 @@ interface Ply {
  */
 @Component({
 	selector: 'app-line-panel',
+	imports: [TPipe],
 	template: `
 		@let line = session();
 		<div class="flex flex-col gap-[3px]">
-			<section class="flex flex-col gap-[3px]" aria-label="Progress">
+			<section class="flex flex-col gap-[3px]" [attr.aria-label]="'Progress' | t">
 				<ol
 					class="grid gap-1"
 					[style.grid-template-columns]="'repeat(' + line.target + ', minmax(0, 1fr))'"
-					aria-label="Your moves in the line"
+					[attr.aria-label]="'Your moves in the line' | t"
 				>
 					@for (slot of slots(); track $index) {
 						<li
@@ -32,7 +34,7 @@ interface Ply {
 							<span class="text-[0.6875rem] font-medium leading-none opacity-80">{{ $index + 1 }}</span>
 							<span class="mt-1 text-sm font-semibold leading-none">{{ slot.san }}</span>
 							@if (slot.found) {
-								<span class="sr-only">found</span>
+								<span class="sr-only">{{ 'found' | t }}</span>
 							}
 						</li>
 					}
@@ -45,13 +47,13 @@ interface Ply {
 
 			@if (line.misses().length) {
 				<p class="text-sm text-mute">
-					Not it: {{ missList() }}
+					{{ 'Not it: {moves}' | t: { moves: missList() } }}
 				</p>
 			}
 
 			@if (line.done()) {
 				<section aria-labelledby="solution-title">
-					<h2 id="solution-title" class="mb-2 text-base font-semibold">Solution</h2>
+					<h2 id="solution-title" class="mb-2 text-base font-semibold">{{ 'Solution' | t }}</h2>
 					<ol class="flex flex-wrap gap-x-2 gap-y-1 rounded-xl border border-line bg-card px-4 py-3 text-sm">
 						@for (ply of solution(); track $index) {
 							<li [class]="ply.by === 'you' ? 'font-semibold' : 'text-mute'">

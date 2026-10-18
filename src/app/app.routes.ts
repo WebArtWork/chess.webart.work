@@ -3,8 +3,7 @@ import { RedirectFunction, Router, Routes } from '@angular/router';
 import { buildRouteMeta } from '@wawjs/ngx-default';
 import { authGuard, guestGuard } from './feature/auth/auth.guard';
 import { companyProfile } from './feature/company/company.data';
-import { THEORY_ITEMS } from './feature/hub/hub.const';
-import { HubParent } from './feature/hub/hub.interface';
+import { THEORY_CATALOG } from './feature/theory/theory.catalog';
 
 /** A redirect that keeps the query params, which a plain `redirectTo` string drops on the server. */
 const moved =
@@ -16,11 +15,6 @@ const page = (path: string, pageName: string) => ({
 	pageName,
 	meta: buildRouteMeta(companyProfile, path),
 });
-
-/** The hub a mode page belongs to, for the topbar back link. */
-const PRACTICE: HubParent = { path: '/practice', label: 'Practice' };
-const THEORY: HubParent = { path: '/theory', label: 'Theory' };
-const LIBRARY: HubParent = { path: '/library', label: 'Library' };
 
 export const routes: Routes = [
 	{
@@ -57,34 +51,34 @@ export const routes: Routes = [
 				children: [
 					{
 						path: 'daily',
-						data: { ...page('/practice/daily', 'Daily puzzle'), mode: 'daily', parent: PRACTICE, studyLink: true },
+						data: { ...page('/practice/daily', 'Daily puzzle'), mode: 'daily', studyLink: true },
 						children: [],
 					},
 					{
 						path: 'good-moves',
-						data: { ...page('/practice/good-moves', 'Good moves'), mode: 'random', parent: PRACTICE, studyLink: true },
+						data: { ...page('/practice/good-moves', 'Good moves'), mode: 'random', studyLink: true },
 						children: [],
 					},
 				],
 			},
 			{
 				path: 'mate-in-one',
-				data: { ...page('/practice/mate-in-one', 'Mate in 1'), quiz: 'mate1', parent: PRACTICE },
+				data: { ...page('/practice/mate-in-one', 'Mate in 1'), quiz: 'mate1' },
 				loadComponent: () => import('./pages/quiz/quiz.component').then((m) => m.QuizComponent),
 			},
 			{
 				path: 'mate-in-three',
-				data: { ...page('/practice/mate-in-three', 'Mate in 3'), quiz: 'mate3', parent: PRACTICE },
+				data: { ...page('/practice/mate-in-three', 'Mate in 3'), quiz: 'mate3' },
 				loadComponent: () => import('./pages/quiz/quiz.component').then((m) => m.QuizComponent),
 			},
 			{
 				path: 'tactics',
-				data: { ...page('/practice/tactics', 'Tactics'), quiz: 'mixed', parent: PRACTICE },
+				data: { ...page('/practice/tactics', 'Tactics'), quiz: 'mixed' },
 				loadComponent: () => import('./pages/quiz/quiz.component').then((m) => m.QuizComponent),
 			},
 			{
 				path: 'look-ahead',
-				data: { ...page('/practice/look-ahead', 'Look Ahead'), parent: PRACTICE },
+				data: { ...page('/practice/look-ahead', 'Look Ahead') },
 				loadComponent: () =>
 					import('./pages/look-ahead/look-ahead.component').then((m) => m.LookAheadComponent),
 			},
@@ -99,16 +93,15 @@ export const routes: Routes = [
 				data: page('/theory', 'Theory'),
 				loadComponent: () => import('./pages/theory/theory.component').then((m) => m.TheoryComponent),
 			},
-			// one prerendered page per lesson; the slug is the last part of its hub path
-			...THEORY_ITEMS.map((item) => {
-				const slug = item.path.split('/').pop()!;
-				return {
-					path: slug,
-					data: { ...page(item.path, item.title), lesson: slug, parent: THEORY },
-					loadComponent: () =>
-						import('./pages/theory-lesson/theory-lesson.component').then((m) => m.TheoryLessonComponent),
-				};
-			}),
+			// one prerendered page per lesson
+			...THEORY_CATALOG.map((card) => ({
+				path: card.slug,
+				data: { ...page(`/theory/${card.slug}`, card.title), lesson: card.slug },
+				loadComponent: () =>
+					import('./pages/theory-lesson/theory-lesson.component').then((m) => m.TheoryLessonComponent),
+			})),
+			// the first lesson's old address
+			{ path: 'kotov', redirectTo: '/theory/candidate-moves' },
 		],
 	},
 	{
@@ -123,24 +116,24 @@ export const routes: Routes = [
 			},
 			{
 				path: 'board',
-				data: { ...page('/library/board', 'Analysis board'), parent: LIBRARY },
+				data: { ...page('/library/board', 'Analysis board') },
 				loadComponent: () => import('./pages/board/board.component').then((m) => m.BoardPageComponent),
 			},
 			{
 				path: 'games',
-				data: { ...page('/library/games', 'Games'), parent: LIBRARY },
+				data: { ...page('/library/games', 'Games') },
 				loadComponent: () => import('./pages/games/games.component').then((m) => m.GamesComponent),
 			},
 			{
 				// rendered in the browser only (see app.routes.server.ts): one page serves every game
 				path: 'games/:id',
-				data: { ...page('/library/games/:id', 'Game'), parent: { path: '/library/games', label: 'Games' } },
+				data: { ...page('/library/games/:id', 'Game') },
 				loadComponent: () => import('./pages/game/game.component').then((m) => m.GameComponent),
 			},
 			{
 				path: 'saved',
 				canActivate: [authGuard],
-				data: { ...page('/library/saved', 'My games'), parent: LIBRARY },
+				data: { ...page('/library/saved', 'My games') },
 				loadComponent: () => import('./pages/saved/saved.component').then((m) => m.SavedComponent),
 			},
 		],

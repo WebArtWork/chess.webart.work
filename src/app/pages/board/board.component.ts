@@ -12,10 +12,11 @@ import { SavedGame } from '../../feature/chess/chess.interface';
 import { PositionInputService } from '../../feature/chess/position-input.service';
 import { SavedGamesService } from '../../feature/chess/saved-games.service';
 import { StudySession } from '../../feature/chess/study.session';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 /** Pick candidate moves for a position, then compare them against the engine. */
 @Component({
-	imports: [AnalysisSettingsComponent, BoardComponent, IconComponent, PositionPickerComponent],
+	imports: [AnalysisSettingsComponent, BoardComponent, IconComponent, PositionPickerComponent, TPipe],
 	templateUrl: './board.component.html',
 })
 export class BoardPageComponent {

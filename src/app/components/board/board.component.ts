@@ -16,6 +16,7 @@ import type { Config } from '@lichess-org/chessground/config';
 import type { Key } from '@lichess-org/chessground/types';
 import { Chess, type Square } from 'chess.js';
 import { Side } from '../../feature/chess/chess.interface';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 export type Promotion = 'q' | 'r' | 'b' | 'n';
 
@@ -32,11 +33,11 @@ export interface BoardArrow {
 	brush: 'green' | 'blue' | 'red' | 'yellow';
 }
 
-const PROMOTION_PIECES: { value: Promotion; role: string }[] = [
-	{ value: 'q', role: 'queen' },
-	{ value: 'n', role: 'knight' },
-	{ value: 'r', role: 'rook' },
-	{ value: 'b', role: 'bishop' },
+const PROMOTION_PIECES: { value: Promotion; role: string; label: string }[] = [
+	{ value: 'q', role: 'queen', label: 'Promote to queen' },
+	{ value: 'n', role: 'knight', label: 'Promote to knight' },
+	{ value: 'r', role: 'rook', label: 'Promote to rook' },
+	{ value: 'b', role: 'bishop', label: 'Promote to bishop' },
 ];
 
 /** A `<piece>` element, so the chessground piece set styles it like a board piece. */
@@ -50,7 +51,7 @@ class BoardPieceComponent {}
 /** Chessground wrapper. The parent owns the position; the board only reports moves. */
 @Component({
 	selector: 'app-board',
-	imports: [BoardPieceComponent],
+	imports: [BoardPieceComponent, TPipe],
 	template: `
 		<div class="relative aspect-square w-full overflow-hidden sm:rounded-xl">
 			<div #host class="size-full"></div>
@@ -58,7 +59,7 @@ class BoardPieceComponent {}
 				<div
 					class="absolute inset-0 z-10 bg-black/50"
 					role="dialog"
-					aria-label="Choose promotion piece"
+					[attr.aria-label]="'Choose promotion piece' | t"
 					tabindex="-1"
 					(click)="cancelPromotion()"
 					(keydown.escape)="cancelPromotion()"
@@ -70,7 +71,7 @@ class BoardPieceComponent {}
 								class="absolute size-[12.5%] rounded-full bg-white/80 transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-[-2px]"
 								[style.left.%]="choice.left"
 								[style.top.%]="choice.top"
-								[attr.aria-label]="'Promote to ' + choice.role"
+								[attr.aria-label]="choice.label | t"
 								(click)="$event.stopPropagation(); promote(choice.value)"
 							>
 								<piece class="{{ choice.role }} {{ choice.color }}" style="width: 100%; height: 100%"></piece>

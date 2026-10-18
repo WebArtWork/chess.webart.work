@@ -20,6 +20,8 @@ import { CATEGORY_LABELS, levelOf, themeLabel } from '../../feature/game/game.co
 import { PuzzleData, QuizItem } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { I18nService } from '../../feature/i18n/i18n.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { ProgressService } from '../../feature/progress/progress.service';
 import { QuizService } from '../../feature/quiz/quiz.service';
 
@@ -57,13 +59,14 @@ const SESSION_STRIP = 12;
  * Puzzles come from the games collection, near the player's quiz rating.
  */
 @Component({
-	imports: [BoardComponent, RouterLink],
+	imports: [BoardComponent, RouterLink, TPipe],
 	templateUrl: './quiz.component.html',
 })
 export class QuizComponent {
 	private readonly _games = inject(GameService);
 	private readonly _engine = inject(EngineService);
 	private readonly _playMode = inject(PlayModeService);
+	private readonly _i18n = inject(I18nService);
 	protected readonly quiz = inject(QuizService);
 	protected readonly player = inject(ProgressService);
 	private readonly _next = viewChild<ElementRef<HTMLElement>>('nextButton');
@@ -82,7 +85,7 @@ export class QuizComponent {
 
 	protected readonly stats = this.quiz.stats;
 	protected readonly strip = computed(() => this.session().slice(-SESSION_STRIP));
-	protected readonly side = computed(() => (this.current()?.puzzle.side === 'black' ? 'Black' : 'White'));
+	protected readonly side = computed(() => (this.current()?.puzzle.side === 'black' ? 'Black to move' : 'White to move'));
 	protected readonly task = computed(() => {
 		if (this.type() === 'mate1') return 'Mate in 1. Find the mating move.';
 		if (this.type() === 'mate3') return 'Mate in 3. Play the mating line, move by move.';
@@ -100,7 +103,7 @@ export class QuizComponent {
 		const puzzle = this.current()?.puzzle;
 		if (!puzzle) return '';
 		const themes = puzzle.themes.filter((theme) => !theme.startsWith('mateIn')).map(themeLabel);
-		return [CATEGORY_LABELS[puzzle.category], ...themes].join(' · ');
+		return [CATEGORY_LABELS[puzzle.category], ...themes].map((label) => this._i18n.t(label)).join(' · ');
 	});
 
 	private readonly _pools = new Map<QuizType, QuizEntry[]>();

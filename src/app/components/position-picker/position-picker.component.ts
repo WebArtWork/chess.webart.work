@@ -6,6 +6,8 @@ import { isValidFen, parsePgn, STARTING_FEN } from '../../feature/chess/chess.ut
 import { SavedGamesService } from '../../feature/chess/saved-games.service';
 import { AuthService } from '../../feature/auth/auth.service';
 import { PositionInputService } from '../../feature/chess/position-input.service';
+import { I18nService } from '../../feature/i18n/i18n.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { BoardComponent, BoardMove } from '../board/board.component';
 import { IconComponent } from '../icon/icon.component';
 
@@ -22,14 +24,14 @@ interface HistoryMove {
  */
 @Component({
 	selector: 'app-position-picker',
-	imports: [BoardComponent, IconComponent],
+	imports: [BoardComponent, IconComponent, TPipe],
 	template: `
 		<!-- Phones: the board, its controls and Start are pinned at the bottom; the rest scrolls above. -->
 		<div class="flex h-full min-h-0 flex-col lg:grid lg:grid-cols-[minmax(0,34rem)_1fr] lg:grid-rows-[minmax(0,1fr)] lg:items-stretch lg:gap-6">
 			<div class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3 lg:order-2 lg:overflow-y-auto lg:p-0">
 				<div class="flex flex-col gap-4">
 					@if (moves().length) {
-						<ol class="flex flex-wrap gap-1 text-sm" aria-label="Moves">
+						<ol class="flex flex-wrap gap-1 text-sm" [attr.aria-label]="'Moves' | t">
 							@for (move of moves(); track $index) {
 								<li class="shrink-0">
 									<button
@@ -50,7 +52,7 @@ interface HistoryMove {
 					}
 
 					<div class="flex flex-col gap-3">
-						<div class="hidden gap-2 md:flex" role="group" aria-label="Import a position">
+						<div class="hidden gap-2 md:flex" role="group" [attr.aria-label]="'Import a position' | t">
 							<button class="ds-chip" type="button" [attr.aria-pressed]="tab() === 'fen'" (click)="tab.set('fen')">
 								FEN
 							</button>
@@ -61,7 +63,7 @@ interface HistoryMove {
 
 						@if (tab() === 'fen') {
 							<div class="ds-field hidden !mb-0 md:block">
-								<label class="ds-label" for="fen-input">Position (FEN)</label>
+								<label class="ds-label" for="fen-input">{{ 'Position (FEN)' | t }}</label>
 								<div class="flex gap-2">
 									<input
 										#fenInput
@@ -74,13 +76,13 @@ interface HistoryMove {
 										(keydown.enter)="loadFen(fenInput.value)"
 									/>
 									<button class="ds-btn ds-btn-secondary shrink-0" type="button" (click)="loadFen(fenInput.value)">
-										Load
+										{{ 'Load' | t }}
 									</button>
 								</div>
 							</div>
 						} @else {
 							<div class="ds-field hidden !mb-0 md:block">
-								<label class="ds-label" for="pgn-input">Game (PGN)</label>
+								<label class="ds-label" for="pgn-input">{{ 'Game (PGN)' | t }}</label>
 								<textarea
 									#pgnInput
 									id="pgn-input"
@@ -89,21 +91,21 @@ interface HistoryMove {
 									placeholder="1. e4 e5 2. Nf3 Nc6 ..."
 								></textarea>
 								<button class="ds-btn ds-btn-secondary mt-2" type="button" (click)="loadPgn(pgnInput.value)">
-									Load game
+									{{ 'Load game' | t }}
 								</button>
 							</div>
 						}
 
 						@if (saveMessage()) {
-						<p class="text-sm" [class.text-danger]="saveState() === 'error'" role="status">{{ saveMessage() }}</p>
+						<p class="text-sm" [class.text-danger]="saveState() === 'error'" role="status">{{ saveMessage() | t }}</p>
 					}
 
 					@if (error()) {
-							<p class="text-sm text-danger" role="alert">{{ error() }}</p>
+							<p class="text-sm text-danger" role="alert">{{ error() | t }}</p>
 						}
 
 						<button class="hidden min-h-11 items-center self-start text-sm font-medium text-mute underline-offset-4 hover:underline md:inline-flex" type="button" (click)="reset()">
-							Reset to starting position
+							{{ 'Reset to starting position' | t }}
 						</button>
 					</div>
 
@@ -126,7 +128,7 @@ interface HistoryMove {
 						<button
 							class="ds-btn ds-btn-outline size-11 !p-0"
 							type="button"
-							aria-label="Previous move"
+							[attr.aria-label]="'Previous move' | t"
 							[disabled]="index() < 0"
 							(click)="goTo(index() - 1)"
 						>
@@ -135,16 +137,16 @@ interface HistoryMove {
 						<button
 							class="ds-btn ds-btn-outline size-11 !p-0"
 							type="button"
-							aria-label="Next move"
+							[attr.aria-label]="'Next move' | t"
 							[disabled]="index() >= moves().length - 1"
 							(click)="goTo(index() + 1)"
 						>
 							<app-icon name="next" />
 						</button>
-						<button class="ds-btn ds-btn-outline size-11 !p-0" type="button" aria-label="Flip board" (click)="flip()">
+						<button class="ds-btn ds-btn-outline size-11 !p-0" type="button" [attr.aria-label]="'Flip board' | t" (click)="flip()">
 							<app-icon name="flip" />
 						</button>
-						<button class="ds-btn ds-btn-outline size-11 !p-0" type="button" aria-label="Reset to starting position" (click)="reset()">
+						<button class="ds-btn ds-btn-outline size-11 !p-0" type="button" [attr.aria-label]="'Reset to starting position' | t" (click)="reset()">
 							<app-icon name="reset" />
 						</button>
 					</div>
@@ -155,7 +157,7 @@ interface HistoryMove {
 					<button
 						class="ds-btn ds-btn-outline size-11 shrink-0 !p-0"
 						type="button"
-						aria-label="Previous move"
+						[attr.aria-label]="'Previous move' | t"
 						[disabled]="index() < 0"
 						(click)="goTo(index() - 1)"
 					>
@@ -164,7 +166,7 @@ interface HistoryMove {
 					<button
 						class="ds-btn ds-btn-outline size-11 shrink-0 !p-0"
 						type="button"
-						aria-label="Next move"
+						[attr.aria-label]="'Next move' | t"
 						[disabled]="index() >= moves().length - 1"
 						(click)="goTo(index() + 1)"
 					>
@@ -173,7 +175,7 @@ interface HistoryMove {
 					<button
 						class="ds-btn ds-btn-outline size-11 shrink-0 !p-0"
 						type="button"
-						aria-label="Flip board"
+						[attr.aria-label]="'Flip board' | t"
 						(click)="flip()"
 					>
 						<app-icon name="flip" />
@@ -182,7 +184,7 @@ interface HistoryMove {
 						<button
 							class="ds-btn ds-btn-outline size-11 shrink-0 !p-0"
 							type="button"
-							aria-label="Save to my library"
+							[attr.aria-label]="'Save to my library' | t"
 							[disabled]="saveState() === 'saving'"
 							(click)="save()"
 						>
@@ -190,7 +192,7 @@ interface HistoryMove {
 						</button>
 					}
 					<button class="ds-btn ds-btn-primary h-11 flex-1" type="button" (click)="start.emit(fen())">
-						{{ startLabel() }}
+						{{ startLabel() | t }}
 					</button>
 				</div>
 			</div>
@@ -207,6 +209,7 @@ export class PositionPickerComponent implements OnInit {
 	private readonly _input = inject(PositionInputService);
 	private readonly _saved = inject(SavedGamesService);
 	private readonly _auth = inject(AuthService);
+	private readonly _i18n = inject(I18nService);
 	protected readonly signedIn = computed(() => !!this._auth.user());
 	protected readonly saveMessage = this._input.saveMessage;
 	protected readonly saveState = this._input.saveState;
@@ -288,7 +291,9 @@ export class PositionPickerComponent implements OnInit {
 	/** "1. e4 e5 2. Nf3" for a game, or the position's side to move for a bare position. */
 	private _title(): string {
 		const sans = this.moves().map((move) => move.san);
-		if (!sans.length) return `Position, ${this.base().includes(' b ') ? 'Black' : 'White'} to move`;
+		if (!sans.length) {
+			return this._i18n.t(this.base().includes(' b ') ? 'Position, Black to move' : 'Position, White to move');
+		}
 		const shown = sans.slice(0, 6).map((san, i) => (i % 2 === 0 ? `${i / 2 + 1}. ${san}` : san));
 		return shown.join(' ') + (sans.length > 6 ? ' …' : '');
 	}

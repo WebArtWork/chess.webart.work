@@ -1,0 +1,21 @@
+{
+	"Reading a rule does not mean you have learned to use it. A good cycle: study the topic → see an example → practice → check yourself → go back to your mistakes.": "Прочитати правило ще не означає навчитися його використовувати. Хороший цикл: розібрати тему → побачити приклад → потренуватися → перевірити себе → повернутися до помилок.",
+	"How to train": "Як тренуватися",
+	"Write down the goal of one session: for example, finding the weakest piece.": "Запишіть ціль одного заняття: наприклад, знаходити найслабшу фігуру.",
+	"Study one clear idea, without mixing it with five other topics.": "Вивчіть одну чітку ідею, не змішуючи її з п’ятьма іншими темами.",
+	"Work through a demonstration example of your own.": "Розберіть власний демонстраційний приклад.",
+	"Solve 5 puzzles without hints and without looking at the engine’s evaluation.": "Виконайте 5 задач без підказок і без перегляду оцінки рушія.",
+	"For each mistake, write down the cause: missed a check, mixed up the move order, overlooked a defense.": "Для кожної помилки запишіть причину: не побачили шах, переплутали порядок, не врахували захист.",
+	"A few days later, retry the missed positions and solve new ones with the same ideas. Include a few mixed review positions to check that you recognize the theme without a hint.": "Через кілька днів знову розв’яжіть пропущені позиції і нові з тими самими ідеями. Додайте кілька змішаних позицій, щоб перевірити, чи впізнаєте ви тему без підказки.",
+	"In a set of five puzzles, you solve three correctly. In the other two, you miss an in-between check. Review why those checks work, then practice a short set of in-between moves. Later, test the skill in mixed puzzles where the theme is hidden.": "З п’яти задач ви правильно розв’язуєте три. У двох інших пропускаєте проміжний шах. Розберіть, чому ці шахи працюють, потім потренуйте коротку добірку проміжних ходів. Пізніше перевірте навичку на змішаних задачах, де тема прихована.",
+	"Counting how many lessons you have finished instead of how well you have learned them.": "Рахувати кількість пройдених уроків замість якості засвоєння.",
+	"What helps your progress more: 30 puzzles with no review or 10 puzzles with your mistakes explained?": "Що корисніше для прогресу: 30 задач без розбору чи 10 задач із поясненням помилок?",
+	"Often the second, because you find out what exactly keeps you from finding the solution.": "Часто друге, бо ви виявляєте, що саме заважає знаходити рішення.",
+	"One puzzle a day, without hints. If you miss it, write down why.": "Одна задача щодня, без підказок. Якщо помилилися, запишіть причину.",
+	"Solve a short set without hints, then go back over every mistake.": "Розв’яжіть коротку серію без підказок, потім розберіть кожну помилку.",
+	"Weekly plan": "Тижневий план",
+	"Plan your week: one goal per session, and time to review your weak spots.": "Сплануйте тиждень: одна ціль на заняття і час на повторення слабких місць.",
+	"Quality Chess (sample PDF)": "Quality Chess (уривок у PDF)",
+	"Daily puzzle": "Задача дня",
+	"Tactics": "Тактика"
+}

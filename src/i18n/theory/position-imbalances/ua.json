@@ -1,0 +1,17 @@
+{
+	"Not every advantage is measured in pawns. One player has the more active bishop, the other a better pawn structure; one controls an open file, the other has a protected passed pawn. A plan starts with the differences between the two sides.": "Не всі переваги вимірюються пішаками. В одного гравця активніший слон, в іншого краща пішакова структура; один контролює відкриту вертикаль, інший має захищеного прохідного пішака. План починається з відмінностей між сторонами.",
+	"Compare material and king safety.": "Порівняйте матеріал і безпеку королів.",
+	"Compare how active the pieces are and where their best squares are.": "Порівняйте активність фігур та їхні найкращі поля.",
+	"Find weak pawns, squares and files.": "Знайдіть слабкі пішаки, поля і вертикалі.",
+	"Decide which advantage can be used right now.": "Визначте, яка перевага може бути використана саме зараз.",
+	"State your plan in one sentence.": "Сформулюйте план одним реченням.",
+	"Check that your opponent cannot wreck this plan with tactics.": "Перевірте, чи не руйнує суперник цей план тактикою.",
+	"You have a knight, your opponent has a bishop, and the center is blocked. The idea is to find a strong square for the knight. But if your opponent can open the center on the next move, you have to deal with that threat first.": "У вас кінь, у суперника слон, а центр заблокований. Ідея полягає в тому, щоб знайти сильне поле для коня. Але якщо суперник може розкрити центр наступним ходом, спочатку треба врахувати цю загрозу.",
+	"Making a strategic move without first checking for checks and tactical threats.": "Робити стратегічний хід, не перевіривши шахи та тактичні загрози.",
+	"Are two bishops always stronger than two knights?": "Чи завжди два слони сильніші за двох коней?",
+	"No. What matters is how open the position is, the pawn structure and the squares available.": "Ні. Важливі відкритість позиції, пішакова структура та доступні поля.",
+	"Positional games": "Позиційні партії",
+	"Before a key move, name one advantage for each side, then guess the plan.": "Перед ключовим ходом назвіть одну перевагу кожної сторони, потім вгадайте план.",
+	"Write down the imbalances and a one-sentence plan, then check it for tactics with the engine.": "Запишіть відмінності між сторонами й план одним реченням, потім перевірте його на тактику рушієм.",
+	"Analysis board": "Дошка аналізу"
+}

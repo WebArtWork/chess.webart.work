@@ -20,6 +20,8 @@ import {
 } from '../../feature/game/game.const';
 import { Catalog, CatalogGame, CatalogPuzzle, PuzzleFilters } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
+import { I18nService } from '../../feature/i18n/i18n.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 
 const PAGE_SIZE = 12;
 const OPENING_CHIPS = 14;
@@ -31,12 +33,13 @@ interface GameCard {
 }
 
 @Component({
-	imports: [BoardComponent, IconComponent, RouterLink],
+	imports: [BoardComponent, IconComponent, RouterLink, TPipe],
 	templateUrl: './games.component.html',
 })
 export class GamesComponent {
 	private readonly _games = inject(GameService);
 	private readonly _toolbar = inject(GamesToolbarService);
+	private readonly _i18n = inject(I18nService);
 	private readonly _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 	private readonly _sheet = viewChild.required<ElementRef<HTMLDialogElement>>('sheet');
 
@@ -52,17 +55,18 @@ export class GamesComponent {
 	/** Chip groups shown after the opening search, in sheet order, with puzzle counts. */
 	protected readonly groups = computed(() => {
 		const facets = this.catalog()?.facets;
+		const t = (text: string) => this._i18n.t(text);
 		const options = (key: FilterKey, labels: Record<string, string>, order?: string[]): FilterOption[] =>
 			(order ?? Object.keys(facets?.[key] ?? {}).sort((a, b) => (facets?.[key][b] ?? 0) - (facets?.[key][a] ?? 0)))
 				.filter((value) => facets?.[key][value])
-				.map((value) => ({ value, label: `${labels[value] ?? value} · ${facets?.[key][value]}` }));
+				.map((value) => ({ value, label: `${t(labels[value] ?? value)} · ${facets?.[key][value]}` }));
 		const themes = Object.fromEntries(Object.keys(facets?.theme ?? {}).map((theme) => [theme, themeLabel(theme)]));
 		return [
-			{ key: 'category' as const, label: 'Training focus', options: options('category', CATEGORY_LABELS) },
-			{ key: 'level' as const, label: 'Level', options: options('level', LEVEL_LABELS, Object.keys(LEVEL_LABELS)) },
-			{ key: 'theme' as const, label: 'Theme', options: options('theme', themes) },
-			{ key: 'mode' as const, label: 'Exercise', options: options('mode', MODE_LABELS, Object.keys(MODE_LABELS)) },
-			{ key: 'side' as const, label: 'Side to move', options: options('side', { white: 'White', black: 'Black' }, ['white', 'black']) },
+			{ key: 'category' as const, label: t('Training focus'), options: options('category', CATEGORY_LABELS) },
+			{ key: 'level' as const, label: t('Level'), options: options('level', LEVEL_LABELS, Object.keys(LEVEL_LABELS)) },
+			{ key: 'theme' as const, label: t('Theme'), options: options('theme', themes) },
+			{ key: 'mode' as const, label: t('Exercise'), options: options('mode', MODE_LABELS, Object.keys(MODE_LABELS)) },
+			{ key: 'side' as const, label: t('Side to move'), options: options('side', { white: 'White', black: 'Black' }, ['white', 'black']) },
 		];
 	});
 

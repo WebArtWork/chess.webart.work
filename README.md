@@ -91,8 +91,8 @@ Signed-in users can save the game to **My games**.
 | Route | Page |
 | --- | --- |
 | `/` | Dashboard: weekly plan, today's step, last 7 days (opened from the logo) |
-| `/theory` | Theory hub: training methods explained |
-| `/theory/kotov` | Kotov's candidate moves and tree of analysis, with links to the modes that train each step. One prerendered page per lesson; texts in `src/app/feature/theory/theory.const.ts` |
+| `/theory` | Theory hub: 5 fundamentals and 12 masters lessons in two blocks, filtered by category (`?category=`), with a badge for a passed self-check |
+| `/theory/<slug>` | A lesson: idea, steps, example, mistakes, self-check, practice links, sources. Cards in `src/app/feature/theory/theory.catalog.ts`, texts in `src/app/feature/theory/lessons/<slug>.ts`, Ukrainian in `src/i18n/theory/<slug>/ua.json`. `/theory/kotov` redirects to `/theory/candidate-moves` |
 | `/library` | Library hub: pick the analysis board, games or saved games |
 | `/library/board` | Position and game analysis; `?fen=` or `?game=ID` opens a position or a saved game |
 | `/library/games` | Browse games by training focus, theme, level, exercise, side to move, opening, or search players and openings |
@@ -108,8 +108,7 @@ Signed-in users can save the game to **My games**.
 The main navigation has three tabs, **Theory**, **Library** and **Practice**, in the topbar on desktop and in a
 bottom bar on phones (`src/app/layouts/nav.const.ts`). Each tab opens a hub listing its modes
 (`src/app/feature/hub/hub.const.ts`); a new mode is one more hub entry and a route under the hub's
-path, so the bar itself does not grow. Mode pages show a back link to their hub in the topbar
-(route data `parent`).
+path, so the bar itself does not grow.
 
 Old URLs (`/daily`, `/random`, `/quiz?type=…`, `/look-ahead`, `/games`, `/games/:id`, `/my-games`,
 `/saved`, `/study`, `/analyze`) redirect to the new ones and keep their query params.
@@ -159,11 +158,32 @@ stored lines.
   Deploy rules with `npm run rules` (needs the Firebase CLI with access to the project).
 - In Firebase, Google sign-in must be enabled and `chess.webart.work` listed under
   Authentication > Settings > Authorized domains.
-- Daily results and quiz stats stay in the browser (`localStorage`), signed in or not.
+- Daily results, quiz stats and theory self-check results stay in the browser
+  (`localStorage`), signed in or not.
 - **Delete account** on the profile asks for Google sign-in again, then deletes `users/{uid}` with its
   `games`, `events` and `progress`, the Auth user and the `wawchess_*` keys on that device. The rules
   must allow those deletes, so run `npm run rules` after changing `firestore.rules`.
 - Keep `/privacy` (`src/app/pages/privacy/`) in step with whatever the app stores.
+
+## Theory texts
+
+`theories.md` (repo root) holds every Theory lesson in English, in hub order, for editing and review.
+Regenerate it with `npm run theories:md` after changing lessons in code. Edits made in `theories.md` are
+applied back by hand to `src/app/feature/theory/` (card data in `theory.catalog.ts`, text in
+`lessons/<slug>.ts`) and to the Ukrainian in `src/i18n/theory/<slug>/ua.json`.
+
+## Languages
+
+English (default) and Ukrainian (`ua`). The language is picked on the Profile and Sign-in pages
+(below the theme) and remembered in the browser; a Ukrainian browser starts in Ukrainian.
+
+- Texts are written in English in the code and translated where they are shown: `{{ 'Daily puzzle' | t }}`
+  in templates, `I18nService.t(...)` in TypeScript (`src/app/feature/i18n/`). Placeholders are
+  `{name}`; plurals are `'{count} game|{count} games'`, and Ukrainian gives three forms (one|few|many).
+- `src/i18n/ua.json` maps English → Ukrainian for the whole app; `en.json` stays empty.
+- Long texts used on one page live in page bundles, loaded only there with `I18nService.usePage(...)`:
+  `src/i18n/theory/<lesson>/ua.json`, `src/i18n/pages/privacy/ua.json`, `src/i18n/pages/licenses/ua.json`.
+- SEO stays English: titles and meta tags come from `company.json`, and prerendered pages are English.
 
 ## Code map
 
@@ -191,7 +211,13 @@ npm i
 npm start            # dev server at http://localhost:4200
 npm run build        # production build with prerendering → dist/app/browser (used by mobile apps)
 npm run build:seo    # build + sitemap.xml and robots.txt (used by GitHub Pages deploy)
+npm run seo:check-images # check page cover coverage, provenance and 1200×630 JPEG dimensions
 ```
+
+Each page has its own social cover under `src/assets/seo/`, referenced by `pageSeo` in
+`src/data/company/company.json`. The built-in image generation prompts are recorded in
+`tools/seo/image-prompts.json`. Add a matching cover and prompt when adding a page or theory
+lesson. `build:seo` also checks the prerendered Open Graph and Twitter image references.
 
 - Angular 22, standalone components, signals, zoneless, Tailwind CSS 4 plus the shared `ds-*`
   component classes. Light and dark skins live in `src/styles/`.

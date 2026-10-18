@@ -1,12 +1,13 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HubItem } from '../../feature/hub/hub.interface';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { IconComponent } from '../icon/icon.component';
 
 /** The rows of a hub page: what each mode is, an optional status, and a link into it. */
 @Component({
 	selector: 'app-hub-list',
-	imports: [IconComponent, RouterLink],
+	imports: [IconComponent, RouterLink, TPipe],
 	template: `
 		<ul class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card">
 			@for (item of items(); track item.path) {
@@ -14,12 +15,12 @@ import { IconComponent } from '../icon/icon.component';
 					<a class="flex items-center gap-4 px-4 py-3.5 text-fg! no-underline hover:bg-soft" [routerLink]="item.path" [queryParams]="item.query">
 						<span class="min-w-0 flex-1">
 							<span class="flex flex-wrap items-center gap-x-2 gap-y-1">
-								<span class="font-semibold leading-snug">{{ item.title }}</span>
+								<span class="font-semibold leading-snug">{{ item.title | t }}</span>
 								@if (status()[item.path]; as text) {
-									<span class="ds-badge">{{ text }}</span>
+									<span class="ds-badge">{{ text | t }}</span>
 								}
 							</span>
-							<span class="block text-sm leading-snug text-mute">{{ item.detail }}</span>
+							<span class="block text-sm leading-snug text-mute">{{ item.detail | t }}</span>
 						</span>
 						<app-icon class="shrink-0 text-mute" name="next" />
 					</a>

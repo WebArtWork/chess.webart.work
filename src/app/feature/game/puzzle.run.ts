@@ -5,6 +5,7 @@ import { Candidate, TopMove } from '../chess/chess.interface';
 import { EngineService } from '../chess/engine.service';
 import { GameSession } from '../chess/game.session';
 import { LineSession } from '../chess/line.session';
+import { I18nVars } from '../i18n/i18n.service';
 import { PuzzleData } from './game.interface';
 import { lineEval, topMovesFromLines } from './game.util';
 
@@ -20,6 +21,12 @@ export interface PuzzleResult {
 	squares: string[];
 	candidates: Candidate[];
 	answers: TopMove[];
+}
+
+/** A text to show, in English with its placeholders; translated where it is rendered. */
+export interface RunMessage {
+	text: string;
+	vars?: I18nVars;
 }
 
 /**
@@ -40,7 +47,7 @@ export class PuzzleRun {
 	readonly strikes: Signal<number>;
 	readonly maxStrikes: number;
 	/** The outcome once finished, e.g. "Solved" or "Out of strikes"; null while playing. */
-	readonly outcome: Signal<string | null>;
+	readonly outcome: Signal<RunMessage | null>;
 
 	constructor(
 		readonly puzzle: PuzzleData,
@@ -64,9 +71,9 @@ export class PuzzleRun {
 			this.maxStrikes = line.maxStrikes;
 			this.outcome = computed(() => {
 				if (!line.done()) return null;
-				if (!line.won()) return 'Out of strikes';
+				if (!line.won()) return { text: 'Out of strikes' };
 				const alternative = line.alternative();
-				return alternative ? `Solved: ${alternative} works too` : 'Solved';
+				return alternative ? { text: 'Solved: {move} works too', vars: { move: alternative } } : { text: 'Solved' };
 			});
 			this.arrows = computed(() => {
 				if (line.status() !== 'lost') return [];
@@ -87,8 +94,9 @@ export class PuzzleRun {
 			this.maxStrikes = session.maxStrikes;
 			this.outcome = computed(() => {
 				if (!session.done()) return null;
-				if (!session.won()) return 'Out of strikes';
-				return session.targetMoves() === 1 ? 'Solved' : `All ${session.targetMoves()} found`;
+				if (!session.won()) return { text: 'Out of strikes' };
+				const count = session.targetMoves();
+				return count === 1 ? { text: 'Solved' } : { text: 'All {count} found', vars: { count } };
 			});
 			this.arrows = computed(() => {
 				if (!session.done()) return [];

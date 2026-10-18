@@ -19,6 +19,8 @@ import { GameData, PuzzleData } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { lineEval, Replay, replayGame } from '../../feature/game/game.util';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
+import { I18nService } from '../../feature/i18n/i18n.service';
+import { TPipe } from '../../feature/i18n/t.pipe';
 import { PAWNS } from '../../feature/progress/progress.const';
 import { Award, ProgressService } from '../../feature/progress/progress.service';
 
@@ -33,7 +35,7 @@ interface MoveRow {
  * /games/:id?ply=N opens at a position; ?solve=N starts the puzzle at that ply.
  */
 @Component({
-	imports: [BoardComponent, IconComponent, PuzzlePanelComponent, RouterLink],
+	imports: [BoardComponent, IconComponent, PuzzlePanelComponent, RouterLink, TPipe],
 	templateUrl: './game.component.html',
 	host: { '(document:keydown)': 'onKey($event)' },
 })
@@ -41,6 +43,7 @@ export class GameComponent {
 	private readonly _games = inject(GameService);
 	private readonly _engine = inject(EngineService);
 	private readonly _progress = inject(ProgressService);
+	private readonly _i18n = inject(I18nService);
 
 	private readonly _route = inject(ActivatedRoute);
 	private readonly _moveList = viewChild<ElementRef<HTMLElement>>('moveList');
@@ -188,13 +191,18 @@ export class GameComponent {
 	protected summary(puzzle: PuzzleData): string {
 		const played = uciToSans(puzzle.fen, [puzzle.played.uci.split(' ')[0]])[0] ?? '';
 		const best = uciToSans(puzzle.fen, [puzzle.lines[0].uci.split(' ')[0]])[0] ?? '';
-		if (played === best) return `${best} was played in the game, the best move.`;
-		return `In the game ${played} (${formatEval(lineEval(puzzle.played))}); best was ${best} (${formatEval(lineEval(puzzle.lines[0]))}).`;
+		if (played === best) return this._i18n.t('{move} was played in the game, the best move.', { move: best });
+		return this._i18n.t('In the game {played} ({playedEval}); best was {best} ({bestEval}).', {
+			played,
+			playedEval: formatEval(lineEval(puzzle.played)),
+			best,
+			bestEval: formatEval(lineEval(puzzle.lines[0])),
+		});
 	}
 
 	protected moveLabel(ply: number): string {
 		const number = Math.floor(ply / 2) + 1;
-		return ply % 2 === 0 ? `Move ${number}, White to move` : `Move ${number}, Black to move`;
+		return this._i18n.t(ply % 2 === 0 ? 'Move {number}, White to move' : 'Move {number}, Black to move', { number });
 	}
 
 	protected resultLabel(result: string): string {

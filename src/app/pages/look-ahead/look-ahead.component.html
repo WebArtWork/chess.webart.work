@@ -5,19 +5,19 @@
 <section
 	class="mx-auto flex h-full w-full max-w-[72rem] flex-col lg:grid lg:h-full lg:grid-cols-[minmax(0,34rem)_1fr] lg:grid-rows-[minmax(0,1fr)] lg:items-stretch lg:gap-8 lg:px-6 lg:pb-4 lg:pt-3"
 >
-	<h1 class="sr-only">Look Ahead</h1>
+	<h1 class="sr-only">{{ 'Look Ahead' | t }}</h1>
 
 	@if (loading()) {
-		<div class="mx-auto my-auto aspect-square w-[min(100%,46dvh)] animate-pulse bg-soft sm:rounded-xl lg:w-[min(100%,calc(100dvh-8.5rem))]" role="status" aria-label="Loading position"></div>
+		<div class="mx-auto my-auto aspect-square w-[min(100%,46dvh)] animate-pulse bg-soft sm:rounded-xl lg:w-[min(100%,calc(100dvh-8.5rem))]" role="status" [attr.aria-label]="'Loading position' | t"></div>
 	} @else if (failed()) {
 		<div class="ds-card m-4 items-start gap-3 p-5 lg:col-span-2 lg:m-0">
-			<p>Could not load the positions. Check your connection and try again.</p>
-			<button class="ds-btn ds-btn-primary" type="button" (click)="retry()">Try again</button>
+			<p>{{ 'Could not load the positions. Check your connection and try again.' | t }}</p>
+			<button class="ds-btn ds-btn-primary" type="button" (click)="retry()">{{ 'Try again' | t }}</button>
 		</div>
 	} @else if (empty() || !session()) {
 		<div class="ds-card m-4 items-start gap-3 p-5 lg:col-span-2 lg:m-0">
-			<p>No Look Ahead positions yet. Try a quiz in the meantime.</p>
-			<a class="ds-btn ds-btn-primary" routerLink="/practice">Go to Practice</a>
+			<p>{{ 'No Look Ahead positions yet. Try a quiz in the meantime.' | t }}</p>
+			<a class="ds-btn ds-btn-primary" routerLink="/practice">{{ 'Go to Practice' | t }}</a>
 		</div>
 	} @else {
 		@let run = session()!;
@@ -28,12 +28,15 @@
 					<div class="flex items-center justify-between gap-3">
 						<p class="text-lg font-semibold">
 							@if (run.done()) {
-								{{ foundCount() === total() ? 'All ' + total() + ' lines found' : 'Found ' + foundCount() + ' of ' + total() + ' lines' }}
+								{{
+									(foundCount() === total() ? 'All {count} line found|All {count} lines found' : 'Found {found} of {count} line|Found {found} of {count} lines')
+										| t: { found: foundCount(), count: total() }
+								}}
 							} @else {
-								{{ side() }} to move
+								{{ side() | t }}
 							}
 						</p>
-						<ol class="flex gap-1" [attr.aria-label]="foundCount() + ' of ' + total() + ' lines found'">
+						<ol class="flex gap-1" [attr.aria-label]="'{found} of {count} line found|{found} of {count} lines found' | t: { found: foundCount(), count: total() }">
 							@for (row of run.paths; track row.key; let i = $index) {
 								<li class="size-3 rounded-sm" [class]="i < foundCount() ? 'bg-ok' : 'bg-line'"></li>
 							}
@@ -46,19 +49,19 @@
 									<span class="ds-badge">+{{ earned.pawns }} ♟</span>
 								}
 								@if (earned.delta !== null) {
-									<span class="ds-badge" [class]="earned.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'" title="Rating change">
+									<span class="ds-badge" [class]="earned.delta >= 0 ? 'ds-badge-safe' : 'ds-badge-danger'" [attr.title]="'Rating change' | t">
 										{{ earned.delta >= 0 ? '+' : '' }}{{ earned.delta }}
 									</span>
 								}
 							</p>
 						}
-						<p class="text-sm text-mute">Tap a line to play it on the board.</p>
+						<p class="text-sm text-mute">{{ 'Tap a line to play it on the board.' | t }}</p>
 					} @else {
 						<p class="text-sm" [class.text-mute]="run.status() !== 'checked'" role="status">{{ status() }}</p>
 						<p class="text-sm text-mute">
-							Find {{ total() }} lines.
+							{{ 'Find {count} line.|Find {count} lines.' | t: { count: total() } }}
 							@if (run.misses()) {
-								{{ run.misses() }} {{ run.misses() === 1 ? 'miss' : 'misses' }} so far.
+								{{ '{count} miss so far.|{count} misses so far.' | t: { count: run.misses() } }}
 							}
 						</p>
 					}
@@ -66,7 +69,7 @@
 
 				@if (rows().length) {
 					<section class="ds-card gap-2 p-4" aria-labelledby="lines-heading">
-						<h2 id="lines-heading" class="text-sm font-semibold">{{ run.done() ? 'Lines' : 'Found so far' }}</h2>
+						<h2 id="lines-heading" class="text-sm font-semibold">{{ (run.done() ? 'Lines' : 'Found so far') | t }}</h2>
 						<ul class="flex flex-col gap-1">
 							@for (row of rows(); track row.path.key) {
 								<li class="flex items-start gap-2 text-sm">
@@ -74,7 +77,7 @@
 									@if (run.done()) {
 										<button class="text-left underline-offset-2 hover:underline" type="button" (click)="run.replay(row.path)">
 											{{ row.text }}
-											<span class="sr-only">({{ row.found ? 'found' : 'missed' }}, play on the board)</span>
+											<span class="sr-only">{{ (row.found ? '(found, play on the board)' : '(missed, play on the board)') | t }}</span>
 										</button>
 									} @else {
 										<span>{{ row.text }}</span>
@@ -87,11 +90,11 @@
 
 				<div class="flex flex-wrap gap-2">
 					@if (run.done()) {
-						<button class="ds-btn ds-btn-primary" type="button" (click)="next()">Next position</button>
-						<a class="ds-btn ds-btn-ghost" [routerLink]="['/library/games', run.item.game]" [queryParams]="{ ply: run.item.ply }">See the game</a>
+						<button class="ds-btn ds-btn-primary" type="button" (click)="next()">{{ 'Next position' | t }}</button>
+						<a class="ds-btn ds-btn-ghost" [routerLink]="['/library/games', run.item.game]" [queryParams]="{ ply: run.item.ply }">{{ 'See the game' | t }}</a>
 					} @else {
-						<button class="ds-btn ds-btn-outline" type="button" (click)="run.reveal()">Show remaining lines</button>
-						<button class="ds-btn ds-btn-ghost" type="button" (click)="next()">Skip</button>
+						<button class="ds-btn ds-btn-outline" type="button" (click)="run.reveal()">{{ 'Show remaining lines' | t }}</button>
+						<button class="ds-btn ds-btn-ghost" type="button" (click)="next()">{{ 'Skip' | t }}</button>
 					}
 				</div>
 				<p class="text-xs text-mute">{{ details() }}</p>
