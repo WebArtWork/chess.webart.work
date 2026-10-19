@@ -6,7 +6,7 @@ import { FirebaseService } from '../firebase/firebase.service';
 import { MAX_PAWNS, MIN_RATING, PROVISIONAL, rankOf, ratingChange, START_RATING } from './progress.const';
 
 const STORAGE_KEY = 'wawchess_progress';
-/** The quiz kept its own rating before there was one for every puzzle. */
+/** Puzzle practice (then called the quiz) kept its own rating before there was one for every puzzle. */
 const LEGACY_QUIZ_KEY = 'wawchess_quiz';
 
 export interface Progress {
@@ -68,7 +68,7 @@ export class ProgressService {
 	constructor() {
 		this._useLocal();
 		if (!this._isBrowser) return;
-		// keeps a rating carried over from the old quiz storage
+		// keeps a rating carried over from the old puzzle practice storage
 		this._saveLocal();
 		void this._auth.whenReady();
 		effect(() => {
@@ -186,13 +186,13 @@ export class ProgressService {
 			if (raw) return { ...FRESH, keys: [], ...(JSON.parse(raw) as Partial<LocalProgress>) };
 			const legacy = localStorage.getItem(LEGACY_QUIZ_KEY);
 			if (legacy) {
-				const quiz = JSON.parse(legacy) as { rating?: number; best?: number; played?: number; seen?: string[] };
+				const old = JSON.parse(legacy) as { rating?: number; best?: number; played?: number; seen?: string[] };
 				return {
-					rating: quiz.rating ?? START_RATING,
-					best: quiz.best ?? quiz.rating ?? START_RATING,
-					rated: quiz.played ?? 0,
+					rating: old.rating ?? START_RATING,
+					best: old.best ?? old.rating ?? START_RATING,
+					rated: old.played ?? 0,
 					pawns: 0,
-					keys: quiz.seen ?? [],
+					keys: old.seen ?? [],
 				};
 			}
 		} catch {

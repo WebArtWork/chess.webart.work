@@ -82,6 +82,11 @@ export const openingPrinciples: TheoryLessonBody = {
 	takeaway: 'In the opening, understand what the position needs instead of just memorizing a sequence of moves.',
 	practice: [
 		{
+			title: 'Opening moves',
+			detail: 'Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.',
+			path: '/practice/opening-moves',
+		},
+		{
 			title: 'Try the exercise position',
 			detail: 'Open the position after 3...Bc5 and compare 4.O-O, 4.c3 and 4.Nc3 yourself.',
 			path: '/library/board',

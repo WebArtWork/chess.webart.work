@@ -1,5 +1,5 @@
 import { DatabaseSync, type StatementSync } from 'node:sqlite';
-import type { CandidateGame, GameAnalysis } from './analysis/game.ts';
+import { practiceTags, type CandidateGame, type GameAnalysis } from './analysis/game.ts';
 import type { EngineCache } from './engine/pool.ts';
 import type { EngineLine } from './engine/uci.ts';
 import type { Selectable, Selected } from './similarity/select.ts';
@@ -168,6 +168,7 @@ export class Store implements EngineCache {
 				difficulty: analysis.difficulty,
 				tokens: analysis.tokens,
 				fens: analysis.fens,
+				tags: practiceTags(analysis.positions),
 			});
 		}
 		return items;

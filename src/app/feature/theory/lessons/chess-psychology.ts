@@ -90,6 +90,16 @@ export const chessPsychology: TheoryLessonBody = {
 		'Mental toughness in chess is the ability to bring your attention back to the position and make sound decisions, even after a setback.',
 	practice: [
 		{
+			title: 'What’s the threat?',
+			detail: 'Many blunders come from not asking what the last move threatens. Make the question a habit.',
+			path: '/practice/threats',
+		},
+		{
+			title: 'Review',
+			detail: 'Meet your missed puzzles again a few days later, when the answer is no longer fresh.',
+			path: '/practice/review',
+		},
+		{
 			title: 'Daily puzzle',
 			detail: 'One puzzle a day: go through the full pre-move routine before you answer.',
 			path: '/practice/daily',

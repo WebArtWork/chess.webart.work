@@ -3,28 +3,29 @@ import { inject, PLATFORM_ID, Service, signal } from '@angular/core';
 import { PAWNS } from '../progress/progress.const';
 import { Award, ProgressService } from '../progress/progress.service';
 
+/** Still the old key, so stats saved before the rename carry over. */
 const STORAGE_KEY = 'wawchess_quiz';
 /** Puzzles kept in the "recent" strip and history. */
 const RECENT = 30;
 /** Search windows around the rating, widened until a fresh puzzle is found. */
 const WINDOWS = [100, 200, 400, 800];
 
-export interface QuizResult {
+export interface PracticeResult {
 	id: string;
 	solved: boolean;
 }
 
-export interface QuizStats {
+export interface PracticeStats {
 	played: number;
 	solved: number;
 	streak: number;
 	bestStreak: number;
 	/** Ids of every rated puzzle, so none comes back. */
 	seen: string[];
-	recent: QuizResult[];
+	recent: PracticeResult[];
 }
 
-const EMPTY: QuizStats = {
+const EMPTY: PracticeStats = {
 	played: 0,
 	solved: 0,
 	streak: 0,
@@ -34,14 +35,14 @@ const EMPTY: QuizStats = {
 };
 
 /**
- * Quiz history, kept in the browser like the daily results. The rating and pawns are the
+ * Puzzle practice history (Mate in 1, Mate in 3, Tactics), kept in the browser like the daily results. The rating and pawns are the
  * player's progress, shared with every other puzzle (see ProgressService).
  */
 @Service()
-export class QuizService {
+export class PracticeService {
 	private readonly _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 	private readonly _progress = inject(ProgressService);
-	readonly stats = signal<QuizStats>(this._load());
+	readonly stats = signal<PracticeStats>(this._load());
 
 	/** A fresh puzzle near the player's rating, widening the window when none is left. */
 	pick<T extends { id: string; rating: number }>(puzzles: T[], excludeId?: string): T | null {
@@ -78,7 +79,7 @@ export class QuizService {
 		return award;
 	}
 
-	private _save(stats: QuizStats) {
+	private _save(stats: PracticeStats) {
 		this.stats.set(stats);
 		if (!this._isBrowser) return;
 		try {
@@ -88,11 +89,11 @@ export class QuizService {
 		}
 	}
 
-	private _load(): QuizStats {
+	private _load(): PracticeStats {
 		if (!this._isBrowser) return { ...EMPTY };
 		try {
 			const raw = localStorage.getItem(STORAGE_KEY);
-			return raw ? { ...EMPTY, ...(JSON.parse(raw) as Partial<QuizStats>) } : { ...EMPTY };
+			return raw ? { ...EMPTY, ...(JSON.parse(raw) as Partial<PracticeStats>) } : { ...EMPTY };
 		} catch {
 			return { ...EMPTY };
 		}

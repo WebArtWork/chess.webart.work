@@ -263,5 +263,59 @@
 		"route": "/theory/stop-repeating-mistakes",
 		"mode": "built-in image_gen",
 		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"How to stop repeating chess mistakes\". Scene: a restrained chess still life specifically communicating this page subject: A five-step pre-move check, the usual causes of blunders and a simple loop to stop making the same mistakes. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-review.jpg",
+		"route": "/practice/review",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess puzzle review\". Scene: a restrained chess still life specifically communicating this page subject: Missed chess puzzles come back after 1, 3 and 7 days. Suggest repetition with a small stack of three board positions fanned out, one charcoal piece returning to its square. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-threats.jpg",
+		"route": "/practice/threats",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"What’s the threat?\". Scene: a restrained chess still life specifically communicating this page subject: Spotting what the opponent threatens. A charcoal knight poised to fork an ivory king and queen, its two targets subtly lit in cobalt blue. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-who-is-better.jpg",
+		"route": "/practice/who-is-better",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Who is better?\". Scene: a restrained chess still life specifically communicating this page subject: Judging a quiet chess position. A balanced scale made of board squares, ivory pieces on one side and charcoal pieces on the other, tipping slightly. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-spot-the-feature.jpg",
+		"route": "/practice/spot-the-feature",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Spot the feature\". Scene: a restrained chess still life specifically communicating this page subject: Pawn structure: isolated, doubled and passed pawns, outposts and open files. A few pawns on board squares, one isolated pawn and one outpost square highlighted in cobalt blue. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-is-it-safe.jpg",
+		"route": "/practice/is-it-safe",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Is it safe?\". Scene: a restrained chess still life specifically communicating this page subject: A tempting capture that may be a trap. An ivory queen reaching toward a lone charcoal pawn, a hidden charcoal rook in the background guarding it. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-see-it.jpg",
+		"route": "/practice/see-it",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"See it in your head\". Scene: a restrained chess still life specifically communicating this page subject: Chess visualization: calculating moves without moving the pieces. A still board with faint translucent ghost pieces showing where pieces will stand a few moves later. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-opening-moves.jpg",
+		"route": "/practice/opening-moves",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess opening principles\". Scene: a restrained chess still life specifically communicating this page subject: The first moves of a game: develop pieces, control the centre, castle. Ivory knight and bishop stepping toward the four central squares, which glow softly in cobalt blue. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-sound-sacrifice.jpg",
+		"route": "/practice/sound-sacrifice",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Sound sacrifice?\". Scene: a restrained chess still life specifically communicating this page subject: A sacrifice from a real game: sound or unsound. An ivory bishop placed boldly on a square beside the charcoal king’s pawn shield, a toppled ivory pawn nearby. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-endgames.jpg",
+		"route": "/practice/endgames",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess endgame technique\". Scene: a restrained chess still life specifically communicating this page subject: Endgame technique with few pieces left. An almost empty board with ivory king, rook and pawn against a charcoal king, the pawn one square from promotion. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
 	}
 ]

@@ -7,13 +7,16 @@
  *   npm run games:wipe              remove all games
  *   npm run games:refresh           rebuild src/data/game/app from games.json
  *   npm run games:lookahead         build the Look Ahead trees into src/data/game/app/lookahead.json
+ *   npm run games:enrich            add the practice fields (threats, opening mistakes, sacrifices…) to games.json
  *
  * See tools/chess-import/README.md.
  */
 import path from 'node:path';
 import { parseArgs, usage } from './args.ts';
 import { defaultConfig } from './config.ts';
+import { ENRICH_DEPTH } from './analysis/enrich.ts';
 import { clearOldest, refreshApp, wipe } from './dataset.ts';
+import { enrichDataset } from './enrich.ts';
 import { buildLookAhead, LOOK_AHEAD_SEARCH_DEPTH } from './lookahead.ts';
 import { rootDir } from './paths.ts';
 import { run } from './pipeline.ts';
@@ -33,6 +36,9 @@ try {
 	} else if (command === 'lookahead') {
 		const { added, total, tried } = await buildLookAhead(config, overrides.depth ?? LOOK_AHEAD_SEARCH_DEPTH);
 		console.log(`Tried ${tried} positions, added ${added} trees; lookahead.json now holds ${total}.`);
+	} else if (command === 'enrich') {
+		const { enriched, total } = await enrichDataset(config, overrides.depth ?? ENRICH_DEPTH);
+		console.log(`Enriched ${enriched} games; ${total} of the games in ${rel} carry the practice fields.`);
 	} else if (command === 'wipe') {
 		const removed = await wipe(config);
 		console.log(`Removed all ${removed} games from ${rel}. Imported games still won't be imported again.`);

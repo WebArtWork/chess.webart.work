@@ -9,6 +9,7 @@ import {
 	activeFilterCount,
 	CATEGORY_LABELS,
 	EMPTY_FILTERS,
+	ENDGAME_LABELS,
 	FilterKey,
 	FilterOption,
 	LEVEL_LABELS,
@@ -16,6 +17,8 @@ import {
 	openingFamily,
 	openingVariation,
 	readFilters,
+	SACRIFICE_LABELS,
+	STRUCTURE_LABELS,
 	themeLabel,
 } from '../../feature/game/game.const';
 import { Catalog, CatalogGame, CatalogPuzzle, PuzzleFilters } from '../../feature/game/game.interface';
@@ -56,10 +59,11 @@ export class GamesComponent {
 	protected readonly groups = computed(() => {
 		const facets = this.catalog()?.facets;
 		const t = (text: string) => this._i18n.t(text);
+		const count = (key: FilterKey, value: string) => facets?.[key]?.[value] ?? 0;
 		const options = (key: FilterKey, labels: Record<string, string>, order?: string[]): FilterOption[] =>
-			(order ?? Object.keys(facets?.[key] ?? {}).sort((a, b) => (facets?.[key][b] ?? 0) - (facets?.[key][a] ?? 0)))
-				.filter((value) => facets?.[key][value])
-				.map((value) => ({ value, label: `${t(labels[value] ?? value)} · ${facets?.[key][value]}` }));
+			(order ?? Object.keys(facets?.[key] ?? {}).sort((a, b) => count(key, b) - count(key, a)))
+				.filter((value) => count(key, value))
+				.map((value) => ({ value, label: `${t(labels[value] ?? value)} · ${count(key, value)}` }));
 		const themes = Object.fromEntries(Object.keys(facets?.theme ?? {}).map((theme) => [theme, themeLabel(theme)]));
 		return [
 			{ key: 'category' as const, label: t('Training focus'), options: options('category', CATEGORY_LABELS) },
@@ -67,7 +71,10 @@ export class GamesComponent {
 			{ key: 'theme' as const, label: t('Theme'), options: options('theme', themes) },
 			{ key: 'mode' as const, label: t('Exercise'), options: options('mode', MODE_LABELS, Object.keys(MODE_LABELS)) },
 			{ key: 'side' as const, label: t('Side to move'), options: options('side', { white: 'White', black: 'Black' }, ['white', 'black']) },
-		];
+			{ key: 'structure' as const, label: t('Pawn structure'), options: options('structure', STRUCTURE_LABELS) },
+			{ key: 'endgame' as const, label: t('Endgame type'), options: options('endgame', ENDGAME_LABELS, Object.keys(ENDGAME_LABELS)) },
+			{ key: 'sacrifice' as const, label: t('Sacrifices (games)'), options: options('sacrifice', SACRIFICE_LABELS, Object.keys(SACRIFICE_LABELS)) },
+		].filter((group) => group.options.length);
 	});
 
 	protected readonly openings = computed<FilterOption[]>(() => {

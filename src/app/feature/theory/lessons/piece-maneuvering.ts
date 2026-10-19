@@ -118,6 +118,11 @@ export const pieceManeuvering: TheoryLessonBody = {
 	takeaway: 'Improve your pieces with a concrete goal, and count the time it takes.',
 	practice: [
 		{
+			title: 'Spot the feature',
+			detail: 'Find the outposts and open files your pieces should head for.',
+			path: '/practice/spot-the-feature',
+		},
+		{
 			title: 'Positional games',
 			detail: 'Follow one piece through a game: where did it start, where did it go, and why?',
 			path: '/library/games',
@@ -128,11 +133,6 @@ export const pieceManeuvering: TheoryLessonBody = {
 			detail: 'Watch how the winner brings the king and pieces closer and creates a second weakness.',
 			path: '/library/games',
 			query: { category: 'endgame' },
-		},
-		{
-			title: 'Analysis board',
-			detail: 'Pick your worst piece, choose a target square, and check the route square by square.',
-			path: '/library/board',
 		},
 	],
 	sources: [

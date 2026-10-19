@@ -47,5 +47,7 @@
 	"Set up a quiet position from your game, write two plans and check the first move of each with the engine.": "Поставте спокійну позицію з вашої партії, запишіть два плани й перевірте перший хід кожного рушієм.",
 	"Martyn Kravtsiv": "Мартин Кравців",
 	"Google Books (Gambit, 2024)": "Google Books (Gambit, 2024)",
-	"Exercises": "Практичні вправи"
+	"Exercises": "Практичні вправи",
+	"Judge the position first: a plan follows from who is better and why.": "Спершу оцініть позицію: план випливає з того, хто краще і чому.",
+	"Find the targets a plan aims at: weak pawns, outposts, open files.": "Знайдіть цілі плану: слабкі пішаки, форпости, відкриті вертикалі."
 }

@@ -39,15 +39,20 @@ export const calculateCriticalLines: TheoryLessonBody = {
 			path: '/practice/look-ahead',
 		},
 		{
+			title: 'Is it safe?',
+			detail: 'Check the opponent’s best reply before you capture or check.',
+			path: '/practice/is-it-safe',
+		},
+		{
+			title: 'See it in your head',
+			detail: 'Play a few moves in your head, then answer a question about the position.',
+			path: '/practice/see-it',
+		},
+		{
 			title: 'Critical decisions',
 			detail: 'Positions where one move changes the evaluation. Check the forcing moves for both sides.',
 			path: '/practice/good-moves',
 			query: { category: 'criticalDecision' },
-		},
-		{
-			title: 'Mate in 3',
-			detail: 'Calculate the forcing line to the end, against every defense.',
-			path: '/practice/mate-in-three',
 		},
 	],
 	sources: [

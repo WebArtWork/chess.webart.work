@@ -104,6 +104,7 @@ Feedback: 4.O-O brings the king to safety and puts the rook on f1. 4.c3 prepares
 
 #### Practice it
 
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
 - **Try the exercise position** (`/library/board?fen=r1bqk1nr%2Fpppp1ppp%2F2n5%2F2b1p3%2F2B1P3%2F5N2%2FPPPP1PPP%2FRNBQK2R+w+KQkq+-+4+4`): Open the position after 3...Bc5 and compare 4.O-O, 4.c3 and 4.Nc3 yourself.
 - **Games** (`/library/games`): Watch how strong players develop, castle and fight for the center in the first moves.
 
@@ -209,8 +210,9 @@ Then compare your conclusions with an engine analysis of the game.
 
 #### Practice it
 
+- **Spot the feature** (`/practice/spot-the-feature`): Tap the isolated, doubled, backward and passed pawns, the outposts and the half-open files.
+- **Games with an isolated queen pawn** (`/library/games?structure=iqp`): Replay games with an isolated d-pawn and see how both sides play around it.
 - **Positional games** (`/library/games?category=positional`): See how strong players build their plans around the pawns.
-- **Analysis board** (`/library/board`): Paste one of your games, find its weak pawns and breaks, then check your plan with the engine.
 
 ---
 
@@ -372,10 +374,10 @@ Then check your evaluation with an engine.
 
 #### Practice it
 
+- **What’s the threat?** (`/practice/threats`): Before your own checks and captures, name what the opponent threatens, then stop it.
 - **Mate in 1** (`/practice/mate-in-one`): Start with the checks: look at every check before anything else.
 - **Tactics** (`/practice/tactics`): Go through checks, captures and threats before you pick a move.
 - **Good moves** (`/practice/good-moves`): Collect candidates from all four places, including one quiet move.
-- **Look Ahead** (`/practice/look-ahead`): After each check or capture, calculate your opponent’s strongest reply.
 
 #### Further reading
 
@@ -470,9 +472,10 @@ After the game, find the three decisions you spent the most time on. Was the pos
 
 #### Practice it
 
+- **What’s the threat?** (`/practice/threats`): Start every decision with the opponent’s last move: what does it threaten?
+- **Is it safe?** (`/practice/is-it-safe`): A tempting capture or check: decide whether it works before you play it.
 - **Critical decisions** (`/practice/good-moves?category=criticalDecision`): Positions where one decision matters: go through all six steps before you move.
 - **Look Ahead** (`/practice/look-ahead`): Calculate your opponent’s strongest replies, not the ones you hope for.
-- **Good moves** (`/practice/good-moves`): Find two or three candidate moves before you commit to one.
 
 ---
 
@@ -572,6 +575,8 @@ Then look for patterns that repeat across the five games, rather than judging yo
 
 #### Practice it
 
+- **What’s the threat?** (`/practice/threats`): Many blunders come from not asking what the last move threatens. Make the question a habit.
+- **Review** (`/practice/review`): Meet your missed puzzles again a few days later, when the answer is no longer fresh.
 - **Daily puzzle** (`/practice/daily`): One puzzle a day: go through the full pre-move routine before you answer.
 - **Tactics** (`/practice/tactics`): You get one try per puzzle, so practice the routine: threats, candidates, blunder check, then move.
 
@@ -702,6 +707,7 @@ Pick one of your lost games.
 
 #### Practice it
 
+- **Review** (`/practice/review`): Let the engine find the mistakes in your saved games and bring them back as puzzles.
 - **Analysis board** (`/library/board`): Paste your game as PGN, name your candidates, then compare them with the engine.
 - **My games** (`/library/saved`): Pick a recent game, ideally a loss, and go through it without the engine first.
 
@@ -763,7 +769,7 @@ Strong players do not draw a full tree for every move. Use the whole method in c
 
 - **Good moves** (`/practice/good-moves`): Find every good move in a position before you commit.
 - **Look Ahead** (`/practice/look-ahead`): Build the tree three moves deep, with the best replies.
-- **Analysis board** (`/library/board`): Pick your candidates in any position, then compare them with the engine.
+- **See it in your head** (`/practice/see-it`): Keep the position in your head while you check each candidate.
 
 #### Further reading
 
@@ -805,8 +811,8 @@ You put a rook on a half-open file, a file with no friendly pawn but an enemy pa
 
 #### Practice it
 
+- **Spot the feature** (`/practice/spot-the-feature`): Name the structure behind a move: weak pawns, outposts and open files.
 - **Games** (`/library/games`): Pick a game, stop at the key moves and say why each one was played.
-- **Analysis board** (`/library/board`): Put the reason for your move into words first, then check it with the engine.
 
 #### Further reading
 
@@ -851,9 +857,9 @@ The two targets of a knight fork always stand on squares of the same color, so t
 
 #### Practice it
 
+- **Review** (`/practice/review`): Missed puzzles come back after 1, 3 and 7 days, so each step sticks.
 - **Mate in 1** (`/practice/mate-in-one`): Start with the simplest step: spot the mate in one move.
 - **Games with forks** (`/library/games?theme=fork`): See the fork in real games, on different squares and with different pieces.
-- **Games with pins** (`/library/games?theme=pin`): One motif at a time: the pin in many different positions.
 - **Tactics** (`/practice/tactics`): Then apply the motifs in mixed puzzles and check that they really work.
 
 #### Further reading
@@ -897,6 +903,7 @@ In a set of five puzzles, you solve three correctly. In the other two, you miss 
 
 #### Practice it
 
+- **Review** (`/practice/review`): Repeat what you missed on a schedule: after 1, 3 and 7 days.
 - **Daily puzzle** (`/practice/daily`): One puzzle a day, without hints. If you miss it, write down why.
 - **Tactics** (`/practice/tactics`): Solve a short set without hints, then go back over every mistake.
 - **Weekly plan** (`/`): Plan your week: one goal per session, and time to review your weak spots.
@@ -942,8 +949,9 @@ You have a knight, your opponent has a bishop, and the center is blocked. The id
 
 #### Practice it
 
+- **Who is better?** (`/practice/who-is-better`): Judge a quiet position, then compare with the engine’s score and the main imbalance.
+- **Spot the feature** (`/practice/spot-the-feature`): Find the imbalances on the board: weak pawns, passed pawns, outposts, open files.
 - **Positional games** (`/library/games?category=positional`): Before a key move, name one advantage for each side, then guess the plan.
-- **Analysis board** (`/library/board`): Write down the imbalances and a one-sentence plan, then check it for tactics with the engine.
 
 #### Further reading
 
@@ -985,6 +993,7 @@ Your opponent plans to put a rook on the open file. You can take the file first,
 
 #### Practice it
 
+- **What’s the threat?** (`/practice/threats`): Prophylaxis starts here: see what the opponent wants, then take it away.
 - **Critical decisions** (`/practice/good-moves?category=criticalDecision`): Before you choose your move, name your opponent’s best plan.
 - **Defensive games** (`/library/games?category=defense`): Before each key move, name the opponent’s plan, then see how it was stopped, or not.
 
@@ -1028,8 +1037,9 @@ Your opponent has an isolated pawn. If you cannot win it safely at once, conside
 
 #### Practice it
 
+- **Spot the feature** (`/practice/spot-the-feature`): Find the outposts and passed pawns: the squares to blockade and the pieces to put there.
+- **Games with passed pawns** (`/library/games?structure=passedPawn`): Watch how passed pawns are pushed, and how they are stopped.
 - **Positional games** (`/library/games?category=positional`): Look for blockading pieces and outposts, and ask why they stand there.
-- **Analysis board** (`/library/board`): Choose the best blockade square, then explain why the other squares are less stable.
 
 #### Further reading
 
@@ -1075,8 +1085,9 @@ Answer: it is stalemate. Black is not in check, but a8 and b8 are controlled by 
 
 #### Practice it
 
-- **Endgame puzzles** (`/practice/good-moves?category=endgame`): Before you trade, picture the position after the trade and judge it.
+- **Endgame technique** (`/practice/endgames`): Endgame puzzles by type, plus the stalemate traps in won endings.
 - **Endgame games** (`/library/games?category=endgame`): At each trade, judge whether the endgame after it is really better.
+- **Rook endgames** (`/library/games?endgame=rook`): Replay games that came down to rooks and pawns.
 
 #### Further reading
 
@@ -1119,6 +1130,7 @@ Your rook is more active, but all your opponent’s pawns are protected. If you 
 
 #### Practice it
 
+- **Endgame technique** (`/practice/endgames`): Train one endgame family at a time: pawn, rook, minor piece or queen.
 - **Endgame games** (`/library/games?category=endgame`): Replay endgames and ask at each step: where is the second weakness?
 - **Endgame puzzles** (`/practice/good-moves?category=endgame`): Before you pick a move, decide on your plan for the next few moves.
 
@@ -1172,8 +1184,9 @@ Dvoretsky’s Endgame Manual is about accuracy in endgame analysis. The practice
 #### Practice it
 
 - **Look Ahead** (`/practice/look-ahead`): Calculate to a clear position, with your opponent’s best reply at every step.
+- **Is it safe?** (`/practice/is-it-safe`): Check the opponent’s best reply before you capture or check.
+- **See it in your head** (`/practice/see-it`): Play a few moves in your head, then answer a question about the position.
 - **Critical decisions** (`/practice/good-moves?category=criticalDecision`): Positions where one move changes the evaluation. Check the forcing moves for both sides.
-- **Mate in 3** (`/practice/mate-in-three`): Calculate the forcing line to the end, against every defense.
 
 #### Further reading
 
@@ -1215,7 +1228,8 @@ You give up a pawn to open a line toward the king, but your bishops are not deve
 
 #### Practice it
 
-- **Games with sacrifices** (`/library/games?theme=sacrifice`): For each sacrifice, name what was given up and what came back in return.
+- **Sound sacrifice?** (`/practice/sound-sacrifice`): Judge sacrifices from real games, then play the critical reply.
+- **Games with sound sacrifices** (`/library/games?sacrifice=sound`): Replay games where a sacrifice held up under the engine’s check.
 - **Attacking games** (`/library/games?category=attack`): Count the pieces in each attack, then check the defender’s best reply.
 - **Tactics** (`/practice/tactics`): Before you play a sacrifice, check the calmest defense.
 
@@ -1266,6 +1280,7 @@ A knight stands on e4. Without looking at the board, name every square it could 
 
 #### Practice it
 
+- **See it in your head** (`/practice/see-it`): Moves given as text while the board stays still: where do the pieces stand now?
 - **Look Ahead** (`/practice/look-ahead`): Hold the position in your head as the tree grows move by move.
 - **Mate in 3** (`/practice/mate-in-three`): Calculate the whole mating line before you move.
 
@@ -1381,7 +1396,7 @@ Then pick one skill to train over the next week. Don’t try to fix every weakne
 
 #### Practice it
 
-- **Analysis board** (`/library/board`): Analyze your own game first, then turn on the engine and compare.
+- **Review** (`/practice/review`): Your missed puzzles and the mistakes in your saved games, on a schedule.
 - **My games** (`/library/saved`): Go through your last five games and look for the mistake that keeps coming back.
 - **Tactics** (`/practice/tactics`): If the weakness you found is tactical, train it here with a threat check before every move.
 
@@ -1481,8 +1496,9 @@ Find a weak pawn or square. Name two or three possible moves that increase the p
 
 #### Practice it
 
+- **Who is better?** (`/practice/who-is-better`): Judge the position first: a plan follows from who is better and why.
+- **Spot the feature** (`/practice/spot-the-feature`): Find the targets a plan aims at: weak pawns, outposts, open files.
 - **Positional games** (`/library/games?category=positional`): Stop before a quiet move, name the weak squares and the worst piece, then guess the plan.
-- **Analysis board** (`/library/board`): Set up a quiet position from your game, write two plans and check the first move of each with the engine.
 
 #### Further reading
 
@@ -1574,9 +1590,10 @@ Choose a move and explain it in no more than two sentences. Then check with an e
 
 #### Practice it
 
+- **Who is better?** (`/practice/who-is-better`): No hint, no task: just judge the position, then see the engine’s view.
 - **Good moves** (`/practice/good-moves`): Random positions with no theme shown: name the kind of decision before you choose a move.
-- **Daily puzzle** (`/practice/daily`): Before you solve, decide whether the position needs an attack, a defense or a quiet move.
 - **Critical decisions** (`/practice/good-moves?category=criticalDecision`): Positions where one decision matters: attack, defend, improve or simplify?
+- **Daily puzzle** (`/practice/daily`): Before you solve, decide whether the position needs an attack, a defense or a quiet move.
 
 #### Further reading
 
@@ -1671,9 +1688,10 @@ Compare the sacrifice with a quiet alternative. Calculate the forcing replies be
 
 #### Practice it
 
-- **Games with sacrifices** (`/library/games?theme=sacrifice`): For each sacrifice, identify the tactical or positional compensation and explain whether its justification was clear or speculative.
+- **Sound sacrifice?** (`/practice/sound-sacrifice`): Sound, unsound or unclear? Judge the compensation, then play the critical reply.
+- **Games with sacrifices** (`/library/games?sacrifice=sound%2Cunclear`): Replay games with a sacrifice the engine called sound or unclear.
+- **Who is better?** (`/practice/who-is-better`): Weigh material against activity in quiet positions.
 - **Look Ahead** (`/practice/look-ahead`): Calculate to the point where the forcing moves run out, then judge the position there.
-- **Analysis board** (`/library/board`): Set up a sacrifice from your own game and test it against your opponent’s three best defenses.
 
 #### Further reading
 
@@ -1770,9 +1788,9 @@ Compare a short maneuver with a long one. Which keeps the initiative better? Doe
 
 #### Practice it
 
+- **Spot the feature** (`/practice/spot-the-feature`): Find the outposts and open files your pieces should head for.
 - **Positional games** (`/library/games?category=positional`): Follow one piece through a game: where did it start, where did it go, and why?
 - **Endgame games** (`/library/games?category=endgame`): Watch how the winner brings the king and pieces closer and creates a second weakness.
-- **Analysis board** (`/library/board`): Pick your worst piece, choose a target square, and check the route square by square.
 
 #### Further reading
 
@@ -1884,7 +1902,8 @@ After each branch you write down, give a short verdict: White is better, roughly
 #### Practice it
 
 - **Look Ahead** (`/practice/look-ahead`): Build the tree with your opponent’s best reply at every step, then evaluate the final position.
-- **Mate in 3** (`/practice/mate-in-three`): Calculate the whole line against every defense before your first move.
+- **Is it safe?** (`/practice/is-it-safe`): Before a capture or check, check the reply. If it fails, show the refutation.
+- **See it in your head** (`/practice/see-it`): Calculate without moving the pieces, then answer about the new position.
 - **Tactics** (`/practice/tactics`): Before you move, look for the strongest defense against your idea.
 
 #### Further reading
@@ -1990,9 +2009,10 @@ For one week, tag every blunder with one type: threat, calculation, evaluation, 
 
 #### Practice it
 
+- **Review** (`/practice/review`): What you missed comes back after 1, 3 and 7 days, until you get it right.
+- **What’s the threat?** (`/practice/threats`): The most repeated mistake: missing what the opponent threatens.
+- **Is it safe?** (`/practice/is-it-safe`): The second one: grabbing material that is not really free.
 - **Tactics** (`/practice/tactics`): One try per puzzle: run the pre-move check before every answer.
-- **Daily puzzle** (`/practice/daily`): One puzzle a day: first name your opponent’s most dangerous idea, then find your move.
-- **My games** (`/library/saved`): For each recent game, write down the cause of the main blunder and look for the one that repeats.
 
 #### Further reading
 

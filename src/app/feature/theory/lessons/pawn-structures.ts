@@ -102,15 +102,21 @@ export const pawnStructures: TheoryLessonBody = {
 	takeaway: 'The pawn structure points the way, but the final plan also depends on piece activity and concrete tactics.',
 	practice: [
 		{
+			title: 'Spot the feature',
+			detail: 'Tap the isolated, doubled, backward and passed pawns, the outposts and the half-open files.',
+			path: '/practice/spot-the-feature',
+		},
+		{
+			title: 'Games with an isolated queen pawn',
+			detail: 'Replay games with an isolated d-pawn and see how both sides play around it.',
+			path: '/library/games',
+			query: { structure: 'iqp' },
+		},
+		{
 			title: 'Positional games',
 			detail: 'See how strong players build their plans around the pawns.',
 			path: '/library/games',
 			query: { category: 'positional' },
-		},
-		{
-			title: 'Analysis board',
-			detail: 'Paste one of your games, find its weak pawns and breaks, then check your plan with the engine.',
-			path: '/library/board',
 		},
 	],
 };

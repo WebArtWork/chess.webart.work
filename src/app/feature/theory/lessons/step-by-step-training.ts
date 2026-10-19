@@ -25,6 +25,11 @@ export const stepByStepTraining: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'Review',
+			detail: 'Missed puzzles come back after 1, 3 and 7 days, so each step sticks.',
+			path: '/practice/review',
+		},
+		{
 			title: 'Mate in 1',
 			detail: 'Start with the simplest step: spot the mate in one move.',
 			path: '/practice/mate-in-one',
@@ -34,12 +39,6 @@ export const stepByStepTraining: TheoryLessonBody = {
 			detail: 'See the fork in real games, on different squares and with different pieces.',
 			path: '/library/games',
 			query: { theme: 'fork' },
-		},
-		{
-			title: 'Games with pins',
-			detail: 'One motif at a time: the pin in many different positions.',
-			path: '/library/games',
-			query: { theme: 'pin' },
 		},
 		{
 			title: 'Tactics',

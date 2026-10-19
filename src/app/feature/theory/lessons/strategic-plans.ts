@@ -112,15 +112,20 @@ export const strategicPlans: TheoryLessonBody = {
 	takeaway: 'First understand the features of the position, then choose a goal, and only then look for the move.',
 	practice: [
 		{
+			title: 'Who is better?',
+			detail: 'Judge the position first: a plan follows from who is better and why.',
+			path: '/practice/who-is-better',
+		},
+		{
+			title: 'Spot the feature',
+			detail: 'Find the targets a plan aims at: weak pawns, outposts, open files.',
+			path: '/practice/spot-the-feature',
+		},
+		{
 			title: 'Positional games',
 			detail: 'Stop before a quiet move, name the weak squares and the worst piece, then guess the plan.',
 			path: '/library/games',
 			query: { category: 'positional' },
-		},
-		{
-			title: 'Analysis board',
-			detail: 'Set up a quiet position from your game, write two plans and check the first move of each with the engine.',
-			path: '/library/board',
 		},
 	],
 	sources: [

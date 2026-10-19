@@ -1,4 +1,5 @@
 import { Chess, validateFen } from 'chess.js';
+import { passedFen } from '../analysis/enrich.ts';
 import { CATEGORIES, DIFFICULTIES, SPEEDS } from '../config.ts';
 import type { CandidateMove, GameRecord, TrainingPosition, Variation } from './record.ts';
 
@@ -42,7 +43,11 @@ export function validateGame(game: unknown): string[] {
 
 	// replay: SAN legal, UCI agrees, training FENs are positions of this game
 	const fens = new Map<number, string>();
-	const wanted = new Set(g.trainingPositions.map((position) => position.ply));
+	const wanted = new Set([
+		...g.trainingPositions.map((position) => position.ply),
+		...(g.openingPositions ?? []).map((position) => position.ply),
+		...(g.sacrifices ?? []).map((sacrifice) => sacrifice.ply),
+	]);
 	const chess = new Chess();
 	for (let i = 0; i < g.moves.length; i++) {
 		if (wanted.has(i)) fens.set(i, chess.fen());
@@ -63,6 +68,23 @@ export function validateGame(game: unknown): string[] {
 		if (fens.get(position.ply) !== position.fen) fail(`${where}: fen at ply ${position.ply} is not the game position`);
 		if (position.playedMove?.uci && position.playedMove.uci !== g.uciMoves[position.ply]) {
 			fail(`${where}: played move at ply ${position.ply} is not the game move`);
+		}
+	}
+	for (const position of g.openingPositions ?? []) {
+		const at = `${where} opening ply ${position.ply}`;
+		if (fens.get(position.ply) !== position.fen) fail(`${at}: fen is not the game position`);
+		if (position.playedMove.uci !== g.uciMoves[position.ply]) fail(`${at}: played move is not the game move`);
+		if (!position.candidateMoves.length || position.candidateMoves.some((move) => !isCandidate(move) || !playable(position.fen, [move.uci]))) {
+			fail(`${at}: candidate moves invalid`);
+		}
+	}
+	for (const sacrifice of g.sacrifices ?? []) {
+		const at = `${where} sacrifice ply ${sacrifice.ply}`;
+		if (fens.get(sacrifice.ply) !== sacrifice.fen) fail(`${at}: fen is not the game position`);
+		if (sacrifice.move.uci !== g.uciMoves[sacrifice.ply]) fail(`${at}: move is not the game move`);
+		if (!['sound', 'unsound', 'unclear'].includes(sacrifice.verdict)) fail(`${at}: verdict invalid`);
+		if (!sacrifice.replies.length || !sacrifice.replies.every((reply) => playable(sacrifice.fen, [sacrifice.move.uci, reply.uci]))) {
+			fail(`${at}: replies invalid`);
 		}
 	}
 	return errors;
@@ -94,6 +116,13 @@ function validatePosition(p: TrainingPosition, where: string): string[] {
 		if (!isVariation(line)) fail('variation malformed');
 		else if (!playable(p.fen, line.uci)) fail(`variation ${line.uci.join(' ')} is illegal`);
 	}
+	// practice fields, when enriched
+	if (p.threat) {
+		const passed = passedFen(p.fen);
+		if (!passed || !playable(passed, p.threat.line) || !p.threat.moves.every((move) => playable(passed, [move]))) fail('threat invalid');
+	}
+	if (p.tempting && !playable(p.fen, [p.tempting.move.uci, ...p.tempting.refutation])) fail('tempting line is illegal');
+	if (p.evalBand != null && !['white', 'equal', 'black'].includes(p.evalBand)) fail('evalBand invalid');
 	return errors;
 }
 

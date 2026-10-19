@@ -31,6 +31,11 @@ export const boardVisualization: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'See it in your head',
+			detail: 'Moves given as text while the board stays still: where do the pieces stand now?',
+			path: '/practice/see-it',
+		},
+		{
 			title: 'Look Ahead',
 			detail: 'Hold the position in your head as the tree grows move by move.',
 			path: '/practice/look-ahead',

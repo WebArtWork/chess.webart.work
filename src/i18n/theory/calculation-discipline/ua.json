@@ -62,5 +62,7 @@
 	"Calculate the whole line against every defense before your first move.": "Розрахуйте весь варіант проти кожного захисту ще до першого ходу.",
 	"Tactics": "Тактика",
 	"Before you move, look for the strongest defense against your idea.": "Перед ходом шукайте найсильніший захист від вашої ідеї.",
-	"Wikipedia": "Вікіпедія"
+	"Wikipedia": "Вікіпедія",
+	"Before a capture or check, check the reply. If it fails, show the refutation.": "Перед взяттям чи шахом перевірте відповідь. Якщо хід не працює, покажіть спростування.",
+	"Calculate without moving the pieces, then answer about the new position.": "Рахуйте, не рухаючи фігур, а потім дайте відповідь про нову позицію."
 }

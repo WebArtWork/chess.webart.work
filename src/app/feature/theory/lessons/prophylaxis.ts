@@ -23,6 +23,11 @@ export const prophylaxis: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'What’s the threat?',
+			detail: 'Prophylaxis starts here: see what the opponent wants, then take it away.',
+			path: '/practice/threats',
+		},
+		{
 			title: 'Critical decisions',
 			detail: 'Before you choose your move, name your opponent’s best plan.',
 			path: '/practice/good-moves',

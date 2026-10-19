@@ -1,4 +1,5 @@
 import type { Category, Difficulty, Speed } from '../config.ts';
+import type { BoardFeatures } from '../chess/structure.ts';
 import type { CandidateGame, GameAnalysis } from '../analysis/game.ts';
 import { cpLoss, whiteCp, type PositionAnalysis } from '../analysis/position.ts';
 import { speedOf } from '../pgn/filter.ts';
@@ -51,6 +52,77 @@ export interface TrainingPosition {
 	/** Plies of calculation needed to see the point of the best move. */
 	calculationDepth: number;
 	engineDepth: number;
+
+	// Added by `games:enrich` (and by every import since) for the practices; absent on games not enriched yet.
+	/** The opponent's threat: their best move if it were their turn again; null when there is none worth showing. */
+	threat?: Threat | null;
+	/** Who is better in a quiet position; null when the position is not quiet or the score is borderline. */
+	evalBand?: EvalBand | null;
+	features?: BoardFeatures;
+	/** Endgame family by the pieces left (see `endgameType`), null before the endgame. */
+	endgameType?: string | null;
+	/** A capture or check that looks good but loses, with how it is refuted; null when there is none. */
+	tempting?: Tempting | null;
+}
+
+export type EvalBand = 'white' | 'equal' | 'black';
+
+export interface Threat {
+	/** The opponent's move, from the position with the side to move passed. */
+	move: MoveRef;
+	/** Every opponent move about as strong as `move` (within 50 centipawns), UCI: each counts as finding the threat. */
+	moves: string[];
+	/** Centipawns the opponent gains over the best move's evaluation if the threat is ignored. */
+	gain: number;
+	/** The threat played out, UCI from the passed position. */
+	line: string[];
+}
+
+export interface Tempting {
+	move: MoveRef;
+	/** Centipawns it gives up against the best move. */
+	loss: number;
+	/** White's point of view after the move and the refutation. */
+	cp: number | null;
+	mate: number | null;
+	/** The refutation, UCI, the opponent's reply first; plays from the position after `move`. */
+	refutation: string[];
+	/** Played in the game, rather than one of the engine's candidate moves. */
+	played: boolean;
+}
+
+/** A position from moves 4–12 (plies 6–24) where the game move broke the opening's rules of thumb. */
+export interface OpeningPosition {
+	ply: number;
+	fen: string;
+	sideToMove: 'white' | 'black';
+	/** The engine's candidate moves, best first. */
+	candidateMoves: CandidateMove[];
+	/** The game move: a mistake, `loss` centipawns below the best. */
+	playedMove: CandidateMove;
+	engineDepth: number;
+}
+
+/** A move that gave up material for at least a move, checked by the engine. */
+export interface Sacrifice {
+	ply: number;
+	/** Before the sacrifice. */
+	fen: string;
+	sideToMove: 'white' | 'black';
+	move: MoveRef;
+	/** Material the side gave up, pawns, two plies later. */
+	material: number;
+	/** The best move's evaluation, White's point of view. */
+	best: { uci: string; cp: number | null; mate: number | null };
+	/** The sacrifice's evaluation, White's point of view, and centipawns it gives up against the best move. */
+	cp: number | null;
+	mate: number | null;
+	loss: number;
+	/** sound: the evaluation holds; unsound: the side is worse off; unclear: in between. */
+	verdict: 'sound' | 'unsound' | 'unclear';
+	/** The opponent's replies to the sacrifice, best first; `loss` is from the replying side. */
+	replies: CandidateMove[];
+	engineDepth: number;
 }
 
 export interface GameRecord {
@@ -80,6 +152,10 @@ export interface GameRecord {
 	/** When the batch that added this game started; games are kept in import order. */
 	importedAt: string;
 	trainingPositions: TrainingPosition[];
+	/** Version of `games:enrich` the game was enriched with; absent before. */
+	enriched?: number;
+	openingPositions?: OpeningPosition[];
+	sacrifices?: Sacrifice[];
 }
 
 export function buildRecord(game: CandidateGame, analysis: GameAnalysis, uniqueness: number, importedAt: string): GameRecord {

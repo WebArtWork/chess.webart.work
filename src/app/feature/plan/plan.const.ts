@@ -20,7 +20,7 @@ export const WEEK_PLAN: PlanDay[] = [
 		title: 'Mate in 1',
 		detail: 'A run of mates in one. Check every check before you move.',
 		minutes: 10,
-		action: 'Start the quiz',
+		action: 'Start practice',
 		path: '/practice/mate-in-one',
 	},
 	{
@@ -38,7 +38,7 @@ export const WEEK_PLAN: PlanDay[] = [
 		title: 'Tactics',
 		detail: 'Tactics from real games, one try each. See the replies before you move.',
 		minutes: 15,
-		action: 'Start the quiz',
+		action: 'Start practice',
 		path: '/practice/tactics',
 	},
 	{

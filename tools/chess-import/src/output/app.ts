@@ -3,6 +3,9 @@ import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { Chess, type Move } from 'chess.js';
 import type { LookAheadMove } from '../analysis/lookahead.ts';
+import { endgameType, piecesOf } from '../chess/board.ts';
+import { boardFeatures, endgameGroup, structureTags } from '../chess/structure.ts';
+import { practiceFiles, stalemateTrap, type PracticeFiles } from './practices.ts';
 import type { GameRecord, TrainingPosition } from './record.ts';
 
 /**
@@ -10,8 +13,10 @@ import type { GameRecord, TrainingPosition } from './record.ts';
  *
  *   catalog.json   every game and puzzle in brief, plus filter counts: lists, filters, random picks
  *   daily.json     date → puzzle id, stable for past days
- *   quiz.json      self-contained quiz sets: every mate in 1 and mate in 3 found in the games
+ *   practice.json  self-contained mate sets: every mate in 1 and mate in 3 found in the games
  *   lookahead.json Look Ahead trees, built separately by `games:lookahead` and kept across rebuilds
+ *   threats.json, eval.json, features.json, safe.json, visualize.json, openings.json, sacrifices.json
+ *                  one set per practice (see practices.ts)
  *   g/<id>.json    one game: moves and its puzzles with engine lines (~1 KB gzipped)
  *
  * Engine lines are stored once, in UCI; the app derives SAN with chess.js.
@@ -88,6 +93,8 @@ export interface CatalogGame {
 	quality: number;
 	/** Ids of this game's puzzles, in game order. */
 	puzzles: string[];
+	/** Verdicts of the sacrifices played in the game (see `Sacrifice`). */
+	sacrifices: string[];
 }
 
 export interface CatalogPuzzle {
@@ -106,18 +113,24 @@ export interface CatalogPuzzle {
 	rating: number;
 	/** Opening family, e.g. "Sicilian Defense". */
 	opening: string;
+	/** Named pawn structures and bishops on the board (see `structureTags`). */
+	structure: string[];
+	/** pawn, rook, minor, queen or mixed; null before the endgame. */
+	endgame: string | null;
 }
+
+export type FacetKey = 'category' | 'theme' | 'level' | 'mode' | 'side' | 'opening' | 'structure' | 'endgame' | 'sacrifice';
 
 export interface Catalog {
 	version: string;
 	games: CatalogGame[];
 	puzzles: CatalogPuzzle[];
-	/** How many puzzles carry each value, for filter chips. */
-	facets: Record<'category' | 'theme' | 'level' | 'mode' | 'side' | 'opening', Record<string, number>>;
+	/** How many puzzles carry each value, for filter chips; `sacrifice` counts games. */
+	facets: Record<FacetKey, Record<string, number>>;
 }
 
-/** A quiz puzzle that needs no game file: the position and one correct move (other mates count too). */
-export interface QuizItem {
+/** A mate puzzle that needs no game file: the position and one correct move (other mates count too). */
+export interface MateItem {
 	/** `<gameId>-<ply>`. */
 	id: string;
 	game: string;
@@ -132,9 +145,9 @@ export interface QuizItem {
 	opening: string;
 }
 
-export interface QuizSets {
-	mate1: QuizItem[];
-	mate3: QuizItem[];
+export interface PracticeSets {
+	mate1: MateItem[];
+	mate3: MateItem[];
 }
 
 /** A Look Ahead position: find the paths through its tree of good moves. Needs no game file. */
@@ -162,6 +175,16 @@ export const GOOD_LOSS = 50;
 /** Good moves a position needs to become a "find the good moves" puzzle (the Play page uses only these). */
 export const MIN_GOOD_MOVES = 3;
 export const LOOK_AHEAD_FILE = 'lookahead.json';
+/** One file per practice, in the app's copy. */
+export const PRACTICE_FILES: Record<keyof PracticeFiles, string> = {
+	threats: 'threats.json',
+	eval: 'eval.json',
+	features: 'features.json',
+	safe: 'safe.json',
+	visualize: 'visualize.json',
+	openings: 'openings.json',
+	sacrifices: 'sacrifices.json',
+};
 
 export function puzzleId(game: string, ply: number): string {
 	return `${game}-${ply}`;
@@ -216,7 +239,7 @@ export function appGame(game: GameRecord): AppGame {
 				target,
 				category: position.category,
 				categories: position.categories,
-				themes: position.themes,
+				themes: stalemateTrap(position) ? [...position.themes, 'stalemateTrap'] : position.themes,
 				level: position.difficulty,
 				rating: position.difficultyRating,
 				quality: position.qualityScore,
@@ -232,13 +255,39 @@ export function appGame(game: GameRecord): AppGame {
 	};
 }
 
-export function buildCatalog(games: AppGame[], version: string): Catalog {
-	const facets: Catalog['facets'] = { category: {}, theme: {}, level: {}, mode: {}, side: {}, opening: {} };
+/** Per game id, what the catalog takes from games.json beyond the app's game files. */
+export interface CatalogExtras {
+	sacrifices: string[];
+	/** Per puzzle ply. */
+	positions: Map<number, { structure: string[]; endgame: string | null }>;
+}
+
+export function catalogExtras(game: GameRecord): CatalogExtras {
+	return {
+		sacrifices: [...new Set((game.sacrifices ?? []).map((sacrifice) => sacrifice.verdict))].sort(),
+		positions: new Map(
+			game.trainingPositions.map((position) => [
+				position.ply,
+				{
+					structure: structureTags(position.features ?? boardFeatures(position.fen)),
+					// board facts: computed here for games not enriched yet
+					endgame: endgameGroup(position.endgameType !== undefined ? position.endgameType : endgameType(piecesOf(new Chess(position.fen)))),
+				},
+			]),
+		),
+	};
+}
+
+export function buildCatalog(games: AppGame[], version: string, extras = new Map<string, CatalogExtras>()): Catalog {
+	const facets: Catalog['facets'] = { category: {}, theme: {}, level: {}, mode: {}, side: {}, opening: {}, structure: {}, endgame: {}, sacrifice: {} };
 	const count = (facet: keyof Catalog['facets'], value: string) => (facets[facet][value] = (facets[facet][value] ?? 0) + 1);
 	const puzzles: CatalogPuzzle[] = [];
 	for (const game of games) {
 		const opening = openingFamily(game.opening);
+		const extra = extras.get(game.id);
+		for (const sacrifice of extra?.sacrifices ?? []) count('sacrifice', sacrifice);
 		for (const puzzle of game.puzzles) {
+			const { structure, endgame } = extra?.positions.get(puzzle.ply) ?? { structure: [], endgame: null };
 			puzzles.push({
 				id: puzzleId(game.id, puzzle.ply),
 				game: game.id,
@@ -253,8 +302,12 @@ export function buildCatalog(games: AppGame[], version: string): Catalog {
 				level: puzzle.level,
 				rating: puzzle.rating,
 				opening,
+				structure,
+				endgame,
 			});
 			for (const category of puzzle.categories) count('category', category);
+			for (const tag of structure) count('structure', tag);
+			if (endgame) count('endgame', endgame);
 			for (const theme of puzzle.themes) if (!theme.startsWith('mateIn')) count('theme', theme);
 			count('level', puzzle.level);
 			count('mode', puzzle.mode);
@@ -281,6 +334,7 @@ export function buildCatalog(games: AppGame[], version: string): Catalog {
 			themes: game.themes,
 			quality: game.quality,
 			puzzles: game.puzzles.map((puzzle) => puzzleId(game.id, puzzle.ply)),
+			sacrifices: extras.get(game.id)?.sacrifices ?? [],
 		})),
 		puzzles,
 		facets,
@@ -292,8 +346,8 @@ export function buildCatalog(games: AppGame[], version: string): Catalog {
  * positions whose best line mates at once. Rated by how many other checks compete with the mate,
  * whether it is a quiet piece move, and how unusual the mating piece is.
  */
-export function mateInOne(games: GameRecord[]): QuizItem[] {
-	const items = new Map<string, QuizItem>();
+export function mateInOne(games: GameRecord[]): MateItem[] {
+	const items = new Map<string, MateItem>();
 	const add = (game: GameRecord, ply: number, fen: string, move: string) => {
 		const id = puzzleId(game.id, ply);
 		if (items.has(id)) return;
@@ -340,11 +394,11 @@ const MATE3_PLIES = 5;
  * Every forced mate in 3 in the engine lines: training positions whose best line mates in three,
  * and the point where a longer mating line has three moves left (`ply` stays at the game position
  * the line starts from, so "See the game" still finds it). Positions where a second move also
- * mates that fast are skipped: the quiz accepts only the line or an immediate mate. Rated by how
+ * mates that fast are skipped: the practice accepts only the line or an immediate mate. Rated by how
  * quiet the first move is and which piece makes it.
  */
-export function mateInThree(games: GameRecord[]): QuizItem[] {
-	const items = new Map<string, QuizItem>();
+export function mateInThree(games: GameRecord[]): MateItem[] {
+	const items = new Map<string, MateItem>();
 	for (const game of games) {
 		for (const position of game.trainingPositions) {
 			const [best, second] = position.principalVariations;
@@ -453,10 +507,15 @@ export async function writeAppData(games: GameRecord[], dir: string, today = new
 
 	const appGames = games.map(appGame);
 	for (const game of appGames) await writeFile(path.join(staging, 'g', `${game.id}.json`), JSON.stringify(game));
-	const catalog = buildCatalog(appGames, new Date().toISOString());
+	const extras = new Map(games.map((game) => [game.id, catalogExtras(game)]));
+	const catalog = buildCatalog(appGames, new Date().toISOString(), extras);
 	await writeFile(path.join(staging, 'catalog.json'), JSON.stringify(catalog));
-	const quiz: QuizSets = { mate1: mateInOne(games), mate3: mateInThree(games) };
-	await writeFile(path.join(staging, 'quiz.json'), JSON.stringify(quiz));
+	const practice: PracticeSets = { mate1: mateInOne(games), mate3: mateInThree(games) };
+	await writeFile(path.join(staging, 'practice.json'), JSON.stringify(practice));
+	const sets = practiceFiles(games, openingFamily);
+	for (const [name, items] of Object.entries(sets) as [keyof PracticeFiles, unknown[]][]) {
+		await writeFile(path.join(staging, PRACTICE_FILES[name]), JSON.stringify(items));
+	}
 
 	// Look Ahead trees take long to build: keep the ones whose game is still here
 	const lookAheadFile = path.join(dir, LOOK_AHEAD_FILE);

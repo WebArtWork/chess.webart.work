@@ -50,5 +50,8 @@
 	"Analysis board": "Дошка аналізу",
 	"Set up a sacrifice from your own game and test it against your opponent’s three best defenses.": "Поставте жертву з власної партії і перевірте її проти трьох найкращих захистів суперника.",
 	"Andrei Volokitin and Vladimir Grabinsky": "Андрій Волокітін і Володимир Грабінський",
-	"Google Books (Gambit, 2007)": "Google Books (Gambit, 2007)"
+	"Google Books (Gambit, 2007)": "Google Books (Gambit, 2007)",
+	"Sound, unsound or unclear? Judge the compensation, then play the critical reply.": "Коректна, некоректна чи неясна? Оцініть компенсацію, а потім зіграйте критичну відповідь.",
+	"Replay games with a sacrifice the engine called sound or unclear.": "Перегляньте партії з жертвою, яку рушій визнав коректною або неясною.",
+	"Weigh material against activity in quiet positions.": "Зважуйте матеріал проти активності в спокійних позиціях."
 }

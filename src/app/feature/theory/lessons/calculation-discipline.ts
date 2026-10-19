@@ -126,9 +126,14 @@ export const calculationDiscipline: TheoryLessonBody = {
 			path: '/practice/look-ahead',
 		},
 		{
-			title: 'Mate in 3',
-			detail: 'Calculate the whole line against every defense before your first move.',
-			path: '/practice/mate-in-three',
+			title: 'Is it safe?',
+			detail: 'Before a capture or check, check the reply. If it fails, show the refutation.',
+			path: '/practice/is-it-safe',
+		},
+		{
+			title: 'See it in your head',
+			detail: 'Calculate without moving the pieces, then answer about the new position.',
+			path: '/practice/see-it',
 		},
 		{
 			title: 'Tactics',

@@ -15,6 +15,7 @@ import { Puzzle, PuzzleFilters } from '../../feature/game/game.interface';
 import { GameService } from '../../feature/game/game.service';
 import { PuzzleRun } from '../../feature/game/puzzle.run';
 import { TPipe } from '../../feature/i18n/t.pipe';
+import { ReviewService } from '../../feature/practice/review.service';
 import { PAWNS } from '../../feature/progress/progress.const';
 import { Award, ProgressService } from '../../feature/progress/progress.service';
 
@@ -31,6 +32,7 @@ export class PlayComponent {
 	private readonly _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 	private readonly _playMode = inject(PlayModeService);
 	private readonly _progress = inject(ProgressService);
+	private readonly _review = inject(ReviewService);
 
 	protected readonly today = todayString();
 	protected readonly mode = this._playMode.mode;
@@ -109,7 +111,7 @@ export class PlayComponent {
 
 	private async _openNewRandom() {
 		this._reset();
-		// Play is about finding several good moves; single-answer puzzles live in the Quiz
+		// Play is about finding several good moves; single-answer puzzles live in puzzle practice
 		const puzzle = await this._games.random({ ...this.filters(), mode: ['candidates'] }, this.puzzle()?.id);
 		if (!puzzle) {
 			this._showFailed();
@@ -163,6 +165,8 @@ export class PlayComponent {
 		if (!puzzle || this._daily.get(this.today)) return;
 		const result = run.result();
 		this._daily.save({ date: this.today, id: puzzle.id, mode: puzzle.puzzle.mode, ...result });
+		// a missed daily comes back through the review queue, as a Good moves puzzle
+		this._review.record('goodMoves', puzzle.id, result.won);
 		// every 7th day in a row earns a bonus
 		const week = this._daily.streaks(this.today).participation % 7 === 0;
 		this.award.set(
@@ -178,6 +182,7 @@ export class PlayComponent {
 	private _earn(run: PuzzleRun) {
 		const puzzle = this.puzzle();
 		if (!puzzle || this.award()) return;
+		this._review.record('goodMoves', puzzle.id, run.won());
 		this.award.set(
 			this._progress.complete({
 				key: puzzle.id,

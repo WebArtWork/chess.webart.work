@@ -19,5 +19,6 @@
 	"Mate in 3": "Мат у 3 ходи",
 	"Calculate the whole mating line before you move.": "Розрахуйте весь матовий варіант, перш ніж ходити.",
 	"Eliot Hearst and John Knott": "Еліот Герст і Джон Нотт",
-	"ChessBase news": "Новини ChessBase"
+	"ChessBase news": "Новини ChessBase",
+	"Moves given as text while the board stays still: where do the pieces stand now?": "Ходи подано текстом, а дошка не змінюється: де тепер стоять фігури?"
 }

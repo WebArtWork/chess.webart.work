@@ -53,5 +53,7 @@
 	"Daily puzzle": "Задача дня",
 	"One puzzle a day: go through the full pre-move routine before you answer.": "Одна задача на день: пройдіть повну процедуру перед ходом, перш ніж відповідати.",
 	"Tactics": "Тактика",
-	"You get one try per puzzle, so practice the routine: threats, candidates, blunder check, then move.": "На кожну задачу лише одна спроба, тож тренуйте процедуру: загрози, кандидати, перевірка на помилку, потім хід."
+	"You get one try per puzzle, so practice the routine: threats, candidates, blunder check, then move.": "На кожну задачу лише одна спроба, тож тренуйте процедуру: загрози, кандидати, перевірка на помилку, потім хід.",
+	"Many blunders come from not asking what the last move threatens. Make the question a habit.": "Багато грубих помилок стається, коли не питаєш, чим загрожує останній хід. Зробіть це запитання звичкою.",
+	"Meet your missed puzzles again a few days later, when the answer is no longer fresh.": "Поверніться до пропущених задач за кілька днів, коли відповідь уже не свіжа в пам’яті."
 }

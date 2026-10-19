@@ -68,7 +68,7 @@ describe('daily schedule', () => {
 	});
 });
 
-describe('mate-in-1 quiz set', () => {
+describe('mate-in-1 practice set', () => {
 	it('takes the position before a game-ending checkmate', () => {
 		const plies = replay(OPERA_GAME).plies;
 		const game = {
@@ -86,7 +86,7 @@ describe('mate-in-1 quiz set', () => {
 	});
 });
 
-describe('mate-in-3 quiz set', () => {
+describe('mate-in-3 practice set', () => {
 	const plies = replay(OPERA_GAME).plies;
 	// Bxd7+ Nxd7 Qb8+ Nxb8 Rd8#, and Rd1 Qe6 before it
 	const gameWith = (start: number, mate: number, second: number | null = null) =>

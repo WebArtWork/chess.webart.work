@@ -70,5 +70,6 @@
 	"Set one focused training task, then revisit a similar position a few days later.": "Поставте собі одне чітке тренувальне завдання, а через кілька днів поверніться до схожої позиції.",
 	"What helps you most is not the number of games you play but the ability to turn your own mistakes into concrete training tasks.": "Найбільшу користь приносить не кількість зіграних партій, а вміння перетворювати власні помилки на конкретні навчальні завдання.",
 	"Paste your game as PGN, name your candidates, then compare them with the engine.": "Вставте свою партію у форматі PGN, назвіть ходи-кандидати, потім порівняйте їх із рушієм.",
-	"Pick a recent game, ideally a loss, and go through it without the engine first.": "Виберіть нещодавню партію, краще програну, і спершу перегляньте її без рушія."
+	"Pick a recent game, ideally a loss, and go through it without the engine first.": "Виберіть нещодавню партію, краще програну, і спершу перегляньте її без рушія.",
+	"Let the engine find the mistakes in your saved games and bring them back as puzzles.": "Нехай рушій знайде помилки у ваших збережених партіях і поверне їх як задачі."
 }

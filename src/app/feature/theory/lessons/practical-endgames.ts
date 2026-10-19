@@ -24,6 +24,11 @@ export const practicalEndgames: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'Endgame technique',
+			detail: 'Train one endgame family at a time: pawn, rook, minor piece or queen.',
+			path: '/practice/endgames',
+		},
+		{
 			title: 'Endgame games',
 			detail: 'Replay endgames and ask at each step: where is the second weakness?',
 			path: '/library/games',

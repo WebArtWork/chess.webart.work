@@ -10,6 +10,7 @@ import {
 	type Config,
 	type Stage,
 } from './config.ts';
+import { ENRICH_DEPTH, enrichGame } from './analysis/enrich.ts';
 import { analyseGame, deepPlies, quickPlies, type CandidateGame, type PassOptions } from './analysis/game.ts';
 import { prescore } from './analysis/signals.ts';
 import { inconsistency, replay } from './chess/replay.ts';
@@ -290,6 +291,7 @@ async function enginePass(context: Context, pass: Pass): Promise<boolean> {
 				minQuality: config.minQuality * 0.8,
 				minUniqueness: config.minUniqueness * 0.7,
 				mix: config.difficultyMix,
+				practiceMix: config.practiceMix,
 			});
 			store.markDeepPool(picked.map((item) => item.id));
 			log(`  deep pool: ${picked.length} games`);
@@ -370,6 +372,7 @@ async function select(context: Context): Promise<boolean> {
 		minQuality: config.minQuality,
 		minUniqueness: config.minUniqueness,
 		mix: config.difficultyMix,
+		practiceMix: config.practiceMix,
 		fixed: existing,
 	});
 	store.saveSelection(selected);
@@ -397,14 +400,25 @@ async function exportDataset(context: Context): Promise<boolean> {
 	let invalid = 0;
 	let positions = 0;
 
+	// the practice fields too, as `games:enrich` adds them to older games; several games at a time
+	const records: GameRecord[] = [];
 	for (const item of selection) {
 		const { game, deep } = store.getCandidate(item.id);
-		if (!deep) continue;
-		const record = buildRecord(game, deep, item.uniqueness, importedAt);
+		if (deep) records.push(buildRecord(game, deep, item.uniqueness, importedAt));
+	}
+	const pool = records.length ? enginePool(context) : null;
+	const enriched: GameRecord[] = [];
+	const batch = Math.max(1, config.workers * 2);
+	for (let i = 0; i < records.length; i += batch) {
+		const depth = Math.min(ENRICH_DEPTH, config.depth);
+		enriched.push(...(await Promise.all(records.slice(i, i + batch).map((record) => enrichGame(record, (request) => pool!.analyse(request), depth)))));
+	}
+
+	for (const record of enriched) {
 		const errors = validateGame(record);
 		if (errors.length) {
 			invalid++;
-			log(`  skipping invalid ${item.id}: ${errors.slice(0, 3).join('; ')}`);
+			log(`  skipping invalid ${record.id}: ${errors.slice(0, 3).join('; ')}`);
 			continue;
 		}
 		levels[record.difficulty] = (levels[record.difficulty] ?? 0) + 1;

@@ -24,6 +24,11 @@ export const structuredImprovement: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'Review',
+			detail: 'Repeat what you missed on a schedule: after 1, 3 and 7 days.',
+			path: '/practice/review',
+		},
+		{
 			title: 'Daily puzzle',
 			detail: 'One puzzle a day, without hints. If you miss it, write down why.',
 			path: '/practice/daily',

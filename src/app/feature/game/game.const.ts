@@ -59,6 +59,36 @@ export const THEME_LABELS: Record<string, string> = {
 	promotion: 'Promotion',
 	underPromotion: 'Underpromotion',
 	perpetualCheck: 'Perpetual check',
+	stalemateTrap: 'Stalemate trap',
+	outpost: 'Outpost',
+	openFile: 'Open file',
+	weakPawn: 'Weak pawn',
+	passedPawn: 'Passed pawn',
+	pawnBreak: 'Pawn break',
+};
+
+export const STRUCTURE_LABELS: Record<string, string> = {
+	iqp: 'Isolated queen pawn',
+	hangingPawns: 'Hanging pawns',
+	oppositeBishops: 'Opposite-coloured bishops',
+	bishopPair: 'Bishop pair',
+	passedPawn: 'Passed pawn',
+	doubledPawns: 'Doubled pawns',
+	backwardPawn: 'Backward pawn',
+};
+
+export const ENDGAME_LABELS: Record<string, string> = {
+	pawn: 'Pawn endgame',
+	rook: 'Rook endgame',
+	minor: 'Minor piece endgame',
+	queen: 'Queen endgame',
+	mixed: 'Mixed endgame',
+};
+
+export const SACRIFICE_LABELS: Record<string, string> = {
+	sound: 'Sound sacrifice',
+	unsound: 'Unsound sacrifice',
+	unclear: 'Unclear sacrifice',
 };
 
 export const EMPTY_FILTERS: PuzzleFilters = {
@@ -68,13 +98,16 @@ export const EMPTY_FILTERS: PuzzleFilters = {
 	mode: [],
 	side: [],
 	opening: [],
+	structure: [],
+	endgame: [],
+	sacrifice: [],
 	search: '',
 };
 
 /** The filters that are chip lists; `search` is a text field. */
 export type FilterKey = Exclude<keyof PuzzleFilters, 'search'>;
 
-export const FILTER_KEYS: FilterKey[] = ['category', 'theme', 'level', 'mode', 'side', 'opening'];
+export const FILTER_KEYS: FilterKey[] = ['category', 'theme', 'level', 'mode', 'side', 'opening', 'structure', 'endgame', 'sacrifice'];
 
 export function themeLabel(theme: string): string {
 	const mate = /^mateIn(\d)$/.exec(theme);
@@ -146,6 +179,9 @@ export function readFilters(params: { get(name: string): string | null }): Puzzl
 		mode: read('mode'),
 		side: read('side'),
 		opening: read('opening'),
+		structure: read('structure'),
+		endgame: read('endgame'),
+		sacrifice: read('sacrifice'),
 		search: params.get('search') ?? '',
 	};
 }

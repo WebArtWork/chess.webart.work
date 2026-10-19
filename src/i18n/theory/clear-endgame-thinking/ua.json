@@ -14,5 +14,8 @@
 	"Endgame puzzles": "Задачі на ендшпіль",
 	"Before you trade, picture the position after the trade and judge it.": "Перш ніж міняти, уявіть позицію після обміну й оцініть її.",
 	"Endgame games": "Ендшпільні партії",
-	"At each trade, judge whether the endgame after it is really better.": "Під час кожного обміну оцінюйте, чи справді ендшпіль після нього кращий."
+	"At each trade, judge whether the endgame after it is really better.": "Під час кожного обміну оцінюйте, чи справді ендшпіль після нього кращий.",
+	"Endgame puzzles by type, plus the stalemate traps in won endings.": "Задачі з ендшпілю за типами, а також пастки на пат у виграних закінченнях.",
+	"Rook endgames": "Турові ендшпілі",
+	"Replay games that came down to rooks and pawns.": "Перегляньте партії, що звелися до тур і пішаків."
 }

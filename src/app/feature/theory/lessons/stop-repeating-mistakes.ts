@@ -130,19 +130,24 @@ export const stopRepeatingMistakes: TheoryLessonBody = {
 	takeaway: 'Steady progress begins with checking your own decisions the same way, move after move.',
 	practice: [
 		{
+			title: 'Review',
+			detail: 'What you missed comes back after 1, 3 and 7 days, until you get it right.',
+			path: '/practice/review',
+		},
+		{
+			title: 'What’s the threat?',
+			detail: 'The most repeated mistake: missing what the opponent threatens.',
+			path: '/practice/threats',
+		},
+		{
+			title: 'Is it safe?',
+			detail: 'The second one: grabbing material that is not really free.',
+			path: '/practice/is-it-safe',
+		},
+		{
 			title: 'Tactics',
 			detail: 'One try per puzzle: run the pre-move check before every answer.',
 			path: '/practice/tactics',
-		},
-		{
-			title: 'Daily puzzle',
-			detail: 'One puzzle a day: first name your opponent’s most dangerous idea, then find your move.',
-			path: '/practice/daily',
-		},
-		{
-			title: 'My games',
-			detail: 'For each recent game, write down the cause of the main blunder and look for the one that repeats.',
-			path: '/library/saved',
 		},
 	],
 	sources: [

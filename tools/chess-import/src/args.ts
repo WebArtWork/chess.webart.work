@@ -1,7 +1,7 @@
 import path from 'node:path';
-import { DIFFICULTIES, SPEEDS, STAGES, type Config, type Difficulty, type Speed } from './config.ts';
+import { DIFFICULTIES, PRACTICE_TAGS, SPEEDS, STAGES, type Config, type Speed } from './config.ts';
 
-type Kind = 'path' | 'string' | 'number' | 'boolean' | 'speeds' | 'list' | 'mix' | 'stage';
+type Kind = 'path' | 'string' | 'number' | 'boolean' | 'speeds' | 'list' | 'mix' | 'practiceMix' | 'stage';
 
 interface Option {
 	key: keyof Config;
@@ -53,10 +53,15 @@ const OPTIONS: Record<string, Option> = {
 		kind: 'mix',
 		help: 'wanted shares, e.g. beginner=0.15,intermediate=0.45,advanced=0.3,expert=0.1',
 	},
+	'practice-mix': {
+		key: 'practiceMix',
+		kind: 'practiceMix',
+		help: `wanted shares of games feeding each practice (${PRACTICE_TAGS.join(', ')}), e.g. tactics=0.3,endgame=0.2`,
+	},
 	'app-dir': { key: 'appDir', kind: 'path', help: "the app's copy of the games (catalog, daily schedule, one file per game)" },
 };
 
-export const COMMANDS = ['import', 'clear', 'wipe', 'refresh', 'lookahead'] as const;
+export const COMMANDS = ['import', 'clear', 'wipe', 'refresh', 'lookahead', 'enrich'] as const;
 export type Command = (typeof COMMANDS)[number];
 
 export interface ParsedArgs {
@@ -136,20 +141,24 @@ function convert(name: string, kind: Kind, value: string): unknown {
 		case 'stage':
 			if (!STAGES.includes(value as (typeof STAGES)[number])) throw new Error(`--${name}: unknown stage ${value}`);
 			return value;
-		case 'mix': {
-			const mix = Object.fromEntries(DIFFICULTIES.map((level) => [level, 0])) as Record<Difficulty, number>;
-			for (const part of value.split(',')) {
-				const [level, share] = splitOnce(part.trim(), '=');
-				if (!DIFFICULTIES.includes(level as Difficulty) || !(Number(share) >= 0)) {
-					throw new Error(`--${name}: expected level=share pairs, got ${part}`);
-				}
-				mix[level as Difficulty] = Number(share);
-			}
-			return mix;
-		}
+		case 'mix':
+			return shares(name, value, DIFFICULTIES);
+		case 'practiceMix':
+			return shares(name, value, PRACTICE_TAGS);
 		default:
 			return value;
 	}
+}
+
+/** `key=share,…` over `keys`; keys left out get 0. */
+function shares(name: string, value: string, keys: readonly string[]): Record<string, number> {
+	const mix = Object.fromEntries(keys.map((key) => [key, 0]));
+	for (const part of value.split(',')) {
+		const [key, share] = splitOnce(part.trim(), '=');
+		if (!keys.includes(key) || !(Number(share) >= 0)) throw new Error(`--${name}: expected key=share pairs, got ${part}`);
+		mix[key] = Number(share);
+	}
+	return mix;
 }
 
 function splitOnce(text: string, separator: string): [string, string | undefined] {
@@ -167,6 +176,7 @@ export function usage(): string {
 		'  npm run games:wipe                  remove all games',
 		"  npm run games:refresh               rebuild the app's copy after editing games.json by hand",
 		'  npm run games:lookahead -- [--fresh] build Look Ahead trees for positions without one (depth 16 unless --depth)',
+		'  npm run games:enrich -- [--fresh]    add the practice fields to games not enriched yet (depth 12 unless --depth)',
 		'',
 		'Each batch streams the next part of the Lichess archive, scores games, analyses the',
 		'promising ones with Stockfish and appends a diverse set of new training games to',

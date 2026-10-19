@@ -9,6 +9,7 @@ import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
 import { LookAheadPath, LookAheadSession } from '../../feature/lookahead/look-ahead.session';
 import { PAWNS } from '../../feature/progress/progress.const';
+import { ReviewService } from '../../feature/practice/review.service';
 import { Award, ProgressService } from '../../feature/progress/progress.service';
 
 /** A line of the tree as shown in the list. */
@@ -32,6 +33,7 @@ export class LookAheadComponent {
 	private readonly _router = inject(Router);
 	private readonly _progress = inject(ProgressService);
 	private readonly _i18n = inject(I18nService);
+	private readonly _review = inject(ReviewService);
 
 	protected readonly loading = signal(true);
 	protected readonly failed = signal(false);
@@ -98,6 +100,7 @@ export class LookAheadComponent {
 			if (!session?.done()) return;
 			untracked(() => {
 				const found = session.found().size;
+				this._review.record('lookAhead', session.item.id, found === session.paths.length);
 				this.award.set(
 					this._progress.complete({
 						key: `la-${session.item.id}`,

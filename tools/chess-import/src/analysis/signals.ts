@@ -183,8 +183,8 @@ function settledMaterial(game: Replay, i: number): number {
 	return plies[k].material;
 }
 
-/** Quiet moments always looked at, since they are where positions with several good moves come from. */
-const QUIET_SLOTS = 2;
+/** Quiet moments always looked at, since they are where positions with several good moves come from (Good moves, Who is better?). */
+const QUIET_SLOTS = 3;
 
 /** Up to `count` signalled plies, strongest first, at least three plies apart, with room kept for quiet ones. */
 export function pickSignalPlies(signals: Signal[], count: number): number[] {

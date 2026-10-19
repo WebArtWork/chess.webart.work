@@ -63,24 +63,74 @@ export const routes: Routes = [
 			},
 			{
 				path: 'mate-in-one',
-				data: { ...page('/practice/mate-in-one', 'Mate in 1'), quiz: 'mate1' },
-				loadComponent: () => import('./pages/quiz/quiz.component').then((m) => m.QuizComponent),
+				data: { ...page('/practice/mate-in-one', 'Mate in 1'), practice: 'mate1' },
+				loadComponent: () => import('./pages/puzzle-practice/puzzle-practice.component').then((m) => m.PuzzlePracticeComponent),
 			},
 			{
 				path: 'mate-in-three',
-				data: { ...page('/practice/mate-in-three', 'Mate in 3'), quiz: 'mate3' },
-				loadComponent: () => import('./pages/quiz/quiz.component').then((m) => m.QuizComponent),
+				data: { ...page('/practice/mate-in-three', 'Mate in 3'), practice: 'mate3' },
+				loadComponent: () => import('./pages/puzzle-practice/puzzle-practice.component').then((m) => m.PuzzlePracticeComponent),
 			},
 			{
 				path: 'tactics',
-				data: { ...page('/practice/tactics', 'Tactics'), quiz: 'mixed' },
-				loadComponent: () => import('./pages/quiz/quiz.component').then((m) => m.QuizComponent),
+				data: { ...page('/practice/tactics', 'Tactics'), practice: 'mixed' },
+				loadComponent: () => import('./pages/puzzle-practice/puzzle-practice.component').then((m) => m.PuzzlePracticeComponent),
 			},
 			{
 				path: 'look-ahead',
 				data: { ...page('/practice/look-ahead', 'Look Ahead') },
 				loadComponent: () =>
 					import('./pages/look-ahead/look-ahead.component').then((m) => m.LookAheadComponent),
+			},
+			{
+				path: 'endgames',
+				data: { ...page('/practice/endgames', 'Endgame technique'), practice: 'endgame' },
+				loadComponent: () =>
+					import('./pages/puzzle-practice/puzzle-practice.component').then((m) => m.PuzzlePracticeComponent),
+			},
+			{
+				path: 'review',
+				data: page('/practice/review', 'Review'),
+				loadComponent: () => import('./pages/review/review.component').then((m) => m.ReviewComponent),
+			},
+			{
+				path: 'threats',
+				data: page('/practice/threats', 'What’s the threat?'),
+				loadComponent: () => import('./pages/threats/threats.component').then((m) => m.ThreatsComponent),
+			},
+			{
+				path: 'who-is-better',
+				data: page('/practice/who-is-better', 'Who is better?'),
+				loadComponent: () =>
+					import('./pages/who-is-better/who-is-better.component').then((m) => m.WhoIsBetterComponent),
+			},
+			{
+				path: 'spot-the-feature',
+				data: page('/practice/spot-the-feature', 'Spot the feature'),
+				loadComponent: () =>
+					import('./pages/spot-the-feature/spot-the-feature.component').then((m) => m.SpotTheFeatureComponent),
+			},
+			{
+				path: 'is-it-safe',
+				data: page('/practice/is-it-safe', 'Is it safe?'),
+				loadComponent: () => import('./pages/is-it-safe/is-it-safe.component').then((m) => m.IsItSafeComponent),
+			},
+			{
+				path: 'see-it',
+				data: page('/practice/see-it', 'See it in your head'),
+				loadComponent: () => import('./pages/see-it/see-it.component').then((m) => m.SeeItComponent),
+			},
+			{
+				path: 'opening-moves',
+				data: page('/practice/opening-moves', 'Opening moves'),
+				loadComponent: () =>
+					import('./pages/opening-moves/opening-moves.component').then((m) => m.OpeningMovesComponent),
+			},
+			{
+				path: 'sound-sacrifice',
+				data: page('/practice/sound-sacrifice', 'Sound sacrifice?'),
+				loadComponent: () =>
+					import('./pages/sound-sacrifice/sound-sacrifice.component').then((m) => m.SoundSacrificeComponent),
 			},
 		],
 	},

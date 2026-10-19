@@ -100,5 +100,6 @@
 	"Go through checks, captures and threats before you pick a move.": "Перегляньте шахи, взяття та загрози, перш ніж обрати хід.",
 	"Collect candidates from all four places, including one quiet move.": "Зберіть кандидатів з усіх чотирьох напрямків, зокрема один спокійний хід.",
 	"After each check or capture, calculate your opponent’s strongest reply.": "Після кожного шаха чи взяття розраховуйте найсильнішу відповідь суперника.",
-	"Chess.com forum": "Форум Chess.com"
+	"Chess.com forum": "Форум Chess.com",
+	"Before your own checks and captures, name what the opponent threatens, then stop it.": "Перш ніж шукати свої шахи й взяття, назвіть загрозу суперника, а тоді зупиніть її."
 }

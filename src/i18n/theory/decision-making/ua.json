@@ -46,5 +46,7 @@
 	"A strong practical player does not try to calculate everything but correctly picks out the decisions that deserve the most attention.": "Сильний практичний шахіст не намагається розрахувати все, а правильно визначає, які рішення потребують найбільшої уваги.",
 	"Positions where one decision matters: go through all six steps before you move.": "Позиції, де все вирішує одне рішення: пройдіть усі шість кроків, перш ніж ходити.",
 	"Calculate your opponent’s strongest replies, not the ones you hope for.": "Розраховуйте найсильніші відповіді суперника, а не ті, на які сподіваєтеся.",
-	"Find two or three candidate moves before you commit to one.": "Знайдіть два-три ходи-кандидати, перш ніж зупинитися на одному."
+	"Find two or three candidate moves before you commit to one.": "Знайдіть два-три ходи-кандидати, перш ніж зупинитися на одному.",
+	"Start every decision with the opponent’s last move: what does it threaten?": "Починайте кожне рішення з останнього ходу суперника: чим він загрожує?",
+	"A tempting capture or check: decide whether it works before you play it.": "Спокусливе взяття чи шах: вирішіть, чи воно працює, перш ніж грати."
 }

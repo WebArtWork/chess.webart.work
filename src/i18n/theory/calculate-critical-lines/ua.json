@@ -21,5 +21,7 @@
 	"Positions where one move changes the evaluation. Check the forcing moves for both sides.": "Позиції, де один хід змінює оцінку. Перевірте форсовані ходи обох сторін.",
 	"Mate in 3": "Мат у 3 ходи",
 	"Calculate the forcing line to the end, against every defense.": "Розрахуйте форсований варіант до кінця, проти кожного захисту.",
-	"Mark Dvoretsky": "Марк Дворецький"
+	"Mark Dvoretsky": "Марк Дворецький",
+	"Check the opponent’s best reply before you capture or check.": "Перевірте найкращу відповідь суперника, перш ніж брати чи давати шах.",
+	"Play a few moves in your head, then answer a question about the position.": "Зіграйте кілька ходів в уяві, а тоді дайте відповідь на запитання про позицію."
 }

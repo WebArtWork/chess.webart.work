@@ -193,6 +193,11 @@ export const ccto: TheoryLessonBody = {
 		'CCTO does not replace calculation, but it makes your search systematic: forcing moves first, then threats and quiet improvements, so you are less likely to miss an important option.',
 	practice: [
 		{
+			title: 'What’s the threat?',
+			detail: 'Before your own checks and captures, name what the opponent threatens, then stop it.',
+			path: '/practice/threats',
+		},
+		{
 			title: 'Mate in 1',
 			detail: 'Start with the checks: look at every check before anything else.',
 			path: '/practice/mate-in-one',
@@ -206,11 +211,6 @@ export const ccto: TheoryLessonBody = {
 			title: 'Good moves',
 			detail: 'Collect candidates from all four places, including one quiet move.',
 			path: '/practice/good-moves',
-		},
-		{
-			title: 'Look Ahead',
-			detail: 'After each check or capture, calculate your opponent’s strongest reply.',
-			path: '/practice/look-ahead',
 		},
 	],
 	sources: [

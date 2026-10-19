@@ -52,5 +52,8 @@
 	"Positional games": "Позиційні партії",
 	"See how strong players build their plans around the pawns.": "Подивіться, як сильні шахісти будують плани навколо пішаків.",
 	"Analysis board": "Дошка аналізу",
-	"Paste one of your games, find its weak pawns and breaks, then check your plan with the engine.": "Вставте свою партію, знайдіть у ній слабких пішаків і можливі прориви, а потім перевірте свій план рушієм."
+	"Paste one of your games, find its weak pawns and breaks, then check your plan with the engine.": "Вставте свою партію, знайдіть у ній слабких пішаків і можливі прориви, а потім перевірте свій план рушієм.",
+	"Tap the isolated, doubled, backward and passed pawns, the outposts and the half-open files.": "Торкайтеся ізольованих, здвоєних, відсталих і прохідних пішаків, форпостів і напіввідкритих вертикалей.",
+	"Games with an isolated queen pawn": "Партії з ізольованим ферзевим пішаком",
+	"Replay games with an isolated d-pawn and see how both sides play around it.": "Перегляньте партії з ізольованим d-пішаком і подивіться, як обидві сторони грають навколо нього."
 }

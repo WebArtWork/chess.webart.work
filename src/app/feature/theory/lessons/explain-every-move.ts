@@ -23,14 +23,14 @@ export const explainEveryMove: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'Spot the feature',
+			detail: 'Name the structure behind a move: weak pawns, outposts and open files.',
+			path: '/practice/spot-the-feature',
+		},
+		{
 			title: 'Games',
 			detail: 'Pick a game, stop at the key moves and say why each one was played.',
 			path: '/library/games',
-		},
-		{
-			title: 'Analysis board',
-			detail: 'Put the reason for your move into words first, then check it with the engine.',
-			path: '/library/board',
 		},
 	],
 	sources: [

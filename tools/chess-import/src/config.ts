@@ -16,6 +16,13 @@ export const CATEGORIES = [
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
 
+/**
+ * What a game's training positions feed besides the puzzles: tactics, good-moves positions, quiet
+ * positions (Who is better?), endgames, sacrifices, tempting captures and checks (Is it safe?).
+ */
+export const PRACTICE_TAGS = ['tactics', 'candidates', 'quiet', 'endgame', 'sacrifice', 'tempting'] as const;
+export type PracticeTag = (typeof PRACTICE_TAGS)[number];
+
 export const SPEEDS = ['ultraBullet', 'bullet', 'blitz', 'rapid', 'classical', 'correspondence'] as const;
 export type Speed = (typeof SPEEDS)[number];
 
@@ -87,6 +94,8 @@ export interface Config {
 	minUniqueness: number;
 	/** Wanted share of each training level; intermediate first by default. */
 	difficultyMix: Record<Difficulty, number>;
+	/** Wanted share of games feeding each practice, so a batch is not mostly tactics. */
+	practiceMix: Record<PracticeTag, number>;
 
 	// Output
 	/** The app's copy: catalog.json, daily.json and g/<id>.json, served at /game/. Empty = skip. */
@@ -133,6 +142,7 @@ export function defaultConfig(): Config {
 		minQuality: 45,
 		minUniqueness: 30,
 		difficultyMix: { beginner: 0.15, intermediate: 0.45, advanced: 0.3, expert: 0.1 },
+		practiceMix: { tactics: 0.3, candidates: 0.2, quiet: 0.2, endgame: 0.15, sacrifice: 0.05, tempting: 0.1 },
 
 		appDir: fromRoot('src/data/game/app'),
 	};

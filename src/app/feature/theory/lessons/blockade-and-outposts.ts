@@ -23,15 +23,21 @@ export const blockadeAndOutposts: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'Spot the feature',
+			detail: 'Find the outposts and passed pawns: the squares to blockade and the pieces to put there.',
+			path: '/practice/spot-the-feature',
+		},
+		{
+			title: 'Games with passed pawns',
+			detail: 'Watch how passed pawns are pushed, and how they are stopped.',
+			path: '/library/games',
+			query: { structure: 'passedPawn' },
+		},
+		{
 			title: 'Positional games',
 			detail: 'Look for blockading pieces and outposts, and ask why they stand there.',
 			path: '/library/games',
 			query: { category: 'positional' },
-		},
-		{
-			title: 'Analysis board',
-			detail: 'Choose the best blockade square, then explain why the other squares are less stable.',
-			path: '/library/board',
 		},
 	],
 	sources: [

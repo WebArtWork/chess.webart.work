@@ -13,5 +13,7 @@
 	"Positional games": "Позиційні партії",
 	"Before a key move, name one advantage for each side, then guess the plan.": "Перед ключовим ходом назвіть одну перевагу кожної сторони, потім вгадайте план.",
 	"Write down the imbalances and a one-sentence plan, then check it for tactics with the engine.": "Запишіть відмінності між сторонами й план одним реченням, потім перевірте його на тактику рушієм.",
-	"Analysis board": "Дошка аналізу"
+	"Analysis board": "Дошка аналізу",
+	"Judge a quiet position, then compare with the engine’s score and the main imbalance.": "Оцініть спокійну позицію, а потім порівняйте з оцінкою рушія і головним дисбалансом.",
+	"Find the imbalances on the board: weak pawns, passed pawns, outposts, open files.": "Знайдіть дисбаланси на дошці: слабкі пішаки, прохідні пішаки, форпости, відкриті вертикалі."
 }

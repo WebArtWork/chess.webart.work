@@ -2,6 +2,7 @@ import { Chess, type Color } from 'chess.js';
 import { CATEGORIES, difficultyOf, type Category, type Difficulty } from '../config.ts';
 import { ENDGAME_PHASE, kingZonePressure, phase, piecesOf } from '../chess/board.ts';
 import { walkPv, type PvWalk } from '../chess/motifs.ts';
+import { positionalThemes } from '../chess/structure.ts';
 import type { EngineLine } from '../engine/uci.ts';
 import { winChance } from './signals.ts';
 
@@ -36,6 +37,8 @@ export interface PositionAnalysis {
 	gapW: number;
 	/** Moves within half a pawn of the best. */
 	nearBest: number;
+	/** A capture or check that looks good but loses: the second-best line, or the game move. */
+	tempting: boolean;
 	calcDepth: number;
 	motifs: string[];
 	categories: Category[];
@@ -119,6 +122,8 @@ export function analysePosition(input: PositionInput): PositionAnalysis {
 	if (isPerpetual(bestWalk, best.cp, gapW)) motifs.push('perpetualCheck');
 
 	const pressure = kingZonePressure(chess, pieces, side);
+	// what the best move does with the structure: the positional category needs one of these
+	const structural = best.pv.length ? positionalThemes(input.fen, best.pv[0]) : [];
 	const scores = categoryScores({
 		best,
 		bestWalk,
@@ -129,8 +134,10 @@ export function analysePosition(input: PositionInput): PositionAnalysis {
 		endgame: material <= ENDGAME_PHASE,
 		pressure,
 		motifs,
+		structural,
 	});
 	const categories = CATEGORIES.filter((category) => scores[category] > 0).sort((a, b) => scores[b] - scores[a]);
+	if (categories.includes('positional')) motifs.push(...structural);
 	const category: Category = categories[0] ?? 'positional';
 	const reason = rejected ?? (categories.length ? null : 'no clear theme');
 	if (!categories.length) categories.push(category);
@@ -160,6 +167,7 @@ export function analysePosition(input: PositionInput): PositionAnalysis {
 		played,
 		gapW: round1(gapW),
 		nearBest,
+		tempting: temptingSecond || Boolean(played && played.lossW >= 15 && /[x+]/.test(played.san)),
 		calcDepth: bestWalk.calcDepth,
 		motifs,
 		categories,
@@ -203,11 +211,13 @@ interface CategoryInput {
 	endgame: boolean;
 	pressure: number;
 	motifs: string[];
+	/** Outpost, open file, weak pawn, passed pawn or pawn break: what the best move does with the structure. */
+	structural: string[];
 }
 
 /** A score per category; zero means the category does not apply. */
 function categoryScores(input: CategoryInput): Record<Category, number> {
-	const { best, bestWalk: walk, gapW, wBest, nearBest, lossW, endgame, pressure, motifs } = input;
+	const { best, bestWalk: walk, gapW, wBest, nearBest, lossW, endgame, pressure, motifs, structural } = input;
 	const mating = best.mate !== null && best.mate > 0;
 	const tactical = motifs.some((motif) => TACTICAL_MOTIFS.has(motif));
 	const forcing = walk.firstCapture || walk.firstCheck;
@@ -216,7 +226,9 @@ function categoryScores(input: CategoryInput): Record<Category, number> {
 	if (gapW >= 15 && (mating || walk.gain >= 2 || tactical)) scores.tactics = 2 + gapW / 10 + (mating ? 1 : 0);
 	if (gapW >= 12 && walk.calcDepth >= 5) scores.calculation = walk.calcDepth / 2;
 	if (nearBest >= 3 && Math.abs(best.cp) <= 200) scores.candidateMoves = nearBest;
-	if (!forcing && !tactical && !endgame && gapW >= 6 && gapW < 30 && Math.abs(best.cp) <= 300) scores.positional = 1.2 + gapW / 15;
+	if (!forcing && !tactical && !endgame && structural.length && gapW >= 6 && gapW < 30 && Math.abs(best.cp) <= 300) {
+		scores.positional = 1.2 + gapW / 15;
+	}
 	if (wBest >= 55 && (walk.checks >= 2 || pressure >= 5 || mating)) scores.attack = 1 + pressure / 3 + walk.checks / 2;
 	if (wBest <= 60 && gapW >= 15) scores.defense = 1 + gapW / 10;
 	if (motifs.includes('perpetualCheck')) scores.defense = Math.max(scores.defense, 3);

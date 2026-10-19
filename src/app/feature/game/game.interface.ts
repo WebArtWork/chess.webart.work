@@ -1,6 +1,6 @@
 /**
  * The games dataset as served at /game/ (built by tools/chess-import from src/data/game/games.json):
- * catalog.json, daily.json, quiz.json, lookahead.json and one g/<id>.json per game.
+ * catalog.json, daily.json, practice.json, lookahead.json and one g/<id>.json per game.
  */
 
 import { Side } from '../chess/chess.interface';
@@ -95,6 +95,8 @@ export interface CatalogGame {
 	quality: number;
 	/** Puzzle ids in game order. */
 	puzzles: string[];
+	/** Verdicts of the sacrifices played in the game: sound, unsound, unclear. */
+	sacrifices?: string[];
 }
 
 export interface CatalogPuzzle {
@@ -113,16 +115,20 @@ export interface CatalogPuzzle {
 	rating: number;
 	/** Opening family, e.g. "Sicilian Defense". */
 	opening: string;
+	/** Named structures on the board, e.g. "iqp", "oppositeBishops". */
+	structure?: string[];
+	/** pawn, rook, minor, queen or mixed; null before the endgame. */
+	endgame?: string | null;
 }
 
-export type FacetKey = 'category' | 'theme' | 'level' | 'mode' | 'side' | 'opening';
+export type FacetKey = 'category' | 'theme' | 'level' | 'mode' | 'side' | 'opening' | 'structure' | 'endgame' | 'sacrifice';
 
 export interface Catalog {
 	version: string;
 	games: CatalogGame[];
 	puzzles: CatalogPuzzle[];
-	/** Puzzles per value, for filter chips. */
-	facets: Record<FacetKey, Record<string, number>>;
+	/** Puzzles per value, for filter chips; `sacrifice` counts games. */
+	facets: Partial<Record<FacetKey, Record<string, number>>>;
 }
 
 /** A puzzle with the game it comes from. */
@@ -140,12 +146,16 @@ export interface PuzzleFilters {
 	mode: string[];
 	side: string[];
 	opening: string[];
+	structure: string[];
+	endgame: string[];
+	/** Games only: the verdict of a sacrifice played in the game. */
+	sacrifice: string[];
 	/** Text searched in opening and player names. */
 	search: string;
 }
 
-/** A quiz puzzle that needs no game file: the position and one correct move. */
-export interface QuizItem {
+/** A mate puzzle that needs no game file: the position and one correct move. */
+export interface MateItem {
 	/** `<gameId>-<ply>`. */
 	id: string;
 	game: string;
@@ -160,10 +170,10 @@ export interface QuizItem {
 	opening: string;
 }
 
-/** quiz.json: self-contained quiz sets. */
-export interface QuizSets {
-	mate1: QuizItem[];
-	mate3: QuizItem[];
+/** practice.json: self-contained mate sets. */
+export interface PracticeSets {
+	mate1: MateItem[];
+	mate3: MateItem[];
 }
 
 /** A Look Ahead move: yours, the opponent's best reply, and your good moves after it. */

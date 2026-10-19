@@ -55,9 +55,9 @@ export const candidateMoves: TheoryLessonBody = {
 			path: '/practice/look-ahead',
 		},
 		{
-			title: 'Analysis board',
-			detail: 'Pick your candidates in any position, then compare them with the engine.',
-			path: '/library/board',
+			title: 'See it in your head',
+			detail: 'Keep the position in your head while you check each candidate.',
+			path: '/practice/see-it',
 		},
 	],
 	sources: [

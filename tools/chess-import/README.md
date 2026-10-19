@@ -31,6 +31,7 @@ npm run games:clear -- --count 200    # remove the 200 oldest games
 npm run games:wipe                    # remove all games
 npm run games:import:sample           # try-out: 3,000 games → 20, in tools/chess-import/.work/sample/out
 npm run games:lookahead               # build Look Ahead trees for positions that have none yet
+npm run games:enrich                  # add the practice fields to games that have none yet
 npm run games:import -- --help        # all options
 ```
 
@@ -119,6 +120,7 @@ npm run games:import -- --until scan
 | `--positions` | 5 | training positions per game, at most |
 | `--min-quality` / `--min-uniqueness` | 45 / 30 | bars a game must clear to be exported |
 | `--difficulty-mix` | `beginner=0.15,intermediate=0.45,advanced=0.3,expert=0.1` | wanted mix of training levels |
+| `--practice-mix` | `tactics=0.3,candidates=0.2,quiet=0.2,endgame=0.15,sacrifice=0.05,tempting=0.1` | wanted share of games feeding each practice; games feeding one that is short get up to 1.3× |
 | `--fresh` | off | discard an unfinished batch instead of continuing it |
 | `--until` | – | stop after `scan`, `quick`, `deep`, `select` or `export` |
 | `--count` | 1000 | `games:clear` only: how many of the oldest games to remove |
@@ -259,6 +261,45 @@ About a third of the positions qualify.
   removed games), so run `games:lookahead` after an import to cover the new games.
 - Trees are built from positions only (`src/analysis/lookahead.ts`), so another source of
   positions can be plugged in later.
+
+## Practice fields (`games:enrich`)
+
+`npm run games:enrich` adds to each game in `games.json` what the app's practices need, and every
+import adds the same to its new games (`src/analysis/enrich.ts`). Nothing else changes, no game is
+added or removed; games carry `enriched: <version>`, and a run only does games without the current
+version (`--fresh` redoes all). It saves as it goes and continues after Ctrl+C, then rebuilds the
+app's copy. Searches are depth 12 (`--depth`; an import uses its own `--depth` if lower), through
+the engine cache.
+
+Per training position:
+
+- `threat`: the opponent's best move if the side to move passed (a null-move search, MultiPV 3),
+  kept when it gains 150+ centipawns over the best move's score; `moves` lists every threat within
+  50 centipawns of it.
+- `evalBand`: `white`, `equal` or `black` for quiet positions only (best move no capture or check,
+  second best within 40 cp, score within ±4 pawns): equal within ±0.5, a side better from 1.2.
+  Scores in between are left out.
+- `features`: isolated, doubled, backward and passed pawns, outposts (ranks 5–6 for White, 4–3 for
+  Black, b–g files, pawn-guarded, never attackable by an enemy pawn), open and half-open files, IQP,
+  hanging pawns, bishop pair, opposite-coloured bishops (`src/chess/structure.ts`, no engine).
+- `endgameType`, and `tempting`: the game's losing capture or check (150+ cp) with its refutation,
+  else one from the candidate moves.
+- The **positional** category now needs the best move to do something with the structure (outpost,
+  open file, weak pawn, passed pawn, pawn break; added as themes). Older positions without one lose
+  the label; a position left with none becomes `criticalDecision`.
+
+Per game:
+
+- `openingPositions`: plies 6–24 scanned at depth 10; moves losing a pawn or more from a balanced
+  position (±1.5) get a full MultiPV 5 search, up to two per game.
+- `sacrifices`: captures and checks whose piece is taken, leaving the side two pawns down over the
+  next four plies. `sound` keeps the score (loss ≤ 80 cp, not worse than −0.5), `unsound` ends worse
+  than −1.5 having lost 1.5+, `unclear` otherwise; with the opponent's replies (MultiPV 3).
+
+The app files built from them are described in `src/output/practices.ts`. The catalog also gets
+`structure` and `endgame` per puzzle and `sacrifices` per game, with facets for the games filters,
+and the `stalemateTrap` theme for won positions where a legal move stalemates. Three quiet moments
+per game (was two) go to the engine, for more Good moves and Who is better? positions.
 
 ## Performance
 

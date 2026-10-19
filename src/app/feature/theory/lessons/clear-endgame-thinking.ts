@@ -25,16 +25,21 @@ export const clearEndgameThinking: TheoryLessonBody = {
 	},
 	practice: [
 		{
-			title: 'Endgame puzzles',
-			detail: 'Before you trade, picture the position after the trade and judge it.',
-			path: '/practice/good-moves',
-			query: { category: 'endgame' },
+			title: 'Endgame technique',
+			detail: 'Endgame puzzles by type, plus the stalemate traps in won endings.',
+			path: '/practice/endgames',
 		},
 		{
 			title: 'Endgame games',
 			detail: 'At each trade, judge whether the endgame after it is really better.',
 			path: '/library/games',
 			query: { category: 'endgame' },
+		},
+		{
+			title: 'Rook endgames',
+			detail: 'Replay games that came down to rooks and pawns.',
+			path: '/library/games',
+			query: { endgame: 'rook' },
 		},
 	],
 	sources: [

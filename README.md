@@ -43,16 +43,40 @@ three of your moves. Each path from the start to a leaf is one **line** to find.
 - Trees are built offline (`npm run games:lookahead`); see [Data](#data).
 - Not scored yet: a common score for all modes is planned.
 
-### Quiz
+### Puzzle practice (Mate in 1, Mate in 3, Tactics)
 
 Puzzle after puzzle with one try each, then the result, the rating change and **Next** (Enter).
 
 - **Mate in 1** (default): every mate in one found in the games. Any mating move counts.
 - **Tactics** (`/practice/tactics`): Best move and Play the line puzzles; only the solution or
   another mate counts.
-- A quiz rating starts at 1000 and changes Elo-style (K = 48 for the first 20 puzzles, then 24).
+- The rating starts at 1000 and changes Elo-style (K = 48 for the first 20 puzzles, then 24).
   Puzzles are picked near your rating, widening the window (±100 → ±800) when none are left. Retries
   are not rated. Rating, streak and seen puzzles are kept in `localStorage`.
+
+### Practices for the Theory lessons
+
+Each practice has its own small data file (no game file is fetched), one route, and the same
+frame: a fresh item near your rating, one rated attempt, **Next**, **Retry** after a miss, and
+**See the game**. Shared code: `PracticeFlow` (`src/app/feature/practice/practice.flow.ts`), the
+`practice-layout` and `practice-result` components. Progress keys are `<practice>-<item id>`, so
+the same position can earn in two practices.
+
+| Practice | Route | You do |
+| --- | --- | --- |
+| **Review** | `/practice/review` | Missed items from every practice come back after 1, 3 and 7 days (`ReviewService`, kept in the browser); a miss starts over. **Find my mistakes** scores your last 5 saved games with the browser engine and queues every move that lost 1.5 pawns or more, played here as find-a-better-move puzzles |
+| **What’s the threat?** | `/practice/threats` | Play the opponent’s threat (their best move if they moved twice), then a move that deals with it |
+| **Is it safe?** | `/practice/is-it-safe` | A capture or check: play it or not; when it fails, play the refutation |
+| **Who is better?** | `/practice/who-is-better` | Judge a quiet position (White, equal, Black), then see the score and the imbalances |
+| **Spot the feature** | `/practice/spot-the-feature` | Tap the isolated, doubled, backward or passed pawns, outposts, open or half-open files |
+| **See it in your head** | `/practice/see-it` | 2–4 moves as text, the board stays still; then what stands where, what is attacked, or where a piece can go |
+| **Endgame technique** | `/practice/endgames` | Puzzle practice over endgame puzzles, by family (pawn, rook, minor, queen, mixed) or stalemate traps |
+| **Opening moves** | `/practice/opening-moves` | Moves 4–12 where a player went wrong: find a good move, or pick the mistake out of two |
+| **Sound sacrifice?** | `/practice/sound-sacrifice` | Sound, unsound or unclear; then play the critical reply |
+
+Moves outside the stored answers are checked by the browser engine (depth 12, within 0.6 pawns of
+the best). Mate in 1/3, Tactics, Endgames, Good moves and Look Ahead also feed the review queue,
+and every practice route opens a given item with `?id=` (`&review=1` moves on through the queue).
 
 ### Daily and Random
 
@@ -95,13 +119,14 @@ Signed-in users can save the game to **My games**.
 | `/theory/<slug>` | A lesson: idea, steps, example, mistakes, self-check, practice links, sources. Cards in `src/app/feature/theory/theory.catalog.ts`, texts in `src/app/feature/theory/lessons/<slug>.ts`, Ukrainian in `src/i18n/theory/<slug>/ua.json`. `/theory/kotov` redirects to `/theory/candidate-moves` |
 | `/library` | Library hub: pick the analysis board, games or saved games |
 | `/library/board` | Position and game analysis; `?fen=` or `?game=ID` opens a position or a saved game |
-| `/library/games` | Browse games by training focus, theme, level, exercise, side to move, opening, or search players and openings |
+| `/library/games` | Browse games by training focus, theme, level, exercise, side to move, pawn structure, endgame type, sacrifice verdict, opening, or search players and openings |
 | `/library/games/:id` | Replay a game (arrow keys work) and solve its puzzles; `?ply=N` opens at a move, `?solve=N` starts a puzzle. Browser-rendered only |
 | `/library/saved` | Saved games, signed-in only |
-| `/practice` | Practice hub: pick a training mode |
+| `/practice` | Practice hub: modes in groups, two related modes to a row |
 | `/practice/daily`, `/practice/good-moves` | Daily puzzle and Good moves: one component behind two shareable URLs |
-| `/practice/mate-in-one`, `/practice/mate-in-three`, `/practice/tactics` | Quiz, one route per quiz type |
+| `/practice/mate-in-one`, `/practice/mate-in-three`, `/practice/tactics` | Puzzle practice, one route per puzzle set |
 | `/practice/look-ahead` | Look Ahead; `?id=GAME-PLY` opens a given position |
+| `/practice/review`, `/practice/threats`, `/practice/is-it-safe`, `/practice/who-is-better`, `/practice/spot-the-feature`, `/practice/see-it`, `/practice/endgames`, `/practice/opening-moves`, `/practice/sound-sacrifice` | The practices for the Theory lessons (see above); `?id=` opens a given item |
 | `/sign-in`, `/profile` | Google sign-in; profile with daily stats, sign out and account deletion |
 | `/privacy`, `/licenses` | Privacy policy (with account deletion steps at `/privacy#delete-account`); license, source link and credits |
 
@@ -126,8 +151,10 @@ Stockfish on the promising positions and writes:
   - `g/<id>.json`: one game, its moves and its puzzles with the engine lines. Fetched when a game
     or puzzle opens.
   - `daily.json`: date → puzzle id. Past days never change.
-  - `quiz.json`: self-contained quiz sets (mate in 1).
+  - `practice.json`: self-contained mate sets (mate in 1, mate in 3).
   - `lookahead.json`: Look Ahead positions with their move trees.
+  - `threats.json`, `eval.json`, `features.json`, `safe.json`, `visualize.json`, `openings.json`,
+    `sacrifices.json`: one set per practice, built from the fields `games:enrich` adds.
 
 Engine lines are stored once in UCI; the app derives SAN with chess.js. Scores are from White's
 point of view.
@@ -136,6 +163,7 @@ point of view.
 | --- | --- |
 | `npm run games:import` | Add a batch of up to 1,000 new games (typecheck and tests first; resumable) |
 | `npm run games:lookahead` | Build Look Ahead trees for positions that have none yet (~2 h for 1,000 games; resumable, saves as it goes) |
+| `npm run games:enrich` | Add the practice fields (threats, opening mistakes, sacrifices, board features…) to games without them, then rebuild the app's copy (~2 h for 1,000 games on the npm engine; resumable) |
 | `npm run games:refresh` | Rebuild the app's copy after editing `games.json` by hand |
 | `npm run games:clear` / `games:wipe` | Remove the oldest games / all games |
 
@@ -158,7 +186,7 @@ stored lines.
   Deploy rules with `npm run rules` (needs the Firebase CLI with access to the project).
 - In Firebase, Google sign-in must be enabled and `chess.webart.work` listed under
   Authentication > Settings > Authorized domains.
-- Daily results, quiz stats and theory self-check results stay in the browser
+- Daily results, puzzle practice stats and theory self-check results stay in the browser
   (`localStorage`), signed in or not.
 - **Delete account** on the profile asks for Google sign-in again, then deletes `users/{uid}` with its
   `games`, `events` and `progress`, the Auth user and the `wawchess_*` keys on that device. The rules
@@ -189,12 +217,12 @@ English (default) and Ukrainian (`ua`). The language is picked on the Profile an
 
 ```
 src/app/
-  pages/            one folder per route (dashboard, play, quiz, look-ahead, games, game, library, …)
+  pages/            one folder per route (dashboard, play, puzzle-practice, look-ahead, games, game, library, …)
   feature/
     chess/          engine service, sessions (good moves, line, study), daily results, saved games
     game/           dataset types and loading (GameService), puzzle runs, labels and filters
     lookahead/      Look Ahead session: tree walking, verdicts, reset
-    quiz/           quiz rating and picking
+    practice/       practice flow, review queue, puzzle practice stats, own-game mistakes
     plan/           the weekly plan
     account/, auth/, firebase/   sign-in and Firestore
   components/       board (chessground), panels, icons, preferences

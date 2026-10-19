@@ -1,8 +1,16 @@
-<section class="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6">
+<section class="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 pb-8 pt-4 sm:px-6">
 	<div>
 		<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">{{ 'Practice' | t }}</h1>
 		<p class="text-sm text-mute md:mt-0.5">{{ 'Pick what to train.' | t }}</p>
 	</div>
 
-	<app-hub-list [items]="items" [status]="status()" />
+	@for (group of groups; track group.title) {
+		<section class="flex flex-col gap-2" [attr.aria-labelledby]="'group-' + $index">
+			<div>
+				<h2 [id]="'group-' + $index" class="font-semibold">{{ group.title | t }}</h2>
+				<p class="text-sm text-mute">{{ group.detail | t }}</p>
+			</div>
+			<app-hub-list [items]="group.items" [status]="status()" [paired]="true" />
+		</section>
+	}
 </section>

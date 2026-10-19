@@ -1,7 +1,8 @@
 import { isPlatformBrowser } from '@angular/common';
 import { inject, PLATFORM_ID, Service } from '@angular/core';
-import { CatalogGame, CatalogPuzzle, Catalog, GameData, LookAheadItem, Puzzle, PuzzleFilters, QuizSets } from './game.interface';
+import { CatalogGame, CatalogPuzzle, Catalog, GameData, LookAheadItem, Puzzle, PuzzleFilters, PracticeSets } from './game.interface';
 import { parsePuzzleId } from './game.const';
+import { FileKind, PRACTICE_FILES, PracticeItems } from '../practice/practice.interface';
 
 const BASE = '/game';
 
@@ -14,9 +15,10 @@ export class GameService {
 	private readonly _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 	private _catalog?: Promise<Catalog | null>;
 	private _daily?: Promise<Record<string, string>>;
-	private _quiz?: Promise<QuizSets | null>;
+	private _practiceSets?: Promise<PracticeSets | null>;
 	private _lookAhead?: Promise<LookAheadItem[] | null>;
 	private readonly _games = new Map<string, Promise<GameData | null>>();
+	private readonly _practice = new Map<FileKind, Promise<unknown[] | null>>();
 
 	catalog(): Promise<Catalog | null> {
 		if (!this._isBrowser) return Promise.resolve(null);
@@ -28,14 +30,14 @@ export class GameService {
 		return this._catalog;
 	}
 
-	/** Self-contained quiz sets (mate in 1, ...). */
-	quiz(): Promise<QuizSets | null> {
+	/** Self-contained mate sets (mate in 1, mate in 3). */
+	practiceSets(): Promise<PracticeSets | null> {
 		if (!this._isBrowser) return Promise.resolve(null);
-		this._quiz ??= this._json<QuizSets>(`${BASE}/quiz.json`).then((sets) => {
-			if (!sets) this._quiz = undefined;
+		this._practiceSets ??= this._json<PracticeSets>(`${BASE}/practice.json`).then((sets) => {
+			if (!sets) this._practiceSets = undefined;
 			return sets;
 		});
-		return this._quiz;
+		return this._practiceSets;
 	}
 
 	/** Look Ahead positions with their trees. */
@@ -46,6 +48,20 @@ export class GameService {
 			return items;
 		});
 		return this._lookAhead;
+	}
+
+	/** A practice's items (threats.json, eval.json, …), loaded once. */
+	practiceItems<K extends FileKind>(kind: K): Promise<PracticeItems[K][] | null> {
+		if (!this._isBrowser) return Promise.resolve(null);
+		let items = this._practice.get(kind);
+		if (!items) {
+			items = this._json<unknown[]>(`${BASE}/${PRACTICE_FILES[kind]}`).then((list) => {
+				if (!list) this._practice.delete(kind);
+				return list;
+			});
+			this._practice.set(kind, items);
+		}
+		return items as Promise<PracticeItems[K][] | null>;
 	}
 
 	game(id: string): Promise<GameData | null> {
@@ -100,6 +116,8 @@ export class GameService {
 				any(filters.mode, [puzzle.mode]) &&
 				any(filters.side, [puzzle.side]) &&
 				any(filters.opening, [puzzle.opening]) &&
+				any(filters.structure, puzzle.structure ?? []) &&
+				any(filters.endgame, puzzle.endgame ? [puzzle.endgame] : []) &&
 				(!search || puzzle.opening.toLowerCase().includes(search)),
 		);
 	}
@@ -112,6 +130,7 @@ export class GameService {
 		return catalog.games.filter(
 			(game) =>
 				matching.has(game.id) &&
+				(!filters.sacrifice.length || (game.sacrifices ?? []).some((verdict) => filters.sacrifice.includes(verdict))) &&
 				(!search ||
 					[game.opening ?? '', game.white, game.black].some((text) => text.toLowerCase().includes(search))),
 		);

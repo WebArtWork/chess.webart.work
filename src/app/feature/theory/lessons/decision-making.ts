@@ -101,6 +101,16 @@ export const decisionMaking: TheoryLessonBody = {
 		'A strong practical player does not try to calculate everything but correctly picks out the decisions that deserve the most attention.',
 	practice: [
 		{
+			title: 'What’s the threat?',
+			detail: 'Start every decision with the opponent’s last move: what does it threaten?',
+			path: '/practice/threats',
+		},
+		{
+			title: 'Is it safe?',
+			detail: 'A tempting capture or check: decide whether it works before you play it.',
+			path: '/practice/is-it-safe',
+		},
+		{
 			title: 'Critical decisions',
 			detail: 'Positions where one decision matters: go through all six steps before you move.',
 			path: '/practice/good-moves',
@@ -110,11 +120,6 @@ export const decisionMaking: TheoryLessonBody = {
 			title: 'Look Ahead',
 			detail: 'Calculate your opponent’s strongest replies, not the ones you hope for.',
 			path: '/practice/look-ahead',
-		},
-		{
-			title: 'Good moves',
-			detail: 'Find two or three candidate moves before you commit to one.',
-			path: '/practice/good-moves',
 		},
 	],
 };

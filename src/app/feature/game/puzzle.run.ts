@@ -52,14 +52,14 @@ export class PuzzleRun {
 	constructor(
 		readonly puzzle: PuzzleData,
 		engine: EngineService,
-		/** Quiz rules: one answer, played move by move; the first wrong move fails. */
+		/** Puzzle practice rules: one answer, played move by move; the first wrong move fails. */
 		readonly strict = false,
 	) {
 		this.topMoves = topMovesFromLines(puzzle.fen, puzzle.lines);
 		if (puzzle.mode === 'line' || strict) {
 			const solution = puzzle.mode === 'line' ? puzzle.solution : [puzzle.lines[0].uci.split(' ')[0]];
 			const strikes = strict ? 1 : STRIKES.line;
-			// quiz rules, like chess.com: besides the solution only another mate counts
+			// puzzle practice rules, like chess.com: besides the solution only another mate counts
 			const line = new LineSession(puzzle.fen, solution, lineEval(puzzle.lines[0]), engine, GO, strikes, !strict);
 			this.line = line;
 			this.fen = line.fen;

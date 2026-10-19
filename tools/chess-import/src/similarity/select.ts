@@ -1,4 +1,4 @@
-import { DIFFICULTIES, type Difficulty } from '../config.ts';
+import { DIFFICULTIES, PRACTICE_TAGS, type Difficulty, type PracticeTag } from '../config.ts';
 
 export interface Selectable {
 	id: string;
@@ -7,6 +7,8 @@ export interface Selectable {
 	tokens: string[];
 	/** Position keys of the training positions: exact duplicates are never selected twice. */
 	fens: string[];
+	/** The practices its positions feed (see `practiceTags`). */
+	tags?: PracticeTag[];
 }
 
 export interface SelectOptions {
@@ -14,6 +16,8 @@ export interface SelectOptions {
 	minQuality: number;
 	minUniqueness: number;
 	mix: Record<Difficulty, number>;
+	/** Wanted share of games per practice; games feeding a practice that is short get a boost. */
+	practiceMix?: Record<PracticeTag, number>;
 	/** Games already in the dataset: new picks must be unique against them too. Never returned. */
 	fixed?: Selectable[];
 }
@@ -33,7 +37,7 @@ const ROWS = HASHES / BANDS;
 
 /**
  * Greedy diverse selection: repeatedly take the game with the best quality × uniqueness ×
- * difficulty-mix balance, then lower the uniqueness of games similar to it. Small pools compare
+ * difficulty-mix balance × practice-mix balance, then lower the uniqueness of games similar to it. Small pools compare
  * every pair; large ones only compare MinHash LSH neighbours so the cost stays near-linear.
  * Stops early rather than pad the result with weak or duplicate games.
  */
@@ -51,6 +55,8 @@ export function selectDiverse(items: Selectable[], options: SelectOptions): Sele
 	const alive = new Uint8Array(pool.length).fill(1);
 	const takenFens = new Set<string>();
 	const counts = Object.fromEntries(DIFFICULTIES.map((level) => [level, 0])) as Record<Difficulty, number>;
+	const tagCounts = Object.fromEntries(PRACTICE_TAGS.map((tag) => [tag, 0])) as Record<PracticeTag, number>;
+	const practiceTotal = PRACTICE_TAGS.reduce((sum, tag) => sum + (options.practiceMix?.[tag] ?? 0), 0);
 	const mixTotal = DIFFICULTIES.reduce((sum, level) => sum + options.mix[level], 0) || 1;
 	const mixMax = Math.max(...DIFFICULTIES.map((level) => options.mix[level])) || 1;
 	/** Indexes in `pool` of every game in the dataset: the fixed ones first, then new picks. */
@@ -60,6 +66,7 @@ export function selectDiverse(items: Selectable[], options: SelectOptions): Sele
 		alive[i] = 0;
 		members.push(i);
 		counts[pool[i].difficulty]++;
+		for (const tag of pool[i].tags ?? []) tagCounts[tag]++;
 		for (const fen of pool[i].fens) takenFens.add(fen);
 		for (const other of neighbours(i)) {
 			if (alive[other]) maxSim[other] = Math.max(maxSim[other], jaccard(sets[i], sets[other]));
@@ -75,6 +82,17 @@ export function selectDiverse(items: Selectable[], options: SelectOptions): Sele
 		return members.length >= 10 && current >= share + 0.05 ? base * 0.6 : base;
 	};
 
+	/** Up to 1.3 for a game feeding the practice furthest below its share; 0.9 when all it feeds are full. */
+	const practiceFactor = (tags: PracticeTag[] | undefined) => {
+		if (!practiceTotal || !members.length) return 1;
+		let need = -1;
+		for (const tag of tags ?? []) {
+			const share = (options.practiceMix?.[tag] ?? 0) / practiceTotal;
+			if (share) need = Math.max(need, (share - tagCounts[tag] / members.length) / share);
+		}
+		return need < 0 ? 0.9 : 1 + 0.3 * Math.min(1, need);
+	};
+
 	while (members.length - fixed.length < options.target) {
 		let best = -1;
 		let bestValue = -Infinity;
@@ -85,7 +103,8 @@ export function selectDiverse(items: Selectable[], options: SelectOptions): Sele
 				alive[i] = 0;
 				continue;
 			}
-			const value = pool[i].quality * (0.35 + 0.65 * (uniqueness / 100)) * mixFactor(pool[i].difficulty);
+			const value =
+				pool[i].quality * (0.35 + 0.65 * (uniqueness / 100)) * mixFactor(pool[i].difficulty) * practiceFactor(pool[i].tags);
 			if (value > bestValue) {
 				bestValue = value;
 				best = i;

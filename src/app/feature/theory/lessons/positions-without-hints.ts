@@ -97,20 +97,25 @@ export const positionsWithoutHints: TheoryLessonBody = {
 	takeaway: 'In a real position, first understand the problem, and only then look for its solution.',
 	practice: [
 		{
+			title: 'Who is better?',
+			detail: 'No hint, no task: just judge the position, then see the engine’s view.',
+			path: '/practice/who-is-better',
+		},
+		{
 			title: 'Good moves',
 			detail: 'Random positions with no theme shown: name the kind of decision before you choose a move.',
 			path: '/practice/good-moves',
-		},
-		{
-			title: 'Daily puzzle',
-			detail: 'Before you solve, decide whether the position needs an attack, a defense or a quiet move.',
-			path: '/practice/daily',
 		},
 		{
 			title: 'Critical decisions',
 			detail: 'Positions where one decision matters: attack, defend, improve or simplify?',
 			path: '/practice/good-moves',
 			query: { category: 'criticalDecision' },
+		},
+		{
+			title: 'Daily puzzle',
+			detail: 'Before you solve, decide whether the position needs an attack, a defense or a quiet move.',
+			path: '/practice/daily',
 		},
 	],
 	sources: [

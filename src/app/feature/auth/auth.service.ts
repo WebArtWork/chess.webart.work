@@ -3,8 +3,8 @@ import type { User } from 'firebase/auth';
 import { AccountService } from '../account/account.service';
 import { FirebaseService } from '../firebase/firebase.service';
 
-/** Progress kept in the browser (daily, rating and pawns, quiz, theory lessons); removed with the account. */
-const LOCAL_PROGRESS_KEYS = ['wawchess_daily', 'wawchess_progress', 'wawchess_quiz', 'wawchess_theory'];
+/** Progress kept in the browser (daily, rating and pawns, puzzle practice, review queue, theory lessons); removed with the account. */
+const LOCAL_PROGRESS_KEYS = ['wawchess_daily', 'wawchess_progress', 'wawchess_quiz', 'wawchess_review', 'wawchess_theory'];
 
 /** Google sign-in through Firebase Auth. */
 @Service()

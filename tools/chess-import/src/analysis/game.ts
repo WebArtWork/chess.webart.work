@@ -1,5 +1,5 @@
 import { Chess } from 'chess.js';
-import { difficultyOf, type Category, type Difficulty } from '../config.ts';
+import { difficultyOf, type Category, type Difficulty, type PracticeTag } from '../config.ts';
 import { fenKey } from '../chess/board.ts';
 import { replay, type Ply } from '../chess/replay.ts';
 import type { EnginePool } from '../engine/pool.ts';
@@ -149,6 +149,20 @@ function choosePositions(positions: PositionAnalysis[], count: number): Position
 		covered.add(position.category);
 	}
 	return chosen;
+}
+
+/** The practices a game's training positions feed, for the practice mix of the selection. */
+export function practiceTags(positions: PositionAnalysis[]): PracticeTag[] {
+	const tags = new Set<PracticeTag>();
+	for (const position of positions) {
+		if (position.categories.includes('tactics') || position.categories.includes('calculation')) tags.add('tactics');
+		if (position.nearBest >= 3) tags.add('candidates');
+		if (position.nearBest >= 2 && Math.abs(position.lines[0]?.cp ?? 0) <= 400) tags.add('quiet');
+		if (position.categories.includes('endgame')) tags.add('endgame');
+		if (position.motifs.includes('sacrifice')) tags.add('sacrifice');
+		if (position.tempting) tags.add('tempting');
+	}
+	return [...tags];
 }
 
 /** Plies for the preliminary pass: the strongest heuristic signals. */

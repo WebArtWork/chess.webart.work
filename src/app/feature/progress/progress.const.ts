@@ -9,7 +9,7 @@ export const PROVISIONAL = 20;
  * touch the rating. Mirrored by the cap in firestore.rules.
  */
 export const PAWNS = {
-	/** Quiz, random and game puzzles: for trying, and more for solving. */
+	/** Puzzle practice, random and game puzzles: for trying, and more for solving. */
 	puzzle: 1,
 	puzzleSolved: 3,
 	daily: 5,

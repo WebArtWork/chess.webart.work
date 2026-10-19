@@ -12,5 +12,6 @@
 	"Pick a game, stop at the key moves and say why each one was played.": "Виберіть партію, зупиняйтеся на ключових ходах і пояснюйте, навіщо кожен із них зроблено.",
 	"Put the reason for your move into words first, then check it with the engine.": "Спершу сформулюйте, навіщо ваш хід, потім перевірте його рушієм.",
 	"Games": "Партії",
-	"Analysis board": "Дошка аналізу"
+	"Analysis board": "Дошка аналізу",
+	"Name the structure behind a move: weak pawns, outposts and open files.": "Назвіть структуру, що стоїть за ходом: слабкі пішаки, форпости й відкриті вертикалі."
 }

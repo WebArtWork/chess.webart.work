@@ -65,6 +65,20 @@ dialog:focus-visible {
 	height: 100%;
 }
 
+/* Squares marked by the practices (see SquareMark): tapped, right, wrong, shown answer. */
+cg-board square.mark-pick {
+	background: color-mix(in oklch, var(--primary) 45%, transparent);
+}
+cg-board square.mark-ok {
+	background: color-mix(in oklch, var(--success) 55%, transparent);
+}
+cg-board square.mark-miss {
+	background: color-mix(in oklch, var(--destructive) 50%, transparent);
+}
+cg-board square.mark-answer {
+	box-shadow: inset 0 0 0 4px color-mix(in oklch, var(--success) 85%, transparent);
+}
+
 /* Daily / Random are real links styled as the kit's selectable chip. */
 .ds a.ds-chip {
 	color: inherit;

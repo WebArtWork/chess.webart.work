@@ -12,5 +12,8 @@
 	"Positional games": "Позиційні партії",
 	"Look for blockading pieces and outposts, and ask why they stand there.": "Шукайте блокувальні фігури й форпости та запитуйте себе, чому вони стоять саме там.",
 	"Analysis board": "Дошка аналізу",
-	"Choose the best blockade square, then explain why the other squares are less stable.": "Виберіть найкраще поле для блокади, а потім поясніть, чому інші поля менш стійкі."
+	"Choose the best blockade square, then explain why the other squares are less stable.": "Виберіть найкраще поле для блокади, а потім поясніть, чому інші поля менш стійкі.",
+	"Find the outposts and passed pawns: the squares to blockade and the pieces to put there.": "Знайдіть форпости й прохідних пішаків: поля для блокади і фігури, які туди варто поставити.",
+	"Games with passed pawns": "Партії з прохідними пішаками",
+	"Watch how passed pawns are pushed, and how they are stopped.": "Подивіться, як прохідних пішаків просувають і як їх зупиняють."
 }

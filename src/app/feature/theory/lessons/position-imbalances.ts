@@ -24,15 +24,20 @@ export const positionImbalances: TheoryLessonBody = {
 	},
 	practice: [
 		{
+			title: 'Who is better?',
+			detail: 'Judge a quiet position, then compare with the engine’s score and the main imbalance.',
+			path: '/practice/who-is-better',
+		},
+		{
+			title: 'Spot the feature',
+			detail: 'Find the imbalances on the board: weak pawns, passed pawns, outposts, open files.',
+			path: '/practice/spot-the-feature',
+		},
+		{
 			title: 'Positional games',
 			detail: 'Before a key move, name one advantage for each side, then guess the plan.',
 			path: '/library/games',
 			query: { category: 'positional' },
-		},
-		{
-			title: 'Analysis board',
-			detail: 'Write down the imbalances and a one-sentence plan, then check it for tactics with the engine.',
-			path: '/library/board',
 		},
 	],
 	sources: [

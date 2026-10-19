@@ -7,7 +7,7 @@ import { DailyService } from '../../feature/chess/daily.service';
 import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
 import { ProgressService } from '../../feature/progress/progress.service';
-import { QuizService } from '../../feature/quiz/quiz.service';
+import { PracticeService } from '../../feature/practice/practice.service';
 
 @Component({
 	imports: [IconComponent, PreferencesComponent, RouterLink, TPipe],
@@ -20,7 +20,7 @@ export class ProfileComponent {
 
 	protected readonly user = this._auth.user;
 	protected readonly stats = signal(inject(DailyService).summary());
-	protected readonly quiz = inject(QuizService).stats;
+	protected readonly practice = inject(PracticeService).stats;
 	protected readonly progress = inject(ProgressService);
 	protected readonly signingOut = signal(false);
 	protected readonly confirmingDelete = signal(false);

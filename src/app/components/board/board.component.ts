@@ -33,6 +33,9 @@ export interface BoardArrow {
 	brush: 'green' | 'blue' | 'red' | 'yellow';
 }
 
+/** A square marked on the board: picked by the player, right, wrong, or an answer shown afterwards. */
+export type SquareMark = 'pick' | 'ok' | 'miss' | 'answer';
+
 const PROMOTION_PIECES: { value: Promotion; role: string; label: string }[] = [
 	{ value: 'q', role: 'queen', label: 'Promote to queen' },
 	{ value: 'n', role: 'knight', label: 'Promote to knight' },
@@ -90,7 +93,12 @@ export class BoardComponent {
 	readonly viewOnly = input(false);
 	readonly arrows = input<BoardArrow[]>([]);
 	readonly lastMove = input<BoardMove | null>(null);
+	/** Squares to colour, e.g. the ones tapped in Spot the feature. */
+	readonly marks = input<Record<string, SquareMark>>({});
+	/** Squares are tapped instead of pieces moved; each tap is reported by `tapped`. */
+	readonly tapMode = input(false);
 	readonly moved = output<BoardMove>();
+	readonly tapped = output<string>();
 
 	/** A pawn move waiting for the promotion piece. */
 	protected readonly pending = signal<BoardMove | null>(null);
@@ -144,6 +152,9 @@ export class BoardComponent {
 			this._api = Chessground(this._host().nativeElement, {
 				...this._config(),
 				events: {
+					select: (key) => {
+						if (this.tapMode()) this.tapped.emit(key);
+					},
 					move: (from, to) => {
 						if (this._legal().promotions.has(from + to)) {
 							// keep the pawn on the last rank until a piece is picked
@@ -191,7 +202,8 @@ export class BoardComponent {
 		const turn: Side = this.fen().includes(' b ') ? 'black' : 'white';
 		const pending = this.pending();
 		const move = pending ?? this.lastMove();
-		const interactive = this.interactive() && !pending;
+		const tap = this.tapMode();
+		const interactive = this.interactive() && !pending && !tap;
 		return {
 			fen: pending ? this._withPawnOn(pending) : this.fen().split(' ')[0],
 			orientation: this.orientation(),
@@ -200,15 +212,19 @@ export class BoardComponent {
 			coordinates: !this.viewOnly(),
 			viewOnly: this.viewOnly(),
 			animation: { enabled: true, duration: 150 },
-			highlight: { lastMove: true, check: true },
+			highlight: {
+				lastMove: true,
+				check: true,
+				custom: new Map(Object.entries(this.marks()).map(([square, mark]) => [square as Key, `mark-${mark}`])),
+			},
 			movable: {
 				free: false,
 				color: interactive ? turn : undefined,
 				dests: this._legal().dests,
 				showDests: true,
 			},
-			draggable: { enabled: this.interactive() },
-			selectable: { enabled: this.interactive() },
+			draggable: { enabled: this.interactive() && !tap },
+			selectable: { enabled: this.interactive() || tap },
 			drawable: {
 				// right-click marks squares, right-drag draws arrows (shift/alt/ctrl change colour)
 				enabled: true,

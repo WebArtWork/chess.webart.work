@@ -16,5 +16,8 @@
 	"Count the pieces in each attack, then check the defender’s best reply.": "Порахуйте фігури в кожній атаці, потім перевірте найкращий захист суперника.",
 	"Tactics": "Тактика",
 	"Before you play a sacrifice, check the calmest defense.": "Перш ніж грати жертву, перевірте найспокійніший захист.",
-	"Mikhail Tal": "Михайло Таль"
+	"Mikhail Tal": "Михайло Таль",
+	"Judge sacrifices from real games, then play the critical reply.": "Оцінюйте жертви з реальних партій, а потім грайте критичну відповідь.",
+	"Games with sound sacrifices": "Партії з коректними жертвами",
+	"Replay games where a sacrifice held up under the engine’s check.": "Перегляньте партії, де жертва витримала перевірку рушієм."
 }

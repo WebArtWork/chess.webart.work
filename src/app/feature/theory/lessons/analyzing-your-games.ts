@@ -132,6 +132,11 @@ export const analyzingYourGames: TheoryLessonBody = {
 		'What helps you most is not the number of games you play but the ability to turn your own mistakes into concrete training tasks.',
 	practice: [
 		{
+			title: 'Review',
+			detail: 'Let the engine find the mistakes in your saved games and bring them back as puzzles.',
+			path: '/practice/review',
+		},
+		{
 			title: 'Analysis board',
 			detail: 'Paste your game as PGN, name your candidates, then compare them with the engine.',
 			path: '/library/board',

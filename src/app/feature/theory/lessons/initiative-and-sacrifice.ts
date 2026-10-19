@@ -23,10 +23,15 @@ export const initiativeAndSacrifice: TheoryLessonBody = {
 	},
 	practice: [
 		{
-			title: 'Games with sacrifices',
-			detail: 'For each sacrifice, name what was given up and what came back in return.',
+			title: 'Sound sacrifice?',
+			detail: 'Judge sacrifices from real games, then play the critical reply.',
+			path: '/practice/sound-sacrifice',
+		},
+		{
+			title: 'Games with sound sacrifices',
+			detail: 'Replay games where a sacrifice held up under the engine’s check.',
 			path: '/library/games',
-			query: { theme: 'sacrifice' },
+			query: { sacrifice: 'sound' },
 		},
 		{
 			title: 'Attacking games',

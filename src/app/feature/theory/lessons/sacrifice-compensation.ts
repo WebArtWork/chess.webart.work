@@ -111,20 +111,25 @@ export const sacrificeCompensation: TheoryLessonBody = {
 	takeaway: 'A good sacrifice has a concrete justification that holds up against the strongest defense.',
 	practice: [
 		{
+			title: 'Sound sacrifice?',
+			detail: 'Sound, unsound or unclear? Judge the compensation, then play the critical reply.',
+			path: '/practice/sound-sacrifice',
+		},
+		{
 			title: 'Games with sacrifices',
-			detail: 'For each sacrifice, identify the tactical or positional compensation and explain whether its justification was clear or speculative.',
+			detail: 'Replay games with a sacrifice the engine called sound or unclear.',
 			path: '/library/games',
-			query: { theme: 'sacrifice' },
+			query: { sacrifice: 'sound,unclear' },
+		},
+		{
+			title: 'Who is better?',
+			detail: 'Weigh material against activity in quiet positions.',
+			path: '/practice/who-is-better',
 		},
 		{
 			title: 'Look Ahead',
 			detail: 'Calculate to the point where the forcing moves run out, then judge the position there.',
 			path: '/practice/look-ahead',
-		},
-		{
-			title: 'Analysis board',
-			detail: 'Set up a sacrifice from your own game and test it against your opponent’s three best defenses.',
-			path: '/library/board',
 		},
 	],
 	sources: [

@@ -123,9 +123,9 @@ export const practicalImprovement: TheoryLessonBody = {
 		'Chess progress begins when every game becomes a source of information and every training session targets one specific weakness.',
 	practice: [
 		{
-			title: 'Analysis board',
-			detail: 'Analyze your own game first, then turn on the engine and compare.',
-			path: '/library/board',
+			title: 'Review',
+			detail: 'Your missed puzzles and the mistakes in your saved games, on a schedule.',
+			path: '/practice/review',
 		},
 		{
 			title: 'My games',
