@@ -10,6 +10,7 @@ import { PlayModeService } from '../../feature/chess/play-mode.service';
 import { PositionInputService } from '../../feature/chess/position-input.service';
 import { AuthService } from '../../feature/auth/auth.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
+import { TheoryToolbarService } from '../../feature/theory/theory-toolbar.service';
 import { ProgressService } from '../../feature/progress/progress.service';
 import { ShareService } from '../../feature/share/share.service';
 import { NavStateService } from '../nav-state.service';
@@ -29,6 +30,7 @@ export class TopbarComponent {
 	protected readonly nav = inject(NavStateService);
 	protected readonly input = inject(PositionInputService);
 	protected readonly games = inject(GamesToolbarService);
+	protected readonly theory = inject(TheoryToolbarService);
 
 	private readonly _editor = viewChild<ElementRef<HTMLDialogElement>>('editor');
 	private readonly _settingsDialog = viewChild<ElementRef<HTMLDialogElement>>('settingsDialog');
