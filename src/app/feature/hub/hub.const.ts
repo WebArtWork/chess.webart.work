@@ -29,6 +29,22 @@ export const PRACTICE_GROUPS: HubGroup[] = [
 		],
 	},
 	{
+		title: 'First steps',
+		detail: 'For players who are just starting.',
+		items: [
+			{
+				title: 'Chess basics',
+				detail: 'Multiple choice: how the pieces move, what they are worth and how moves are written.',
+				path: '/practice/chess-basics',
+			},
+			{
+				title: 'Learn the basics',
+				detail: 'The lesson first: the moves, the piece values and how a game is written down.',
+				path: '/theory/chess-basics',
+			},
+		],
+	},
+	{
 		title: 'Tactics',
 		detail: 'Mates, combinations and the traps next to them.',
 		items: [

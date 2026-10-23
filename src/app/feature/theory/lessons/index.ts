@@ -6,6 +6,7 @@ import { calculateCriticalLines } from './calculate-critical-lines';
 import { calculationDiscipline } from './calculation-discipline';
 import { candidateMoves } from './candidate-moves';
 import { ccto } from './ccto';
+import { chessBasics } from './chess-basics';
 import { chessPsychology } from './chess-psychology';
 import { clearEndgameThinking } from './clear-endgame-thinking';
 import { decisionMaking } from './decision-making';
@@ -27,6 +28,7 @@ import { structuredImprovement } from './structured-improvement';
 
 /** Every lesson's text. Only the lesson page imports this, so the texts stay out of the main bundle. */
 export const THEORY_LESSONS: TheoryLessonBody[] = [
+	chessBasics,
 	openingPrinciples,
 	pawnStructures,
 	ccto,

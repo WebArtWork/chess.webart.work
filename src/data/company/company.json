@@ -89,6 +89,11 @@
 			"description": "Sacrifices from real games, checked by the engine: judge whether each one is sound, unsound or unclear, then play the critical reply.",
 			"image": "/seo/practice-sound-sacrifice.jpg"
 		},
+		"/practice/chess-basics": {
+			"title": "Chess basics quiz: moves, values and notation",
+			"description": "Multiple-choice questions for beginners: how each chess piece moves, what it is worth, and how moves are written, including Rad1, Nbd2 and R1a3.",
+			"image": "/seo/practice-chess-basics.jpg"
+		},
 		"/practice/endgames": {
 			"title": "Chess endgame technique practice",
 			"description": "Endgame puzzles from real games by type: pawn, rook, minor piece and queen endings, plus the stalemate traps in won positions.",
@@ -96,8 +101,13 @@
 		},
 		"/theory": {
 			"title": "Chess theory lessons",
-			"description": "25 short chess lessons on how strong players think: openings, pawn structures, calculation, strategy, endgames and psychology, with practice on real positions.",
+			"description": "26 short chess lessons on how strong players think: openings, pawn structures, calculation, strategy, endgames and psychology, with practice on real positions.",
 			"image": "/seo/theory.jpg"
+		},
+		"/theory/chess-basics": {
+			"title": "Chess basics: how pieces move, piece values and notation",
+			"description": "A beginner’s chess lesson: how each piece moves, castling, en passant and promotion, what the pieces are worth, and how to write a game down in algebraic notation.",
+			"image": "/seo/theory-chess-basics.jpg"
 		},
 		"/theory/opening-principles": {
 			"title": "Chess opening principles",

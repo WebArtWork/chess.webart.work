@@ -127,6 +127,12 @@ export const routes: Routes = [
 					import('./pages/opening-moves/opening-moves.component').then((m) => m.OpeningMovesComponent),
 			},
 			{
+				path: 'chess-basics',
+				data: page('/practice/chess-basics', 'Chess basics'),
+				loadComponent: () =>
+					import('./pages/chess-basics/chess-basics.component').then((m) => m.ChessBasicsComponent),
+			},
+			{
 				path: 'sound-sacrifice',
 				data: page('/practice/sound-sacrifice', 'Sound sacrifice?'),
 				loadComponent: () =>

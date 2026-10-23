@@ -317,5 +317,17 @@
 		"route": "/practice/endgames",
 		"mode": "built-in image_gen",
 		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess endgame technique\". Scene: a restrained chess still life specifically communicating this page subject: Endgame technique with few pieces left. An almost empty board with ivory king, rook and pawn against a charcoal king, the pawn one square from promotion. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/practice-chess-basics.jpg",
+		"route": "/practice/chess-basics",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess basics quiz\". Scene: a restrained chess still life specifically communicating this page subject: A beginner quiz on piece moves, values and notation. One ivory knight, rook and pawn on a few board squares, with four small cobalt blue answer tiles beside them, one of them marked as chosen. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-chess-basics.jpg",
+		"route": "/theory/chess-basics",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess basics\". Scene: a restrained chess still life specifically communicating this page subject: Learning how the pieces move and how a game is written down. A full set of ivory pieces in a neat row from pawn to king, beside a cobalt blue pencil resting on a blank score sheet without any writing. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
 	}
 ]

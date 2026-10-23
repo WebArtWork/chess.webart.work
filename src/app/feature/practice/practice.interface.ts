@@ -119,6 +119,7 @@ export type PracticeKind =
 	| 'visual'
 	| 'opening'
 	| 'sacrifice'
+	| 'basics'
 	| 'own';
 
 /** The data file of each practice that has one. */

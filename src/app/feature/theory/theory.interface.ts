@@ -1,6 +1,7 @@
 import { HubItem } from '../hub/hub.interface';
 
 export type TheoryCategory =
+	| 'basics'
 	| 'opening'
 	| 'calculation'
 	| 'understanding'

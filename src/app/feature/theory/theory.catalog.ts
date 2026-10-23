@@ -1,6 +1,7 @@
 import { TheoryCard, TheoryCategory, TheoryGroup } from './theory.interface';
 
 export const THEORY_CATEGORY_LABELS: Record<TheoryCategory, string> = {
+	basics: 'Rules and notation',
 	opening: 'Opening',
 	calculation: 'Calculation',
 	understanding: 'Understanding the game',
@@ -36,6 +37,15 @@ export const THEORY_INTRO: string[] = [
  * /i18n/theory/<slug>/.
  */
 export const THEORY_CATALOG: TheoryCard[] = [
+	{
+		slug: 'chess-basics',
+		group: 'fundamentals',
+		title: 'Chess basics: moves, values and notation',
+		category: 'basics',
+		skill: 'Moving the pieces and writing a game down',
+		level: [0, 1000],
+		minutes: 20,
+	},
 	{
 		slug: 'opening-principles',
 		group: 'fundamentals',

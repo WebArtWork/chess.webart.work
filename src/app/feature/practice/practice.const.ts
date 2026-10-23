@@ -15,6 +15,7 @@ export const PRACTICE_PATHS: Record<PracticeKind, string> = {
 	visual: '/practice/see-it',
 	opening: '/practice/opening-moves',
 	sacrifice: '/practice/sound-sacrifice',
+	basics: '/practice/chess-basics',
 	own: '/practice/review',
 };
 
@@ -32,6 +33,7 @@ export const PRACTICE_TITLES: Record<PracticeKind, string> = {
 	visual: 'See it in your head',
 	opening: 'Opening moves',
 	sacrifice: 'Sound sacrifice?',
+	basics: 'Chess basics',
 	own: 'Your mistakes',
 };
 
