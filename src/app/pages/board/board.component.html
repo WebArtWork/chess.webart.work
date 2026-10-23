@@ -121,7 +121,7 @@
 		<app-position-picker
 			class="block min-h-0 flex-1"
 			startLabel="Start study"
-			[initialFen]="initialFen"
+			[initialFen]="initialFen()"
 			[initialGame]="initialGame()"
 			(start)="start($event)"
 		>

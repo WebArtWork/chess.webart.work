@@ -92,10 +92,5 @@ export const openingPrinciples: TheoryLessonBody = {
 			path: '/library/board',
 			query: { fen: 'r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4' },
 		},
-		{
-			title: 'Games',
-			detail: 'Watch how strong players develop, castle and fight for the center in the first moves.',
-			path: '/library/games',
-		},
 	],
 };

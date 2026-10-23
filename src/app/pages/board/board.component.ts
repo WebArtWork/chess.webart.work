@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, computed, inject, PLATFORM_ID, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnalysisSettingsComponent } from '../../components/analysis-settings/analysis-settings.component';
 import { BoardArrow, BoardComponent, BoardMove } from '../../components/board/board.component';
 import { IconComponent } from '../../components/icon/icon.component';
@@ -23,9 +23,10 @@ export class BoardPageComponent {
 	private readonly _engine = inject(EngineService);
 
 	private readonly _route = inject(ActivatedRoute);
+	private readonly _router = inject(Router);
 	private readonly _saved = inject(SavedGamesService);
 
-	protected readonly initialFen = this._route.snapshot.queryParamMap.get('fen');
+	protected readonly initialFen = signal(this._route.snapshot.queryParamMap.get('fen'));
 	/** A saved game to open, from /library/board?game=ID. */
 	private readonly _gameId = this._route.snapshot.queryParamMap.get('game');
 	protected readonly initialGame = signal<SavedGame | null>(null);
@@ -68,7 +69,11 @@ export class BoardPageComponent {
 	}
 
 	protected reset() {
+		// a new position starts from scratch, not from the position the page was opened with
+		this.initialFen.set(null);
+		this.initialGame.set(null);
 		this.session.set(null);
+		void this._router.navigate([], { relativeTo: this._route, queryParams: {}, replaceUrl: true });
 	}
 
 	protected side(fen: string) {
