@@ -1,0 +1,17 @@
+{
+	"A move becomes a useful lesson when you can say why it was played. Even a strong computer suggestion teaches little if it is not clear what it changes in the position.": "Хід стає корисним уроком, коли ви можете сказати, навіщо він зроблений. Навіть сильна комп’ютерна рекомендація мало вчить, якщо не зрозуміло, що вона змінює в позиції.",
+	"Name the concrete problem in the position: an undefended piece, a weak square, lagging development, a king in danger.": "Назвіть конкретну проблему позиції: незахищена фігура, слабке поле, відсталий розвиток, небезпечний король.",
+	"Say what should change after your move.": "Скажіть, що має змінитися після вашого ходу.",
+	"Ask how your opponent will reply and what changes after that reply.": "Запитайте, як відповість суперник і що зміниться після відповіді.",
+	"Keep the short-term tactical goal apart from the longer strategic plan.": "Відділяйте коротку тактичну мету від довшого стратегічного плану.",
+	"After the game, pick five key moves and explain them in your own words.": "Після партії виберіть п’ять ключових ходів і поясніть їх власними словами.",
+	"You put a rook on a half-open file, a file with no friendly pawn but an enemy pawn still on it. A weak explanation: “rooks belong on files.” A stronger one: “the rook attacks the backward pawn on this file. I want to add a second attacker, but first I must check whether my opponent can defend the pawn in time or trade it off.” On a fully open file, there are no pawns of either color; look for entry squares and targets beyond the file itself.": "Ви ставите туру на напіввідкриту вертикаль, тобто вертикаль без вашого пішака, але з пішаком суперника. Слабке пояснення: «тури мають стояти на вертикалях». Сильніше: «тура атакує відсталого пішака на цій вертикалі. Я хочу додати другу атакувальну фігуру, але спершу маю перевірити, чи встигне суперник захистити пішака або розміняти його». На повністю відкритій вертикалі пішаків немає взагалі; шукайте поля вторгнення й цілі за межами самої вертикалі.",
+	"Making up a nice explanation after the engine has already shown you the answer.": "Вигадувати красиве пояснення після того, як рушій уже підказав відповідь.",
+	"What shows understanding better: memorizing 12 opening moves or explaining the purpose of three key ones?": "Що краще показує розуміння: запам’ятати 12 дебютних ходів чи пояснити мету трьох ключових?",
+	"Explaining the purpose; memorizing is useful too, but it does not replace understanding.": "Пояснити мету; запам’ятовування теж корисне, але не замінює розуміння.",
+	"Pick a game, stop at the key moves and say why each one was played.": "Виберіть партію, зупиняйтеся на ключових ходах і пояснюйте, навіщо кожен із них зроблено.",
+	"Put the reason for your move into words first, then check it with the engine.": "Спершу сформулюйте, навіщо ваш хід, потім перевірте його рушієм.",
+	"Games": "Партії",
+	"Analysis board": "Дошка аналізу",
+	"Name the structure behind a move: weak pawns, outposts and open files.": "Назвіть структуру, що стоїть за ходом: слабкі пішаки, форпости й відкриті вертикалі."
+}
