@@ -1,0 +1,1 @@
+import{E as g,O as k,R as xn,S as ee,f as Rn,k as kt,l as Nt,m as Tn,n as A,p as Se,r as C,t as $,y as _}from"./chunk-DGc4_2Ng.js";k(`firebase`,`13.0.0`,`app`);export{kt as initializeApp};
