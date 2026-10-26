@@ -1,0 +1,67 @@
+<article class="mx-auto flex w-full max-w-2xl flex-col gap-8 px-4 pb-10 pt-4 sm:px-6">
+	<header>
+		<h1 class="m-0! text-2xl font-semibold leading-tight tracking-tight">{{ 'Support' | t }}</h1>
+		<p class="mt-1 text-sm text-mute">{{ 'Help with Chess training on the web, iOS and Android.' | t }}</p>
+	</header>
+
+	<section class="flex flex-col gap-3">
+		<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ 'Contact us' | t }}</h2>
+		<p class="leading-relaxed">
+			{{ 'Email' | t }} <a [href]="'mailto:' + email">{{ email }}</a>
+			{{ 'with a question, a bug report or an idea. We usually reply within 3 working days.' | t }}
+		</p>
+		<p class="leading-relaxed">
+			{{ 'To report a bug, please tell us your device, its system version and what you did before it happened. A screenshot helps.' | t }}
+		</p>
+		<p class="leading-relaxed">
+			{{ 'You can also open an issue on GitHub:' | t }}
+			<a [href]="issuesUrl" target="_blank" rel="noopener">{{ 'Issues' | t }}</a>.
+		</p>
+	</section>
+
+	<section class="flex flex-col gap-3">
+		<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ 'Common questions' | t }}</h2>
+
+		<h3 class="m-0! text-base font-semibold">{{ 'Do I need an account?' | t }}</h3>
+		<p class="leading-relaxed">
+			{{
+				'No. Every training mode works without one. Your rating, streak and progress are saved on your device. Signing in with Google is optional and only moves your progress to other devices and lets you save games.'
+					| t
+			}}
+		</p>
+
+		<h3 class="m-0! text-base font-semibold">{{ 'Is the app free?' | t }}</h3>
+		<p class="leading-relaxed">{{ 'Yes. There are no ads, no purchases and no analytics.' | t }}</p>
+
+		<h3 class="m-0! text-base font-semibold">{{ 'I lost my progress.' | t }}</h3>
+		<p class="leading-relaxed">
+			{{
+				'Without an account, progress lives only on the device: clearing the app’s data or deleting the app removes it. Sign in with Google to keep it safe and to restore it on a new device.'
+					| t
+			}}
+		</p>
+
+		<h3 class="m-0! text-base font-semibold">{{ 'How do I delete my account and data?' | t }}</h3>
+		<p class="leading-relaxed">
+			{{ 'Open your' | t }} <a routerLink="/profile">{{ 'profile' | t }}</a> {{ 'and choose' | t }}
+			<strong>{{ 'Delete account' | t }}</strong>.
+			{{ 'If you can no longer sign in, email' | t }} <a [href]="'mailto:' + email">{{ email }}</a> {{ 'and we will delete it for you.' | t }}
+			<a routerLink="/privacy" fragment="delete-account">{{ 'More details' | t }}</a>
+		</p>
+
+		<h3 class="m-0! text-base font-semibold">{{ 'The app does not load or a position looks wrong.' | t }}</h3>
+		<p class="leading-relaxed">
+			{{ 'Check your internet connection, close and reopen the app, and update it to the latest version. If it still fails, write to us.' | t }}
+		</p>
+
+		<h3 class="m-0! text-base font-semibold">{{ 'Where do the puzzles come from?' | t }}</h3>
+		<p class="leading-relaxed">
+			{{ 'From games in the public Lichess database. Moves are checked by the Stockfish engine.' | t }}
+			<a routerLink="/licenses">{{ 'Licenses and credits' | t }}</a>
+		</p>
+	</section>
+
+	<p class="text-sm text-mute">
+		<a routerLink="/privacy">{{ 'Privacy policy' | t }}</a>
+	</p>
+</article>

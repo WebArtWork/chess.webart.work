@@ -128,6 +128,7 @@ Signed-in users can save the game to **My games**.
 | `/practice/look-ahead` | Look Ahead; `?id=GAME-PLY` opens a given position |
 | `/practice/review`, `/practice/threats`, `/practice/is-it-safe`, `/practice/who-is-better`, `/practice/spot-the-feature`, `/practice/see-it`, `/practice/endgames`, `/practice/opening-moves`, `/practice/sound-sacrifice` | The practices for the Theory lessons (see above); `?id=` opens a given item |
 | `/sign-in`, `/profile` | Google sign-in; profile with daily stats, sign out and account deletion |
+| `/support` | Support page linked from the store listings (contact, FAQ) |
 | `/privacy`, `/licenses` | Privacy policy (with account deletion steps at `/privacy#delete-account`); license, source link and credits |
 
 The main navigation has three tabs, **Theory**, **Library** and **Practice**, in the topbar on desktop and in a
@@ -210,7 +211,7 @@ English (default) and Ukrainian (`ua`). The language is picked on the Profile an
   `{name}`; plurals are `'{count} game|{count} games'`, and Ukrainian gives three forms (one|few|many).
 - `src/i18n/ua.json` maps English → Ukrainian for the whole app; `en.json` stays empty.
 - Long texts used on one page live in page bundles, loaded only there with `I18nService.usePage(...)`:
-  `src/i18n/theory/<lesson>/ua.json`, `src/i18n/pages/privacy/ua.json`, `src/i18n/pages/licenses/ua.json`.
+  `src/i18n/theory/<lesson>/ua.json`, `src/i18n/pages/privacy/ua.json`, `src/i18n/pages/support/ua.json`, `src/i18n/pages/licenses/ua.json`.
 - SEO stays English: titles and meta tags come from `company.json`, and prerendered pages are English.
 
 ## Code map

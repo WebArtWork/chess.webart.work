@@ -200,6 +200,11 @@ export const routes: Routes = [
 		loadComponent: () => import('./pages/privacy/privacy.component').then((m) => m.PrivacyComponent),
 	},
 	{
+		path: 'support',
+		data: page('/support', 'Support'),
+		loadComponent: () => import('./pages/support/support.component').then((m) => m.SupportComponent),
+	},
+	{
 		path: 'licenses',
 		data: page('/licenses', 'Licenses'),
 		loadComponent: () => import('./pages/licenses/licenses.component').then((m) => m.LicensesComponent),

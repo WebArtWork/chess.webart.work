@@ -265,6 +265,11 @@
 			"description": "What Chess training stores, why it stores it, which services it uses and how to delete your account and all of your data.",
 			"image": "/seo/privacy.jpg"
 		},
+		"/support": {
+			"title": "Support",
+			"description": "Get help with Chess training: contact us, report a bug, restore your progress or delete your account and data.",
+			"image": "/seo/privacy.jpg"
+		},
 		"/licenses": {
 			"title": "Licenses and credits",
 			"description": "Chess training is free software under the GPL-3.0. See its source code and the projects it builds on, such as Stockfish and Chessground.",
