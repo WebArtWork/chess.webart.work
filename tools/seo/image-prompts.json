@@ -199,6 +199,12 @@
 		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess library\". Scene: a restrained chess still life specifically communicating this page subject: Replay real chess games, analyze positions with Stockfish and keep your saved games in one place. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
 	},
 	{
+		"file": "src/assets/seo/support.jpg",
+		"route": "/support",
+		"mode": "html render (headless Chrome)",
+		"prompt": "Flat Open Graph cover for Chess training, 1200x630: off-white background, blue chessboard floor, the app knight logo on a white card with two blue chat bubbles, title \"Support\"."
+	},
+	{
 		"file": "src/assets/seo/licenses.jpg",
 		"route": "/licenses",
 		"mode": "built-in image_gen",
