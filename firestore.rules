@@ -37,6 +37,200 @@ service cloud.firestore {
 				&& data.createdAt is timestamp;
 		}
 
+		// classes/{id}: a weekly training class. Mirrors src/app/feature/classroom. The owner edits it;
+		// class mates are listed by email and can read it once they sign in with that verified email.
+		// isPublic is stored but grants nothing yet: showing a class to everyone needs the mate list
+		// kept out of the public document first.
+		function isMate(data) {
+			return signedIn()
+				&& request.auth.token.email_verified == true
+				&& request.auth.token.email in data.emails;
+		}
+
+		function validClass(data) {
+			return data.keys().hasOnly(['title', 'ownerUid', 'ownerName', 'ownerEmail', 'days', 'time', 'duration', 'timeControl', 'isPublic', 'emails', 'createdAt', 'updatedAt'])
+				&& stringUpTo(data.title, 200) && data.title.size() > 0
+				&& data.ownerUid == request.auth.uid
+				// the creator's name and email, copied so class mates can see who leads the class;
+				// optional because classes saved before this existed have neither
+				&& (!('ownerName' in data) || stringUpTo(data.ownerName, 200))
+				&& (!('ownerEmail' in data) || stringUpTo(data.ownerEmail, 320))
+				&& data.days is list && data.days.size() >= 1 && data.days.size() <= 7
+				&& stringUpTo(data.time, 5)
+				&& data.duration is int && data.duration >= 5 && data.duration <= 600
+				&& stringUpTo(data.timeControl, 10)
+				&& data.isPublic is bool
+				&& data.emails is list && data.emails.size() <= 200
+				&& data.updatedAt == request.time;
+		}
+
+		match /classes/{classId} {
+			allow read: if signedIn()
+				&& (resource.data.ownerUid == request.auth.uid || isMate(resource.data));
+			allow create: if signedIn()
+				&& validClass(request.resource.data)
+				&& request.resource.data.createdAt == request.time;
+			allow update: if signedIn()
+				&& resource.data.ownerUid == request.auth.uid
+				&& validClass(request.resource.data)
+				&& request.resource.data.createdAt == resource.data.createdAt;
+			allow delete: if signedIn() && resource.data.ownerUid == request.auth.uid;
+
+			// The class's own document says who the owner and the class mates are.
+			function classDoc() {
+				return get(/databases/$(database)/documents/classes/$(classId)).data;
+			}
+
+			function isClassOwner() {
+				return signedIn() && classDoc().ownerUid == request.auth.uid;
+			}
+
+			function isClassMember() {
+				return isClassOwner() || isMate(classDoc());
+			}
+
+			// classes/{id}/lessons/{lessonId}: one sitting. The owner opens it and ends the tournament.
+			// Mirrors src/app/feature/classroom/lesson.service.ts.
+			function lessonOpen(lessonId) {
+				return get(/databases/$(database)/documents/classes/$(classId)/lessons/$(lessonId)).data.status == 'open';
+			}
+
+			match /lessons/{lessonId} {
+				allow read: if isClassMember();
+				allow create: if isClassOwner()
+					&& request.resource.data.keys().hasOnly(['status', 'createdAt'])
+					&& request.resource.data.status == 'open'
+					&& request.resource.data.createdAt == request.time;
+				allow update: if isClassOwner()
+					&& resource.data.status == 'open'
+					&& request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'finishedAt'])
+					&& request.resource.data.status == 'finished'
+					&& request.resource.data.finishedAt == request.time;
+
+				// a member who opened the lesson: their name, the opening picked for them and Ready
+				match /players/{uid} {
+					allow read: if isClassMember();
+					allow create, update: if isClassMember()
+						&& request.auth.uid == uid
+						&& lessonOpen(lessonId)
+						&& request.resource.data.keys().hasOnly(['uid', 'name', 'openingId', 'ready', 'updatedAt'])
+						&& request.resource.data.uid == uid
+						&& stringUpTo(request.resource.data.name, 200)
+						&& stringUpTo(request.resource.data.openingId, 40)
+						&& request.resource.data.ready is bool
+						&& request.resource.data.updatedAt == request.time;
+					// account deletion
+					allow delete: if signedIn() && (request.auth.uid == uid || isClassOwner());
+				}
+
+				// One pairing of a round. The owner creates it (a bye has no black player); the two players
+				// make the moves in turn and end it. Moves are checked by the app with chess.js.
+				match /games/{gameId} {
+					function before() {
+						return resource.data;
+					}
+
+					function after() {
+						return request.resource.data;
+					}
+
+					function changed() {
+						return after().diff(before()).affectedKeys();
+					}
+
+					function isPlayer() {
+						return signedIn() && (request.auth.uid == before().white || request.auth.uid == before().black);
+					}
+
+					function moverUid() {
+						return before().moves.size() % 2 == 0 ? before().white : before().black;
+					}
+
+					function moverSide() {
+						return before().moves.size() % 2 == 0 ? 'white' : 'black';
+					}
+
+					function validNewGame(data) {
+						return data.keys().hasOnly(['round', 'white', 'black', 'whiteName', 'blackName', 'whiteOpening', 'blackOpening', 'moves', 'whiteMs', 'blackMs', 'lastMoveAt', 'result', 'reason', 'drawOffer', 'createdAt'])
+							&& data.round is int && data.round >= 1 && data.round <= 100
+							&& stringUpTo(data.white, 128)
+							&& (data.black == null || (stringUpTo(data.black, 128) && data.black != data.white))
+							&& stringUpTo(data.whiteName, 200)
+							&& (data.black == null || stringUpTo(data.blackName, 200))
+							&& stringUpTo(data.whiteOpening, 40)
+							&& stringUpTo(data.blackOpening, 40)
+							&& data.moves is list && data.moves.size() == 0
+							&& data.whiteMs is int && data.whiteMs >= 0 && data.whiteMs <= 10800000
+							&& data.blackMs is int && data.blackMs >= 0 && data.blackMs <= 10800000
+							&& data.lastMoveAt == request.time
+							&& data.createdAt == request.time
+							&& data.reason == null
+							&& data.drawOffer == null
+							&& (data.black == null ? data.result == 'bye' : data.result == null);
+					}
+
+					// a move: one more entry, by the side to move, ending the game only in a way the move shows
+					function isMove() {
+						return changed().hasOnly(['moves', 'whiteMs', 'blackMs', 'lastMoveAt', 'drawOffer', 'result', 'reason'])
+							&& changed().hasAll(['moves', 'lastMoveAt'])
+							&& request.auth.uid == moverUid()
+							&& after().moves.size() == before().moves.size() + 1
+							&& after().moves.hasAll(before().moves)
+							&& after().lastMoveAt == request.time
+							&& after().whiteMs is int && after().whiteMs >= 0 && after().whiteMs <= 10800000
+							&& after().blackMs is int && after().blackMs >= 0 && after().blackMs <= 10800000
+							&& after().drawOffer == null
+							&& (
+								(after().result == null && after().reason == null)
+								|| (after().reason == 'checkmate' && after().result == moverSide())
+								|| ((after().reason == 'stalemate' || after().reason == 'draw') && after().result == 'draw')
+							);
+					}
+
+					// the end of a game without a move: resigning, accepting a draw, or a clock that ran out
+					function isEnding() {
+						return changed().hasOnly(['result', 'reason', 'drawOffer'])
+							&& changed().hasAll(['result', 'reason'])
+							&& after().drawOffer == null
+							&& (
+								(after().reason == 'resign' && after().result == (request.auth.uid == before().white ? 'black' : 'white'))
+								|| (after().reason == 'agreement' && after().result == 'draw'
+									&& before().drawOffer != null && before().drawOffer != request.auth.uid)
+								|| (after().reason == 'time' && before().moves.size() >= 2
+									&& after().result == (moverSide() == 'white' ? 'black' : 'white')
+									&& request.time.toMillis() - before().lastMoveAt.toMillis() >= (moverSide() == 'white' ? before().whiteMs : before().blackMs) - 1000)
+							);
+					}
+
+					function isOffer() {
+						return changed().hasOnly(['drawOffer'])
+							&& (after().drawOffer == request.auth.uid || after().drawOffer == null);
+					}
+
+					allow read: if isClassMember();
+					allow create: if isClassOwner() && lessonOpen(lessonId) && validNewGame(request.resource.data);
+					allow update: if isPlayer()
+						&& before().result == null
+						&& before().black != null
+						&& (isMove() || isEnding() || isOffer());
+					// account deletion
+					allow delete: if isClassOwner();
+				}
+			}
+		}
+
+		// users/{uid}/openings/{openingId}: an opening the student met in a class and used in a game there.
+		// The class lesson skips these when it picks what to teach next.
+		match /users/{uid}/openings/{openingId} {
+			allow read: if isOwner(uid);
+			allow create, update: if isOwner(uid)
+				&& stringUpTo(openingId, 40)
+				&& request.resource.data.keys().hasOnly(['classId', 'createdAt'])
+				&& stringUpTo(request.resource.data.classId, 128)
+				&& request.resource.data.createdAt == request.time;
+			allow delete: if isOwner(uid);
+		}
+
 		match /users/{uid}/games/{gameId} {
 			allow read: if isOwner(uid);
 			allow create: if isOwner(uid)

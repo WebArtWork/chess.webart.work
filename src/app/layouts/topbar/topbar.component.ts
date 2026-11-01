@@ -5,6 +5,8 @@ import { ActivatedRouteSnapshot, NavigationEnd, Router, RouterLink } from '@angu
 import { filter, map, startWith } from 'rxjs';
 import { AnalysisSettingsComponent } from '../../components/analysis-settings/analysis-settings.component';
 import { IconComponent } from '../../components/icon/icon.component';
+import { IconName } from '../../components/icon/icon.data';
+import { LessonToolbarService, LessonView } from '../../feature/classroom/lesson-toolbar.service';
 import { GamesToolbarService } from '../../feature/chess/games-toolbar.service';
 import { PlayModeService } from '../../feature/chess/play-mode.service';
 import { PositionInputService } from '../../feature/chess/position-input.service';
@@ -31,6 +33,12 @@ export class TopbarComponent {
 	protected readonly input = inject(PositionInputService);
 	protected readonly games = inject(GamesToolbarService);
 	protected readonly theory = inject(TheoryToolbarService);
+	protected readonly lesson = inject(LessonToolbarService);
+	protected readonly lessonViews: { id: LessonView; label: string; icon: IconName }[] = [
+		{ id: 'theory', label: 'Theory', icon: 'study' },
+		{ id: 'game', label: 'Game', icon: 'play' },
+		{ id: 'tournament', label: 'Tournament', icon: 'trophy' },
+	];
 
 	private readonly _editor = viewChild<ElementRef<HTMLDialogElement>>('editor');
 	private readonly _settingsDialog = viewChild<ElementRef<HTMLDialogElement>>('settingsDialog');
@@ -90,6 +98,8 @@ interface TopbarData {
 	pageName?: string;
 	/** Puzzle pages that offer "Study this position". */
 	studyLink?: boolean;
+	/** Pages that put a plus button in the bar, linking here. */
+	createPath?: string;
 }
 
 function _routeData(route: ActivatedRouteSnapshot): TopbarData {

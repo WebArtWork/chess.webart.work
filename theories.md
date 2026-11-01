@@ -26,7 +26,376 @@ The player-inspired lessons are our own teaching material, not official methods 
 
 The basics every game needs.
 
-### 1. Opening principles
+### 1. Chess basics: moves, values and notation
+
+`slug: chess-basics`
+
+Category: Rules and notation · Skill: Moving the pieces and writing a game down · Rating: 0–1000 · Time: 20 min
+
+#### About the notation in this app
+
+This app writes moves in English algebraic notation in every language: K king, Q queen, R rook, B bishop, N knight. Ukrainian books often use other letters (Кр, Ф, Т, С, К), but the system is the same. Learn one set of letters and use it everywhere here.
+
+#### Main idea
+
+Before tactics and plans, you need three things to be automatic: how each piece moves, roughly what each piece is worth, and how to read and write a move.
+
+Notation is how chess players talk to each other. It lets you replay any game from a book, record your own games and find your mistakes later.
+
+#### The board
+
+The board has 64 squares. Place it so that each player has a light square in the right-hand corner.
+
+Files are the columns, named a to h from White’s left to right. Ranks are the rows, numbered 1 to 8 from White’s side. Every square has a name: file first, then rank, like e4 or g7.
+
+White’s pieces start on ranks 1 and 2, Black’s on ranks 7 and 8. The queen starts on a square of her own color: the white queen on d1, the black queen on d8. White moves first.
+
+#### How each piece moves
+
+No piece may move onto a square taken by one of its own pieces. A piece captures by moving onto an enemy piece’s square, which removes that piece from the board.
+
+##### King (K)
+
+One square in any direction. The king may never move onto a square the opponent attacks.
+
+##### Queen (Q)
+
+Any number of squares in a straight line: along a rank, a file or a diagonal. She cannot jump over pieces.
+
+##### Rook (R)
+
+Any number of squares along a rank or a file, until a piece is in the way.
+
+##### Bishop (B)
+
+Any number of squares diagonally. A bishop stays on squares of one color for the whole game, so each side has a light-squared and a dark-squared bishop.
+
+##### Knight (N)
+
+In an L: two squares in one direction, then one square to the side. The knight is the only piece that jumps over other pieces. It always lands on a square of the other color.
+
+##### Pawn (no letter)
+
+One square straight forward; from its starting square it may move one or two. It captures one square diagonally forward. A piece right in front of a pawn blocks it. Pawns never move backward.
+
+#### Special moves
+
+##### Castling
+
+The king moves two squares toward a rook, and that rook jumps to the square the king crossed. Kingside castling (with the h-rook) is short, queenside castling (with the a-rook) is long.
+
+- Neither the king nor that rook has moved yet.
+- The squares between them are empty.
+- The king is not in check, and it does not cross or land on a square the opponent attacks.
+
+##### Promotion
+
+A pawn that reaches the last rank becomes a queen, rook, bishop or knight of the same color, as you choose. Almost always a queen. You may have two queens or more.
+
+##### En passant
+
+If an enemy pawn moves two squares from its starting square and lands right beside your pawn, your pawn may capture it as if it had moved only one square. You may do this only on the very next move.
+
+#### Check, checkmate and stalemate
+
+- Check: the king is attacked. You must get out of check at once: move the king, capture the attacker or block the line.
+- Checkmate: the king is in check and there is no way out. The game is over; the side that gave mate wins.
+- Stalemate: the side to move is not in check but has no legal move. The game is a draw, even if one side has far more material.
+
+#### What the pieces are worth
+
+Points help you judge a trade. Count what you give and what you get.
+
+- Pawn: 1
+- Knight: 3
+- Bishop: 3
+- Rook: 5
+- Queen: 9
+- King: no points. It is never traded; losing it means losing the game.
+
+So giving a rook (5) for a knight (3) loses 2 points, and a knight and a bishop together (6) are usually worth more than a rook (5).
+
+Points are a guide, not a law. An active piece is worth more than a passive one, two bishops work well together, and checkmate counts more than any material.
+
+#### How a move is written
+
+A move is written as the piece letter and the square it goes to: Nf3 means a knight moves to f3. Then a few signs are added when needed:
+
+- Pawn moves have no letter, just the square: e4.
+- x is a capture: Bxc6. A pawn capture starts with the file the pawn came from: exd5.
+- + is check: Qh5+. # is checkmate: Qxf7#.
+- O-O is kingside castling, O-O-O is queenside castling.
+- =Q is promotion: e8=Q means the pawn reaches e8 and becomes a queen.
+
+#### When two pieces can go to the same square
+
+Sometimes two pieces of the same kind can reach the same square. Then Rd1 is not enough: we add just enough to show which one moves.
+
+1. If they stand on different files, add the file of the piece that moves. Rooks on a1 and f1, the a1-rook goes to d1: Rad1. Knights on b1 and f3, the b1-knight goes to d2: Nbd2.
+2. If they stand on the same file, add the rank instead. Rooks on a1 and a5, the a1-rook goes to a3: R1a3. Knights on g1 and g5, the g5-knight goes to f3: N5f3.
+3. Only if neither the file nor the rank alone is enough, write the whole starting square. With queens on e4, h4 and h1, the h4-queen to e1 is Qh4e1. This is rare.
+4. Captures and checks keep their signs: Raxd8# means the a-file rook captures on d8 with checkmate.
+
+Add the extra letter or number only when it is needed. If only one rook can reach d1, write Rd1.
+
+#### Writing down a game
+
+Each move number covers one move by White and one by Black. Three dots after the number mean a move by Black written on its own. A result closes the record: 1-0 White won, 0-1 Black won, ½-½ a draw.
+
+Here is the shortest common trap, the Scholar’s Mate, written down and explained:
+
+- 1.e4 e5: both players move the king’s pawn two squares.
+- 2.Bc4 Nc6: White’s bishop aims at f7; Black develops a knight.
+- 3.Qh5 Nf6??: the queen also aims at f7. Black attacks the queen but misses the threat. ?? marks a blunder.
+- 4.Qxf7#: the queen captures on f7, protected by the bishop. Checkmate, 1-0.
+
+Comments after a move: ! a good move, !! a brilliant one, ? a mistake, ?? a blunder, !? interesting, ?! dubious.
+
+3...g6 instead of 3...Nf6?? would have blocked the queen’s path to f7.
+
+#### Common mistakes
+
+- Writing the knight as K. K is the king; the knight is N.
+- Adding P for pawn moves (Pe4). Pawn moves have no letter.
+- Writing the square a piece comes from instead of the square it goes to.
+- Writing Rd1 when both rooks can reach d1, or adding the file when only one can.
+- Forgetting x, + or #. They help you read your own game later.
+- Counting the king as material, or trading a rook for a knight because both are “just pieces”.
+- Reading the board from the wrong side: from Black’s side, a1 is in the top-right corner.
+
+#### Check yourself
+
+**Question:** White has rooks on a1 and f1 and plays the f1-rook to d1. How is the move written?
+
+**Answer:** Rfd1. Both rooks can reach d1 and they are on different files, so the file of the rook that moves is added.
+
+#### Exercise: Exercise
+
+Set up a board, or open the analysis board, and play through 1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Bxc6 dxc6 5.O-O.
+
+Say every move aloud as you play it: which piece, from where, to where, and what each sign means.
+
+Then play a short game against a friend or the app and write down every move on paper. Afterwards, replay it from your notes. If you cannot, find where the record went wrong.
+
+#### Questions to check yourself
+
+1. **Which piece can jump over other pieces?**
+   Answer: Only the knight.
+2. **You give a bishop and get a rook. Did you win or lose material?**
+   Answer: You won about 2 points: a rook is 5, a bishop 3.
+3. **What is the difference between O-O and O-O-O?**
+   Answer: O-O is castling kingside (short, with the h-rook). O-O-O is castling queenside (long, with the a-rook).
+4. **Two knights stand on g1 and g5, and the g1-knight goes to f3. How is it written?**
+   Answer: N1f3. Both knights are on the g-file, so the rank of the moving knight is added.
+5. **What does 15...Qxe4+ mean?**
+   Answer: On Black’s 15th move, the queen captures on e4 with check.
+
+#### Key takeaway
+
+> Know how each piece moves and what it is worth, and write every game down: piece letter, square, and only the extra signs that are needed.
+
+#### Practice it
+
+- **Chess basics** (`/practice/chess-basics`): Multiple choice: how the pieces move, what they are worth and how moves are written, including two rooks on one line.
+- **Try the exercise game** (`/library/board`): Open the analysis board, play 1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Bxc6 dxc6 5.O-O and watch how each move is written.
+- **Mate in 1** (`/practice/mate-in-one`): Once the moves are easy: find the checkmate in one move.
+
+#### Further reading
+
+- *FIDE Laws of Chess, Appendix C: Algebraic notation*, FIDE, FIDE Handbook: https://handbook.fide.com/chapter/E012023
+
+---
+
+### 2. Tournament rules: formats, tiebreaks and the board
+
+`slug: tournament-rules`
+
+Category: Rules and notation · Skill: Knowing what to expect at a tournament · Rating: 0–1400 · Time: 20 min
+
+#### About these rules
+
+This lesson follows the FIDE Laws of Chess, which most tournaments use. Every event publishes its own regulations, and they can change details such as the time control, the tiebreak order and how late you may arrive. Read them before round 1: on the day, the regulations decide.
+
+#### Main idea
+
+A tournament is more than playing chess. You need to know how opponents are chosen, how the winner is decided, how the clock works and what you may and may not do at the board.
+
+Most of the surprises in a first tournament come from small rules: a touched piece, a clock pressed with the wrong hand, a late arrival or a tiebreak nobody explained. This lesson covers the rules you will meet most often, so none of them costs you a game.
+
+#### How to prepare for a tournament
+
+1. Read the regulations: format, number of rounds, time control, tiebreak order and the late-arrival limit.
+2. Check how pairings are published, and find your board and your color each round.
+3. Practice your time control at home with a real clock, until pressing it is automatic.
+4. Bring a pen, and a scoresheet if the organizers do not provide one. Switch your phone off completely and leave it in your bag.
+5. Learn the board rules in this lesson, so that you never have to guess.
+
+#### Example
+
+Eight players, seeded 1 to 8 by rating, play three rounds of a Swiss tournament. In round 1 the top half meets the bottom half: 1 plays 5, 2 plays 6, 3 plays 7 and 4 plays 8. Seeds 1, 2, 7 and 4 win. Seed 7 beat the favorite, seed 3.
+
+Now four players have 1 point (seeds 1, 2, 4 and 7) and four have 0 (seeds 3, 5, 6 and 8). In round 2 each group plays within itself: 1 plays 4, 2 plays 7, 3 plays 6 and 5 plays 8. Nobody meets an old opponent.
+
+Say seed 1 beats seed 4 and seed 2 draws with seed 7. Seed 1 now has 2 points and nobody else does, so in round 3 they play someone with 1.5 points, a player who has not met them. This is called a float. With only three rounds, draws leave several players close to the lead, which is why tiebreaks matter.
+
+#### 1. Tournament formats
+
+The format decides who plays whom, and how many games you get.
+
+##### Swiss system
+
+The most common format for large events. The number of rounds is fixed in advance, and everyone plays every round, win or lose. Nobody is eliminated.
+
+- Round 1: players are ordered by rating, and the top half plays the bottom half.
+- Every later round: you are paired with someone who has the same score, or a close one. Strong players meet strong players as the event goes on.
+- You never play the same opponent twice.
+- Colors alternate as far as possible. Normally you do not get the same color three times in a row.
+- If the number of players is odd, one player gets a bye, which counts as a point. Nobody gets two byes.
+
+How many rounds? To be able to find one winner with a perfect score, you need enough rounds to cut the number of unbeaten players in half each time: 3 rounds for 8 players, 4 for 16, 7 for 100. Most real tournaments play 5 to 9 rounds.
+
+##### Round robin
+
+Everyone plays everyone once. With 10 players that is 9 rounds and 45 games. It is the fairest format, but it is slow, so it is used for small groups and invitational events. A double round robin gives each pair two games, one with each color.
+
+##### Knockout
+
+The loser of each match is out. Sixteen players need four rounds. A match usually has more than one game, for example two, one with each color. If the match is tied, a playoff with shorter games decides who goes through.
+
+##### Team events and online arenas
+
+In a team match, each player has a board number and plays the opponent on the same board. The result counts in two ways: game points for each board and match points for the whole team. Check which one decides the standings.
+
+Online you will often find arena tournaments: play as many games as you can in a fixed time, and earn points for wins and winning streaks. They reward activity, not careful play.
+
+#### 2. Scoring and tiebreaks
+
+A win is 1 point, a draw is ½ and a loss is 0. If your opponent does not show up, you get a forfeit win, which also counts as 1.
+
+At the end of a Swiss tournament, several players often share the same score. A tiebreak is a second number that separates them. The organizers announce the order in advance. The common ones:
+
+- Buchholz: the sum of your opponents’ final scores. Playing stronger opponents counts for more. Some events use Buchholz Cut 1, which drops the lowest opponent score.
+- Sonneborn-Berger: the scores of the opponents you beat, plus half the scores of those you drew with. It rewards wins over strong opponents.
+- Direct encounter: the result of the game between the tied players.
+- Number of wins: more wins ranks higher, because a win is harder to get than a draw.
+
+Here is a Buchholz example. Anna and Bohdan both finish with 3 out of 5. Anna’s opponents scored 2, 3, 3, 4 and 1, so her Buchholz is 13. Bohdan’s opponents scored 1, 2, 2, 3 and 2, so his is 10. Anna ranks higher: she played the stronger field.
+
+For Sonneborn-Berger, say Anna beat the opponents with 2 and 1 points and drew with the two with 3 points. Her score is 2 + 1 + 1.5 + 1.5 = 6.
+
+If a title or a prize still needs a single winner, a playoff decides it, usually with blitz games. Armageddon is the last resort: White gets more time, for example 5 minutes against 4, but Black wins a draw. Details vary, so check the regulations.
+
+#### 3. Time controls and the clock
+
+Each player has their own clock, and the clock runs only on their turn. Time controls are named by the base time per player and the increment, so 10+5 means 10 minutes plus 5 seconds added after every move.
+
+- Bullet: about 1 to 2 minutes per player. Mostly online.
+- Blitz: up to 10 minutes per player.
+- Rapid: more than 10 and up to 60 minutes per player.
+- Classical: 60 minutes or more per player, often with an increment. Classical games can last four to six hours.
+
+Increment and delay both give extra time, but in different ways. With an increment, a fixed number of seconds is added to your clock after you move, so time you do not use is saved. With a delay, the clock waits a few seconds at the start of each turn and only then starts running. Unused delay is lost.
+
+Press the clock with the same hand that moved the piece. Do not hover over it or press it hard. If your time runs out, you lose, unless your opponent has only a bare king and cannot ever checkmate, in which case the game is a draw.
+
+Practice with a real clock at home. A lot of games are lost by players who knew the position but not their time.
+
+#### 4. Rules at the board
+
+##### Touch-move
+
+If you deliberately touch one of your pieces when it is your turn, you must move that piece, if it has a legal move. If you touch an opponent’s piece, you must capture it, if you can. If you touch several, you must move or capture the first one that can be moved or captured. A move is made when you release the piece on a legal square. Until then, you may still choose another square for that piece.
+
+To fix a piece that is not centered on its square, say “J’adoube” or “I adjust” first, and only on your own turn. Touching a piece without saying it counts as touching it deliberately.
+
+##### Draws
+
+To offer a draw, make your move first, then say “Draw?” before you press the clock. The offer cannot be taken back. Your opponent may accept it, or decline it by saying no or by simply making a move. Do not offer again and again. Some events do not allow draw offers before a set move number, for example move 30.
+
+A draw can also come from the position, with a claim or automatically:
+
+- Threefold repetition: the same position, with the same player to move, appears three times. The moves do not have to be in a row. You must claim it: stop, and call the arbiter. Five times is an automatic draw.
+- The 50-move rule: 50 moves by each player pass without a capture or a pawn move. You claim it. At 75 moves it is automatic.
+- Insufficient material: neither side can checkmate with any legal moves, for example a bare king against a king and a knight. The game ends at once.
+- Stalemate: the player to move has no legal move and is not in check.
+
+##### Penalties and the arbiter
+
+In classical and rapid games, the first illegal move gives your opponent 2 extra minutes. A second illegal move by the same player loses the game. In blitz, if your opponent notices an illegal move, they can claim a win. If you see a problem, do not argue and do not fix the position yourself. Stop the clock and call the arbiter.
+
+Many tournaments use zero tolerance for late arrival. If you are not at the board when the round starts, you may lose by forfeit. Others allow 15 or 30 minutes. Read the regulations and arrive early.
+
+In classical games you must write down every move, and your opponent’s. You may stop if you have less than 5 minutes left and no increment of 30 seconds or more. Blitz and rapid events often do not require a scoresheet.
+
+##### Fair play and etiquette
+
+Chess is based on trust, so tournaments take these rules seriously.
+
+- Switch your phone off completely. In many tournaments a ringing phone loses the game.
+- Never use an engine, notes or help from other people during a game. This includes your coach, a friend and a spectator.
+- Do not talk to your opponent about the game, and keep quiet in the playing hall.
+- Shake hands before the game and after it. When a game ends by resignation or an agreed draw, stop both clocks.
+- After the game, report the result to the arbiter and sign the scoresheet. Analyze outside the playing hall.
+
+#### 5. Ratings and titles
+
+A rating is a number that estimates your strength, which the Elo system adjusts after every rated game. If you beat a stronger player, you gain more than you would for beating a weaker one, and you lose more for a loss against a weaker one. New players receive their first rating after several games against rated opponents. National and FIDE ratings are separate lists.
+
+Titles such as Candidate Master, FIDE Master, International Master and Grandmaster need a rating and results called norms, which are strong performances in tournaments with enough rated opponents. A title, once earned, stays for life.
+
+#### Common mistakes
+
+- Not reading the regulations: the tiebreak order, the time control or the late-arrival limit surprise you on the day.
+- Touching a piece while thinking, and then trying to move another one.
+- Offering a draw before making your move, or after pressing the clock.
+- Pressing the clock with the other hand, or forgetting to press it at all.
+- Making a move that repeats the position and only then claiming a draw. Call the arbiter before you move.
+- Using a phone in the playing hall, even to check the time.
+- Arguing with your opponent about a rule instead of calling the arbiter.
+- Thinking a Swiss tournament eliminates players. Everyone plays all the rounds.
+
+#### Check yourself
+
+**Question:** Two players in a Swiss tournament both score 4 out of 6. Whom does Buchholz rank higher?
+
+**Answer:** The one whose opponents scored more in total. Buchholz adds up your opponents’ final scores, so it rewards a stronger field.
+
+#### Exercise: Exercise
+
+Find the regulations of a tournament in your area, or a past one. Write down the format, the number of rounds, the time control, the tiebreak order and the late-arrival limit.
+
+Then play a game at home with a real clock at 10+5. Practice every board rule from this lesson: touch-move, offering a draw after your move and pressing the clock with the right hand. Write the game down as you play.
+
+#### Questions to check yourself
+
+1. **In a Swiss tournament, can you play the same opponent twice?**
+   Answer: No. You are paired with players of the same or a close score whom you have not met.
+2. **How many rounds does a round robin with 8 players need?**
+   Answer: 7 rounds. Everyone plays every other player once.
+3. **You touch your knight, then see it loses a piece. Can you move something else?**
+   Answer: No. If the knight has a legal move, you must move it. Say “J’adoube” before touching a piece you only want to adjust.
+4. **When do you offer a draw?**
+   Answer: After you make your move and before you press the clock. Once made, the offer cannot be withdrawn.
+5. **Your opponent’s illegal move: what do you do in a classical game?**
+   Answer: Stop the clock and call the arbiter. The first illegal move gives you 2 extra minutes; a second one loses the game.
+
+#### Key takeaway
+
+> Read the regulations, know how pairings and tiebreaks work, practice with a real clock, and when something goes wrong at the board, stop the clock and call the arbiter.
+
+#### Practice it
+
+- **Write a game down** (`/library/board`): Play a game on the analysis board and record it move by move, as you would on a scoresheet.
+- **Chess basics** (`/practice/chess-basics`): Review how the pieces move and how moves are written before your first tournament.
+
+#### Further reading
+
+- *FIDE Laws of Chess*, FIDE, FIDE Handbook: https://handbook.fide.com/chapter/E012023
+- *Swiss-system tournament*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Swiss-system_tournament
+
+---
+
+### 3. Opening principles
 
 `slug: opening-principles`
 
@@ -106,11 +475,10 @@ Feedback: 4.O-O brings the king to safety and puts the rook on f1. 4.c3 prepares
 
 - **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
 - **Try the exercise position** (`/library/board?fen=r1bqk1nr%2Fpppp1ppp%2F2n5%2F2b1p3%2F2B1P3%2F5N2%2FPPPP1PPP%2FRNBQK2R+w+KQkq+-+4+4`): Open the position after 3...Bc5 and compare 4.O-O, 4.c3 and 4.Nc3 yourself.
-- **Games** (`/library/games`): Watch how strong players develop, castle and fight for the center in the first moves.
 
 ---
 
-### 2. Pawn structures
+### 4. Pawn structures
 
 `slug: pawn-structures`
 
@@ -216,7 +584,7 @@ Then compare your conclusions with an engine analysis of the game.
 
 ---
 
-### 3. CCTO: four places to look for a move
+### 5. CCTO: four places to look for a move
 
 `slug: ccto`
 
@@ -385,7 +753,7 @@ Then check your evaluation with an engine.
 
 ---
 
-### 4. Making decisions during a game
+### 6. Making decisions during a game
 
 `slug: decision-making`
 
@@ -479,7 +847,7 @@ After the game, find the three decisions you spent the most time on. Was the pos
 
 ---
 
-### 5. Chess psychology and focus
+### 7. Chess psychology and focus
 
 `slug: chess-psychology`
 
@@ -582,7 +950,7 @@ Then look for patterns that repeat across the five games, rather than judging yo
 
 ---
 
-### 6. Analyzing your own games
+### 8. Analyzing your own games
 
 `slug: analyzing-your-games`
 
@@ -717,7 +1085,7 @@ Pick one of your lost games.
 
 How famous players and coaches think, as our own lessons.
 
-### 7. Find your candidate moves
+### 9. Find your candidate moves
 
 `slug: candidate-moves`
 
@@ -777,7 +1145,7 @@ Strong players do not draw a full tree for every move. Use the whole method in c
 
 ---
 
-### 8. Explain every move
+### 10. Explain every move
 
 `slug: explain-every-move`
 
@@ -820,7 +1188,7 @@ You put a rook on a half-open file, a file with no friendly pawn but an enemy pa
 
 ---
 
-### 9. Train in small steps
+### 11. Train in small steps
 
 `slug: step-by-step-training`
 
@@ -868,7 +1236,7 @@ The two targets of a knight fork always stand on squares of the same color, so t
 
 ---
 
-### 10. Learn, then check yourself
+### 12. Learn, then check yourself
 
 `slug: structured-improvement`
 
@@ -914,7 +1282,7 @@ In a set of five puzzles, you solve three correctly. In the other two, you miss 
 
 ---
 
-### 11. What is unequal in the position?
+### 13. What is unequal in the position?
 
 `slug: position-imbalances`
 
@@ -959,7 +1327,7 @@ You have a knight, your opponent has a bishop, and the center is blocked. The id
 
 ---
 
-### 12. Foresee your opponent’s plan
+### 14. Foresee your opponent’s plan
 
 `slug: prophylaxis`
 
@@ -1003,7 +1371,7 @@ Your opponent plans to put a rook on the open file. You can take the file first,
 
 ---
 
-### 13. Blockade and strengthen your pieces
+### 15. Blockade and strengthen your pieces
 
 `slug: blockade-and-outposts`
 
@@ -1047,7 +1415,7 @@ Your opponent has an isolated pawn. If you cannot win it safely at once, conside
 
 ---
 
-### 14. Simplify to win
+### 16. Simplify to win
 
 `slug: clear-endgame-thinking`
 
@@ -1095,7 +1463,7 @@ Answer: it is stalemate. Black is not in check, but a8 and b8 are controlled by 
 
 ---
 
-### 15. A plan beats haste
+### 17. A plan beats haste
 
 `slug: practical-endgames`
 
@@ -1140,7 +1508,7 @@ Your rook is more active, but all your opponent’s pawns are protected. If you 
 
 ---
 
-### 16. Check the critical line
+### 18. Check the critical line
 
 `slug: calculate-critical-lines`
 
@@ -1194,7 +1562,7 @@ Dvoretsky’s Endgame Manual is about accuracy in endgame analysis. The practice
 
 ---
 
-### 17. Initiative and sacrifice
+### 19. Initiative and sacrifice
 
 `slug: initiative-and-sacrifice`
 
@@ -1239,7 +1607,7 @@ You give up a pawn to open a line toward the king, but your bishops are not deve
 
 ---
 
-### 18. See the board in your head
+### 20. See the board in your head
 
 `slug: board-visualization`
 
@@ -1291,7 +1659,7 @@ A knight stands on e4. Without looking at the board, name every square it could 
 
 ---
 
-### 19. Practical chess improvement
+### 21. Practical chess improvement
 
 `slug: practical-improvement`
 
@@ -1410,7 +1778,7 @@ Then pick one skill to train over the next week. Don’t try to fix every weakne
 
 Lessons inspired by players and coaches of the Ukrainian chess school.
 
-### 20. How to find a strategic plan
+### 22. How to find a strategic plan
 
 `slug: strategic-plans`
 
@@ -1506,7 +1874,7 @@ Find a weak pawn or square. Name two or three possible moves that increase the p
 
 ---
 
-### 21. Find the best move without a hint
+### 23. Find the best move without a hint
 
 `slug: positions-without-hints`
 
@@ -1602,7 +1970,7 @@ Choose a move and explain it in no more than two sentences. Then check with an e
 
 ---
 
-### 22. When is a sacrifice justified?
+### 24. When is a sacrifice justified?
 
 `slug: sacrifice-compensation`
 
@@ -1699,7 +2067,7 @@ Compare the sacrifice with a quiet alternative. Calculate the forcing replies be
 
 ---
 
-### 23. The art of maneuvering
+### 25. The art of maneuvering
 
 `slug: piece-maneuvering`
 
@@ -1798,7 +2166,7 @@ Compare a short maneuver with a long one. Which keeps the initiative better? Doe
 
 ---
 
-### 24. Disciplined calculation
+### 26. Disciplined calculation
 
 `slug: calculation-discipline`
 
@@ -1912,7 +2280,7 @@ After each branch you write down, give a short verdict: White is better, roughly
 
 ---
 
-### 25. How to stop repeating mistakes
+### 27. How to stop repeating mistakes
 
 `slug: stop-repeating-mistakes`
 
@@ -2017,5 +2385,1450 @@ For one week, tag every blunder with one type: threat, calculation, evaluation, 
 #### Further reading
 
 - *GM Igor Smirnov: biography*, Remote Chess Academy, Remote Chess Academy: https://chess-teacher.com/gm-smirnov/
+
+---
+
+## Openings
+
+The most common openings: the first moves, the plans for both sides and a trap to know.
+
+### 28. How openings work: names, families and how to choose
+
+`slug: how-openings-work`
+
+Category: Opening · Skill: Choosing your first openings · Rating: 0–1500 · Time: 10 min
+
+#### Main idea
+
+An opening is the first 10 to 15 moves of a game, when both sides develop their pieces and fight for the center. Thousands of opening lines exist, but you only need a few, and a clear idea behind each one.
+
+This lesson explains how openings are named and grouped, what the code letters A to E mean and how to choose your first openings.
+
+#### How to choose your first openings
+
+1. As White, choose one first move (1.e4 or 1.d4) and one or two setups.
+2. As Black, choose one reply to 1.e4 and one reply to 1.d4.
+3. Learn the plans and the typical pawn structures first. Moves come from plans.
+4. Play the opening in at least ten games before you change it.
+5. After each game, check where you left your preparation and what you learned.
+
+#### Example
+
+Say you like solid, clear positions. As White you choose 1.e4 and the Italian Game. As Black you answer 1.e4 with the Caro-Kann and 1.d4 with the Slav. That is only three openings, and a few weeks of games and study are enough to learn them well.
+
+#### How openings get their names
+
+Most names come from places, people or pieces: the Italian Game, the Sicilian Defense, the Ruy Lopez (named after a Spanish priest) and the Queen’s Gambit. A few words in the name tell you what kind of opening it is:
+
+- Game or Opening: a general name for the first moves, such as the Italian Game or the English Opening.
+- Gambit: a player offers material, usually a pawn, for faster development or the initiative, such as the King’s Gambit.
+- Defense: a name for Black’s reply to White’s first move, such as the Sicilian Defense or the Caro-Kann Defense. A defense can still be very active.
+- System or Attack: a setup that you can play against many replies, such as the London System.
+
+A name like “Sicilian Defense: Najdorf Variation” gives the main opening and then the exact line.
+
+#### The families, by first moves
+
+- 1.e4 e5: open games. Both sides play in the center and the position opens quickly. Examples: the Italian Game, the Ruy Lopez, the Scotch Game and the King’s Gambit.
+- 1.e4 with another reply: semi-open games. Black avoids 1...e5. Examples: the Sicilian, French, Caro-Kann, Pirc and Scandinavian.
+- 1.d4 d5: closed or semi-closed games. Examples: the Queen’s Gambit, the Slav and the London System.
+- 1.d4 Nf6: Indian defenses. Black controls the center with pieces first. Examples: the King’s Indian and the Nimzo-Indian.
+- 1.c4, 1.Nf3 and others: flank openings, such as the English Opening.
+
+#### The ECO codes
+
+The Encyclopaedia of Chess Openings (ECO) gives every opening a code from A00 to E99, about 500 codes in all. You will see these codes in databases and on game sites. The first letter shows the family:
+
+- A: flank and irregular openings, such as the English Opening, plus some 1.d4 lines.
+- B: semi-open games, such as the Sicilian, Caro-Kann, Pirc and Scandinavian.
+- C: open games after 1.e4 e5, and the French Defense.
+- D: closed and semi-closed games after 1.d4 d5, such as the Queen’s Gambit and the Slav.
+- E: Indian defenses, such as the King’s Indian and the Nimzo-Indian.
+
+You do not need to learn the numbers. The letter tells you the family.
+
+#### What to know about each opening
+
+Below 2000, understanding is worth more than memory. You do not need 20 moves of memorized theory. For each opening, learn:
+
+- The first 6 to 10 moves and why they are played.
+- The plan for both sides and the typical pawn structure.
+- Two or three traps and tactical ideas.
+- The usual ways the opponent can leave the main line.
+
+#### Common mistakes
+
+- Memorizing long lines without knowing the plan behind them.
+- Changing your opening after every lost game.
+- Trying to learn too many openings at once.
+- Playing a gambit or a sharp line that you cannot calculate.
+- Forgetting the opening principles when the opponent leaves the book.
+
+#### Check yourself
+
+**Question:** In which ECO group is the Sicilian Defense?
+
+**Answer:** B, the semi-open games: 1.e4 with a reply other than 1...e5.
+
+#### Exercise: Exercise
+
+Write down your repertoire: your first move as White, and your replies to 1.e4 and 1.d4 as Black.
+
+Then open the lessons for those openings in this section and read their plans. Play each opening in your next ten games and write down what happened.
+
+#### Questions to check yourself
+
+1. **What is a gambit?**
+   Answer: An opening in which a player offers material, usually a pawn, for faster development or the initiative.
+2. **Which letter groups the open games after 1.e4 e5?**
+   Answer: C.
+3. **Why is a plan more useful than memorized moves?**
+   Answer: When the opponent leaves the book, a plan still tells you what to do, but memorized moves do not.
+4. **How many openings should a beginner start with?**
+   Answer: Three or four: one as White, and one reply each to 1.e4 and 1.d4 as Black.
+
+#### Key takeaway
+
+> Choose a few openings, learn their plans and typical structures before the moves, and give each one enough games to judge it.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Start with the Italian Game** (`/theory/italian-game`): A classic first opening for White after 1.e4 e5.
+- **Browse real games** (`/library/games`): See which openings are played in real games, and filter by opening.
+
+#### Further reading
+
+- *Encyclopaedia of Chess Openings*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Encyclopaedia_of_Chess_Openings
+- *List of chess openings*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/List_of_chess_openings
+
+---
+
+### 29. Italian Game: simple development, quick attack
+
+`slug: italian-game`
+
+Category: Opening · Skill: Learning a classic 1.e4 e5 opening · Rating: 800–1700 · Time: 8 min
+
+#### Main idea
+
+The Italian Game starts with 1.e4 e5 2.Nf3 Nc6 3.Bc4. White develops quickly and aims the bishop at f7, the weakest square near Black’s king. It is one of the oldest openings and one of the best for learning how to start a game.
+
+It suits players who like clear plans: develop the pieces, castle, then take the center with c3 and d4.
+
+#### The first moves
+
+1. 1.e4 e5: both sides take the center with a king’s pawn.
+2. 2.Nf3 Nc6: White develops a knight and attacks e5. Black defends it and develops.
+3. 3.Bc4 Bc5: both bishops go to an active diagonal. White’s bishop looks at f7.
+4. 4.c3 Nf6: White prepares d4. Black develops and attacks e4.
+5. 5.d3 d6: White keeps the center solid and opens the c1-bishop. Black supports e5.
+6. 6.O-O O-O: both kings are safe. This slow, solid setup is called the Giuoco Pianissimo, the “very quiet game”.
+
+#### Example
+
+After 6...O-O, White usually plays Re1, a3 or h3 and Nbd2-f1-g3, while Black plays ...a6 and ...Ba7 to keep the bishop, then ...Re8 and ...Be6. The game stays tense. Whoever makes the central break, d4 or ...d5, at the right moment gets the better pieces.
+
+#### Plans for White
+
+- Castle early and keep the bishop on the diagonal aimed at f7.
+- Prepare the break d4 with c3 and d3, then play it when it wins space.
+- Reroute the b1-knight with Nbd2-f1-g3 to support e4 and join the kingside.
+- Do not rush an attack on f7. It needs more pieces than you have in the first ten moves.
+
+#### Plans for Black
+
+- Develop with ...Nf6, ...d6 and ...O-O, and keep the e5 pawn solid.
+- Play ...a6 and ...Ba7 so the bishop keeps its diagonal when White prepares d4.
+- Prepare the break ...d5 to free your position.
+- Look out for tricks on f7 and e5, especially if you pin a knight.
+
+#### A trap to know: Légal’s Mate
+
+1.e4 e5 2.Nf3 d6 3.Bc4 Bg4 4.Nc3 g6? 5.Nxe5! Bxd1 6.Bxf7+ Ke7 7.Nd5#. The knight on f3 looks pinned to the queen, but White sacrifices the queen and mates with three minor pieces.
+
+After 4.Nc3, Black should develop with 4...Nf6 or 4...Nc6 instead of weakening the kingside.
+
+#### Common mistakes
+
+- Attacking f7 too early with Ng5 or Qf3, before the other pieces are developed.
+- Moving the bishop again and again instead of finishing development.
+- Leaving the king in the center after the center opens.
+- Pinning a knight with ...Bg4 and then ignoring the tactic Nxe5 (Légal’s Mate).
+
+#### Check yourself
+
+**Question:** After 1.e4 e5 2.Nf3 Nc6 3.Bc4, which Black square is the main target of White’s bishop?
+
+**Answer:** f7. Only the king protects it, so the bishop and the knights keep an eye on it.
+
+#### Questions to check yourself
+
+1. **What do c3 and d3 prepare in the quiet Italian setup?**
+   Answer: c3 prepares d4 to build a big center. d3 supports e4 and opens the c1-bishop.
+2. **Why does Black often play ...a6 and ...Ba7?**
+   Answer: To keep the bishop on the a7-g1 diagonal when White’s pawn comes to d4, instead of having to trade it.
+3. **In Légal’s Mate, what does White sacrifice?**
+   Answer: The queen, with 5.Nxe5! Bxd1. Then 6.Bxf7+ Ke7 7.Nd5# is checkmate.
+
+#### Key takeaway
+
+> Develop quickly, castle, aim at f7, and then build the center with c3 and d4.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 6...O-O** (`/library/board?fen=r1bq1rk1%2Fppp2ppp%2F2np1n2%2F2b1p3%2F2B1P3%2F2PP1N2%2FPP3PPP%2FRNBQ1RK1+w+-+-+2+7`): Open the board and test White’s ideas: Re1, h3, Nbd2 or the break d4.
+- **Italian Game games** (`/library/games?opening=Italian+Game`): Replay real games that began with the Italian Game.
+
+#### Further reading
+
+- *Italian Game*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Italian_Game
+
+---
+
+### 30. Ruy Lopez: the classic fight for the center
+
+`slug: ruy-lopez`
+
+Category: Opening · Skill: Building long-term pressure in 1.e4 e5 · Rating: 1200–2000 · Time: 9 min
+
+#### Main idea
+
+The Ruy Lopez, also called the Spanish Game, starts with 1.e4 e5 2.Nf3 Nc6 3.Bb5. The bishop does not threaten e5 at once, but it attacks the knight that defends it. This builds long-term pressure on Black’s center.
+
+It is played at every level, from club games to world championship matches. It rewards patience: the plans are clear, but the positions stay rich for many moves.
+
+#### The first moves
+
+1. 1.e4 e5: both sides take the center.
+2. 2.Nf3 Nc6: White attacks e5. Black defends it with the knight.
+3. 3.Bb5 a6: the bishop attacks the knight that defends e5. Black asks the bishop what it wants to do.
+4. 4.Ba4 Nf6: White keeps the pressure. Black develops and attacks e4.
+5. 5.O-O Be7: White castles. Black develops the bishop and prepares to castle.
+6. 6.Re1 b5: the rook defends e4. Black drives the bishop back.
+7. 7.Bb3 d6: the bishop keeps its diagonal toward f7. Black supports e5.
+8. 8.c3 O-O: White prepares d4. Black castles. This is the Closed Ruy Lopez.
+
+#### Example
+
+White’s idea is to play d4 and build a big center. Black’s ideas are ...Na5 to trade White’s strong bishop, and ...c5 or ...d5 to challenge the center.
+
+In the Exchange Variation, 4.Bxc6 dxc6 5.O-O, White damages Black’s pawns and aims for a better ending with a healthy kingside pawn majority. Black has the two bishops in return.
+
+#### Plans for White
+
+- Prepare d4 with c3 and h3, then open the center when your pieces are ready.
+- Keep the bishop on b3 (or c2), where it supports the center.
+- Reroute the knight with Nbd2-f1-g3 to reach the kingside.
+- In the Exchange Variation, aim for an endgame where your pawn majority counts.
+
+#### Plans for Black
+
+- Develop with ...Nf6, ...Be7 and ...O-O, then support e5 with ...d6.
+- Play ...Na5 to challenge the bishop, then ...c5 to fight for d4.
+- Look for ...d5 when it equalizes in the center.
+- Keep e5 protected. It is the key pawn of the whole structure.
+
+#### A trap to know: Noah’s Ark Trap
+
+1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 d6 5.d4 b5 6.Bb3 Nxd4 7.Nxd4 exd4 8.Qxd4? c5 9.Qd5 Be6 10.Qc6+ Bd7 11.Qd5 c4. The pawns on c5 and c4 attack the bishop on b3, and White loses it for two pawns.
+
+After 7...exd4, White should not grab the pawn with the queen.
+
+#### Common mistakes
+
+- Thinking that 4.Bxc6 dxc6 5.Nxe5 wins a pawn. Black plays ...Qd4, attacks the knight and the pawn on e4, and regains the pawn.
+- Forgetting to defend e4 before Black can play ...Nxe4.
+- Opening the center with d4 before the king is safe.
+- Pushing ...a6 and ...b5 without a plan, which leaves the queenside weaker.
+
+#### Check yourself
+
+**Question:** In the Ruy Lopez, which piece does the bishop on b5 attack?
+
+**Answer:** The knight on c6. It defends the pawn on e5, so the bishop attacks e5 indirectly.
+
+#### Questions to check yourself
+
+1. **What does 6.Re1 defend?**
+   Answer: The e4 pawn, so Black cannot win it with ...Nxe4.
+2. **What is the main idea of the Exchange Variation?**
+   Answer: White trades the bishop for the knight on c6 to damage Black’s pawns, and aims for a better ending with a kingside pawn majority.
+3. **What happens in Noah’s Ark Trap?**
+   Answer: Black plays ...c5 and ...c4 and traps the bishop on b3, winning it for two pawns.
+
+#### Key takeaway
+
+> Pressure the defender of e5, castle, defend e4 and prepare d4.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 8...O-O** (`/library/board?fen=r1bq1rk1%2F2p1bppp%2Fp1np1n2%2F1p2p3%2F4P3%2F1BP2N2%2FPP1P1PPP%2FRNBQR1K1+w+-+-+1+9`): Open the board and test White’s ideas: h3, d4 or Nbd2.
+- **Ruy Lopez games** (`/library/games?opening=Ruy+Lopez`): Replay real games that began with the Ruy Lopez.
+
+#### Further reading
+
+- *Ruy Lopez*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Ruy_Lopez
+
+---
+
+### 31. Scotch Game: open the center at once
+
+`slug: scotch-game`
+
+Category: Opening · Skill: Developing fast in open positions · Rating: 1000–1800 · Time: 8 min
+
+#### Main idea
+
+The Scotch Game starts with 1.e4 e5 2.Nf3 Nc6 3.d4. White opens the center at once and gets active pieces instead of waiting. The main ideas are direct, so it is easy to learn.
+
+It suits players who like open positions and quick development. It also avoids the long theory of the Ruy Lopez.
+
+#### The first moves
+
+1. 1.e4 e5: both sides take the center.
+2. 2.Nf3 Nc6: White attacks e5. Black defends it.
+3. 3.d4 exd4: White challenges the center. Black takes the pawn.
+4. 4.Nxd4 Nf6: White recaptures with the knight, which now stands in the center. Black develops and attacks e4.
+5. 5.Nxc6 bxc6: White trades the knight and damages Black’s pawn structure.
+6. 6.e5 Qe7: White attacks the knight on f6. Black’s queen attacks e5 and keeps the knight from coming back.
+7. 7.Qe2 Nd5: White defends e5. Black puts the knight on a good central square.
+8. 8.c4 Ba6: White attacks the knight again. Black’s bishop attacks the pawn on c4, which is in front of White’s queen.
+
+#### Example
+
+White has more space and a lead in development. Black has doubled pawns on the c-file, but also the two bishops and an open b-file. Both sides have chances, and the position stays sharp for many moves.
+
+#### Plans for White
+
+- Recapture on d4 with the knight and use the open center for fast development.
+- Develop the bishops to active squares, castle, and put the rooks in the center.
+- Against 4...Bc5, protect the knight with Be3 and follow with c3 and Bc4.
+- Use the space advantage, but keep the king safe.
+
+#### Plans for Black
+
+- Develop quickly with ...Nf6 or ...Bc5 and castle.
+- After a trade on c6, use the open b-file and the bishop pair.
+- Challenge the center with ...d6 or ...d5.
+- Do not take too many pawns: development matters more.
+
+#### A pitfall to avoid: the early queen
+
+After 4.Nxd4, the move 4...Qh4 attacks e4, but White simply defends with 5.Nc3 and develops while Black’s queen is exposed. Bring the queen out only after your minor pieces are developed.
+
+#### Common mistakes
+
+- Recapturing on d4 with the queen. After 4.Qxd4? Nxd4, White loses the queen for a knight.
+- Bringing the queen out early, so the opponent gains time attacking it.
+- Moving the same piece several times without a reason.
+- Forgetting to castle before the center fully opens.
+
+#### Check yourself
+
+**Question:** After 3.d4 exd4, why must White recapture with the knight and not the queen?
+
+**Answer:** After 4.Qxd4? Nxd4 5.Nxd4, White has lost the queen for a knight. The knight is the safe recapture.
+
+#### Questions to check yourself
+
+1. **What does 3.d4 do?**
+   Answer: It opens the center at once, so White’s pieces become active.
+2. **What pawn structure does Black get after 5.Nxc6 bxc6?**
+   Answer: Doubled pawns on the c-file, but the open b-file and the two bishops in return.
+3. **What does White play against 4...Bc5?**
+   Answer: 5.Be3, defending the knight on d4, then c3 and Bc4.
+
+#### Key takeaway
+
+> Open the center, recapture with the knight, develop fast and castle.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 8...Ba6** (`/library/board?fen=r3kb1r%2Fp1ppqppp%2Fb1p5%2F3nP3%2F2P5%2F8%2FPP2QPPP%2FRNB1KB1R+w+KQkq+-+1+9`): Open the board and look for White’s best way to deal with the pin on c4.
+- **Scotch Game games** (`/library/games?opening=Scotch+Game`): Replay real games that began with the Scotch Game.
+
+#### Further reading
+
+- *Scotch Game*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Scotch_Game
+
+---
+
+### 32. Vienna Game: a flexible way to attack with f4
+
+`slug: vienna-game`
+
+Category: Opening · Skill: Attacking with the f-pawn · Rating: 1000–1800 · Time: 8 min
+
+#### Main idea
+
+The Vienna Game starts with 1.e4 e5 2.Nc3. White develops the knight first and keeps the option of f4, a pawn break that opens the f-file and attacks Black’s center. Unlike the Italian Game or the Ruy Lopez, it does not commit the bishop yet.
+
+It suits players who like to attack and want an opening with less theory than the Ruy Lopez. Black must be careful, because White’s ideas are direct.
+
+#### The first moves
+
+1. 1.e4 e5: both sides take the center.
+2. 2.Nc3 Nf6: White develops the knight and guards e4. Black develops and attacks e4.
+3. 3.f4 d5: this is the Vienna Gambit. White prepares to attack the center. Black strikes back in the center at once.
+4. 4.fxe5 Nxe4: White takes the pawn. Black takes the pawn on e4 with the knight.
+5. 5.Nf3 Be7: White develops. Black prepares to castle.
+6. 6.d4 O-O: White builds a big center. Black castles.
+7. 7.Bd3 f5: White attacks the knight on e4. Black defends it with ...f5.
+
+#### Example
+
+After 8.exf6 the game becomes sharp: White has more space, and Black has active pieces. If you want a quieter game, play 3.Bc4 or 3.g3 instead of 3.f4.
+
+#### Plans for White
+
+- Use the break f4 at the right moment to open the f-file and attack e5.
+- Build a big center with d4 and develop quickly.
+- Castle early and keep the king safe before you attack.
+- Trade off Black’s active knight on e4 with Bd3 and Qe2.
+
+#### Plans for Black
+
+- Strike back in the center with ...d5 as soon as White plays f4.
+- Develop quickly with ...Nc6 and ...Be7, and castle.
+- Pin or trade the knight on c3 with ...Bb4 when it helps.
+- Keep your king safe and do not open the f-file for White without a reason.
+
+#### A pitfall to avoid: taking the pawn on f4
+
+After 3.f4, the move 3...exf4? is too greedy: 4.e5 Qe7 5.Qe2 Ng8 6.Nf3 pushes Black’s knight back and gives White a big lead in development. Answer 3.f4 with 3...d5 instead.
+
+#### Common mistakes
+
+- Playing f4 and then leaving the king in the center.
+- Taking the pawn with ...exf4 and falling behind in development.
+- Forgetting ...d5. It is Black’s main way to equalize against f4.
+- Leaving the knight on e4 unsupported after ...Nxe4.
+
+#### Check yourself
+
+**Question:** What is the idea of 2.Nc3 in the Vienna Game?
+
+**Answer:** It defends e4 and prepares f4 without committing the king’s knight or the bishops yet.
+
+#### Questions to check yourself
+
+1. **What is the Vienna Gambit?**
+   Answer: 3.f4 after 2.Nc3 Nf6. White offers to open the f-file, and Black replies ...d5.
+2. **Which quiet alternatives to 3.f4 does White have?**
+   Answer: 3.Bc4 and 3.g3.
+3. **Why is 3...exf4 risky for Black?**
+   Answer: After 4.e5 the knight is chased back, and White develops with tempo.
+
+#### Key takeaway
+
+> Develop with Nc3, play f4 when it is well prepared, and meet ...d5 with a fight for the center.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 7...f5** (`/library/board?fen=rnbq1rk1%2Fppp1b1pp%2F8%2F3pPp2%2F3Pn3%2F2NB1N2%2FPPP3PP%2FR1BQK2R+w+KQ+f6+0+8`): Open the board and compare 8.exf6 with other moves for White.
+- **Vienna Game games** (`/library/games?opening=Vienna+Game`): Replay real games that began with the Vienna Game.
+
+#### Further reading
+
+- *Vienna Game*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Vienna_Game
+
+---
+
+### 33. King’s Gambit: offer a pawn, attack fast
+
+`slug: kings-gambit`
+
+Category: Opening · Skill: Playing for the initiative · Rating: 900–1700 · Time: 8 min
+
+#### Main idea
+
+The King’s Gambit starts with 1.e4 e5 2.f4. White offers the f-pawn to open the f-file and pull away Black’s e5 pawn, in order to build a big center and attack. It was the most popular opening of the 19th century, and it is still great fun to play.
+
+It suits players who love open, tactical positions. It is risky for both sides, because White’s king is exposed, so accuracy matters.
+
+#### The first moves
+
+1. 1.e4 e5: both sides take the center.
+2. 2.f4 exf4: White offers a pawn. Black accepts it. This is the King’s Gambit Accepted.
+3. 3.Nf3 g5: White develops and stops ...Qh4+. Black holds the extra pawn with ...g5.
+4. 4.h4 g4: White attacks the pawn on g5. Black pushes it and attacks the knight.
+5. 5.Ne5 Nf6: the knight lands on e5. Black develops and attacks e4.
+
+#### Example
+
+The usual continuation is 6.Bc4 d5 7.exd5 Bd6. Black has an extra pawn, and White has the initiative and open lines. Both sides need exact play, and a single slip can lose quickly.
+
+#### Plans for White
+
+- Develop fast and use the open f-file. Castle early.
+- Support e4 and build a center with d4 and Nc3.
+- Aim the bishop at f7 with Bc4, and attack the weak king.
+- Win back the pawn on f4 when it is safe.
+
+#### Plans for Black
+
+- Keep the extra pawn only if it is safe. A quick ...d5 gives the pawn back and frees your game.
+- Develop your pieces and castle quickly.
+- Know what ...g5 and ...g4 do: they weaken your own king.
+- If you do not know the theory, decline with 2...Bc5 or 2...d5.
+
+#### A famous idea: the Muzio Gambit
+
+1.e4 e5 2.f4 exf4 3.Nf3 g5 4.Bc4 g4 5.O-O gxf3 6.Qxf3. White gives a whole knight for a big lead in development and open lines against the black king. It is a famous attacking idea, and it is dangerous to face without knowing the theory.
+
+As Black, you can avoid it by declining the gambit (2...Bc5 or 2...d5) or by playing 3...Be7 or 3...d6.
+
+#### Common mistakes
+
+- Playing the King’s Gambit and not castling: the king is exposed.
+- As White, forgetting that ...Qh4+ is possible after ...exf4 if you do not develop the knight to f3 in time.
+- As Black, holding every pawn instead of developing the pieces.
+- Pushing pawns on the kingside without calculating the consequences.
+
+#### Check yourself
+
+**Question:** What does White offer with 2.f4, and what does White get in return?
+
+**Answer:** The f-pawn. After 2...exf4 White gets an open f-file, a chance for the center with d4, and fast development.
+
+#### Questions to check yourself
+
+1. **What does 3.Nf3 prevent?**
+   Answer: 3...Qh4+, a check on the e1-h4 diagonal.
+2. **What is the Muzio Gambit?**
+   Answer: 4.Bc4 g4 5.O-O, where White sacrifices a knight for a fast attack.
+3. **Name two ways for Black to decline the gambit.**
+   Answer: 2...Bc5, and 2...d5 (the Falkbeer Counter-Gambit).
+
+#### Key takeaway
+
+> Offer the f-pawn, develop fast and castle. As Black, accept only if you can keep your king safe.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 5...Nf6** (`/library/board?fen=rnbqkb1r%2Fpppp1p1p%2F5n2%2F4N3%2F4PppP%2F8%2FPPPP2P1%2FRNBQKB1R+w+KQkq+-+2+6`): Open the board and look at White’s options: Bc4, d4 and Nc3.
+- **King’s Gambit games** (`/library/games?search=King%27s+Gambit`): Replay real games that began with the King’s Gambit.
+
+#### Further reading
+
+- *King’s Gambit*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/King%27s_Gambit
+
+---
+
+### 34. Sicilian Defense: fight for the center from the side
+
+`slug: sicilian-defense`
+
+Category: Opening · Skill: Playing for a win as Black · Rating: 1200–2000 · Time: 9 min
+
+#### Main idea
+
+The Sicilian Defense starts with 1.e4 c5. Black does not copy White. The c-pawn attacks the d4 square from the side, so the game is unbalanced from the start: White gets more space, Black gets the open c-file and a healthy central pawn.
+
+It is the most popular reply to 1.e4 and the choice of many strong players who want to play for a win with Black.
+
+#### The first moves
+
+1. 1.e4 c5: Black attacks d4 with a flank pawn.
+2. 2.Nf3 d6: White develops and prepares d4. Black opens the bishop and controls e5.
+3. 3.d4 cxd4: White opens the center. Black trades the c-pawn for the d-pawn.
+4. 4.Nxd4 Nf6: White recaptures with the knight. Black develops and attacks e4.
+5. 5.Nc3 a6: White defends e4. Black plays the Najdorf move: ...a6 stops Nb5 and prepares ...b5.
+
+#### Example
+
+This is called the Open Sicilian, because the center opens after d4. White often attacks the kingside with Be3, f3, Qd2 and long castling, or plays calmly with Be2 and short castling. Black plays on the queenside and in the center with ...e5 or ...e6, ...b5 and ...Bb7, using the open c-file.
+
+Black has other fifth moves: 5...Nc6 (Classical), 5...g6 (Dragon) and 5...e6 (Scheveningen). When the kings castle on opposite sides, the game becomes a race, so speed matters.
+
+#### Plans for White
+
+- Use your extra space and development, and keep the knight on d4 strong.
+- Choose a setup: Be3, f3, Qd2 and O-O-O for a fast kingside attack, or Be2 and O-O for a calm plan.
+- Watch Black’s break ...d5. It can free Black’s game at once.
+
+#### Plans for Black
+
+- Use the open c-file: put a rook on c8 and a knight on c6.
+- Play on the queenside with ...b5 and ...Bb7.
+- Aim for ...d5 or ...e5 to challenge the center.
+- Develop first. Do not fall behind in development while White attacks.
+
+#### A pitfall to avoid: the Poisoned Pawn
+
+In the Najdorf, the line 6.Bg5 e6 7.f4 Qb6 8.Qd2 Qxb2 is famous. Black’s queen takes a pawn far from home while White’s pieces come into play. It is very sharp and needs exact knowledge.
+
+If you are not sure of the theory, do not grab pawns early. Develop with ...Qc7 and ...Nbd7 instead.
+
+#### Common mistakes
+
+- Capturing pawns with the queen while your pieces are still at home.
+- Leaving the king in the center while White opens lines with f4 or e5.
+- Learning long lines by heart without knowing the plan behind them.
+- Playing a Dragon or Najdorf setup against a different White system without checking the tactics.
+
+#### Check yourself
+
+**Question:** Why does Black play 1...c5 and not 1...e5?
+
+**Answer:** The c-pawn attacks the d4 square from the side and unbalances the game: White gets more central space, Black gets the open c-file.
+
+#### Questions to check yourself
+
+1. **What is an Open Sicilian?**
+   Answer: A Sicilian where White plays d4 and Black takes with ...cxd4, so the center opens.
+2. **Which move on move 5 is called the Najdorf?**
+   Answer: 5...a6, after 1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3.
+3. **Why do both sides often castle on opposite wings?**
+   Answer: White attacks the kingside and Black attacks on the queenside. It becomes a race, so each side plays fast.
+
+#### Key takeaway
+
+> Trade the c-pawn for White’s d-pawn, develop fast, use the c-file and keep your king safe.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 5...a6** (`/library/board?fen=rnbqkb1r%2F1p2pppp%2Fp2p1n2%2F8%2F3NP3%2F2N5%2FPPP2PPP%2FR1BQKB1R+w+KQkq+-+0+6`): Open the board and test White’s sixth moves: Be3, Bg5, Be2 or f4.
+- **Sicilian Defense games** (`/library/games?opening=Sicilian+Defense`): Replay real games that began with the Sicilian Defense.
+
+#### Further reading
+
+- *Sicilian Defence*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Sicilian_Defence
+
+---
+
+### 35. French Defense: a solid pawn chain
+
+`slug: french-defense`
+
+Category: Opening · Skill: Playing against a pawn chain · Rating: 1000–1900 · Time: 8 min
+
+#### Main idea
+
+The French Defense starts with 1.e4 e6 2.d4 d5. Black builds a solid pawn chain and challenges White’s center at once. The positions are often closed, so the plans are clearer than in open games.
+
+Its main drawback is the bishop on c8, which is shut in behind the e6 pawn. Freeing it is one of the main themes of the opening.
+
+#### The first moves
+
+1. 1.e4 e6: Black prepares ...d5 and keeps a solid pawn chain.
+2. 2.d4 d5: both sides have pawns in the center. The pawn on e4 is attacked.
+3. 3.Nc3 Nf6: White defends e4. Black attacks it again.
+4. 4.Bg5 Be7: White pins the knight to the queen. Black breaks the pin with the bishop.
+5. 5.e5 Nfd7: White gains space and attacks the knight. Black moves it and prepares ...c5.
+6. 6.Bxe7 Qxe7: White trades Black’s good dark-squared bishop. Black recaptures with the queen.
+7. 7.f4 O-O: White supports e5 and builds a big center. Black castles.
+8. 8.Nf3 c5: White develops. Black attacks d4, the base of White’s pawn chain.
+
+#### Example
+
+White has more space and can attack on the kingside. Black is a little cramped, but has a clear target: the d4 pawn. Black usually adds pressure with ...Nc6 and ...cxd4, and later plays ...f6 to attack the head of the chain on e5.
+
+#### Plans for White
+
+- Use your space advantage and keep e5 strong with f4 and Nf3.
+- Attack on the kingside, because Black is cramped there.
+- Keep d4 safe. Black will attack it again and again.
+- Do not trade the pawn on e5 without a good reason.
+
+#### Plans for Black
+
+- Attack the base of White’s chain: d4, with ...c5, ...Nc6 and ...Qb6.
+- Free the c8-bishop with ...b6 and ...Ba6, or trade it.
+- Strike at the head of the chain with ...f6 when White’s pieces are not ready.
+- Do not stay passive. A French that only waits is hard to hold.
+
+#### A pitfall to avoid: the bad bishop
+
+If Black never finds a role for the c8-bishop, it stays locked behind the e6 pawn and Black plays a piece down for the whole game. Think about it early: plan ...b6 and ...Ba6, or open the position with ...c5 and ...dxe4.
+
+#### Common mistakes
+
+- Leaving the c8-bishop locked up for the whole game.
+- Playing quietly as Black. The French needs ...c5 and often ...f6 to break the chain.
+- Attacking the head of the chain first. Attack its base on d4 before the pawn on e5.
+- Putting pieces on passive squares as White and forgetting that d4 is under constant pressure.
+
+#### Check yourself
+
+**Question:** In the French, which pawn is the base of White’s chain, and how does Black attack it?
+
+**Answer:** The pawn on d4. Black attacks it with ...c5, ...Nc6 and ...Qb6.
+
+#### Questions to check yourself
+
+1. **Which Black bishop is the problem piece in the French, and why?**
+   Answer: The bishop on c8, because the pawn on e6 blocks its diagonal.
+2. **What does 5.e5 do?**
+   Answer: It gains space and attacks the knight on f6. It also locks the center, so both sides play on the wings.
+3. **Name two plans for Black in this line.**
+   Answer: ...c5 against the pawn on d4, and ...f6 against the pawn on e5.
+
+#### Key takeaway
+
+> Build the chain, attack d4 with ...c5, free the c8-bishop and watch White’s space on the kingside.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 8...c5** (`/library/board?fen=rnb2rk1%2Fpp1nqppp%2F4p3%2F2ppP3%2F3P1P2%2F2N2N2%2FPPP3PP%2FR2QKB1R+w+KQ+-+0+9`): Open the board and compare dxc5 with keeping the tension on d4.
+- **French Defense games** (`/library/games?opening=French+Defense`): Replay real games that began with the French Defense.
+
+#### Further reading
+
+- *French Defence*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/French_Defence
+
+---
+
+### 36. Caro-Kann Defense: solid and safe
+
+`slug: caro-kann-defense`
+
+Category: Opening · Skill: A sound reply to 1.e4 · Rating: 900–1900 · Time: 8 min
+
+#### Main idea
+
+The Caro-Kann Defense starts with 1.e4 c6. Black prepares ...d5 with a pawn, so the c8-bishop can come out before ...e6 closes it in. The structure is solid and healthy.
+
+It suits players who want a sound game with clear plans and fewer early dangers than in most replies to 1.e4.
+
+#### The first moves
+
+1. 1.e4 c6: Black prepares ...d5 and supports it with the c-pawn.
+2. 2.d4 d5: both sides take the center.
+3. 3.Nc3 dxe4: White defends e4. Black captures it.
+4. 4.Nxe4 Bf5: White recaptures with the knight. Black develops the bishop outside the pawn chain, before ...e6.
+5. 5.Ng3 Bg6: White attacks the bishop. Black retreats it.
+6. 6.h4 h6: White threatens h5 to trap the bishop. Black plays ...h6, so the bishop can go to h7.
+7. 7.Nf3 Nd7: White develops. Black develops and prepares ...Ngf6.
+8. 8.h5 Bh7: White pushes the pawn. The bishop retreats to h7 and keeps an eye on the diagonal toward d3.
+
+#### Example
+
+White usually plays Bd3 to offer a trade of Black’s active bishop. Black accepts, finishes development with ...e6 and ...Ngf6, and gets a very solid position with no weaknesses.
+
+Other White tries to know: the Advance Variation, 3.e5, which gains space, and the Exchange Variation, 3.exd5 cxd5, which gives a symmetrical structure.
+
+#### Plans for White
+
+- Develop quickly and offer a trade of Black’s active bishop with Bd3.
+- Use the small space advantage and play in the center with c4 or Ne5 ideas.
+- Put pieces on active squares. A knight on e5 is strong when Black’s pawns allow it.
+- Against ...Bg6, play h4-h5 to gain space on the kingside.
+
+#### Plans for Black
+
+- Develop the light-squared bishop before closing the pawn chain with ...e6.
+- Keep the pawn structure healthy: there are no weaknesses to attack.
+- Counterattack in the center with ...c5 when you are ready.
+- Trade pieces when White chases your bishop. Do not waste time.
+
+#### A trap to know: the queen on e2
+
+1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Nd7 5.Qe2 Ngf6?? 6.Nd6#. The queen on e2 pins the pawn on e7 to the king. When the knight jumps to d6, nothing can capture it and the king has no square.
+
+After 5.Qe2, Black should play 5...e6 first.
+
+#### Common mistakes
+
+- Playing ...Ngf6 against a queen on e2 when the knight can jump to d6 (Nd6#).
+- Closing the c8-bishop in with ...e6 before it has come out to f5 or g4.
+- Playing too passively. The Caro-Kann is solid, but you still need ...c5 or ...e5 to fight.
+- Forgetting White’s plan of h4-h5 against the bishop on g6.
+
+#### Check yourself
+
+**Question:** Why does Black play ...Bf5 before ...e6 in the Caro-Kann?
+
+**Answer:** The move ...e6 would block the c8-bishop. By developing the bishop first, Black keeps it active outside the pawn chain.
+
+#### Questions to check yourself
+
+1. **What is the Advance Variation?**
+   Answer: 3.e5. White gains space, and Black attacks White’s pawn chain with ...c5.
+2. **What does ...h6 do in the main line?**
+   Answer: It gives the bishop the square h7, so White’s pawn on h5 cannot trap it.
+3. **What is the trap after 5.Qe2?**
+   Answer: 5...Ngf6?? 6.Nd6#. The pawn on e7 is pinned, so the knight on d6 cannot be captured.
+
+#### Key takeaway
+
+> Develop the light-squared bishop first, keep a solid pawn structure and counter with ...c5.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 8...Bh7** (`/library/board?fen=r2qkbnr%2Fpp1npppb%2F2p4p%2F7P%2F3P4%2F5NN1%2FPPP2PP1%2FR1BQKB1R+w+KQkq+-+1+9`): Open the board and look at White’s ideas: Bd3, Bf4 and Qe2.
+- **Caro-Kann Defense games** (`/library/games?opening=Caro-Kann+Defense`): Replay real games that began with the Caro-Kann Defense.
+
+#### Further reading
+
+- *Caro–Kann Defence*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Caro%E2%80%93Kann_Defence
+
+---
+
+### 37. Pirc and Modern Defense: let White build the center
+
+`slug: pirc-defense`
+
+Category: Opening · Skill: Counterattacking as Black · Rating: 1100–1900 · Time: 9 min
+
+#### Main idea
+
+In the Pirc Defense (1.e4 d6 2.d4 Nf6 3.Nc3 g6) Black lets White build a big center and plans to attack it later. The bishop on g7 becomes a strong piece on the long diagonal. The Modern Defense (1...g6 first) is a similar idea with a different move order.
+
+It suits flexible players who like to counterattack. It has more theory than it seems, and White has several sharp tries, so you must know the plan.
+
+#### The first moves
+
+1. 1.e4 d6: Black prepares to develop without taking the center yet.
+2. 2.d4 Nf6: White takes the center. Black attacks e4.
+3. 3.Nc3 g6: White defends e4 with a developing move. Black prepares the bishop on g7.
+4. 4.Nf3 Bg7: White develops. The bishop looks along the long diagonal.
+5. 5.Be2 O-O: White prepares to castle. Black castles.
+6. 6.O-O c6: White castles. Black prepares ...Qc7 and the break ...e5, or ...b5.
+
+#### Example
+
+Black’s next ideas are ...Nbd7, ...Qc7 and the break ...e5 to challenge the center. White has more space, but if White does not keep the center under control, Black gets counterplay.
+
+White’s sharpest try is the Austrian Attack, 4.f4. White gets a huge center and a quick attack, so Black must counter at once with ...Bg7, ...O-O and a break such as ...c5 or ...e5.
+
+#### Plans for White
+
+- Use the space of a big center: e4, d4 and later e5.
+- Choose a setup: the calm Classical one with Be2 and O-O, or the sharp one with f4 and Bd3.
+- Develop quickly and castle before you attack.
+- Watch Black’s breaks ...e5 and ...c5 and be ready to answer them.
+
+#### Plans for Black
+
+- Develop quickly and castle. Your king is safe on g8 behind the bishop.
+- Prepare the break ...e5 with ...Nbd7 and ...c6, or play ...c5.
+- Use the bishop on g7 along the long diagonal and try not to trade it.
+- Stay alert against the Austrian Attack: do not play slowly.
+
+#### A pitfall to avoid: the Austrian Attack
+
+After 4.f4, White has pawns on e4, d4 and f4. If Black plays slowly, the push e5 gains time and the attack on the kingside arrives first. Counter in the center right away, with ...c5 or ...e5, and keep your pieces developing.
+
+#### Common mistakes
+
+- Playing passively and never striking at the center with ...e5 or ...c5.
+- Trading the bishop on g7, which is Black’s best piece.
+- Playing without a plan against 4.f4.
+- As White, pushing pawns without developing the pieces.
+
+#### Check yourself
+
+**Question:** What is the difference between the Pirc and the Modern Defense?
+
+**Answer:** In the Pirc, Black plays ...Nf6 early. In the Modern, Black plays ...g6 and ...Bg7 first and keeps the knight flexible.
+
+#### Questions to check yourself
+
+1. **Which pawn break does Black aim for in the Classical Pirc?**
+   Answer: ...e5, or sometimes ...c5.
+2. **What is the Austrian Attack?**
+   Answer: 4.f4. White builds a very big center and attacks.
+3. **Why does Black play ...d6 and ...g6 and not ...d5?**
+   Answer: Black prefers to let White build the center, then attacks it later with pieces and pawn breaks.
+
+#### Key takeaway
+
+> Let White build the center, put the bishop on g7 and strike with ...e5 or ...c5.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 6...c6** (`/library/board?fen=rnbq1rk1%2Fpp2ppbp%2F2pp1np1%2F8%2F3PP3%2F2N2N2%2FPPP1BPPP%2FR1BQ1RK1+w+-+-+0+7`): Open the board and compare White’s choices: a4, Re1 and Qd3.
+- **Pirc Defense games** (`/library/games?opening=Pirc+Defense`): Replay real games that began with the Pirc Defense.
+
+#### Further reading
+
+- *Pirc Defence*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Pirc_Defence
+
+---
+
+### 38. Scandinavian Defense: take the center right away
+
+`slug: scandinavian-defense`
+
+Category: Opening · Skill: A simple reply to 1.e4 · Rating: 800–1700 · Time: 8 min
+
+#### Main idea
+
+The Scandinavian Defense starts with 1.e4 d5. Black challenges the center at once. After 2.exd5 Qxd5 3.Nc3 the queen has to move again, but she finds a safe square, and Black can develop calmly.
+
+It suits beginners and club players: there is little theory, and the plans are simple. The price is that White gets some extra time and space, so Black must develop carefully.
+
+#### The first moves
+
+1. 1.e4 d5: Black strikes at the center at once.
+2. 2.exd5 Qxd5: White takes the pawn. Black recaptures with the queen.
+3. 3.Nc3 Qa5: White develops with tempo and attacks the queen. Black moves it to a safe square.
+4. 4.d4 Nf6: White takes the center. Black develops a knight.
+5. 5.Nf3 c6: White develops. Black supports the queen and prepares ...Bf5.
+6. 6.Bc4 Bf5: White develops the bishop. Black develops the bishop outside the pawn chain, before ...e6.
+7. 7.Bd2 e6: White finishes developing the minor pieces. Black builds a solid pawn center.
+
+#### Example
+
+Black will castle after ...Be7 or ...Bb4, and the queen goes to c7 or stays on a5. White has a small space advantage, and Black has a solid position without weak pawns.
+
+#### Plans for White
+
+- Develop with tempo against the queen: Nc3, d4, Nf3 and Bc4.
+- Use your space advantage and castle quickly.
+- Look for jumps like Nb5 or Nd5 when Black’s pieces are not ready.
+- Trade Black’s active bishop on f5 if it helps, or take away its squares.
+
+#### Plans for Black
+
+- Develop the light-squared bishop with ...Bf5 or ...Bg4 before playing ...e6.
+- Keep the queen safe on a5, d6 or d8, and be ready to trade or retreat.
+- Play ...c6 to support the queen and the center, then castle.
+- Strike with ...e5 or ...c5 when your pieces are ready.
+
+#### A pitfall to avoid: the early queen
+
+The queen comes out on move 2, so every extra queen move costs time. After 4.d4, ideas like Bd2 and Nb5 can bother a queen on a5. Check each queen move and do not leave her where a minor piece can attack her with tempo.
+
+#### Common mistakes
+
+- Moving the queen several times and falling behind in development.
+- Taking pawns with the queen while the other pieces are still at home.
+- Closing the c8-bishop in with ...e6 before it has come out to f5 or g4.
+- Forgetting that the queen on a5 can be attacked by Bd2, Nb5 and b4 ideas.
+
+#### Check yourself
+
+**Question:** Why does White play 3.Nc3 after 2...Qxd5?
+
+**Answer:** It develops a knight and attacks the queen, so White gains a tempo.
+
+#### Questions to check yourself
+
+1. **Where can the queen go after 3.Nc3?**
+   Answer: Most often to a5 or d6, and d8 is also safe.
+2. **Why is ...c6 a useful move for Black?**
+   Answer: It supports the queen and the center, controls b5 and d5, and prepares ...Bf5 and ...e6.
+3. **What should Black do with the c8-bishop?**
+   Answer: Develop it outside the pawn chain with ...Bf5 or ...Bg4 before playing ...e6.
+
+#### Key takeaway
+
+> Take the center, move the queen with care, get the light-squared bishop out and keep a solid pawn structure.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 7...e6** (`/library/board?fen=rn2kb1r%2Fpp3ppp%2F2p1pn2%2Fq4b2%2F2BP4%2F2N2N2%2FPPPB1PPP%2FR2QK2R+w+KQkq+-+0+8`): Open the board and look at White’s ideas: Qe2, Ne5, O-O and a4.
+- **Scandinavian Defense games** (`/library/games?opening=Scandinavian+Defense`): Replay real games that began with the Scandinavian Defense.
+
+#### Further reading
+
+- *Scandinavian Defence*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Scandinavian_Defense
+
+---
+
+### 39. Queen’s Gambit: the main 1.d4 opening
+
+`slug: queens-gambit`
+
+Category: Opening · Skill: Fighting for the center with pawns · Rating: 1000–1900 · Time: 8 min
+
+#### Main idea
+
+The Queen’s Gambit starts with 1.d4 d5 2.c4. White offers a pawn to pull Black’s d5 pawn away and take control of the center. It is not a true gambit: if Black takes the pawn, White can usually win it back.
+
+It is the main opening after 1.d4, so every player meets it often. It is also a good school for pawn structure and the fight for the center.
+
+#### The first moves
+
+1. 1.d4 d5: both sides take the center with the queen’s pawn.
+2. 2.c4 e6: White attacks d5. Black defends it solidly. This is the Queen’s Gambit Declined.
+3. 3.Nc3 Nf6: White develops and adds pressure on d5. Black develops and also guards d5.
+4. 4.Bg5 Be7: White pins the knight to the queen. Black breaks the pin.
+5. 5.e3 O-O: White opens the f1-bishop and supports the center. Black castles.
+6. 6.Nf3 Nbd7: both sides complete the kingside setup. Black develops the queen’s knight.
+
+#### Example
+
+White usually continues with Qc2, Bd3 and Rc1, planning the central break e4 or the pawn push c5. Black prepares the freeing break ...c5 or ...e5 and keeps the position solid.
+
+Black has other second moves: 2...c6 (the Slav, solid, keeping the c8-bishop free) and 2...dxc4 (the Queen’s Gambit Accepted, taking the pawn and giving back the center).
+
+#### Plans for White
+
+- Build a strong center with e3, Nf3, Bd3 and Qc2 or Rc1.
+- Aim for the break e4 to open the position when your pieces are ready.
+- Use the bishop on g5 to pressure the knight on f6 and the pawn on e7.
+- If Black takes on c4, win the pawn back with e3 and Bxc4.
+
+#### Plans for Black
+
+- Keep the d5 pawn protected and develop solidly.
+- Free the position with ...c5 or ...e5, or with ...dxc4 at the right moment.
+- Develop the c8-bishop with ...b6 and ...Bb7, or after ...dxc4.
+- Black is slightly cramped, so trading pieces helps, especially knights.
+
+#### A trap to know: the Elephant Trap
+
+1.d4 d5 2.c4 e6 3.Nc3 Nf6 4.Bg5 Nbd7 5.cxd5 exd5 6.Nxd5?? Nxd5! 7.Bxd8 Bb4+ 8.Qd2 Bxd2+ 9.Kxd2 Kxd8. White grabbed a pawn and took the queen, but Black wins the queen back with check and ends up a piece ahead for a pawn.
+
+#### Common mistakes
+
+- Taking on d5 with the knight in the Elephant Trap (6.Nxd5??).
+- Trying to hold the extra pawn if you take on c4. White usually wins it back with e3, Bxc4 or a4.
+- Forgetting that ...e6 closes in the c8-bishop. Plan its development.
+- Playing e4 too early, before the pieces are developed.
+
+#### Check yourself
+
+**Question:** Why is the Queen’s Gambit not a true gambit?
+
+**Answer:** If Black takes on c4, White can win the pawn back, for example with e3 and Bxc4.
+
+#### Questions to check yourself
+
+1. **What does 2.c4 attack?**
+   Answer: The d5 pawn. White wants to remove it and control the center.
+2. **What is the Slav Defense?**
+   Answer: 2...c6. It defends d5 with a pawn and keeps the c8-bishop free.
+3. **What is the Elephant Trap?**
+   Answer: After ...Nbd7, 6.Nxd5?? Nxd5 7.Bxd8 Bb4+ and Black wins the queen back and ends a piece ahead.
+
+#### Key takeaway
+
+> Offer the c-pawn to win the center, develop with e3 and Nf3, and aim for the break e4.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 6...Nbd7** (`/library/board?fen=r1bq1rk1%2Fpppnbppp%2F4pn2%2F3p2B1%2F2PP4%2F2N1PN2%2FPP3PPP%2FR2QKB1R+w+KQ+-+3+7`): Open the board and compare Qc2, Rc1 and cxd5 for White.
+- **Queen’s Gambit games** (`/library/games?opening=Queen%27s+Gambit+Declined`): Replay real games that began with the Queen’s Gambit Declined.
+
+#### Further reading
+
+- *Queen’s Gambit*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Queen%27s_Gambit
+
+---
+
+### 40. Slav Defense: solid against the Queen’s Gambit
+
+`slug: slav-defense`
+
+Category: Opening · Skill: A solid reply to 1.d4 · Rating: 1000–1900 · Time: 8 min
+
+#### Main idea
+
+The Slav Defense starts with 1.d4 d5 2.c4 c6. Black defends d5 with the c-pawn instead of the e-pawn, so the c8-bishop stays free to develop. It is a very solid reply to the Queen’s Gambit.
+
+It suits players who want a sound structure and clear plans. It is one of the most respected defenses at every level.
+
+#### The first moves
+
+1. 1.d4 d5: both sides take the center.
+2. 2.c4 c6: White attacks d5. Black defends it with the c-pawn and keeps the bishop free.
+3. 3.Nf3 Nf6: both sides develop a knight.
+4. 4.Nc3 dxc4: White adds pressure on d5. Black takes the pawn.
+5. 5.a4 Bf5: White stops ...b5. Black develops the bishop outside the pawn chain.
+6. 6.e3 e6: White opens the f1-bishop to win the pawn back. Black closes the center, now that the bishop is out.
+7. 7.Bxc4 Bb4: White wins the pawn back. Black pins the knight on c3.
+
+#### Example
+
+After 8.O-O Nbd7, Black’s position is solid and has no weaknesses. White has a small lead in development and the center. Black plans ...Bg6, ...O-O and a break such as ...c5 or ...e5 to equalize.
+
+If Black plays 4...e6 instead of 4...dxc4, the game becomes the Semi-Slav, which is sharper.
+
+#### Plans for White
+
+- Win back the c4 pawn and use the space it gives you.
+- Develop quickly and castle, then prepare the central break e4.
+- Use the bishops actively, and watch for a bishop on g5 or d3.
+- Keep the queenside under control with a4 and Qc2.
+
+#### Plans for Black
+
+- Develop the c8-bishop to f5 or g4 before you play ...e6.
+- Be ready to give the c4 pawn back instead of weakening your position.
+- Free the game with ...c5 or ...e5 when your pieces are ready.
+- Keep a solid pawn structure without weaknesses.
+
+#### A pitfall to avoid: holding the pawn
+
+The move 5.a4 stops ...b5, so Black cannot hold the extra pawn. Do not weaken your position just to keep it. Develop your pieces, and let White win the pawn back.
+
+#### Common mistakes
+
+- Playing ...e6 before the c8-bishop has come out, which locks it in (unless you want the Semi-Slav).
+- Trying to hold the c4 pawn at all costs.
+- Leaving the king in the center after White wins the pawn back.
+- Ignoring White’s central break e4.
+
+#### Check yourself
+
+**Question:** What is the main advantage of the Slav over the Queen’s Gambit Declined?
+
+**Answer:** The c8-bishop is not locked behind the e6 pawn. Black can develop it to f5 or g4 first.
+
+#### Questions to check yourself
+
+1. **What does 2...c6 do?**
+   Answer: It defends d5 and prepares ...dxc4 and ...Bf5.
+2. **What is the Semi-Slav?**
+   Answer: The setup after 1.d4 d5 2.c4 c6 3.Nf3 Nf6 4.Nc3 e6, with pawns on c6, d5 and e6.
+3. **Which move stops Black from holding the pawn with ...b5?**
+   Answer: 5.a4.
+
+#### Key takeaway
+
+> Defend d5 with ...c6, bring out the c8-bishop first and be ready to give the pawn back.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 7...Bb4** (`/library/board?fen=rn1qk2r%2Fpp3ppp%2F2p1pn2%2F5b2%2FPbBP4%2F2N1PN2%2F1P3PPP%2FR1BQK2R+w+KQkq+-+1+8`): Open the board and look at White’s ideas: O-O, Qe2 and Bd2.
+- **Slav Defense games** (`/library/games?opening=Slav+Defense`): Replay real games that began with the Slav Defense.
+
+#### Further reading
+
+- *Slav Defense*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Slav_Defense
+
+---
+
+### 41. London System: one setup against everything
+
+`slug: london-system`
+
+Category: Opening · Skill: A simple setup with little theory · Rating: 800–1700 · Time: 8 min
+
+#### Main idea
+
+The London System starts with 1.d4 and 2.Bf4. White develops the dark-squared bishop outside the pawn chain, then builds the same compact setup with e3, c3, Nf3, Nbd2 and Bd3, whatever Black plays.
+
+It suits players who want to spend little time on theory. It is very common in club games and online.
+
+#### The first moves
+
+1. 1.d4 d5: both sides take the center.
+2. 2.Bf4 Nf6: White puts the bishop outside the pawn chain, before playing e3. Black develops.
+3. 3.e3 e6: White opens the way for the other bishop. Black builds a solid center.
+4. 4.Nf3 c5: White develops. Black attacks d4.
+5. 5.c3 Nc6: White supports d4. Black adds pressure on it.
+6. 6.Nbd2 Bd6: White completes the setup. Black challenges White’s active bishop.
+7. 7.Bg3 O-O: White keeps the bishop. If Black trades it, White recaptures with the h-pawn and opens the h-file. Black castles.
+
+#### Example
+
+White’s plan is to play Bd3, then Qe2 or Qc2, and finally the break e4, or the jump Ne5. The London is solid, but it is not passive: the ideas Ne5 and e4 give White real attacking chances.
+
+#### Plans for White
+
+- Develop the bishop to f4 before playing e3, or it gets locked in.
+- Complete the setup with c3, Nbd2 and Bd3, then castle.
+- Prepare the break e4 with Nbd2, Bd3 and Qe2, or jump to e5 with the knight.
+- If Black attacks the bishop with ...Bd6 or ...Nh5, keep it with Bg3.
+
+#### Plans for Black
+
+- Hit the center from the side with ...c5 and ...Qb6.
+- Attack the b2 pawn. It is the weak point of the setup.
+- Challenge the bishop with ...Bd6 or ...Nh5.
+- Use your own central pawns to take space. White’s setup is slow.
+
+#### A pitfall to avoid: the b2 pawn
+
+After 1.d4 d5 2.Bf4 c5 3.e3 Qb6, the b2 pawn is attacked and the c1-bishop is no longer there to defend it. Do not ignore the threat. Defend with 4.Qc1 or 4.b3.
+
+#### Common mistakes
+
+- Playing e3 before Bf4, so the bishop is shut in behind its own pawn.
+- Ignoring ...Qb6 and losing the b2 pawn.
+- Playing the setup on autopilot and not checking Black’s tactics.
+- Forgetting the attack in the center. Ne5 and e4 are the plans that give White winning chances.
+
+#### Check yourself
+
+**Question:** Why does White play Bf4 before e3 in the London?
+
+**Answer:** After e3, the c1-bishop is locked behind the pawn. Developing it first keeps it active outside the pawn chain.
+
+#### Questions to check yourself
+
+1. **Which pawn is the usual target for Black in the London?**
+   Answer: The pawn on b2, attacked by ...Qb6.
+2. **What does White do if Black plays ...Bd6 against the bishop on f4?**
+   Answer: White plays Bg3. If Black trades on g3, White recaptures with hxg3 and gets an open h-file.
+3. **What are White’s typical central ideas?**
+   Answer: The jump Ne5 and the pawn break e4.
+
+#### Key takeaway
+
+> Bishop first, then e3, c3, Nf3, Nbd2 and Bd3, and look for Ne5 or e4.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 7...O-O** (`/library/board?fen=r1bq1rk1%2Fpp3ppp%2F2nbpn2%2F2pp4%2F3P4%2F2P1PNB1%2FPP1N1PPP%2FR2QKB1R+w+KQ+-+5+8`): Open the board and look for White’s ideas: Bd3, Ne5 and Qe2.
+- **London System games** (`/library/games?search=London`): Replay real games that began with the London System.
+
+#### Further reading
+
+- *London System*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/London_System
+
+---
+
+### 42. King’s Indian Defense: let White build, then strike
+
+`slug: kings-indian-defense`
+
+Category: Opening · Skill: Counterattacking a big center · Rating: 1300–2000 · Time: 9 min
+
+#### Main idea
+
+In the King’s Indian Defense, Black lets White build a big center with pawns on c4, d4 and e4, then attacks it with pieces and pawn breaks. The bishop on g7 becomes a very powerful piece.
+
+It suits fighting players who like to attack the king. It is sharp and rich in plans, but you must know the plan, not only the moves.
+
+#### The first moves
+
+1. 1.d4 Nf6: Black controls e4 and does not take the center with pawns yet.
+2. 2.c4 g6: White grows the center. Black prepares to put the bishop on g7.
+3. 3.Nc3 Bg7: White develops. The bishop looks along the long diagonal.
+4. 4.e4 d6: White takes a big center. Black prepares ...e5 and opens the c8-bishop.
+5. 5.Nf3 O-O: White develops. Black castles and the king is safe.
+6. 6.Be2 e5: Black strikes at the center at once.
+
+#### Example
+
+The usual continuation is 7.O-O Nc6 8.d5 Ne7. White plays on the queenside with c5, while Black plays ...Nd7, ...f5 and ...g5 to attack the king. This is the typical King’s Indian race: both kings are castled, and each side pushes pawns on its own wing.
+
+#### Plans for White
+
+- Use your space: push c5 to open lines on the queenside.
+- Keep the center strong with Be3 and Qd2 and close it with d5 when the moment is right.
+- Keep your pieces near the king. Black’s attack with ...f5 comes quickly.
+- Count the tempi. Your queenside attack must be faster than Black’s kingside attack.
+
+#### Plans for Black
+
+- Attack with ...f5, then ...g5 and ...f4, against the king.
+- Use the bishop on g7 and the knights to hit the center.
+- Break the center with ...e5 and, in some lines, ...c5.
+- Keep your own king safe and support pawn pushes with pieces.
+
+#### A pitfall to avoid: the pawn race
+
+In the main line, both sides attack on opposite wings. If Black’s attack is too slow, White’s queenside play arrives first. Do not waste a move: every tempo counts in a pawn race.
+
+#### Common mistakes
+
+- Learning the moves without the plan (...f5 and the kingside attack).
+- Attacking too slowly, so White’s c5 push arrives first.
+- Trading the bishop on g7. It is Black’s best piece in this opening.
+- Pushing kingside pawns without piece support, which only weakens your king.
+
+#### Check yourself
+
+**Question:** Why does Black let White build a big center in the King’s Indian?
+
+**Answer:** Black plans to attack the center later with pieces and pawn breaks. A big center can become a target.
+
+#### Questions to check yourself
+
+1. **What does the bishop on g7 do?**
+   Answer: It controls the long diagonal and supports the break ...e5.
+2. **What is Black’s main pawn break in the classical line?**
+   Answer: ...f5, followed by ...g5 and ...f4 to attack the king.
+3. **What is White’s main plan after d5?**
+   Answer: Push c5 and open the queenside.
+
+#### Key takeaway
+
+> Let White build the center, then strike with ...e5 and ...f5 and attack the king quickly.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 6...e5** (`/library/board?fen=rnbq1rk1%2Fppp2pbp%2F3p1np1%2F4p3%2F2PPP3%2F2N2N2%2FPP2BPPP%2FR1BQK2R+w+KQ+-+0+7`): Open the board and compare White’s choices: O-O, d5 and dxe5.
+- **King’s Indian games** (`/library/games?search=King%27s+Indian`): Replay real games that began with the King’s Indian Defense.
+
+#### Further reading
+
+- *King’s Indian Defence*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/King%27s_Indian_Defence
+
+---
+
+### 43. Nimzo-Indian Defense: pin the knight, control e4
+
+`slug: nimzo-indian-defense`
+
+Category: Opening · Skill: Strategic play against 1.d4 · Rating: 1300–2000 · Time: 9 min
+
+#### Main idea
+
+The Nimzo-Indian Defense starts with 1.d4 Nf6 2.c4 e6 3.Nc3 Bb4. Black pins the knight on c3, which supports e4, and fights for the center with pieces instead of pawns. It is one of the most respected replies to 1.d4.
+
+It suits players who like strategy. White often gets the two bishops, but Black gets a healthy position and good counterplay.
+
+#### The first moves
+
+1. 1.d4 Nf6: both sides develop, and Black controls e4.
+2. 2.c4 e6: White takes more space. Black opens the f8-bishop.
+3. 3.Nc3 Bb4: White develops. Black pins the knight on c3 to the king, so White cannot easily play e4.
+4. 4.e3 O-O: White opens the f1-bishop and supports the center. Black castles.
+5. 5.Bd3 d5: White develops. Black takes a share of the center.
+6. 6.Nf3 c5: White develops. Black attacks d4.
+7. 7.O-O Nc6: White castles. Black adds pressure on d4. This is the Rubinstein system.
+
+#### Example
+
+After 7...Nc6, White often plays a3. If Black trades on c3, White gets the two bishops but doubled pawns on the c-file, and Black can attack them.
+
+#### Plans for White
+
+- Get the two bishops and aim to play e4 to build a big center.
+- Develop quickly and castle before Black’s counterplay starts.
+- Ask the bishop a question with a3, or prevent doubled pawns with Qc2.
+- If doubled pawns appear, use the open b-file and the bishops to attack.
+
+#### Plans for Black
+
+- Pin the knight and control e4 with pieces: ...Ne4 or ...d5.
+- Trade on c3 to double White’s pawns when it helps, then attack the weak pawns on c3 and c4.
+- Fight for the center with ...c5 and ...d5.
+- Keep your king safe and castle early.
+
+#### A pitfall to avoid: the bishop pair
+
+After ...Bxc3, White gets two bishops, and in open positions they can be strong. Do not give up the bishop without a reason. Trade it when White’s pawns become a weakness, or when you can win the c-pawns.
+
+#### Common mistakes
+
+- Trading the bishop on c3 too early and giving White the bishop pair for nothing.
+- Forgetting that the pin is not permanent: White can play a3 or Qc2, so know your plan.
+- Letting White build a big center with e4 without a counter.
+- Leaving the king in the center while White finishes development.
+
+#### Check yourself
+
+**Question:** What does 3...Bb4 do?
+
+**Answer:** It pins the knight on c3 to the king, so White cannot easily play e4.
+
+#### Questions to check yourself
+
+1. **Why does White play a3?**
+   Answer: To ask the bishop to decide: trade on c3, which gives White the bishop pair, or retreat.
+2. **What is the Rubinstein system?**
+   Answer: 4.e3 followed by Bd3 and Nf3. It is the most common setup against the Nimzo-Indian.
+3. **How can Black punish doubled c-pawns?**
+   Answer: By attacking them with ...dxc4 and ...Qc7, and by controlling e4.
+
+#### Key takeaway
+
+> Pin the knight, control e4, and be ready to trade on c3 to damage White’s pawns.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 7...Nc6** (`/library/board?fen=r1bq1rk1%2Fpp3ppp%2F2n1pn2%2F2pp4%2F1bPP4%2F2NBPN2%2FPP3PPP%2FR1BQ1RK1+w+-+-+2+8`): Open the board and compare a3, cxd5 and Qe2 for White.
+- **Nimzo-Indian games** (`/library/games?search=Nimzo-Indian`): Replay real games that began with the Nimzo-Indian Defense.
+
+#### Further reading
+
+- *Nimzo-Indian Defence*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/Nimzo-Indian_Defence
+
+---
+
+### 44. English Opening: a flexible flank start
+
+`slug: english-opening`
+
+Category: Opening · Skill: Flexible, positional play · Rating: 1200–2000 · Time: 8 min
+
+#### Main idea
+
+The English Opening starts with 1.c4. White controls d5 and the center from the side and keeps its options open. The game can become a Queen’s Gambit type of position, a Sicilian with the colors reversed, or something completely new.
+
+It suits patient players who like flexible pawn structures and positional plans. Many strong players choose it.
+
+#### The first moves
+
+1. 1.c4 e5: White controls d5 from the side. Black takes the center with a pawn.
+2. 2.Nc3 Nf6: White develops and adds pressure on d5. Black develops and attacks e4.
+3. 3.Nf3 Nc6: White attacks e5. Black defends it.
+4. 4.g3 d5: White prepares to put the king’s bishop on g2. Black strikes at the center at once.
+5. 5.cxd5 Nxd5: White trades pawns. Black recaptures with the knight.
+6. 6.Bg2 Nb6: the bishop looks along the long diagonal. Black retreats the knight to avoid a trade or a pin.
+7. 7.O-O Be7: White castles. Black develops the bishop and prepares to castle.
+
+#### Example
+
+White has a small lead in the center and a bishop on the long diagonal, aiming at b7 and the queenside. A typical plan is to play on the queenside with a3 and b4, while keeping an eye on d5. Black keeps the center solid and develops quickly.
+
+#### Plans for White
+
+- Control d5 and the long diagonal with the bishop on g2.
+- Play on the queenside with a3 and b4 when it is safe.
+- Keep your pawn structure flexible and choose a setup after seeing Black’s reply.
+- If Black takes on c4, win the pawn back with active pieces.
+
+#### Plans for Black
+
+- Fight for the center with ...e5 and ...d5.
+- Keep your pawn structure healthy and develop quickly.
+- Use the d4 square. A knight on d4 can be very strong if White does not prevent it.
+- Challenge the bishop on g2 by trading it or blocking its diagonal.
+
+#### A pitfall to avoid: the d4 square
+
+After 1.c4 e5, White has no pawn on d4 to control that square, so Black’s knight can jump there. If you play d3 and ignore it, Black’s knight sits on d4 and bothers you. Trade it off with Nxd4 when it helps, or keep an eye on it with e3.
+
+#### Common mistakes
+
+- Playing the English without a plan against ...e5.
+- Trading the bishop on g2 without a good reason. It is White’s best piece in this setup.
+- Forgetting that ...d5 can strike at the center at once, and answering it without a plan.
+- Leaving the d4 square to Black’s knight.
+
+#### Check yourself
+
+**Question:** Why is the English called a “Reversed Sicilian” after 1.c4 e5?
+
+**Answer:** White has the pawn structure of the Sicilian, but with the colors reversed and an extra move.
+
+#### Questions to check yourself
+
+1. **What does 1.c4 control?**
+   Answer: The d5 square, from the side.
+2. **Why do White’s g3 and Bg2 make sense?**
+   Answer: The bishop controls the long diagonal and pressures d5 and b7, and the king gets ready to castle safely.
+3. **What does Black strike with after 3.Nf3 Nc6 4.g3?**
+   Answer: ...d5, attacking the center at once.
+
+#### Key takeaway
+
+> Control d5, put the bishop on g2, castle and choose your plan after seeing Black’s setup.
+
+#### Practice it
+
+- **Opening moves** (`/practice/opening-moves`): Positions from moves 4–12 of real games where a player went wrong: find the move that follows the principles, or spot the mistake.
+- **Try the position after 7...Be7** (`/library/board?fen=r1bqk2r%2Fppp1bppp%2F1nn5%2F4p3%2F8%2F2N2NP1%2FPP1PPPBP%2FR1BQ1RK1+w+kq+-+4+8`): Open the board and compare White’s plans: d3, a3, Be3 and Rb1.
+- **English Opening games** (`/library/games?opening=English+Opening`): Replay real games that began with the English Opening.
+
+#### Further reading
+
+- *English Opening*, Wikipedia, Wikipedia: https://en.wikipedia.org/wiki/English_Opening
 
 ---

@@ -25,10 +25,29 @@ import { stepByStepTraining } from './step-by-step-training';
 import { stopRepeatingMistakes } from './stop-repeating-mistakes';
 import { strategicPlans } from './strategic-plans';
 import { structuredImprovement } from './structured-improvement';
+import { tournamentRules } from './tournament-rules';
+import { howOpeningsWork } from './how-openings-work';
+import { kingsGambit } from './kings-gambit';
+import { nimzoIndianDefense } from './nimzo-indian-defense';
+import { pircDefense } from './pirc-defense';
+import { scandinavianDefense } from './scandinavian-defense';
+import { slavDefense } from './slav-defense';
+import { viennaGame } from './vienna-game';
+import { caroKannDefense } from './caro-kann-defense';
+import { englishOpening } from './english-opening';
+import { frenchDefense } from './french-defense';
+import { italianGame } from './italian-game';
+import { kingsIndianDefense } from './kings-indian-defense';
+import { londonSystem } from './london-system';
+import { queensGambit } from './queens-gambit';
+import { ruyLopez } from './ruy-lopez';
+import { scotchGame } from './scotch-game';
+import { sicilianDefense } from './sicilian-defense';
 
 /** Every lesson's text. Only the lesson page imports this, so the texts stay out of the main bundle. */
 export const THEORY_LESSONS: TheoryLessonBody[] = [
 	chessBasics,
+	tournamentRules,
 	openingPrinciples,
 	pawnStructures,
 	ccto,
@@ -54,4 +73,21 @@ export const THEORY_LESSONS: TheoryLessonBody[] = [
 	pieceManeuvering,
 	calculationDiscipline,
 	stopRepeatingMistakes,
+	howOpeningsWork,
+	italianGame,
+	ruyLopez,
+	scotchGame,
+	sicilianDefense,
+	frenchDefense,
+	caroKannDefense,
+	queensGambit,
+	londonSystem,
+	kingsIndianDefense,
+	englishOpening,
+	viennaGame,
+	kingsGambit,
+	pircDefense,
+	scandinavianDefense,
+	slavDefense,
+	nimzoIndianDefense,
 ];

@@ -1,0 +1,309 @@
+<section class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6">
+	<h1 class="sr-only">{{ 'Lesson' | t }}</h1>
+
+	@if (loading()) {
+		<div class="h-40 animate-pulse rounded-xl bg-soft" role="status" [attr.aria-label]="'Loading the lesson' | t"></div>
+	} @else if (failed()) {
+		<div class="ds-card items-start gap-3 p-5" role="alert">
+			<p>{{ 'We could not open this lesson.' | t }}</p>
+			<div class="flex flex-wrap gap-2">
+				<button class="ds-btn ds-btn-outline" type="button" (click)="refresh()">{{ 'Refresh' | t }}</button>
+				<a class="ds-btn ds-btn-outline" routerLink="/classes">{{ 'Back to classes' | t }}</a>
+			</div>
+		</div>
+	} @else {
+		<div class="flex items-center justify-between gap-3">
+			<p class="min-w-0 truncate font-semibold">{{ klass()?.title }}</p>
+			<button class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0" type="button" [attr.aria-label]="'Refresh' | t" [attr.title]="'Refresh' | t" (click)="refresh()">
+				<app-icon name="reset" />
+			</button>
+		</div>
+
+		@if (problem(); as problem) {
+			<p class="text-sm text-danger" role="alert">{{ problem | t }}</p>
+		}
+
+		@if (!lesson()) {
+			<div class="ds-card items-start gap-3 p-5">
+				@if (isOwner()) {
+					<p>{{ 'Start the lesson when your class is ready.' | t }}</p>
+					<button class="ds-btn ds-btn-primary" type="button" [disabled]="busy()" (click)="startLesson()">{{ 'Start lesson' | t }}</button>
+				} @else {
+					<p>{{ 'The lesson has not started yet. Ask the class owner to start it, then refresh.' | t }}</p>
+					<button class="ds-btn ds-btn-outline" type="button" (click)="refresh()">{{ 'Refresh' | t }}</button>
+				}
+			</div>
+		} @else {
+			@if (!open()) {
+				<div class="ds-card items-start gap-3 p-4 text-sm">
+					<p>{{ 'The tournament is finished.' | t }}</p>
+					@if (isOwner()) {
+						<button class="ds-btn ds-btn-outline" type="button" [disabled]="busy()" (click)="startLesson()">{{ 'Start a new lesson' | t }}</button>
+					}
+				</div>
+			}
+
+			@switch (view()) {
+				@case ('theory') {
+					<div>
+						<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+							<h2 class="text-xl font-semibold tracking-tight">{{ picked().name | t }}</h2>
+							<span class="ds-badge">{{ (isNew() ? 'New for you' : 'Review') | t }}</span>
+						</div>
+						<p class="text-sm text-mute">{{ picked().idea | t }}</p>
+						<a class="ds-btn ds-btn-outline mt-2 h-9 px-3 text-sm" [routerLink]="['/theory', picked().lesson]">{{ 'Read the full lesson on this opening' | t }}</a>
+					</div>
+
+					<div class="-mx-4 sm:mx-0">
+						<app-board [fen]="theoryFen()" [interactive]="false" [viewOnly]="true" />
+					</div>
+
+					<div class="flex items-center gap-2">
+						<button class="ds-btn ds-btn-outline h-10 px-4" type="button" [disabled]="step() === 0" (click)="go(step() - 1)">{{ 'Back' | t }}</button>
+						<p class="min-w-0 flex-1 text-center text-sm text-mute">{{ step() }} / {{ picked().moves.length }}</p>
+						<button class="ds-btn ds-btn-outline h-10 px-4" type="button" [disabled]="step() === picked().moves.length" (click)="go(step() + 1)">{{ 'Next' | t }}</button>
+					</div>
+
+					<p class="ds-card min-h-16 justify-center p-4 text-sm" role="status">
+						@if (note(); as note) {
+							{{ note | t }}
+						} @else {
+							{{ 'The start position. Press Next to play the first move.' | t }}
+						}
+					</p>
+
+					<ol class="flex flex-wrap gap-1.5 text-sm">
+						@for (move of picked().moves; track $index) {
+							<li>
+								<button class="ds-chip h-8 px-2.5" type="button" [attr.aria-pressed]="step() === $index + 1" (click)="go($index + 1)">
+									<span class="text-mute">{{ label($index) }}</span>{{ move }}
+								</button>
+							</li>
+						}
+					</ol>
+
+					<section class="flex flex-col gap-2" aria-labelledby="lesson-ideas">
+						<h3 id="lesson-ideas" class="font-semibold">{{ 'Key ideas' | t }}</h3>
+						<ul class="list-disc space-y-1 pl-5 text-sm">
+							@for (idea of picked().ideas; track idea) {
+								<li>{{ idea | t }}</li>
+							}
+						</ul>
+					</section>
+
+					<section class="ds-card gap-1 p-4 text-sm" aria-labelledby="lesson-trap">
+						<h3 id="lesson-trap" class="font-semibold">{{ 'Watch out' | t }}</h3>
+						<p>{{ picked().trap | t }}</p>
+					</section>
+
+					<section class="flex flex-col gap-2" aria-labelledby="lesson-bonus">
+						<h3 id="lesson-bonus" class="font-semibold">{{ 'Bonus in your games' | t }}</h3>
+						<p class="text-sm text-mute">
+							{{ 'Play your {count} moves of this line in a class game and get half a point extra.' | t: { count: bonusMoves } }}
+						</p>
+						@if (knownNames().length) {
+							<p class="text-sm text-mute">
+								{{ 'Picked for you. Openings you already used in a class game are skipped:' | t }}
+								@for (name of knownNames(); track name; let last = $last) {
+									{{ name | t }}{{ last ? '.' : ',' }}
+								}
+							</p>
+						}
+					</section>
+
+					<p class="text-center text-sm text-mute" role="status">{{ '{count} of {total} ready' | t: { count: readyCount(), total: players().length } }}</p>
+				}
+
+				@case ('game') {
+					@if (game(); as game) {
+						@if (!game.black) {
+							<div class="ds-card items-start gap-1 p-4 text-sm">
+								<p class="font-semibold">{{ 'Bye' | t }}</p>
+								<p>{{ 'You have a bye this round and get a point.' | t }}</p>
+							</div>
+						} @else {
+							<div class="flex items-center justify-between gap-3">
+								<div class="min-w-0">
+									<p class="truncate font-semibold">{{ opponentName() }}</p>
+									<p class="text-xs text-mute">{{ (side() === 'white' ? 'Black' : 'White') | t }}</p>
+								</div>
+								<p class="ds-card px-3 py-1.5 font-mono text-lg tabular-nums">{{ clock(side() === 'white' ? clocks().black : clocks().white) }}</p>
+							</div>
+
+							<div class="-mx-4 sm:mx-0">
+								<app-board [fen]="gameFen()" [orientation]="side()" [interactive]="myTurn() && !busy()" [lastMove]="lastMove()" (moved)="onMove($event)" />
+							</div>
+
+							<div class="flex items-center justify-between gap-3">
+								<div class="min-w-0">
+									<p class="font-semibold">{{ 'You' | t }}</p>
+									<p class="text-xs text-mute" role="status">
+										{{ (side() === 'white' ? 'White' : 'Black') | t }} ·
+										@if (playing()) {
+											{{ (myTurn() ? 'Your move' : 'Waiting for {name}') | t: { name: opponentName() } }}
+										} @else {
+											{{ outcome(game).title | t }}
+										}
+									</p>
+								</div>
+								<p class="ds-card px-3 py-1.5 font-mono text-lg tabular-nums" [class.border-primary]="myTurn()">
+									{{ clock(side() === 'white' ? clocks().white : clocks().black) }}
+								</p>
+							</div>
+
+							@if (gameOpening(); as opening) {
+								<p class="flex items-center justify-between gap-3 rounded-xl border border-line bg-card px-4 py-3 text-sm">
+									<span>{{ opening.name | t }}</span>
+									<span class="text-mute">{{ '{count} of {total} moves followed' | t: { count: followed(), total: bonusMoves } }}</span>
+								</p>
+							}
+
+							@if (!game.result) {
+								@if (game.drawOffer === uid()) {
+									<p class="text-sm text-mute">{{ 'Draw offered' | t }}</p>
+								} @else if (game.drawOffer) {
+									<div class="ds-card items-start gap-2 p-4 text-sm">
+										<p>{{ 'Draw offered by {name}' | t: { name: opponentName() } }}</p>
+										<div class="flex gap-2">
+											<button class="ds-btn ds-btn-primary" type="button" [disabled]="busy()" (click)="acceptDraw()">{{ 'Accept' | t }}</button>
+											<button class="ds-btn ds-btn-outline" type="button" [disabled]="busy()" (click)="offerDraw(false)">{{ 'Decline' | t }}</button>
+										</div>
+									</div>
+								}
+							} @else {
+								<div class="ds-card items-start gap-1 p-4 text-sm" role="status">
+									<p class="font-semibold">{{ outcome(game).title | t }}</p>
+									@if (outcome(game).reason) {
+										<p class="text-mute">{{ outcome(game).reason | t }}</p>
+									}
+									@if (earnedBonus(game)) {
+										<p>{{ 'Bonus: half a point for following the lesson line.' | t }}</p>
+									}
+								</div>
+							}
+
+							@if (moveRows().length) {
+								<ol class="grid grid-cols-[auto_1fr_1fr] gap-x-4 gap-y-1 rounded-xl border border-line bg-card px-4 py-3 text-sm" [attr.aria-label]="'Moves' | t">
+									@for (row of moveRows(); track row[0]) {
+										<li class="contents">
+											<span class="text-mute">{{ row[0] }}.</span>
+											<span>{{ row[1] }}</span>
+											<span>{{ row[2] }}</span>
+										</li>
+									}
+								</ol>
+							}
+
+							@if (playing()) {
+								<div class="grid grid-cols-2 gap-2">
+									<button class="ds-btn ds-btn-outline" type="button" [disabled]="busy() || !!game.drawOffer" (click)="offerDraw(true)">{{ 'Offer draw' | t }}</button>
+									<button class="ds-btn ds-btn-outline" type="button" [disabled]="busy()" (click)="resign()">{{ 'Resign' | t }}</button>
+								</div>
+							}
+						}
+					} @else {
+						<div class="ds-card items-start gap-3 p-4 text-sm">
+							<p>{{ 'No game yet. Press Ready at the top, wait for the class owner to start a round, then refresh.' | t }}</p>
+							<button class="ds-btn ds-btn-outline" type="button" (click)="refresh()">{{ 'Refresh' | t }}</button>
+						</div>
+					}
+				}
+
+				@case ('tournament') {
+					<div>
+						<h2 class="text-xl font-semibold tracking-tight">{{ 'Tournament' | t }}</h2>
+						<p class="text-sm text-mute">{{ 'Swiss: each round you play someone with a similar score.' | t }}</p>
+					</div>
+
+					@if (isOwner() && open()) {
+						<div class="ds-card items-start gap-2 p-4 text-sm">
+							<p class="text-mute">{{ '{count} of {total} ready' | t: { count: readyCount(), total: players().length } }}</p>
+							@switch (next().state) {
+								@case ('ok') {
+									<button class="ds-btn ds-btn-primary max-sm:w-full" type="button" [disabled]="busy()" (click)="startRound()">
+										{{ 'Start round {number}' | t: { number: next().round } }}
+									</button>
+								}
+								@case ('playing') {
+									<p>{{ 'Finish the current round first.' | t }}</p>
+								}
+								@case ('few') {
+									<p>{{ 'At least two ready players are needed for a round.' | t }}</p>
+								}
+								@case ('none') {
+									<p>{{ 'Everyone has met. No more rounds.' | t }}</p>
+								}
+							}
+						</div>
+					}
+
+					@if (rounds().length) {
+						<div class="flex flex-wrap gap-2" role="group" [attr.aria-label]="'Round' | t">
+							@for (number of rounds(); track number) {
+								<button class="ds-chip" type="button" [attr.aria-pressed]="round() === number" (click)="pickedRound.set(number)">
+									{{ 'Round {number}' | t: { number } }}
+								</button>
+							}
+						</div>
+
+						<ul class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card">
+							@for (item of roundGames(); track item.id) {
+								<li class="flex items-center justify-between gap-3 px-4 py-3 text-sm">
+									@if (item.black) {
+										<span class="min-w-0 [overflow-wrap:anywhere]">{{ item.whiteName }} <span class="text-mute">{{ 'vs' | t }}</span> {{ item.blackName }}</span>
+										<span class="shrink-0 font-mono" [class.text-mute]="!item.result">
+											@if (item.result) {
+												{{ result(item) }}
+											} @else {
+												{{ 'Playing' | t }}
+											}
+										</span>
+									} @else {
+										<span class="min-w-0 [overflow-wrap:anywhere]">{{ item.whiteName }}</span>
+										<span class="shrink-0 text-mute">{{ 'Bye' | t }}</span>
+									}
+								</li>
+							}
+						</ul>
+					} @else {
+						<p class="text-sm text-mute">{{ 'No rounds yet.' | t }}</p>
+					}
+
+					<section class="flex flex-col gap-2" aria-labelledby="tournament-score">
+						<h3 id="tournament-score" class="font-semibold">{{ 'Standings' | t }}</h3>
+						<table class="w-full overflow-hidden rounded-xl border border-line bg-card text-sm">
+							<thead class="text-left text-mute">
+								<tr>
+									<th class="px-4 py-2 font-normal" scope="col">#</th>
+									<th class="py-2 font-normal" scope="col">{{ 'Player' | t }}</th>
+									<th class="py-2 text-right font-normal" scope="col">{{ 'Played' | t }}</th>
+									<th class="py-2 text-right font-normal" scope="col">{{ 'Bonus' | t }}</th>
+									<th class="px-4 py-2 text-right font-normal" scope="col">{{ 'Points' | t }}</th>
+								</tr>
+							</thead>
+							<tbody class="divide-y divide-line">
+								@for (row of table(); track row.uid; let place = $index) {
+									<tr [class.font-semibold]="place === 0 && row.played > 0">
+										<td class="px-4 py-2.5 text-mute">{{ place + 1 }}</td>
+										<td class="py-2.5 [overflow-wrap:anywhere]">{{ row.name }}</td>
+										<td class="py-2.5 text-right">{{ row.played }}</td>
+										<td class="py-2.5 text-right text-mute">+{{ row.bonus }}</td>
+										<td class="px-4 py-2.5 text-right">{{ row.total }}</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</section>
+
+					@if (isOwner() && open()) {
+						<div class="flex flex-col pt-2 sm:items-start">
+							<button class="ds-btn ds-btn-outline max-sm:w-full" type="button" [disabled]="busy()" (click)="finishTournament()">
+								{{ (confirmFinish() ? 'Tap again to finish' : 'Finish tournament') | t }}
+							</button>
+						</div>
+					}
+				}
+			}
+		}
+	}
+</section>

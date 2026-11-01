@@ -217,6 +217,39 @@ export const routes: Routes = [
 			import('./pages/sign-in/sign-in.component').then((m) => m.SignInComponent),
 	},
 	{
+		path: 'classes',
+		canActivate: [authGuard],
+		data: { ...page('/classes', 'Class'), createPath: '/class/create' },
+		loadComponent: () => import('./pages/classes/classes.component').then((m) => m.ClassesComponent),
+	},
+	{
+		// the id is the class id
+		path: 'lesson/:id',
+		canActivate: [authGuard],
+		data: page('/lesson', 'Lesson'),
+		loadComponent: () => import('./pages/lesson/lesson.component').then((m) => m.LessonComponent),
+	},
+	{
+		path: 'class',
+		canActivate: [authGuard],
+		children: [
+			{ path: '', pathMatch: 'full', redirectTo: moved('/classes') },
+			{
+				// create a class, or edit one with ?id=
+				path: 'create',
+				data: page('/class/create', 'Class details'),
+				loadComponent: () =>
+					import('./pages/class-form/class-form.component').then((m) => m.ClassFormComponent),
+			},
+			{
+				path: ':id',
+				data: page('/class', 'Class'),
+				loadComponent: () =>
+					import('./pages/class-detail/class-detail.component').then((m) => m.ClassDetailComponent),
+			},
+		],
+	},
+	{
 		path: 'profile',
 		canActivate: [authGuard],
 		data: page('/profile', 'Profile'),

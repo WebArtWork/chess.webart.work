@@ -1,0 +1,179 @@
+<form
+	#form
+	class="mx-auto flex w-full max-w-3xl flex-col gap-5 px-4 pb-8 pt-4 sm:px-6"
+	novalidate
+	(submit)="submit($event)"
+>
+	@if (loadFailed()) {
+		<p class="rounded-xl border border-danger p-4 text-sm" role="alert">{{ 'We could not open this class.' | t }}</p>
+	}
+
+	<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">
+		{{ (editing ? 'Edit class' : 'Create class') | t }}
+	</h1>
+
+	<div>
+		<label class="ds-label" for="class-title">{{ 'Name' | t }}</label>
+		<input
+			id="class-title"
+			class="ds-input"
+			type="text"
+			autocomplete="off"
+			[value]="title()"
+			[attr.aria-invalid]="submitted() && errors()['title'] ? 'true' : null"
+			[attr.aria-describedby]="submitted() && errors()['title'] ? 'class-title-error' : null"
+			(input)="title.set(value($event))"
+		/>
+		@if (submitted() && errors()['title']; as error) {
+			<p id="class-title-error" class="mt-1 text-sm text-danger" role="alert">{{ error | t }}</p>
+		}
+	</div>
+
+	<div
+		role="group"
+		aria-labelledby="class-days-label"
+		[attr.aria-invalid]="submitted() && errors()['days'] ? 'true' : null"
+		[attr.aria-describedby]="submitted() && errors()['days'] ? 'class-days-error' : null"
+	>
+		<p id="class-days-label" class="ds-label">{{ 'Week day' | t }}</p>
+		<div class="grid grid-cols-7 gap-1.5 sm:flex sm:flex-wrap sm:gap-2">
+			@for (day of weekdaysShort; track day; let index = $index) {
+				<button
+					class="ds-chip min-w-0 justify-center px-0 sm:min-w-11 sm:px-3"
+					type="button"
+					[attr.aria-pressed]="days().includes(index)"
+					[attr.aria-label]="weekdays[index] | t"
+					(click)="toggleDay(index)"
+				>
+					{{ day | t }}
+				</button>
+			}
+		</div>
+		@if (submitted() && errors()['days']; as error) {
+			<p id="class-days-error" class="mt-1 text-sm text-danger" role="alert">{{ error | t }}</p>
+		}
+	</div>
+
+	<div class="grid grid-cols-3 gap-2 sm:gap-4">
+		<!-- each cell sits at the bottom, so the controls line up even when a label wraps -->
+		<div class="flex min-w-0 flex-col justify-end">
+			<label class="ds-label" for="class-time">{{ 'Start time' | t }}</label>
+			<input
+				id="class-time"
+				class="ds-input !px-2 max-sm:[&::-webkit-calendar-picker-indicator]:hidden sm:!px-3"
+				type="time"
+				[value]="time()"
+				[attr.aria-invalid]="submitted() && errors()['time'] ? 'true' : null"
+				[attr.aria-describedby]="submitted() && errors()['time'] ? 'class-time-error' : null"
+				(input)="time.set(value($event))"
+			/>
+		</div>
+
+		<div class="flex min-w-0 flex-col justify-end">
+			<label class="ds-label" for="class-duration">{{ 'Length' | t }}</label>
+			<select id="class-duration" class="ds-select !px-2 sm:!px-3" (change)="duration.set(+value($event))">
+				@for (minutes of durations; track minutes) {
+					<option [value]="minutes" [selected]="duration() === minutes">{{ '{count} min' | t: { count: minutes } }}</option>
+				}
+			</select>
+		</div>
+
+		<div class="flex min-w-0 flex-col justify-end">
+			<div class="mb-1.5 flex items-center">
+				<label class="ds-label !mb-0" for="class-time-control">{{ 'Game clock' | t }}</label>
+				<button
+					class="ds-btn ds-btn-ghost -my-3 -mr-3 size-11 shrink-0 !p-0 text-mute"
+					type="button"
+					aria-haspopup="dialog"
+					[attr.aria-label]="'About the game clock' | t"
+					(click)="openClockInfo()"
+				>
+					<app-icon name="info" />
+				</button>
+			</div>
+			<select id="class-time-control" class="ds-select !px-2 sm:!px-3" (change)="timeControl.set(value($event))">
+				@for (group of timeControls; track group.group) {
+					<optgroup [label]="group.group | t">
+						@for (option of group.options; track option) {
+							<option [value]="option" [selected]="timeControl() === option">{{ option }}</option>
+						}
+					</optgroup>
+				}
+			</select>
+		</div>
+
+		@if (submitted() && errors()['time']; as error) {
+			<p id="class-time-error" class="col-span-3 text-sm text-danger" role="alert">{{ error | t }}</p>
+		}
+	</div>
+
+	<div>
+		<label class="ds-label" for="class-email">{{ 'Class mates' | t }}</label>
+		<div class="flex items-start gap-2">
+			<input
+				id="class-email"
+				class="ds-input min-w-0 flex-1"
+				type="email"
+				inputmode="email"
+				autocomplete="off"
+				spellcheck="false"
+				placeholder="name@example.com"
+				[value]="emailDraft()"
+				[attr.aria-invalid]="emailError() ? 'true' : null"
+				[attr.aria-describedby]="emailError() ? 'class-email-error' : null"
+				(input)="setEmailDraft(value($event))"
+				(keydown.enter)="$event.preventDefault(); addEmail()"
+			/>
+			<button class="ds-btn ds-btn-outline h-11 shrink-0 px-4" type="button" (click)="addEmail()">{{ 'Add' | t }}</button>
+		</div>
+		@if (emailError()) {
+			<p id="class-email-error" class="mt-1 text-sm text-danger" role="alert">{{ emailError() | t }}</p>
+		}
+		@if (emails().length) {
+			<ul class="mt-3 divide-y divide-line overflow-hidden rounded-xl border border-line bg-card" [attr.aria-label]="'Class mates' | t">
+				@for (email of emails(); track email) {
+					<li class="flex items-center justify-between gap-2 py-0.5 pl-4 pr-1">
+						<span class="min-w-0 truncate text-sm">{{ email }}</span>
+						<button
+							class="ds-btn ds-btn-ghost size-11 shrink-0 !p-0"
+							type="button"
+							[attr.aria-label]="'Remove {email}' | t: { email: email }"
+							(click)="removeEmail(email)"
+						>
+							<app-icon name="close" />
+						</button>
+					</li>
+				}
+			</ul>
+		}
+	</div>
+
+	<label class="flex min-h-11 items-center gap-3">
+		<input type="checkbox" class="size-5 accent-brand" [checked]="isPublic()" (change)="isPublic.set(checked($event))" />
+		{{ 'Show this class publicly' | t }}
+	</label>
+
+	@if (saveFailed()) {
+		<p class="text-sm text-danger" role="alert">{{ 'Could not save the class. Try again.' | t }}</p>
+	}
+
+	<div class="flex sm:justify-end">
+		<button class="ds-btn ds-btn-primary h-11 px-5 max-sm:w-full" type="submit" [disabled]="saving() || loading() || loadFailed()">
+			{{ (saving() ? 'Saving…' : editing ? 'Save changes' : 'Create class') | t }}
+		</button>
+	</div>
+</form>
+
+<dialog
+	#clockInfo
+	class="m-auto w-[min(92vw,24rem)] rounded-xl border border-line bg-card p-0 text-fg backdrop:bg-black/50"
+	aria-labelledby="clock-info-title"
+	(click)="$event.target === clockInfo && closeClockInfo()"
+>
+	<div class="flex flex-col gap-3 p-5">
+		<h2 id="clock-info-title" class="text-lg font-semibold tracking-tight">{{ 'Game clock' | t }}</h2>
+		<p>{{ 'Minutes per player + seconds added per move.' | t }}</p>
+		<p class="text-sm text-mute">{{ '10+5: each player gets 10 minutes, and 5 seconds are added after every move.' | t }}</p>
+		<button class="ds-btn ds-btn-primary h-11 w-full" type="button" (click)="closeClockInfo()">{{ 'Close' | t }}</button>
+	</div>
+</dialog>

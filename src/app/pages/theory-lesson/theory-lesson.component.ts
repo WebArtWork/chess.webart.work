@@ -6,7 +6,7 @@ import { IconComponent } from '../../components/icon/icon.component';
 import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
 import { THEORY_LESSONS } from '../../feature/theory/lessons';
-import { THEORY_CATALOG, THEORY_CATEGORY_LABELS } from '../../feature/theory/theory.catalog';
+import { THEORY_CATALOG, THEORY_CATEGORY_LABELS, THEORY_GROUPS } from '../../feature/theory/theory.catalog';
 import { TheoryProgressService } from '../../feature/theory/theory-progress.service';
 
 /**
@@ -24,6 +24,7 @@ export class TheoryLessonComponent {
 	protected readonly card = THEORY_CATALOG.find((card) => card.slug === this._slug)!;
 	protected readonly lesson = THEORY_LESSONS.find((lesson) => lesson.slug === this._slug)!;
 	protected readonly categoryLabel = THEORY_CATEGORY_LABELS[this.card.category];
+	protected readonly groupLabel = THEORY_GROUPS.find((group) => group.value === this.card.group)!.label;
 
 	/** The self-check: hidden answer, then the reader's own verdict. */
 	protected readonly revealed = signal(false);

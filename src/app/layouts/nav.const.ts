@@ -13,4 +13,5 @@ export const NAV_LINKS: NavLink[] = [
 	{ label: 'Theory', path: '/theory', icon: 'study' },
 	{ label: 'Library', path: '/library', icon: 'library' },
 	{ label: 'Practice', path: '/practice', icon: 'play' },
+	{ label: 'Class', path: '/classes', icon: 'users', matches: ['/classes', '/class', '/lesson'] },
 ];

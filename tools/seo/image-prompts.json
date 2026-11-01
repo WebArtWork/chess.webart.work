@@ -1,5 +1,95 @@
 [
 	{
+		"file": "src/assets/seo/theory-italian-game.jpg",
+		"route": "/theory/italian-game",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Italian Game\". All text at least 70px from edges. Scene: an ivory bishop and ivory knight developed together beside two central pawns on a small checkerboard, cobalt blue accent square. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-ruy-lopez.jpg",
+		"route": "/theory/ruy-lopez",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Ruy Lopez\". All text at least 70px from edges. Scene: an ivory bishop facing a charcoal knight, with a restrained cobalt blue diagonal path across a checkerboard. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-scotch-game.jpg",
+		"route": "/theory/scotch-game",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Scotch Game\". All text at least 70px from edges. Scene: an ivory knight in the foreground beside an open central file between opposing ivory and charcoal pawns. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-sicilian-defense.jpg",
+		"route": "/theory/sicilian-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Sicilian Defense\". All text at least 70px from edges. Scene: an ivory pawn and charcoal pawn placed asymmetrically across the board, a charcoal knight beside them, cobalt blue square. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-french-defense.jpg",
+		"route": "/theory/french-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"French Defense\". All text at least 70px from edges. Scene: opposing ivory and charcoal pawn chains with a charcoal bishop behind its own pawns, cobalt blue accent. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-caro-kann-defense.jpg",
+		"route": "/theory/caro-kann-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Caro-Kann Defense\". All text at least 70px from edges. Scene: a charcoal bishop developed outside a compact charcoal pawn formation, ivory knight in soft background, cobalt blue square. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-queens-gambit.jpg",
+		"route": "/theory/queens-gambit",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Queen’s Gambit\". All text at least 70px from edges. Scene: an ivory queen and ivory pawn facing a charcoal central pawn formation on a small board, cobalt blue accent. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-london-system.jpg",
+		"route": "/theory/london-system",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"London System\". All text at least 70px from edges. Scene: an ivory bishop, knight and three ivory pawns arranged as a harmonious small group, charcoal king in background. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-kings-indian-defense.jpg",
+		"route": "/theory/kings-indian-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"King’s Indian Defense\". All text at least 70px from edges. Scene: a charcoal king and bishop near a compact pawn formation facing three ivory central pawns, restrained cobalt blue diagonal accent. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-english-opening.jpg",
+		"route": "/theory/english-opening",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on the left, sculptural chess scene on the right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"English Opening\". All text at least 70px from edges. Scene: an ivory bishop on a long diagonal, an ivory flank pawn and a charcoal central pawn on a small checkerboard, cobalt blue accent. An evocative editorial still life, not an instructional chess diagram or exact position. No other words, notation, coordinate labels, watermarks, flags, people or screenshots."
+	},
+	{
+		"file": "src/assets/seo/class-detail.jpg",
+		"route": "/class",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio lighting. Clean black Inter-style typography on left, sculptural chess scene on right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Your chess class\". All text at least 70px from edges, generous safe margins. Scene: an ivory knight beside two ivory pawns and a charcoal rook on a checkerboard, a blank class roster notebook with simple cobalt blue bookmark, suggesting group members and a shared lesson schedule. No other words, no numbers, watermarks, people or UI screenshots."
+	},
+	{
+		"file": "src/assets/seo/lesson.jpg",
+		"route": "/lesson",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio lighting. Clean black Inter-style typography on left, sculptural chess scene on right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Learn chess together\". All text at least 70px from edges, generous safe margins. Scene: an ivory knight demonstrating a move to two ivory pawns gathered around a small chessboard, a restrained cobalt blue arrow indicating one move, suggesting an interactive group lesson. No other words, no numbers, watermarks, people or UI screenshots."
+	},
+	{
+		"file": "src/assets/seo/theory-tournament-rules.jpg",
+		"route": "/theory/tournament-rules",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio lighting. Clean black Inter-style typography on left, sculptural chess scene on right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Chess tournament rules\". All text at least 70px from edges, generous safe margins. Scene: an ivory king and charcoal knight beside a tournament chess clock and a blank score sheet with cobalt blue pen on a checkerboard, suggesting preparing for your first over-the-board tournament. No other words, no numbers, watermarks, people or UI screenshots."
+	},
+	{
+		"file": "src/assets/seo/class-create.jpg",
+		"route": "/class/create",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Match the established premium minimalist editorial 3D style: ivory and charcoal Staunton chess pieces, cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography on left, sculptural scene on right. Small brand text \"Chess training\" above large readable title. Text (verbatim): \"Plan your chess class\". All text at least 70px from edges. Scene: one ivory knight beside a blank lesson planner notebook, a cobalt blue pencil and a simple blue clock, with two ivory pawns on a small checkerboard, suggesting scheduling a weekly group chess lesson. No extra words, numbers, watermarks, screenshots or people."
+	},
+	{
+		"file": "src/assets/seo/class.jpg",
+		"route": "/classes",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess classes\". Scene: a group of three ivory pawns gathered around an ivory knight on a small checkerboard, beside a blank open study notebook and a simple cobalt blue calendar tile without writing, suggesting weekly chess lessons with a group. No people or portraits."
+	},
+	{
 		"file": "src/assets/seo/dashboard.jpg",
 		"mode": "built-in image_gen",
 		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for the app named \"Chess training\". Generate one landscape image with exact aspect ratio 1200:630. Premium minimalist editorial 3D render of ivory and charcoal Staunton chess pieces on a cool off-white background, restrained cobalt blue accent, soft studio light. Consistent clean black Inter-style typography, large readable title on the left, sculptural chess scene on the right. Brand text \"Chess training\" smaller above title. All words at least 70px from edges, generous clear margins. No tiny text, no other words, no watermarks, no UI screenshots. Text (verbatim): \"Chess training\" and \"Your next best move\". Scene: an ivory knight beside a charcoal king on a checkerboard with one cobalt blue square."
@@ -269,6 +359,114 @@
 		"route": "/theory/stop-repeating-mistakes",
 		"mode": "built-in image_gen",
 		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"How to stop repeating chess mistakes\". Scene: a restrained chess still life specifically communicating this page subject: A five-step pre-move check, the usual causes of blunders and a simple loop to stop making the same mistakes. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-tournament-rules.jpg",
+		"route": "/theory/tournament-rules",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Chess tournament rules\". Scene: a restrained chess still life specifically communicating this page subject: How a chess tournament works: pairings, tiebreaks, the clock and the rules at the board. Suggest it with a chess clock beside a board and a small ladder of pieces. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-italian-game.jpg",
+		"route": "/theory/italian-game",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Italian Game\". Scene: a restrained chess still life specifically communicating this page subject: The first moves, a bishop aimed at the f7 square and a quiet developing setup. Suggest it with a white bishop on c4 looking at a black pawn on f7. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-ruy-lopez.jpg",
+		"route": "/theory/ruy-lopez",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Ruy Lopez\". Scene: a restrained chess still life specifically communicating this page subject: A bishop on b5 pressing the knight that guards the center. Suggest long-term pressure with one white bishop and a black knight on c6. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-scotch-game.jpg",
+		"route": "/theory/scotch-game",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Scotch Game\". Scene: a restrained chess still life specifically communicating this page subject: Open the center at once: a white pawn on d4 with open lines and active knights. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-sicilian-defense.jpg",
+		"route": "/theory/sicilian-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Sicilian Defense\". Scene: a restrained chess still life specifically communicating this page subject: Black fights for the center from the side: a black c-pawn against a white center, with an open file. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-french-defense.jpg",
+		"route": "/theory/french-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"French Defense\". Scene: a restrained chess still life specifically communicating this page subject: A solid pawn chain on e6 and d5, with a bishop locked in behind it. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-caro-kann-defense.jpg",
+		"route": "/theory/caro-kann-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Caro-Kann Defense\". Scene: a restrained chess still life specifically communicating this page subject: Solid and safe: a black pawn pair on c6 and d5, and a bishop that comes out before the chain closes. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-queens-gambit.jpg",
+		"route": "/theory/queens-gambit",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Queen's Gambit\". Scene: a restrained chess still life specifically communicating this page subject: A white c-pawn offered to pull a black pawn away from the center. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-london-system.jpg",
+		"route": "/theory/london-system",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"London System\". Scene: a restrained chess still life specifically communicating this page subject: One compact setup: a white bishop on f4 outside the pawn chain. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-kings-indian-defense.jpg",
+		"route": "/theory/kings-indian-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"King's Indian Defense\". Scene: a restrained chess still life specifically communicating this page subject: Let White build a big pawn center, then strike: a black bishop on g7 on the long diagonal. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-english-opening.jpg",
+		"route": "/theory/english-opening",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"English Opening\". Scene: a restrained chess still life specifically communicating this page subject: A flexible flank start: a white c-pawn controlling the d5 square from the side. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-how-openings-work.jpg",
+		"route": "/theory/how-openings-work",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"How chess openings work\". Scene: a restrained chess still life specifically communicating this page subject: The first moves of a game: a small stack of opening pieces on a board with a few pawns moved, and a simple signpost with the letters A to E. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-vienna-game.jpg",
+		"route": "/theory/vienna-game",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Vienna Game\". Scene: a restrained chess still life specifically communicating this page subject: A white knight on c3 and a pawn ready to advance on f4, aiming at the center. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-kings-gambit.jpg",
+		"route": "/theory/kings-gambit",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"King's Gambit\". Scene: a restrained chess still life specifically communicating this page subject: A white f-pawn offered to a black pawn, with open lines toward the black king. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-pirc-defense.jpg",
+		"route": "/theory/pirc-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Pirc Defense\". Scene: a restrained chess still life specifically communicating this page subject: Black lets White build a big pawn center, with a black bishop on g7 on the long diagonal. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-scandinavian-defense.jpg",
+		"route": "/theory/scandinavian-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Scandinavian Defense\". Scene: a restrained chess still life specifically communicating this page subject: A black pawn capturing in the center on move one and the queen coming out early. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-slav-defense.jpg",
+		"route": "/theory/slav-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Slav Defense\". Scene: a restrained chess still life specifically communicating this page subject: A solid black c-pawn defending the d5 pawn, with the light-squared bishop free outside the chain. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
+	},
+	{
+		"file": "src/assets/seo/theory-nimzo-indian-defense.jpg",
+		"route": "/theory/nimzo-indian-defense",
+		"mode": "built-in image_gen",
+		"prompt": "Use case: ads-marketing. Asset type: Open Graph social share cover for Chess training. Generate ONE landscape image, aspect ratio 1200:630. Premium minimalist editorial 3D render, ivory and charcoal Staunton chess pieces on cool off-white background, restrained cobalt blue accent, soft studio light. Clean black Inter-style typography, readable title on left with sensible line breaks, sculptural chess scene on right. Small brand text \"Chess training\" above title. Generous 70px safe margins on all sides. No other text, no watermarks, no UI screenshots. Text (verbatim): \"Nimzo-Indian Defense\". Scene: a restrained chess still life specifically communicating this page subject: A black bishop on b4 pinning a white knight on c3. Use chess pieces, board squares and simple symbolic props; no portraits of named players."
 	},
 	{
 		"file": "src/assets/seo/practice-review.jpg",

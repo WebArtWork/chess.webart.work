@@ -45,7 +45,7 @@
 			@if (card.inspiredBy; as name) {
 				{{ 'Inspired by {name}' | t: { name: (name | t) } }}
 			} @else {
-				{{ 'Fundamentals' | t }}
+				{{ groupLabel | t }}
 			}
 		</p>
 		<!-- the topbar already shows the title; the heading stays for screen readers and SEO -->

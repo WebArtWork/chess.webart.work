@@ -59,6 +59,17 @@ export class ProgressService {
 	readonly synced = signal(false);
 	readonly rank = computed(() => rankOf(this.progress().pawns));
 	readonly provisional = computed(() => this.progress().rated < PROVISIONAL);
+	/** The user whose progress is on screen: set once it is loaded (or the load failed). `undefined` before the first load. */
+	private readonly _loadedFor = signal<string | null | undefined>(undefined);
+	/**
+	 * True once the session is restored and the signed-in user's progress is loaded, so the app can show
+	 * real numbers instead of the guest's. Always false on the server: the splash screen covers the page
+	 * until the browser has the answer.
+	 */
+	readonly ready = computed(() => {
+		const user = this._auth.user();
+		return user !== undefined && this._loadedFor() === (user?.uid ?? null);
+	});
 
 	private _keys = new Set<string>();
 	private _account: { db: Firestore; uid: string; ref: DocumentReference } | null = null;
@@ -118,8 +129,8 @@ export class ProgressService {
 		this._account = null;
 		this.synced.set(false);
 		this._useLocal();
-		if (!uid) return;
 		try {
+			if (!uid) return;
 			const db = await this._firebase.firestore();
 			if (!db) return;
 			const { collection, doc, getDoc, getDocs, serverTimestamp, setDoc } = await import('firebase/firestore');
@@ -140,6 +151,9 @@ export class ProgressService {
 			this.synced.set(true);
 		} catch (error) {
 			console.error('Could not load the account progress; using this browser instead.', error);
+		} finally {
+			// a newer sign-in or sign-out has its own load coming
+			if ((this._auth.user()?.uid ?? null) === uid) this._loadedFor.set(uid);
 		}
 	}
 

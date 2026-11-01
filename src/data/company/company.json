@@ -109,6 +109,11 @@
 			"description": "A beginner’s chess lesson: how each piece moves, castling, en passant and promotion, what the pieces are worth, and how to write a game down in algebraic notation.",
 			"image": "/seo/theory-chess-basics.jpg"
 		},
+		"/theory/tournament-rules": {
+			"title": "Chess tournament rules: formats, clocks and tiebreaks",
+			"description": "How chess tournaments work: Swiss, round robin and knockout formats, Buchholz and other tiebreaks, time controls, touch-move, draw rules and fair play.",
+			"image": "/seo/theory-tournament-rules.jpg"
+		},
 		"/theory/opening-principles": {
 			"title": "Chess opening principles",
 			"description": "How to start a chess game well: control the center, develop your pieces, keep your king safe and know why each opening move is played.",
@@ -234,6 +239,91 @@
 			"description": "A five-step pre-move check, the usual causes of blunders and a simple loop to stop making the same chess mistakes. Inspired by Igor Smirnov.",
 			"image": "/seo/theory-stop-repeating-mistakes.jpg"
 		},
+		"/theory/italian-game": {
+			"title": "Italian Game: moves, plans and Légal’s Mate",
+			"description": "Learn the Italian Game: the first moves, the quiet Giuoco Pianissimo setup, plans for both sides and the trap known as Légal’s Mate.",
+			"image": "/seo/theory-italian-game.jpg"
+		},
+		"/theory/ruy-lopez": {
+			"title": "Ruy Lopez: moves, plans and Noah’s Ark Trap",
+			"description": "Learn the Ruy Lopez: the Closed main line, the Exchange Variation, plans for both sides and a classic trap to know.",
+			"image": "/seo/theory-ruy-lopez.jpg"
+		},
+		"/theory/scotch-game": {
+			"title": "Scotch Game: moves, plans and pitfalls",
+			"description": "Learn the Scotch Game: open the center at once, recapture with the knight and develop fast. Plans for both sides and mistakes to avoid.",
+			"image": "/seo/theory-scotch-game.jpg"
+		},
+		"/theory/sicilian-defense": {
+			"title": "Sicilian Defense: moves, plans and the Najdorf",
+			"description": "Learn the Sicilian Defense: the Open Sicilian, the Najdorf move, plans for both sides and why grabbing pawns early is dangerous.",
+			"image": "/seo/theory-sicilian-defense.jpg"
+		},
+		"/theory/french-defense": {
+			"title": "French Defense: moves, plans and the bad bishop",
+			"description": "Learn the French Defense: the pawn chain, attacking d4 with ...c5, freeing the c8-bishop and plans for both sides.",
+			"image": "/seo/theory-french-defense.jpg"
+		},
+		"/theory/caro-kann-defense": {
+			"title": "Caro-Kann Defense: moves, plans and a trap",
+			"description": "Learn the Caro-Kann Defense: develop the light-squared bishop first, keep a solid structure and avoid the Nd6 mate trap.",
+			"image": "/seo/theory-caro-kann-defense.jpg"
+		},
+		"/theory/queens-gambit": {
+			"title": "Queen’s Gambit: moves, plans and the Elephant Trap",
+			"description": "Learn the Queen’s Gambit: why it is not a real gambit, the main line, plans for both sides and the Elephant Trap.",
+			"image": "/seo/theory-queens-gambit.jpg"
+		},
+		"/theory/london-system": {
+			"title": "London System: moves, plans and the b2 pitfall",
+			"description": "Learn the London System: the bishop-first setup with e3, c3, Nbd2 and Bd3, plans for both sides and how to defend b2.",
+			"image": "/seo/theory-london-system.jpg"
+		},
+		"/theory/kings-indian-defense": {
+			"title": "King’s Indian Defense: moves, plans and the pawn race",
+			"description": "Learn the King’s Indian Defense: let White build a big center, then attack it with ...e5 and ...f5. Plans for both sides.",
+			"image": "/seo/theory-kings-indian-defense.jpg"
+		},
+		"/theory/english-opening": {
+			"title": "English Opening: moves, plans and the d4 square",
+			"description": "Learn the English Opening: control d5 from the side, fianchetto the bishop, plans for both sides and the d4 pitfall.",
+			"image": "/seo/theory-english-opening.jpg"
+		},
+		"/theory/how-openings-work": {
+			"title": "How chess openings work: names, families and ECO codes",
+			"description": "What a chess opening is, how openings get their names, what the ECO codes A to E mean and how to choose your first openings.",
+			"image": "/seo/theory-how-openings-work.jpg"
+		},
+		"/theory/vienna-game": {
+			"title": "Vienna Game: moves, plans and the f4 break",
+			"description": "Learn the Vienna Game and the Vienna Gambit: the first moves, plans for both sides and why taking on f4 is risky.",
+			"image": "/seo/theory-vienna-game.jpg"
+		},
+		"/theory/kings-gambit": {
+			"title": "King’s Gambit: moves, plans and the Muzio idea",
+			"description": "Learn the King’s Gambit: offer the f-pawn, develop fast and attack. Plans for both sides and how Black can decline.",
+			"image": "/seo/theory-kings-gambit.jpg"
+		},
+		"/theory/pirc-defense": {
+			"title": "Pirc and Modern Defense: moves, plans and the Austrian Attack",
+			"description": "Learn the Pirc and Modern Defense: let White build the center, put the bishop on g7 and strike with ...e5 or ...c5.",
+			"image": "/seo/theory-pirc-defense.jpg"
+		},
+		"/theory/scandinavian-defense": {
+			"title": "Scandinavian Defense: moves, plans and the early queen",
+			"description": "Learn the Scandinavian Defense: take the center at once, move the queen with care and develop the light-squared bishop.",
+			"image": "/seo/theory-scandinavian-defense.jpg"
+		},
+		"/theory/slav-defense": {
+			"title": "Slav Defense: moves, plans and the Semi-Slav",
+			"description": "Learn the Slav Defense: defend d5 with ...c6, bring out the c8-bishop first and be ready to give the pawn back.",
+			"image": "/seo/theory-slav-defense.jpg"
+		},
+		"/theory/nimzo-indian-defense": {
+			"title": "Nimzo-Indian Defense: moves, plans and the bishop pair",
+			"description": "Learn the Nimzo-Indian Defense: pin the knight on c3, control e4 and know when to trade on c3 to double White’s pawns.",
+			"image": "/seo/theory-nimzo-indian-defense.jpg"
+		},
 		"/library": {
 			"title": "Chess library",
 			"description": "Replay real chess games, analyze any position with Stockfish and keep your saved games in one place: everything you need to study chess.",
@@ -274,6 +364,30 @@
 			"title": "Licenses and credits",
 			"description": "Chess training is free software under the GPL-3.0. See its source code and the projects it builds on, such as Stockfish and Chessground.",
 			"image": "/seo/licenses.jpg"
+		},
+		"/classes": {
+			"title": "Your chess classes and lesson schedule",
+			"description": "Find the chess classes you lead or attend. Check upcoming lessons, manage your groups and continue learning chess together.",
+			"image": "/seo/class.jpg",
+			"robots": "noindex, nofollow"
+		},
+		"/class": {
+			"title": "Chess class details and members",
+			"description": "View your chess class schedule, members and upcoming lessons. Join the next group session or manage the class you lead.",
+			"image": "/seo/class-detail.jpg",
+			"robots": "noindex, nofollow"
+		},
+		"/lesson": {
+			"title": "Live chess lesson with your class",
+			"description": "Join your class for a live chess lesson. Work through positions together, follow the lesson activities and play training games with your group.",
+			"image": "/seo/lesson.jpg",
+			"robots": "noindex, nofollow"
+		},
+		"/class/create": {
+			"title": "Plan your chess class",
+			"description": "Set up or edit a chess class: choose a name, lesson times and a recurring schedule for your group.",
+			"image": "/seo/class-create.jpg",
+			"robots": "noindex, nofollow"
 		},
 		"/sign-in": {
 			"title": "Sign in",

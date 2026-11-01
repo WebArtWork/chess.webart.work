@@ -16,8 +16,8 @@ export type TheoryCategory =
 	| 'psychology'
 	| 'improvement';
 
-/** Hub blocks: the basics, the thinking styles of famous players and coaches, then the Ukrainian chess school. */
-export type TheoryGroup = 'fundamentals' | 'masters' | 'ukrainian';
+/** Hub blocks: the basics, the thinking styles of famous players and coaches, the Ukrainian chess school, then openings. */
+export type TheoryGroup = 'fundamentals' | 'masters' | 'ukrainian' | 'openings';
 
 /**
  * A lesson's card on the Theory hub, and its route /theory/<slug>. Kept apart from the lesson text

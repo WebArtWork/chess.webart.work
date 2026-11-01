@@ -1,0 +1,40 @@
+<section class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6">
+	<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">{{ 'Class' | t }}</h1>
+
+	@if (failed()) {
+		<p class="rounded-xl border border-danger p-4 text-sm" role="alert">
+			{{ 'Could not load your classes. Check your connection and try again.' | t }}
+		</p>
+	}
+
+	@if (loading()) {
+		<div class="flex flex-col gap-3" role="status" [attr.aria-label]="'Loading your classes' | t">
+			@for (item of [1, 2, 3]; track item) {
+				<div class="h-24 animate-pulse rounded-xl bg-soft"></div>
+			}
+		</div>
+	} @else if (!classes().length && !failed()) {
+		<div class="ds-card items-start gap-3 p-5">
+			<p>{{ 'No classes yet. Create one to start weekly lessons with your group.' | t }}</p>
+			<a class="ds-btn ds-btn-primary" routerLink="/class/create">{{ 'Create class' | t }}</a>
+		</div>
+	} @else if (classes().length) {
+		<ul class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card" [attr.aria-label]="'Your classes' | t">
+			@for (item of classes(); track item.id) {
+				<li>
+					<a class="flex flex-col gap-1 px-4 py-3.5 text-fg! no-underline hover:bg-soft" [routerLink]="['/class', item.id]">
+						<span class="flex flex-wrap items-center gap-x-2 gap-y-1">
+							<span class="font-semibold leading-snug [overflow-wrap:anywhere]">{{ item.title }}</span>
+							<span class="ds-badge">{{ (item.ownerUid === user()?.uid ? 'Owner' : 'Member') | t }}</span>
+						</span>
+						<span class="text-sm leading-snug">{{ days(item) }}, {{ item.time }}</span>
+						<span class="text-sm leading-snug text-mute">
+							{{ '{count} min' | t: { count: item.duration } }} · {{ item.timeControl }} ·
+							{{ '{count} member|{count} members' | t: { count: item.emails.length + 1 } }}
+						</span>
+					</a>
+				</li>
+			}
+		</ul>
+	}
+</section>

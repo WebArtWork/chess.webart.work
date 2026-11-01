@@ -3,7 +3,7 @@ import type { User } from 'firebase/auth';
 import { FirebaseService } from '../firebase/firebase.service';
 
 /** Subcollections of `users/{uid}`; see firestore.rules. */
-const USER_COLLECTIONS = ['games', 'events', 'progress'];
+const USER_COLLECTIONS = ['games', 'events', 'progress', 'openings'];
 /** Firestore allows 500 writes per batch. */
 const BATCH_SIZE = 400;
 
@@ -40,22 +40,34 @@ export class AccountService {
 	}
 
 	/**
-	 * Deletes everything stored for the user: saved games, rating history, progress and the
-	 * profile document. Subcollections go first; Firestore does not delete them with their parent.
+	 * Deletes everything stored for the user: saved games, rating history, progress, the classes
+	 * they own and the profile document. Subcollections go first; Firestore does not delete them with their parent.
 	 */
 	async deleteData(uid: string): Promise<void> {
 		const db = await this._firebase.firestore();
 		if (!db) throw new Error('Firestore is only available in the browser.');
 
-		const { collection, deleteDoc, doc, getDocs, writeBatch } = await import('firebase/firestore');
-		for (const name of USER_COLLECTIONS) {
-			const docs = (await getDocs(collection(db, 'users', uid, name))).docs;
+		const { collection, deleteDoc, doc, getDocs, query, where, writeBatch } = await import('firebase/firestore');
+		// the lessons of the classes this user owns: Firestore does not delete subcollections with their parent
+		const owned = await getDocs(query(collection(db, 'classes'), where('ownerUid', '==', uid)));
+		const lessons = (
+			await Promise.all(owned.docs.map((item) => getDocs(collection(db, 'classes', item.id, 'lessons'))))
+		).flatMap((snapshot) => snapshot.docs);
+		const groups = [
+			...lessons.flatMap((lesson) => [collection(lesson.ref, 'games'), collection(lesson.ref, 'players')]),
+			...USER_COLLECTIONS.map((name) => collection(db, 'users', uid, name)),
+		];
+		const remove = async (docs: { ref: Parameters<ReturnType<typeof writeBatch>['delete']>[0] }[]) => {
 			for (let i = 0; i < docs.length; i += BATCH_SIZE) {
 				const batch = writeBatch(db);
 				for (const item of docs.slice(i, i + BATCH_SIZE)) batch.delete(item.ref);
 				await batch.commit();
 			}
-		}
+		};
+		for (const source of groups) await remove((await getDocs(source)).docs);
+		// then the lessons themselves, then the classes
+		await remove(lessons);
+		await remove(owned.docs);
 		await deleteDoc(doc(db, 'users', uid));
 	}
 }

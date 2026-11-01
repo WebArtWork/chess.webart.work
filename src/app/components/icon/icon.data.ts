@@ -20,7 +20,11 @@ export type IconName =
 	| 'save'
 	| 'saved'
 	| 'trash'
-	| 'eye';
+	| 'eye'
+	| 'users'
+	| 'plus'
+	| 'info'
+	| 'trophy';
 
 interface IconPair {
 	/** Solar (linear) - light skin */
@@ -193,5 +197,25 @@ export const ICONS: Record<IconName, IconPair> = {
 		iconoir: iconoirGroup(
 			'<path d="M3 13c3.6-8 14.4-8 18 0"/><path d="M12 17a3 3 0 1 1 0-6a3 3 0 0 1 0 6"/>',
 		),
+	},
+	info: {
+		solar: solarGroup('<circle cx="12" cy="12" r="10"/><path d="M12 17v-6M12 7.5h.01"/>'),
+		iconoir: iconoirGroup('<circle cx="12" cy="12" r="10"/><path d="M12 17v-6M12 7.5h.01"/>'),
+	},
+	plus: {
+		solar: solarPath('M12 5v14M5 12h14'),
+		iconoir: iconoirPath('M12 5v14M5 12h14'),
+	},
+	users: {
+		solar: solarGroup(
+			'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17.5 14.2c2.4.3 4 2 4 4.8"/>',
+		),
+		iconoir: iconoirGroup(
+			'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17.5 14.2c2.4.3 4 2 4 4.8"/>',
+		),
+	},
+	trophy: {
+		solar: solarGroup('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4.5c0 3 1.5 4.5 3.7 4.8M16 6h3.5c0 3-1.5 4.5-3.7 4.8M12 13v4M8.5 20h7M10 17h4"/>'),
+		iconoir: iconoirGroup('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4.5c0 3 1.5 4.5 3.7 4.8M16 6h3.5c0 3-1.5 4.5-3.7 4.8M12 13v4M8.5 20h7M10 17h4"/>'),
 	},
 };

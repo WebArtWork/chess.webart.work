@@ -11,6 +11,23 @@ export const serverRoutes: ServerRoute[] = [
 		renderMode: RenderMode.Client,
 	},
 	{
+		// classes belong to the signed-in user, who only exists in the browser
+		path: 'classes',
+		renderMode: RenderMode.Client,
+	},
+	{
+		path: 'class/create',
+		renderMode: RenderMode.Client,
+	},
+	{
+		path: 'class/:id',
+		renderMode: RenderMode.Client,
+	},
+	{
+		path: 'lesson/:id',
+		renderMode: RenderMode.Client,
+	},
+	{
 		// One page for every game, filled from /game/g/<id>.json in the browser.
 		path: 'library/games/:id',
 		renderMode: RenderMode.Client,

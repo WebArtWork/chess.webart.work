@@ -105,8 +105,50 @@
 				</button>
 			}
 
+			@if (lesson.active()) {
+				<div class="flex items-center" role="group" [attr.aria-label]="'Lesson view' | t">
+					@for (item of lessonViews; track item.id) {
+						<button
+							class="ds-btn ds-btn-ghost size-10 !p-0"
+							[class.bg-soft]="lesson.view() === item.id"
+							type="button"
+							[attr.aria-pressed]="lesson.view() === item.id"
+							[attr.aria-label]="item.label | t"
+							[attr.title]="item.label | t"
+							(click)="lesson.view.set(item.id)"
+						>
+							<app-icon [name]="item.icon" />
+						</button>
+					}
+				</div>
+				<button
+					class="ds-btn size-10 !p-0"
+					[class]="lesson.ready() ? 'ds-btn-primary !bg-ok !border-ok !text-white' : 'ds-btn-outline'"
+					type="button"
+					[disabled]="!lesson.canReady()"
+					[attr.aria-pressed]="lesson.ready()"
+					[attr.aria-label]="'Ready to play' | t"
+					[attr.title]="'Ready to play' | t"
+					(click)="lesson.toggleReady$.next()"
+				>
+					<app-icon name="check" />
+				</button>
+			}
+
+			@if (route().createPath; as createPath) {
+				<a
+					class="ds-btn ds-btn-ghost size-10 !p-0"
+					[routerLink]="createPath"
+					[attr.aria-label]="'Create class' | t"
+					[attr.title]="'Create class' | t"
+				>
+					<app-icon name="plus" />
+				</a>
+			}
+
 			<button
 				class="ds-btn ds-btn-ghost size-10 !p-0"
+				[class]="lesson.active() ? 'max-sm:!hidden' : ''"
 				type="button"
 				[attr.aria-label]="(sharing.copied() ? 'Link copied' : 'Share this page') | t"
 				[attr.title]="(sharing.copied() ? 'Link copied' : 'Share this page') | t"
