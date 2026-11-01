@@ -33,14 +33,15 @@ export class I18nService {
 	 * Call from a component constructor; for long texts that only one page shows, like a theory lesson.
 	 */
 	usePage(folder: string): void {
-		effect(() => {
-			const language = this.language();
-			if (!language || language === environment.defaultLanguage) return;
-			// the base file first, so the page texts are merged into it rather than overwritten by it
-			void this._translate
-				.loadTranslations(language)
-				.then(() => this._translate.loadExtraTranslation(folder, { language }));
-		});
+		effect(() => void this.loadPage(folder, this.language()));
+	}
+
+	/** Loads one page bundle for a language, for a page that only learns which one it needs after it loads. */
+	async loadPage(folder: string, language: string | undefined): Promise<void> {
+		if (!language || language === environment.defaultLanguage) return;
+		// the base file first, so the page texts are merged into it rather than overwritten by it
+		await this._translate.loadTranslations(language);
+		await this._translate.loadExtraTranslation(folder, { language });
 	}
 }
 

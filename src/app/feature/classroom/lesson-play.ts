@@ -1,6 +1,6 @@
 import { Chess } from 'chess.js';
 import { GameReason, GameResult, LessonGame, LessonPlayer, Side, StandingRow } from './lesson.interface';
-import { BONUS_MOVES, openingById } from './openings.const';
+import { BONUS_MOVES } from './openings';
 
 /** `10+5` is ten minutes and a five-second increment. */
 export function parseClock(timeControl: string): { baseMs: number; incrementMs: number } {
@@ -70,8 +70,12 @@ export function pointsOf(game: Pick<LessonGame, 'result'>, side: Side): number {
 	return game.result === side ? 1 : 0;
 }
 
-/** The table: finished games only, best first. */
-export function standings(players: Pick<LessonPlayer, 'uid' | 'name'>[], games: LessonGame[]): StandingRow[] {
+/** The table: finished games only, best first. `lineOf` gives the lesson line of an opening id. */
+export function standings(
+	players: Pick<LessonPlayer, 'uid' | 'name'>[],
+	games: LessonGame[],
+	lineOf: (openingId: string) => string[] | undefined,
+): StandingRow[] {
 	const rows = new Map<string, StandingRow>();
 	const row = (uid: string, name: string) => {
 		let found = rows.get(uid);
@@ -94,7 +98,7 @@ export function standings(players: Pick<LessonPlayer, 'uid' | 'name'>[], games: 
 			const entry = row(uid, name);
 			entry.played++;
 			entry.points += pointsOf(game, side);
-			const line = openingById(openingId)?.moves;
+			const line = lineOf(openingId);
 			if (game.result !== 'bye' && line && followedLine(game.moves, side, line)) entry.bonus += 0.5;
 		}
 	}

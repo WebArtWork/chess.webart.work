@@ -1,3 +1,44 @@
+<!-- A text block of a theory lesson: heading, paragraphs, a list and nested parts. Same as the Theory lesson page. -->
+<ng-template #block let-section let-level="level">
+	@switch (level) {
+		@case (2) {
+			<h2 class="m-0! -mb-1! text-lg font-semibold tracking-tight">{{ section.heading | t }}</h2>
+		}
+		@case (3) {
+			<h3 class="m-0! -mb-1! text-base font-semibold">{{ section.heading | t }}</h3>
+		}
+		@default {
+			<p class="m-0! -mb-2! text-sm font-semibold">{{ section.heading | t }}</p>
+		}
+	}
+	@for (paragraph of section.paragraphs; track $index) {
+		<p class="text-sm leading-relaxed">{{ paragraph | t }}</p>
+	}
+	@if (section.points; as points) {
+		@if (section.ordered) {
+			<ol class="flex list-decimal flex-col gap-2 pl-5 text-sm leading-relaxed marker:text-mute">
+				@for (point of points; track $index) {
+					<li>{{ point | t }}</li>
+				}
+			</ol>
+		} @else {
+			<ul class="flex list-disc flex-col gap-2 pl-5 text-sm leading-relaxed marker:text-mute">
+				@for (point of points; track $index) {
+					<li>{{ point | t }}</li>
+				}
+			</ul>
+		}
+	}
+	@for (paragraph of section.after; track $index) {
+		<p class="text-sm leading-relaxed">{{ paragraph | t }}</p>
+	}
+	@for (part of section.parts; track part.heading) {
+		<div class="flex flex-col gap-3">
+			<ng-container *ngTemplateOutlet="block; context: { $implicit: part, level: level + 1 }" />
+		</div>
+	}
+</ng-template>
+
 <section class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6">
 	<h1 class="sr-only">{{ 'Lesson' | t }}</h1>
 
@@ -45,73 +86,83 @@
 
 			@switch (view()) {
 				@case ('theory') {
-					<div>
-						<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
-							<h2 class="text-xl font-semibold tracking-tight">{{ picked().name | t }}</h2>
-							<span class="ds-badge">{{ (isNew() ? 'New for you' : 'Review') | t }}</span>
-						</div>
-						<p class="text-sm text-mute">{{ picked().idea | t }}</p>
-						<a class="ds-btn ds-btn-outline mt-2 h-9 px-3 text-sm" [routerLink]="['/theory', picked().lesson]">{{ 'Read the full lesson on this opening' | t }}</a>
-					</div>
-
-					<div class="-mx-4 sm:mx-0">
-						<app-board [fen]="theoryFen()" [interactive]="false" [viewOnly]="true" />
-					</div>
-
-					<div class="flex items-center gap-2">
-						<button class="ds-btn ds-btn-outline h-10 px-4" type="button" [disabled]="step() === 0" (click)="go(step() - 1)">{{ 'Back' | t }}</button>
-						<p class="min-w-0 flex-1 text-center text-sm text-mute">{{ step() }} / {{ picked().moves.length }}</p>
-						<button class="ds-btn ds-btn-outline h-10 px-4" type="button" [disabled]="step() === picked().moves.length" (click)="go(step() + 1)">{{ 'Next' | t }}</button>
-					</div>
-
-					<p class="ds-card min-h-16 justify-center p-4 text-sm" role="status">
-						@if (note(); as note) {
-							{{ note | t }}
-						} @else {
-							{{ 'The start position. Press Next to play the first move.' | t }}
-						}
-					</p>
-
-					<ol class="flex flex-wrap gap-1.5 text-sm">
-						@for (move of picked().moves; track $index) {
-							<li>
-								<button class="ds-chip h-8 px-2.5" type="button" [attr.aria-pressed]="step() === $index + 1" (click)="go($index + 1)">
-									<span class="text-mute">{{ label($index) }}</span>{{ move }}
-								</button>
-							</li>
-						}
-					</ol>
-
-					<section class="flex flex-col gap-2" aria-labelledby="lesson-ideas">
-						<h3 id="lesson-ideas" class="font-semibold">{{ 'Key ideas' | t }}</h3>
-						<ul class="list-disc space-y-1 pl-5 text-sm">
-							@for (idea of picked().ideas; track idea) {
-								<li>{{ idea | t }}</li>
+					@if (picked(); as opening) {
+						<div class="flex flex-col gap-2">
+							<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+								<h2 class="text-xl font-semibold tracking-tight">{{ nameOf(opening) }}</h2>
+								<span class="ds-badge">{{ (isNew() ? 'New for you' : 'Review') | t }}</span>
+							</div>
+							@for (paragraph of opening.lesson.idea; track $index) {
+								<p class="text-sm leading-relaxed text-mute">{{ paragraph | t }}</p>
 							}
-						</ul>
-					</section>
+						</div>
 
-					<section class="ds-card gap-1 p-4 text-sm" aria-labelledby="lesson-trap">
-						<h3 id="lesson-trap" class="font-semibold">{{ 'Watch out' | t }}</h3>
-						<p>{{ picked().trap | t }}</p>
-					</section>
+						<div class="-mx-4 sm:mx-0">
+							<app-board [fen]="theoryFen()" [interactive]="false" [viewOnly]="true" />
+						</div>
 
-					<section class="flex flex-col gap-2" aria-labelledby="lesson-bonus">
-						<h3 id="lesson-bonus" class="font-semibold">{{ 'Bonus in your games' | t }}</h3>
-						<p class="text-sm text-mute">
-							{{ 'Play your {count} moves of this line in a class game and get half a point extra.' | t: { count: bonusMoves } }}
+						<div class="flex items-center gap-2">
+							<button class="ds-btn ds-btn-outline h-10 px-4" type="button" [disabled]="step() === 0" (click)="go(step() - 1)">{{ 'Back' | t }}</button>
+							<p class="min-w-0 flex-1 text-center text-sm text-mute">{{ step() }} / {{ opening.moves.length }}</p>
+							<button class="ds-btn ds-btn-outline h-10 px-4" type="button" [disabled]="step() === opening.moves.length" (click)="go(step() + 1)">{{ 'Next' | t }}</button>
+						</div>
+
+						<p class="ds-card min-h-16 justify-center p-4 text-sm leading-relaxed" role="status">
+							@if (note(); as note) {
+								{{ note | t }}
+							} @else {
+								{{ 'The start position. Press Next to play the first move.' | t }}
+							}
 						</p>
-						@if (knownNames().length) {
-							<p class="text-sm text-mute">
-								{{ 'Picked for you. Openings you already used in a class game are skipped:' | t }}
-								@for (name of knownNames(); track name; let last = $last) {
-									{{ name | t }}{{ last ? '.' : ',' }}
-								}
-							</p>
-						}
-					</section>
 
-					<p class="text-center text-sm text-mute" role="status">{{ '{count} of {total} ready' | t: { count: readyCount(), total: players().length } }}</p>
+						<ol class="flex flex-wrap gap-1.5 text-sm">
+							@for (move of opening.moves; track $index) {
+								<li>
+									<button class="ds-chip h-8 px-2.5" type="button" [attr.aria-pressed]="step() === $index + 1" (click)="go($index + 1)">
+										<span class="text-mute">{{ label($index) }}</span>{{ move }}
+									</button>
+								</li>
+							}
+						</ol>
+
+						@for (section of opening.lesson.sections; track section.heading) {
+							<section class="flex flex-col gap-3">
+								<ng-container *ngTemplateOutlet="block; context: { $implicit: section, level: 3 }" />
+							</section>
+						}
+
+						@if (opening.lesson.mistakes; as mistakes) {
+							<section class="flex flex-col gap-3">
+								<h3 class="m-0! -mb-1! text-base font-semibold">{{ (mistakes.length === 1 ? 'Common mistake' : 'Common mistakes') | t }}</h3>
+								<ul class="flex list-disc flex-col gap-2 pl-5 text-sm leading-relaxed marker:text-mute">
+									@for (mistake of mistakes; track $index) {
+										<li>{{ mistake | t }}</li>
+									}
+								</ul>
+							</section>
+						}
+
+						<a class="ds-btn ds-btn-outline max-sm:w-full sm:self-start" [routerLink]="['/theory', opening.id]">{{ 'Read the full lesson on this opening' | t }}</a>
+
+						<section class="flex flex-col gap-2" aria-labelledby="lesson-bonus">
+							<h3 id="lesson-bonus" class="font-semibold">{{ 'Bonus in your games' | t }}</h3>
+							<p class="text-sm text-mute">
+								{{ 'Play your {count} moves of this line in a class game and get half a point extra.' | t: { count: bonusMoves } }}
+							</p>
+							@if (knownTitles().length) {
+								<p class="text-sm text-mute">
+									{{ 'Picked for you. Openings you already used in a class game are skipped:' | t }}
+									@for (title of knownTitles(); track title; let last = $last) {
+										{{ titleName(title) }}{{ last ? '.' : ',' }}
+									}
+								</p>
+							}
+						</section>
+
+						<p class="text-center text-sm text-mute" role="status">{{ '{count} of {total} ready' | t: { count: readyCount(), total: players().length } }}</p>
+					} @else {
+						<p class="text-sm text-mute">{{ 'No opening is available yet.' | t }}</p>
+					}
 				}
 
 				@case ('game') {
@@ -153,7 +204,7 @@
 
 							@if (gameOpening(); as opening) {
 								<p class="flex items-center justify-between gap-3 rounded-xl border border-line bg-card px-4 py-3 text-sm">
-									<span>{{ opening.name | t }}</span>
+									<span>{{ nameOf(opening) }}</span>
 									<span class="text-mute">{{ '{count} of {total} moves followed' | t: { count: followed(), total: bonusMoves } }}</span>
 								</p>
 							}

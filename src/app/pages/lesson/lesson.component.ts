@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { afterNextRender, Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -22,8 +23,9 @@ import {
 } from '../../feature/classroom/lesson-play';
 import { LessonService } from '../../feature/classroom/lesson.service';
 import { LessonToolbarService } from '../../feature/classroom/lesson-toolbar.service';
-import { BONUS_MOVES, openingById, pickOpening } from '../../feature/classroom/openings.const';
+import { BONUS_MOVES, loadOpenings, Opening, openingById, openingName, pickOpening, resolveId } from '../../feature/classroom/openings';
 import { pairRound, swissHistory, SwissPlayer } from '../../feature/classroom/swiss';
+import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
 
 /** How long past zero a clock must be before a player claims the win, so device clocks that differ a little do no harm. */
@@ -37,11 +39,12 @@ type StartState = 'ok' | 'finished' | 'playing' | 'few' | 'none';
  * pressed; nothing updates by itself yet, live updates come with the sockets.
  */
 @Component({
-	imports: [BoardComponent, IconComponent, RouterLink, TPipe],
+	imports: [BoardComponent, IconComponent, NgTemplateOutlet, RouterLink, TPipe],
 	templateUrl: './lesson.component.html',
 })
 export class LessonComponent {
 	private readonly _classId = inject(ActivatedRoute).snapshot.paramMap.get('id') ?? '';
+	private readonly _i18n = inject(I18nService);
 	private readonly _classes = inject(ClassesService);
 	private readonly _lessons = inject(LessonService);
 	private readonly _toolbar = inject(LessonToolbarService);
@@ -59,8 +62,10 @@ export class LessonComponent {
 	protected readonly lesson = signal<LessonItem | null>(null);
 	protected readonly players = signal<LessonPlayer[]>([]);
 	protected readonly games = signal<LessonGame[]>([]);
-	/** Openings this student already used in a class game. */
+	/** Openings this student already used in a class game, as lesson slugs. */
 	protected readonly known = signal<string[]>([]);
+	/** The Theory hub's opening lessons; empty until they are loaded. */
+	protected readonly openings = signal<Opening[]>([]);
 
 	protected readonly view = this._toolbar.view;
 	/** Moves shown on the theory board. */
@@ -77,21 +82,26 @@ export class LessonComponent {
 	protected readonly readyCount = computed(() => this.players().filter((player) => player.ready).length);
 
 	/** The opening for this student: the one picked when they joined, else the next one they do not know. */
-	protected readonly picked = computed(() => openingById(this.me()?.openingId ?? '') ?? pickOpening(this.known()).opening);
-	protected readonly isNew = computed(() => !this.known().includes(this.picked().id));
-	protected readonly knownNames = computed(() =>
+	protected readonly picked = computed(() => {
+		const openings = this.openings();
+		return openingById(openings, this.me()?.openingId ?? '') ?? pickOpening(openings, this.known())?.opening ?? null;
+	});
+	protected readonly isNew = computed(() => !this.known().includes(this.picked()?.id ?? ''));
+	/** Titles, not names: the template translates them and cuts the name off at the colon. */
+	protected readonly knownTitles = computed(() =>
 		this.known()
-			.map((id) => openingById(id)?.name)
-			.filter((name): name is string => !!name),
+			.map((id) => openingById(this.openings(), id)?.card.title)
+			.filter((title): title is string => !!title),
 	);
 	protected readonly bonusMoves = BONUS_MOVES;
 
 	protected readonly theoryFen = computed(() => {
 		const game = new Chess();
-		for (const move of this.picked().moves.slice(0, this.step())) game.move(move);
+		for (const move of (this.picked()?.moves ?? []).slice(0, this.step())) game.move(move);
 		return game.fen();
 	});
-	protected readonly note = computed(() => (this.step() ? this.picked().notes[this.step() - 1] : null));
+	/** The lesson's step for the move on the board: each step explains one move of both sides. */
+	protected readonly note = computed(() => (this.step() ? (this.picked()?.steps[Math.ceil(this.step() / 2) - 1] ?? null) : null));
 
 	/** This student's newest pairing. */
 	protected readonly game = computed(() => {
@@ -130,7 +140,7 @@ export class LessonComponent {
 	});
 	protected readonly gameOpening = computed(() => {
 		const game = this.game();
-		return openingById((this.side() === 'white' ? game?.whiteOpening : game?.blackOpening) ?? '');
+		return openingById(this.openings(), (this.side() === 'white' ? game?.whiteOpening : game?.blackOpening) ?? '');
 	});
 	/** How many of the lesson line's moves this student has played, out of the bonus. */
 	protected readonly followed = computed(() => {
@@ -142,7 +152,9 @@ export class LessonComponent {
 	protected readonly rounds = computed(() => [...new Set(this.games().map((game) => game.round))].sort((a, b) => a - b));
 	protected readonly round = computed(() => this.pickedRound() ?? this.rounds().at(-1) ?? 0);
 	protected readonly roundGames = computed(() => this.games().filter((game) => game.round === this.round()));
-	protected readonly table = computed(() => standings(this.players(), this.games()));
+	protected readonly table = computed(() =>
+		standings(this.players(), this.games(), (id) => openingById(this.openings(), id)?.moves),
+	);
 
 	/** What the owner can do about the next round, and the pairing it would make. */
 	protected readonly next = computed<{ state: StartState; round: number; pairing: ReturnType<typeof pairRound> }>(() => {
@@ -192,14 +204,30 @@ export class LessonComponent {
 			destroyRef.onDestroy(() => clearInterval(timer));
 		});
 		effect(() => void this._claimFlag());
+
+		// the opening's own lesson texts come from its page bundle, which is only known once the opening is
+		effect(() => {
+			const slug = this.picked()?.id;
+			const language = this._i18n.language();
+			if (slug) void this._i18n.loadPage(`/i18n/theory/${slug}/`, language);
+		});
 	}
 
 	protected refresh() {
 		void this._load(false);
 	}
 
+	/** "Italian Game", in the app language. */
+	protected nameOf(opening: Opening): string {
+		return openingName(this._i18n.t(opening.card.title));
+	}
+
+	protected titleName(title: string): string {
+		return openingName(this._i18n.t(title));
+	}
+
 	protected go(step: number) {
-		this.step.set(Math.min(Math.max(step, 0), this.picked().moves.length));
+		this.step.set(Math.min(Math.max(step, 0), this.picked()?.moves.length ?? 0));
 	}
 
 	protected label(index: number): string {
@@ -252,7 +280,7 @@ export class LessonComponent {
 		const lesson = this.lesson();
 		if (state !== 'ok' || !pairing || !klass || !lesson) return;
 		const { baseMs } = parseClock(klass.timeControl);
-		const opening = (uid: string) => this.players().find((player) => player.uid === uid)?.openingId ?? '';
+		const opening = (uid: string) => resolveId(this.players().find((player) => player.uid === uid)?.openingId ?? '');
 		const base = (white: SwissPlayer, black: SwissPlayer | null): NewLessonGame => ({
 			round,
 			white: white.uid,
@@ -396,6 +424,7 @@ export class LessonComponent {
 		this.problem.set('');
 		this.loading.set(first || !this.klass());
 		try {
+			this.openings.set(await loadOpenings());
 			const klass = await this._classes.get(this._classId);
 			this.klass.set(klass);
 			if (!klass) {
@@ -415,11 +444,12 @@ export class LessonComponent {
 				this._lessons.players(this._classId, lesson.id),
 				this._lessons.games(this._classId, lesson.id),
 			]);
-			this.known.set(known);
+			this.known.set([...new Set(known.map(resolveId))]);
 			this.players.set(players);
 			this.games.set(games);
-			if (lesson.status === 'open' && !players.some((player) => player.uid === this.uid())) {
-				const joined = await this._lessons.join(this._classId, lesson.id, pickOpening(known).opening.id);
+			const pick = pickOpening(this.openings(), this.known());
+			if (pick && lesson.status === 'open' && !players.some((player) => player.uid === this.uid())) {
+				const joined = await this._lessons.join(this._classId, lesson.id, pick.opening.id);
 				this.players.update((list) => [...list, joined]);
 			}
 			if (first && this.playing()) this.view.set('game');
@@ -441,9 +471,8 @@ export class LessonComponent {
 			if (!game.result || game.result === 'bye') continue;
 			const side: Side | null = game.white === uid ? 'white' : game.black === uid ? 'black' : null;
 			if (!side) continue;
-			const id = side === 'white' ? game.whiteOpening : game.blackOpening;
-			const line = openingById(id)?.moves;
-			if (line && followedLine(game.moves, side, line) && !this.known().includes(id)) fresh.add(id);
+			const opening = openingById(this.openings(), side === 'white' ? game.whiteOpening : game.blackOpening);
+			if (opening && followedLine(game.moves, side, opening.moves) && !this.known().includes(opening.id)) fresh.add(opening.id);
 		}
 		for (const id of fresh) {
 			try {
