@@ -26,7 +26,8 @@ export type IconName =
 	| 'info'
 	| 'trophy'
 	| 'refresh'
-	| 'history';
+	| 'history'
+	| 'qr';
 
 interface IconPair {
 	/** Solar (linear) - light skin */
@@ -219,6 +220,16 @@ export const ICONS: Record<IconName, IconPair> = {
 	trophy: {
 		solar: solarGroup('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4.5c0 3 1.5 4.5 3.7 4.8M16 6h3.5c0 3-1.5 4.5-3.7 4.8M12 13v4M8.5 20h7M10 17h4"/>'),
 		iconoir: iconoirGroup('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4.5c0 3 1.5 4.5 3.7 4.8M16 6h3.5c0 3-1.5 4.5-3.7 4.8M12 13v4M8.5 20h7M10 17h4"/>'),
+	},
+	// three corner squares and a few dots, like the code itself
+	qr: {
+		solar: solarGroup(
+			'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM21 14v3M14 21h3M21 21h.01"/>',
+			' stroke-linejoin="round"',
+		),
+		iconoir: iconoirGroup(
+			'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM21 14v3M14 21h3M21 21h.01"/>',
+		),
 	},
 	// a clock face with an arrow running back: what happened before
 	history: {

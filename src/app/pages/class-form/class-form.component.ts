@@ -1,5 +1,6 @@
 import { Component, computed, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmailScannerComponent } from '../../components/email-scanner/email-scanner.component';
 import { IconComponent } from '../../components/icon/icon.component';
 import { AuthService } from '../../feature/auth/auth.service';
 import {
@@ -17,7 +18,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** Create a class, weekly or without a schedule, or edit one (`?id=`), saved in Firestore through ClassesService. */
 @Component({
-	imports: [IconComponent, TPipe],
+	imports: [EmailScannerComponent, IconComponent, TPipe],
 	templateUrl: './class-form.component.html',
 })
 export class ClassFormComponent {
@@ -89,6 +90,11 @@ export class ClassFormComponent {
 			this.emails.update((emails) => [...emails, email]);
 			this.setEmailDraft('');
 		}
+	}
+
+	/** An address read from a QR code goes into the field, where Add (or Create) picks it up. */
+	protected onScanned(email: string) {
+		this.setEmailDraft(email);
 	}
 
 	protected removeEmail(email: string) {

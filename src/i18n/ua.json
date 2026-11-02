@@ -882,5 +882,16 @@
 	"No finished tournaments yet.": "Завершених турнірів ще немає.",
 	"{count} round|{count} rounds": "{count} раунд|{count} раунди|{count} раундів",
 	"{count} player|{count} players": "{count} гравець|{count} гравці|{count} гравців",
-	"Unfinished": "Не завершено"
+	"Unfinished": "Не завершено",
+	"Show my email as a QR code": "Показати мою пошту як QR-код",
+	"Your email as a QR code": "Ваша пошта як QR-код",
+	"QR code of {email}": "QR-код для {email}",
+	"Could not make the QR code.": "Не вдалося створити QR-код.",
+	"The class owner scans this code when creating the class to add you.": "Власник класу сканує цей код під час створення класу, щоб додати вас.",
+	"Scan an email QR code": "Сканувати QR-код пошти",
+	"Point the camera at the QR code on the other phone.": "Наведіть камеру на QR-код на іншому телефоні.",
+	"That QR code is not an email address.": "Цей QR-код не містить адреси пошти.",
+	"This browser cannot use the camera.": "Цей браузер не може користуватися камерою.",
+	"Camera access is blocked. Allow it for this site and try again.": "Доступ до камери заблоковано. Дозвольте його для цього сайту й спробуйте ще раз.",
+	"Could not open the camera.": "Не вдалося відкрити камеру."
 }

@@ -219,7 +219,7 @@ export const routes: Routes = [
 	{
 		path: 'classes',
 		canActivate: [authGuard],
-		data: { ...page('/classes', 'Class'), createPath: '/class/create' },
+		data: { ...page('/classes', 'Class'), createPath: '/class/create', emailQr: true },
 		loadComponent: () => import('./pages/classes/classes.component').then((m) => m.ClassesComponent),
 	},
 	{

@@ -4,6 +4,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRouteSnapshot, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, map, startWith } from 'rxjs';
 import { AnalysisSettingsComponent } from '../../components/analysis-settings/analysis-settings.component';
+import { EmailQrComponent } from '../../components/email-qr/email-qr.component';
 import { IconComponent } from '../../components/icon/icon.component';
 import { IconName } from '../../components/icon/icon.data';
 import { LessonToolbarService, LessonView } from '../../feature/classroom/lesson-toolbar.service';
@@ -20,7 +21,7 @@ import { NAV_LINKS } from '../nav.const';
 
 @Component({
 	selector: 'app-topbar',
-	imports: [AnalysisSettingsComponent, IconComponent, NgOptimizedImage, RouterLink, TPipe],
+	imports: [AnalysisSettingsComponent, EmailQrComponent, IconComponent, NgOptimizedImage, RouterLink, TPipe],
 	templateUrl: './topbar.component.html',
 	// no box of its own, so the sticky header sticks to the page, not to this element
 	host: { class: 'contents' },
@@ -100,6 +101,8 @@ interface TopbarData {
 	studyLink?: boolean;
 	/** Pages that put a plus button in the bar, linking here. */
 	createPath?: string;
+	/** Pages that put a button in the bar showing the user's email as a QR code. */
+	emailQr?: boolean;
 }
 
 function _routeData(route: ActivatedRouteSnapshot): TopbarData {

@@ -135,6 +135,20 @@
 				</button>
 			}
 
+			<!-- a class owner next to you scans this to add you to a class -->
+			@if (route().emailQr && user()?.email) {
+				<button
+					class="ds-btn ds-btn-ghost size-10 !p-0"
+					type="button"
+					aria-haspopup="dialog"
+					[attr.aria-label]="'Show my email as a QR code' | t"
+					[attr.title]="'Show my email as a QR code' | t"
+					(click)="emailQr.open()"
+				>
+					<app-icon name="qr" />
+				</button>
+			}
+
 			@if (route().createPath; as createPath) {
 				<a
 					class="ds-btn ds-btn-ghost size-10 !p-0"
@@ -188,6 +202,8 @@
 		</div>
 	</div>
 </header>
+
+<app-email-qr #emailQr [email]="user()?.email?.toLowerCase() ?? ''" />
 
 <!-- Full-screen editor for the position field: opens when the field is tapped, Load sits below it. -->
 <dialog
