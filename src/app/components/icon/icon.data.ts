@@ -24,7 +24,9 @@ export type IconName =
 	| 'users'
 	| 'plus'
 	| 'info'
-	| 'trophy';
+	| 'trophy'
+	| 'refresh'
+	| 'history';
 
 interface IconPair {
 	/** Solar (linear) - light skin */
@@ -217,5 +219,20 @@ export const ICONS: Record<IconName, IconPair> = {
 	trophy: {
 		solar: solarGroup('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4.5c0 3 1.5 4.5 3.7 4.8M16 6h3.5c0 3-1.5 4.5-3.7 4.8M12 13v4M8.5 20h7M10 17h4"/>'),
 		iconoir: iconoirGroup('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4.5c0 3 1.5 4.5 3.7 4.8M16 6h3.5c0 3-1.5 4.5-3.7 4.8M12 13v4M8.5 20h7M10 17h4"/>'),
+	},
+	// a clock face with an arrow running back: what happened before
+	history: {
+		solar: solarGroup('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>', ' stroke-linejoin="round"'),
+		iconoir: iconoirGroup('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>'),
+	},
+	// two arrows chasing each other; `reset` is a single return arrow and reads as "undo"
+	refresh: {
+		solar: solarGroup(
+			'<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
+			' stroke-linejoin="round"',
+		),
+		iconoir: iconoirGroup(
+			'<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
+		),
 	},
 };

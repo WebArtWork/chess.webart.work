@@ -110,7 +110,7 @@ npm run games:import -- --until scan
 | --- | --- | --- |
 | `--input` | the 2026-09 archive | `.pgn.zst` or `.pgn` |
 | `--output` | `src/data/game/games.json` | the full dataset (not shipped to the app) |
-| `--app-dir` | `src/data/game/app` | the app's copy: catalog, daily schedule, one file per game |
+| `--app-dir` | `src/data/game/app` | the app's copy: catalog, daily schedule, one file per game; `--app-dir=` with nothing skips it |
 | `--max-scan` | 100000 | archive games read per batch |
 | `--max-export` | 1000 | games added per batch, at most; never filled with weak or duplicate games |
 | `--min-rating` / `--max-rating` | 1200 / 2400 | both players within this range |
@@ -119,7 +119,7 @@ npm run games:import -- --until scan
 | `--workers` | 3 | Stockfish processes, one thread each (leave one core for parsing) |
 | `--positions` | 5 | training positions per game, at most |
 | `--min-quality` / `--min-uniqueness` | 45 / 30 | bars a game must clear to be exported |
-| `--difficulty-mix` | `beginner=0.15,intermediate=0.45,advanced=0.3,expert=0.1` | wanted mix of training levels |
+| `--difficulty-mix` | `beginner=0.3,intermediate=0.5,advanced=0.15,expert=0.05` | wanted mix of training levels |
 | `--practice-mix` | `tactics=0.3,candidates=0.2,quiet=0.2,endgame=0.15,sacrifice=0.05,tempting=0.1` | wanted share of games feeding each practice; games feeding one that is short get up to 1.3× |
 | `--fresh` | off | discard an unfinished batch instead of continuing it |
 | `--until` | – | stop after `scan`, `quick`, `deep`, `select` or `export` |
@@ -171,7 +171,8 @@ archive ──stream──▶ scan ──▶ quick engine pass ──▶ deep en
 - **Difficulty.** An estimated training level, not an Elo: beginner 500–1000, intermediate
   1000–1400, advanced 1400–1800, expert 1800+. It rises with calculation depth, quiet key moves,
   sacrifices, several plausible moves, a tempting wrong capture or check, defensive and positional
-  themes; free pieces and mate in one lower it. A game's level is the median of its positions.
+  themes; free pieces and mate in one lower it. A game's level is the median of its positions. The estimate rarely passes 1400, so most games are
+  beginner or intermediate, and the default mix asks for what it can deliver.
 - **Categories:** `tactics`, `calculation`, `candidateMoves`, `positional`, `attack`, `defense`,
   `endgame`, `criticalDecision`. A position can have several; `category` is the main one.
 - **Themes:** `fork`, `pin`, `skewer`, `discoveredCheck`, `doubleCheck`, `sacrifice`, `quietMove`,

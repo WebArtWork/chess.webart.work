@@ -16,10 +16,12 @@
 		</div>
 
 		<dl class="divide-y divide-line overflow-hidden rounded-xl border border-line bg-card text-sm">
-			<div class="flex items-baseline justify-between gap-4 px-4 py-3">
-				<dt class="text-mute">{{ 'When' | t }}</dt>
-				<dd class="text-right">{{ days(item) }}, {{ item.time }} · {{ '{count} min' | t: { count: item.duration } }}</dd>
-			</div>
+			@if (item.weekly) {
+				<div class="flex items-baseline justify-between gap-4 px-4 py-3">
+					<dt class="text-mute">{{ 'When' | t }}</dt>
+					<dd class="text-right">{{ days(item) }}, {{ item.time }} · {{ '{count} min' | t: { count: item.duration } }}</dd>
+				</div>
+			}
 			@if (!owner() && next(); as next) {
 				<div class="flex items-baseline justify-between gap-4 px-4 py-3">
 					<dt class="text-mute">{{ 'Next lesson' | t }}</dt>
@@ -36,10 +38,13 @@
 			</div>
 		</dl>
 
-		@if (owner() && next(); as next) {
+		@if (owner()) {
 			<a class="ds-btn ds-btn-primary h-auto min-h-14 flex-col !gap-0.5 py-2 max-sm:w-full sm:self-start" [routerLink]="['/lesson', item.id]">
 				<span>{{ 'Start lesson' | t }}</span>
-				<span class="text-xs font-normal">{{ dateLabel(next) }} · {{ item.time }}</span>
+				<!-- a class without a schedule can start whenever -->
+				@if (next(); as next) {
+					<span class="text-xs font-normal">{{ dateLabel(next) }} · {{ item.time }}</span>
+				}
 			</a>
 		}
 

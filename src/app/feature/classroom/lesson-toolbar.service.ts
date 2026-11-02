@@ -1,7 +1,8 @@
 import { Service, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 
-export type LessonView = 'theory' | 'game' | 'tournament';
+/** `records` is reached from the tournament view, so it has no icon in the topbar. */
+export type LessonView = 'theory' | 'game' | 'tournament' | 'records';
 
 /** Connects the lesson page with the view and ready icons in the topbar. */
 @Service()

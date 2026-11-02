@@ -17,7 +17,7 @@
 		"games:refresh": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts refresh",
 		"games:lookahead": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts lookahead",
 		"games:enrich": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts enrich",
-		"games:import:sample": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts --max-scan 3000 --max-export 20 --work-dir tools/chess-import/.work/sample --output tools/chess-import/.work/sample/out/games.json"
+		"games:import:sample": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts --max-scan 3000 --max-export 20 --work-dir tools/chess-import/.work/sample --output tools/chess-import/.work/sample/out/games.json --app-dir tools/chess-import/.work/sample/app --history tools/chess-import/.work/sample/history.json"
 	},
 	"dependencies": {
 		"@angular/common": "22.2.1",

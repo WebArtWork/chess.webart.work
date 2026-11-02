@@ -7,6 +7,7 @@ import { BoardComponent, BoardMove } from '../../components/board/board.componen
 import { IconComponent } from '../../components/icon/icon.component';
 import { AuthService } from '../../feature/auth/auth.service';
 import { ClassesService } from '../../feature/classroom/classes.service';
+import { environment } from '../../../environments/environment';
 import { ClassItem } from '../../feature/classroom/classroom.interface';
 import { GameReason, LessonGame, LessonItem, LessonPlayer, NewLessonGame, Side } from '../../feature/classroom/lesson.interface';
 import {
@@ -33,6 +34,13 @@ const FLAG_MARGIN_MS = 1500;
 
 type StartState = 'ok' | 'finished' | 'playing' | 'few' | 'none';
 
+/** A finished tournament as read back: its lesson, who took part and every game. */
+interface PastTournament {
+	lesson: LessonItem;
+	players: LessonPlayer[];
+	games: LessonGame[];
+}
+
 /**
  * A class lesson, at `/lesson/{classId}`: the opening theory, a game against a class mate and the Swiss
  * tournament. Everything is in Firestore (see LessonService). The page reads once and when "Refresh" is
@@ -55,6 +63,9 @@ export class LessonComponent {
 	/** Something the last action could not do; shown until the next action. */
 	protected readonly problem = signal('');
 	protected readonly busy = signal(false);
+	/** The Refresh button's own state: reading now, then briefly "updated". */
+	protected readonly refreshing = signal(false);
+	protected readonly refreshed = signal(false);
 	/** The first press of "Finish tournament" only asks to be sure. */
 	protected readonly confirmFinish = signal(false);
 
@@ -156,6 +167,24 @@ export class LessonComponent {
 		standings(this.players(), this.games(), (id) => openingById(this.openings(), id)?.moves),
 	);
 
+	/** The class's finished tournaments, read when the records are opened; `null` until then. */
+	protected readonly past = signal<PastTournament[] | null>(null);
+	protected readonly pastFailed = signal(false);
+	protected readonly pastRows = computed(() =>
+		(this.past() ?? []).map(({ lesson, players, games }) => {
+			const table = standings(players, games, (id) => openingById(this.openings(), id)?.moves);
+			const numbers = [...new Set(games.map((game) => game.round))].sort((a, b) => a - b);
+			return {
+				lesson,
+				table,
+				players: players.length,
+				rounds: numbers.map((number) => ({ number, games: games.filter((game) => game.round === number) })),
+				// nobody wins a tournament that never played a game
+				winner: table[0]?.played ? table[0].name : '',
+			};
+		}),
+	);
+
 	/** What the owner can do about the next round, and the pairing it would make. */
 	protected readonly next = computed<{ state: StartState; round: number; pairing: ReturnType<typeof pairRound> }>(() => {
 		const games = this.games();
@@ -213,8 +242,45 @@ export class LessonComponent {
 		});
 	}
 
-	protected refresh() {
-		void this._load(false);
+	/** Reads the lesson again. With nothing new the screen looks the same, so the icon spins and then ticks. */
+	protected async refresh() {
+		if (this.refreshing()) return;
+		this.refreshing.set(true);
+		this.refreshed.set(false);
+		// at least a moment, so a fast read is still seen
+		await Promise.all([this._load(false), new Promise((resolve) => setTimeout(resolve, 600))]);
+		this.refreshing.set(false);
+		this.refreshed.set(true);
+		setTimeout(() => this.refreshed.set(false), 1500);
+	}
+
+	/** Opens the records: reads every finished tournament of the class with its players and games. */
+	protected async openRecords() {
+		this.view.set('records');
+		this.pastFailed.set(false);
+		try {
+			const finished = await this._lessons.finished(this._classId);
+			this.past.set(
+				await Promise.all(
+					finished.map(async (lesson) => ({
+						lesson,
+						players: await this._lessons.players(this._classId, lesson.id),
+						games: await this._lessons.games(this._classId, lesson.id),
+					})),
+				),
+			);
+		} catch (error) {
+			console.error('Could not load the previous tournaments.', error);
+			this.past.set([]);
+			this.pastFailed.set(true);
+		}
+	}
+
+	/** "2 November 2026", in the app language. */
+	protected dateLabel(date: Date | null): string {
+		if (!date) return '';
+		const locale = environment.languages.find((item) => item.code === this._i18n.language())?.htmlLang ?? 'en';
+		return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
 	}
 
 	/** "Italian Game", in the app language. */

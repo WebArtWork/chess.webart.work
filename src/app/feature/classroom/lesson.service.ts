@@ -4,6 +4,8 @@ import { FirebaseService } from '../firebase/firebase.service';
 import { GameReason, GameResult, LessonGame, LessonItem, LessonPlayer, NewLessonGame } from './lesson.interface';
 
 const MAX_GAMES = 500;
+/** Lessons read when looking back: the newest ones. */
+const MAX_LESSONS = 30;
 
 /** A Firestore timestamp as a date; `null` while a server timestamp is still pending. */
 const toDate = (value: unknown): Date | null => (value as { toDate?: () => Date } | null | undefined)?.toDate?.() ?? null;
@@ -24,8 +26,18 @@ export class LessonService {
 		const { collection, getDocs, limit, orderBy, query } = await import('firebase/firestore');
 		const snapshot = await getDocs(query(collection(db, 'classes', classId, 'lessons'), orderBy('createdAt', 'desc'), limit(1)));
 		const found = snapshot.docs[0];
-		if (!found) return null;
-		return { id: found.id, status: found.data()['status'] === 'finished' ? 'finished' : 'open', createdAt: toDate(found.data()['createdAt']) };
+		return found ? this._toLesson(found.id, found.data()) : null;
+	}
+
+	/**
+	 * The class's finished tournaments, newest first. Read as the newest lessons and filtered here, since
+	 * asking Firestore for both the status and the order would need an index of its own.
+	 */
+	async finished(classId: string): Promise<LessonItem[]> {
+		const { db } = await this._context();
+		const { collection, getDocs, limit, orderBy, query } = await import('firebase/firestore');
+		const snapshot = await getDocs(query(collection(db, 'classes', classId, 'lessons'), orderBy('createdAt', 'desc'), limit(MAX_LESSONS)));
+		return snapshot.docs.map((item) => this._toLesson(item.id, item.data())).filter((lesson) => lesson.status === 'finished');
 	}
 
 	/** Owner only. */
@@ -33,7 +45,7 @@ export class LessonService {
 		const { db } = await this._context();
 		const { addDoc, collection, serverTimestamp } = await import('firebase/firestore');
 		const ref = await addDoc(collection(db, 'classes', classId, 'lessons'), { status: 'open', createdAt: serverTimestamp() });
-		return { id: ref.id, status: 'open', createdAt: new Date() };
+		return { id: ref.id, status: 'open', createdAt: new Date(), finishedAt: null };
 	}
 
 	/** Owner only: ends the tournament. The lesson stays readable. */
@@ -149,6 +161,15 @@ export class LessonService {
 		if (!user || !db) throw new Error('Sign in to use classes.');
 		const name = user.displayName || user.email?.split('@')[0] || 'Player';
 		return { db, uid: user.uid, name };
+	}
+
+	private _toLesson(id: string, data: Record<string, unknown>): LessonItem {
+		return {
+			id,
+			status: data['status'] === 'finished' ? 'finished' : 'open',
+			createdAt: toDate(data['createdAt']),
+			finishedAt: toDate(data['finishedAt']),
+		};
 	}
 
 	private _toGame(id: string, data: Record<string, unknown>): LessonGame {

@@ -1,6 +1,12 @@
 /** What the class form edits, and what is saved in `classes/{id}`. */
 export interface ClassInput {
 	title: string;
+	/**
+	 * Meets on set days and at a set time. Off: the class has no schedule and runs tournaments whenever the
+	 * owner starts one, e.g. a group preparing for a real tournament. Then `days` is empty and `time` is `''`.
+	 * Classes saved before this existed are weekly.
+	 */
+	weekly: boolean;
 	/** Meeting days, Monday = 0 to Sunday = 6. */
 	days: number[];
 	/** Local start time, 24h, e.g. `17:00`. */

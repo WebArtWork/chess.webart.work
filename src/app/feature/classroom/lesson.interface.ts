@@ -4,6 +4,8 @@ export interface LessonItem {
 	/** `finished` once the owner ends the tournament; the lesson stays readable. */
 	status: 'open' | 'finished';
 	createdAt: Date | null;
+	/** When the owner ended the tournament; `null` while it is open. */
+	finishedAt: Date | null;
 }
 
 /** `.../lessons/{lessonId}/players/{uid}`: a class member who opened the lesson. */

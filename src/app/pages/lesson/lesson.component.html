@@ -55,9 +55,19 @@
 	} @else {
 		<div class="flex items-center justify-between gap-3">
 			<p class="min-w-0 truncate font-semibold">{{ klass()?.title }}</p>
-			<button class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0" type="button" [attr.aria-label]="'Refresh' | t" [attr.title]="'Refresh' | t" (click)="refresh()">
-				<app-icon name="reset" />
+			<button
+				class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0"
+				type="button"
+				[disabled]="refreshing()"
+				[attr.aria-label]="'Refresh' | t"
+				[attr.title]="'Refresh' | t"
+				(click)="refresh()"
+			>
+				<span class="inline-flex" [class.animate-spin]="refreshing()" [class.motion-reduce:animate-none]="refreshing()">
+					<app-icon [name]="refreshed() ? 'check' : 'refresh'" />
+				</span>
 			</button>
+			<span class="sr-only" role="status">{{ refreshed() ? ('Updated' | t) : '' }}</span>
 		</div>
 
 		@if (problem(); as problem) {
@@ -260,10 +270,104 @@
 					}
 				}
 
+				@case ('records') {
+					<div class="flex items-start justify-between gap-3">
+						<h2 class="text-xl font-semibold tracking-tight">{{ 'Previous tournaments' | t }}</h2>
+						<button class="ds-btn ds-btn-outline h-10 shrink-0 px-3" type="button" (click)="view.set('tournament')">{{ 'Back to tournament' | t }}</button>
+					</div>
+
+					@if (pastFailed()) {
+						<p class="text-sm text-danger" role="alert">{{ 'Could not load the previous tournaments.' | t }}</p>
+					} @else if (past() === null) {
+						<div class="h-24 animate-pulse rounded-xl bg-soft" role="status" [attr.aria-label]="'Loading…' | t"></div>
+					} @else if (!pastRows().length) {
+						<p class="text-sm text-mute">{{ 'No finished tournaments yet.' | t }}</p>
+					} @else {
+						<ul class="flex flex-col gap-3">
+							@for (row of pastRows(); track row.lesson.id) {
+								<li>
+									<details class="overflow-hidden rounded-xl border border-line bg-card">
+										<summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm [&::-webkit-details-marker]:hidden">
+											<span class="min-w-0">
+												<span class="block font-semibold">{{ dateLabel(row.lesson.createdAt) }}</span>
+												<span class="block text-mute">
+													{{ '{count} round|{count} rounds' | t: { count: row.rounds.length } }} ·
+													{{ '{count} player|{count} players' | t: { count: row.players } }}
+												</span>
+											</span>
+											@if (row.winner) {
+												<span class="flex shrink-0 items-center gap-1.5 font-medium">
+													<app-icon name="trophy" />
+													{{ row.winner }}
+												</span>
+											}
+										</summary>
+
+										<div class="flex flex-col gap-4 border-t border-line px-4 py-3">
+											<table class="w-full text-sm">
+												<thead class="text-left text-mute">
+													<tr>
+														<th class="py-1 pr-2 font-normal" scope="col">#</th>
+														<th class="py-1 font-normal" scope="col">{{ 'Player' | t }}</th>
+														<th class="py-1 text-right font-normal" scope="col">{{ 'Played' | t }}</th>
+														<th class="py-1 text-right font-normal" scope="col">{{ 'Bonus' | t }}</th>
+														<th class="py-1 text-right font-normal" scope="col">{{ 'Points' | t }}</th>
+													</tr>
+												</thead>
+												<tbody>
+													@for (entry of row.table; track entry.uid; let place = $index) {
+														<tr [class.font-semibold]="place === 0 && entry.played > 0">
+															<td class="py-1.5 pr-2 text-mute">{{ place + 1 }}</td>
+															<td class="py-1.5 [overflow-wrap:anywhere]">{{ entry.name }}</td>
+															<td class="py-1.5 text-right">{{ entry.played }}</td>
+															<td class="py-1.5 text-right text-mute">+{{ entry.bonus }}</td>
+															<td class="py-1.5 text-right">{{ entry.total }}</td>
+														</tr>
+													}
+												</tbody>
+											</table>
+
+											@for (round of row.rounds; track round.number) {
+												<div class="flex flex-col gap-1.5">
+													<p class="text-sm font-semibold">{{ 'Round {number}' | t: { number: round.number } }}</p>
+													<ul class="divide-y divide-line overflow-hidden rounded-lg border border-line text-sm">
+														@for (item of round.games; track item.id) {
+															<li class="flex items-center justify-between gap-3 px-3 py-2">
+																@if (item.black) {
+																	<span class="min-w-0 [overflow-wrap:anywhere]">{{ item.whiteName }} <span class="text-mute">{{ 'vs' | t }}</span> {{ item.blackName }}</span>
+																	<span class="shrink-0 font-mono" [class.text-mute]="!item.result">{{ item.result ? result(item) : ('Unfinished' | t) }}</span>
+																} @else {
+																	<span class="min-w-0 [overflow-wrap:anywhere]">{{ item.whiteName }}</span>
+																	<span class="shrink-0 text-mute">{{ 'Bye' | t }}</span>
+																}
+															</li>
+														}
+													</ul>
+												</div>
+											}
+										</div>
+									</details>
+								</li>
+							}
+						</ul>
+					}
+				}
+
 				@case ('tournament') {
-					<div>
-						<h2 class="text-xl font-semibold tracking-tight">{{ 'Tournament' | t }}</h2>
-						<p class="text-sm text-mute">{{ 'Swiss: each round you play someone with a similar score.' | t }}</p>
+					<div class="flex items-start justify-between gap-3">
+						<div>
+							<h2 class="text-xl font-semibold tracking-tight">{{ 'Tournament' | t }}</h2>
+							<p class="text-sm text-mute">{{ 'Swiss: each round you play someone with a similar score.' | t }}</p>
+						</div>
+						<button
+							class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0"
+							type="button"
+							[attr.aria-label]="'Previous tournaments' | t"
+							[attr.title]="'Previous tournaments' | t"
+							(click)="openRecords()"
+						>
+							<app-icon name="history" />
+						</button>
 					</div>
 
 					@if (isOwner() && open()) {

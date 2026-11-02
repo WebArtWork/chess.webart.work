@@ -530,8 +530,17 @@ export async function writeAppData(games: GameRecord[], dir: string, today = new
 	await writeFile(path.join(staging, 'daily.json'), JSON.stringify(planDaily(previous, catalog.puzzles, today), null, '\t') + '\n');
 
 	const old = `${dir}.old-${process.pid}`;
-	if (existsSync(dir)) await rename(dir, old);
-	await rename(staging, dir);
+	try {
+		if (existsSync(dir)) await rename(dir, old);
+		await rename(staging, dir);
+	} catch (error) {
+		// on Windows a folder that a dev server or an editor has open cannot be renamed: put everything back
+		await rm(staging, { recursive: true, force: true });
+		if (existsSync(old) && !existsSync(dir)) await rename(old, dir);
+		throw new Error(
+			`Could not replace ${dir} (${(error as Error).message}). Stop "npm start" or whatever has it open, then run this again; nothing was changed.`,
+		);
+	}
 	await rm(old, { recursive: true, force: true });
 	return catalog;
 }

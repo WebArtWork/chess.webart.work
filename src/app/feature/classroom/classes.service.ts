@@ -74,6 +74,7 @@ export class ClassesService {
 			ownerName: String(data['ownerName'] ?? ''),
 			ownerEmail: String(data['ownerEmail'] ?? ''),
 			title: String(data['title'] ?? ''),
+			weekly: data['weekly'] !== false,
 			days: Array.isArray(data['days']) ? (data['days'] as number[]) : [],
 			time: String(data['time'] ?? ''),
 			duration: Number(data['duration'] ?? 60),

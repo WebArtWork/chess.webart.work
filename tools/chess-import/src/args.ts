@@ -11,7 +11,7 @@ interface Option {
 
 const OPTIONS: Record<string, Option> = {
 	input: { key: 'input', kind: 'path', help: 'archive to read (default: next unfinished lichess_db_*.pgn.zst)' },
-	output: { key: 'output', kind: 'path', help: 'games.json path; index.json and chunks/ go next to it' },
+	output: { key: 'output', kind: 'path', help: 'games.json path (the app copy goes to --app-dir)' },
 	'work-dir': { key: 'workDir', kind: 'path', help: 'checkpoint, candidate and engine-cache directory' },
 	engine: { key: 'engine', kind: 'path', help: 'Stockfish binary (default: STOCKFISH_PATH, ../../stockfish, npm build)' },
 	fresh: { key: 'fresh', kind: 'boolean', help: 'discard an unfinished batch instead of continuing it' },
@@ -51,14 +51,18 @@ const OPTIONS: Record<string, Option> = {
 	'difficulty-mix': {
 		key: 'difficultyMix',
 		kind: 'mix',
-		help: 'wanted shares, e.g. beginner=0.15,intermediate=0.45,advanced=0.3,expert=0.1',
+		help: 'wanted shares, e.g. beginner=0.3,intermediate=0.5,advanced=0.15,expert=0.05',
 	},
 	'practice-mix': {
 		key: 'practiceMix',
 		kind: 'practiceMix',
 		help: `wanted shares of games feeding each practice (${PRACTICE_TAGS.join(', ')}), e.g. tactics=0.3,endgame=0.2`,
 	},
-	'app-dir': { key: 'appDir', kind: 'path', help: "the app's copy of the games (catalog, daily schedule, one file per game)" },
+	'app-dir': {
+		key: 'appDir',
+		kind: 'path',
+		help: "the app's copy of the games (catalog, daily schedule, one file per game); --app-dir= with nothing skips it",
+	},
 };
 
 export const COMMANDS = ['import', 'clear', 'wipe', 'refresh', 'lookahead', 'enrich'] as const;
@@ -123,7 +127,8 @@ export function parseArgs(argv: string[]): ParsedArgs {
 function convert(name: string, kind: Kind, value: string): unknown {
 	switch (kind) {
 		case 'path':
-			return path.resolve(value);
+			// empty stays empty: no engine given, no archive given, no app copy
+			return value === '' ? '' : path.resolve(value);
 		case 'number': {
 			const number = Number(value);
 			if (!Number.isFinite(number) || number < 0) throw new Error(`--${name} expects a non-negative number`);

@@ -29,54 +29,72 @@
 		}
 	</div>
 
-	<div
-		role="group"
-		aria-labelledby="class-days-label"
-		[attr.aria-invalid]="submitted() && errors()['days'] ? 'true' : null"
-		[attr.aria-describedby]="submitted() && errors()['days'] ? 'class-days-error' : null"
-	>
-		<p id="class-days-label" class="ds-label">{{ 'Week day' | t }}</p>
-		<div class="grid grid-cols-7 gap-1.5 sm:flex sm:flex-wrap sm:gap-2">
-			@for (day of weekdaysShort; track day; let index = $index) {
-				<button
-					class="ds-chip min-w-0 justify-center px-0 sm:min-w-11 sm:px-3"
-					type="button"
-					[attr.aria-pressed]="days().includes(index)"
-					[attr.aria-label]="weekdays[index] | t"
-					(click)="toggleDay(index)"
-				>
-					{{ day | t }}
-				</button>
-			}
-		</div>
-		@if (submitted() && errors()['days']; as error) {
-			<p id="class-days-error" class="mt-1 text-sm text-danger" role="alert">{{ error | t }}</p>
-		}
+	<!-- on the same row when there is room, one under the other on a narrow phone -->
+	<div class="flex flex-wrap items-center gap-x-8">
+		<!-- off: no days or time; the class runs tournaments whenever the owner starts one -->
+		<label class="flex min-h-11 items-center gap-3">
+			<input type="checkbox" class="size-5 accent-brand" [checked]="weekly()" (change)="weekly.set(checked($event))" />
+			{{ 'Weekly' | t }}
+		</label>
+
+		<label class="flex min-h-11 items-center gap-3">
+			<input type="checkbox" class="size-5 accent-brand" [checked]="isPublic()" (change)="isPublic.set(checked($event))" />
+			{{ 'Show this class publicly' | t }}
+		</label>
 	</div>
 
-	<div class="grid grid-cols-3 gap-2 sm:gap-4">
-		<!-- each cell sits at the bottom, so the controls line up even when a label wraps -->
-		<div class="flex min-w-0 flex-col justify-end">
-			<label class="ds-label" for="class-time">{{ 'Start time' | t }}</label>
-			<input
-				id="class-time"
-				class="ds-input !px-2 max-sm:[&::-webkit-calendar-picker-indicator]:hidden sm:!px-3"
-				type="time"
-				[value]="time()"
-				[attr.aria-invalid]="submitted() && errors()['time'] ? 'true' : null"
-				[attr.aria-describedby]="submitted() && errors()['time'] ? 'class-time-error' : null"
-				(input)="time.set(value($event))"
-			/>
-		</div>
-
-		<div class="flex min-w-0 flex-col justify-end">
-			<label class="ds-label" for="class-duration">{{ 'Length' | t }}</label>
-			<select id="class-duration" class="ds-select !px-2 sm:!px-3" (change)="duration.set(+value($event))">
-				@for (minutes of durations; track minutes) {
-					<option [value]="minutes" [selected]="duration() === minutes">{{ '{count} min' | t: { count: minutes } }}</option>
+	@if (weekly()) {
+		<div
+			role="group"
+			aria-labelledby="class-days-label"
+			[attr.aria-invalid]="submitted() && errors()['days'] ? 'true' : null"
+			[attr.aria-describedby]="submitted() && errors()['days'] ? 'class-days-error' : null"
+		>
+			<p id="class-days-label" class="ds-label">{{ 'Week day' | t }}</p>
+			<div class="grid grid-cols-7 gap-1.5 sm:flex sm:flex-wrap sm:gap-2">
+				@for (day of weekdaysShort; track day; let index = $index) {
+					<button
+						class="ds-chip min-w-0 justify-center px-0 sm:min-w-11 sm:px-3"
+						type="button"
+						[attr.aria-pressed]="days().includes(index)"
+						[attr.aria-label]="weekdays[index] | t"
+						(click)="toggleDay(index)"
+					>
+						{{ day | t }}
+					</button>
 				}
-			</select>
+			</div>
+			@if (submitted() && errors()['days']; as error) {
+				<p id="class-days-error" class="mt-1 text-sm text-danger" role="alert">{{ error | t }}</p>
+			}
 		</div>
+	}
+
+	<div class="grid gap-2 sm:gap-4" [class.grid-cols-3]="weekly()" [class.grid-cols-1]="!weekly()" [class.sm:max-w-xs]="!weekly()">
+		<!-- each cell sits at the bottom, so the controls line up even when a label wraps -->
+		@if (weekly()) {
+			<div class="flex min-w-0 flex-col justify-end">
+				<label class="ds-label" for="class-time">{{ 'Start time' | t }}</label>
+				<input
+					id="class-time"
+					class="ds-input !px-2 max-sm:[&::-webkit-calendar-picker-indicator]:hidden sm:!px-3"
+					type="time"
+					[value]="time()"
+					[attr.aria-invalid]="submitted() && errors()['time'] ? 'true' : null"
+					[attr.aria-describedby]="submitted() && errors()['time'] ? 'class-time-error' : null"
+					(input)="time.set(value($event))"
+				/>
+			</div>
+
+			<div class="flex min-w-0 flex-col justify-end">
+				<label class="ds-label" for="class-duration">{{ 'Length' | t }}</label>
+				<select id="class-duration" class="ds-select !px-2 sm:!px-3" (change)="duration.set(+value($event))">
+					@for (minutes of durations; track minutes) {
+						<option [value]="minutes" [selected]="duration() === minutes">{{ '{count} min' | t: { count: minutes } }}</option>
+					}
+				</select>
+			</div>
+		}
 
 		<div class="flex min-w-0 flex-col justify-end">
 			<div class="mb-1.5 flex items-center">
@@ -147,11 +165,6 @@
 			</ul>
 		}
 	</div>
-
-	<label class="flex min-h-11 items-center gap-3">
-		<input type="checkbox" class="size-5 accent-brand" [checked]="isPublic()" (change)="isPublic.set(checked($event))" />
-		{{ 'Show this class publicly' | t }}
-	</label>
 
 	@if (saveFailed()) {
 		<p class="text-sm text-danger" role="alert">{{ 'Could not save the class. Try again.' | t }}</p>

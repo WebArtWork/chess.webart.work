@@ -38,3 +38,6 @@ Thumbs.db
 
 # Chess import working files (SQLite state, engine cache, samples)
 /tools/chess-import/.work/
+
+# importer test cache
+/tools/chess-import/node_modules

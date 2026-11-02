@@ -27,9 +27,18 @@
 							<span class="font-semibold leading-snug [overflow-wrap:anywhere]">{{ item.title }}</span>
 							<span class="ds-badge">{{ (item.ownerUid === user()?.uid ? 'Owner' : 'Member') | t }}</span>
 						</span>
-						<span class="text-sm leading-snug">{{ days(item) }}, {{ item.time }}</span>
+						<span class="text-sm leading-snug">
+							@if (item.weekly) {
+								{{ days(item) }}, {{ item.time }}
+							} @else {
+								{{ 'No fixed time' | t }}
+							}
+						</span>
 						<span class="text-sm leading-snug text-mute">
-							{{ '{count} min' | t: { count: item.duration } }} · {{ item.timeControl }} ·
+							@if (item.weekly) {
+								{{ '{count} min' | t: { count: item.duration } }} ·
+							}
+							{{ item.timeControl }} ·
 							{{ '{count} member|{count} members' | t: { count: item.emails.length + 1 } }}
 						</span>
 					</a>

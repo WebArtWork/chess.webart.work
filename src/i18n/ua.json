@@ -872,5 +872,15 @@
 	"Vienna Game": "Віденська партія",
 	"King’s Gambit": "Королівський гамбіт",
 	"Pirc Defense": "Захист Пірця",
-	"Read the full lesson on this opening": "Прочитати повний урок про цей дебют"
+	"Read the full lesson on this opening": "Прочитати повний урок про цей дебют",
+	"Weekly": "Щотижня",
+	"No fixed time": "Без фіксованого часу",
+	"Updated": "Оновлено",
+	"Previous tournaments": "Попередні турніри",
+	"Back to tournament": "До турніру",
+	"Could not load the previous tournaments.": "Не вдалося завантажити попередні турніри.",
+	"No finished tournaments yet.": "Завершених турнірів ще немає.",
+	"{count} round|{count} rounds": "{count} раунд|{count} раунди|{count} раундів",
+	"{count} player|{count} players": "{count} гравець|{count} гравці|{count} гравців",
+	"Unfinished": "Не завершено"
 }

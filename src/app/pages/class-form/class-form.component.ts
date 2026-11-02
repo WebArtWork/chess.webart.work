@@ -15,7 +15,7 @@ import { TPipe } from '../../feature/i18n/t.pipe';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/** Create a weekly class, or edit one (`?id=`), saved in Firestore through ClassesService. */
+/** Create a class, weekly or without a schedule, or edit one (`?id=`), saved in Firestore through ClassesService. */
 @Component({
 	imports: [IconComponent, TPipe],
 	templateUrl: './class-form.component.html',
@@ -36,6 +36,8 @@ export class ClassFormComponent {
 	protected readonly editing = !!this._id;
 
 	protected readonly title = signal('');
+	/** Off: no days or time, the class runs tournaments whenever the owner starts one. */
+	protected readonly weekly = signal(false);
 	protected readonly days = signal<number[]>([(new Date().getDay() + 6) % 7]);
 	protected readonly time = signal('17:00');
 	protected readonly duration = signal(60);
@@ -54,8 +56,8 @@ export class ClassFormComponent {
 	protected readonly errors = computed(() => {
 		const errors: Record<string, string> = {};
 		if (!this.title().trim()) errors['title'] = 'Enter a name for the class.';
-		if (!this.days().length) errors['days'] = 'Pick at least one day.';
-		if (!this.time()) errors['time'] = 'Pick a start time.';
+		if (this.weekly() && !this.days().length) errors['days'] = 'Pick at least one day.';
+		if (this.weekly() && !this.time()) errors['time'] = 'Pick a start time.';
 		return errors;
 	});
 
@@ -139,11 +141,14 @@ export class ClassFormComponent {
 	}
 
 	private _input(): ClassInput {
+		const weekly = this.weekly();
 		return {
 			title: this.title().trim(),
-			days: this.days(),
-			time: this.time(),
-			duration: this.duration(),
+			weekly,
+			// a class without a schedule keeps no days or time
+			days: weekly ? this.days() : [],
+			time: weekly ? this.time() : '',
+			duration: weekly ? this.duration() : 60,
 			timeControl: this.timeControl(),
 			isPublic: this.isPublic(),
 			emails: this.emails(),
@@ -160,9 +165,13 @@ export class ClassFormComponent {
 				return;
 			}
 			this.title.set(item.title);
-			this.days.set(item.days);
-			this.time.set(item.time);
-			this.duration.set(item.duration);
+			this.weekly.set(item.weekly);
+			// a class without a schedule keeps the form's defaults in case it becomes weekly
+			if (item.weekly) {
+				this.days.set(item.days);
+				this.time.set(item.time);
+				this.duration.set(item.duration);
+			}
 			this.timeControl.set(item.timeControl);
 			this.isPublic.set(item.isPublic);
 			this.emails.set(item.emails);

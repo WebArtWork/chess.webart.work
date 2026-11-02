@@ -40,7 +40,7 @@ export function difficultyOf(rating: number): Difficulty {
 export interface Config {
 	/** Archive to read; empty = the first Lichess archive not fully imported yet. */
 	input: string;
-	/** games.json; index.json and chunks/ are written next to it. */
+	/** games.json, the full dataset. The app gets its own slim copy in `appDir`. */
 	output: string;
 	/** SQLite state, engine cache and checkpoints. */
 	workDir: string;
@@ -92,7 +92,7 @@ export interface Config {
 	minPositionQuality: number;
 	minQuality: number;
 	minUniqueness: number;
-	/** Wanted share of each training level; intermediate first by default. */
+	/** Wanted share of each training level; a soft weight in the selection, not a quota. */
 	difficultyMix: Record<Difficulty, number>;
 	/** Wanted share of games feeding each practice, so a batch is not mostly tactics. */
 	practiceMix: Record<PracticeTag, number>;
@@ -141,7 +141,9 @@ export function defaultConfig(): Config {
 		minPositionQuality: 35,
 		minQuality: 45,
 		minUniqueness: 30,
-		difficultyMix: { beginner: 0.15, intermediate: 0.45, advanced: 0.3, expert: 0.1 },
+		// the difficulty estimate rarely reaches 1400, so most games are beginner or intermediate; a mix asking
+		// for a third advanced games could never be met (see README, Scores)
+		difficultyMix: { beginner: 0.3, intermediate: 0.5, advanced: 0.15, expert: 0.05 },
 		practiceMix: { tactics: 0.3, candidates: 0.2, quiet: 0.2, endgame: 0.15, sacrifice: 0.05, tempting: 0.1 },
 
 		appDir: fromRoot('src/data/game/app'),
