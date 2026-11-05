@@ -3,7 +3,7 @@
 
 	<div>
 		<h1 class="text-2xl font-semibold tracking-tight">{{ 'Sign in' | t }}</h1>
-		<p class="mt-1 text-mute">{{ 'Use your Google account to get your profile.' | t }}</p>
+		<p class="mt-1 text-mute">{{ 'Use your Google or Apple account to get your profile.' | t }}</p>
 	</div>
 
 	<div class="flex flex-col gap-3">
@@ -12,7 +12,7 @@
 			type="button"
 			[disabled]="pending()"
 			[attr.aria-busy]="pending()"
-			(click)="signIn()"
+			(click)="signInWithGoogle()"
 		>
 			<span class="flex size-6 items-center justify-center rounded-full bg-white">
 				<svg class="size-4" viewBox="0 0 48 48" aria-hidden="true">
@@ -35,6 +35,19 @@
 				</svg>
 			</span>
 			{{ (pending() ? 'Signing in…' : 'Continue with Google') | t }}
+		</button>
+
+		<button
+			class="ds-btn ds-btn-lg w-full bg-black! text-white! border-black!"
+			type="button"
+			[disabled]="pending()"
+			[attr.aria-busy]="pending()"
+			(click)="signInWithApple()"
+		>
+			<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+				<path d="M16.37 1.43c0 1.14-.46 2.22-1.2 3-.8.86-2.1 1.52-3.16 1.43-.13-1.1.42-2.25 1.15-3 .82-.86 2.2-1.5 3.21-1.43zM20.5 17.1c-.55 1.27-.82 1.84-1.52 2.96-.99 1.57-2.38 3.52-4.1 3.54-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1.01-4.07.99-1.72-.02-3.04-1.78-4.03-3.35C-.1 15.9-.4 10.9 1.3 8.3c1.2-1.85 3.1-2.93 4.88-2.93 1.81 0 2.95 1 4.45 1 1.45 0 2.34-1 4.44-1 1.58 0 3.26.86 4.46 2.35-3.92 2.15-3.28 7.76.97 9.38z"/>
+			</svg>
+			{{ (pending() ? 'Signing in…' : 'Continue with Apple') | t }}
 		</button>
 
 		@if (error(); as message) {
