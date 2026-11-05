@@ -18,12 +18,20 @@ export class SignInComponent {
 	protected readonly pending = signal(false);
 	protected readonly error = signal<string | null>(null);
 
-	protected async signIn() {
+	protected signInWithGoogle() {
+		return this._signIn(() => this._auth.signInWithGoogle());
+	}
+
+	protected signInWithApple() {
+		return this._signIn(() => this._auth.signInWithApple());
+	}
+
+	private async _signIn(method: () => Promise<unknown>) {
 		this.pending.set(true);
 		this.error.set(null);
 
 		try {
-			await this._auth.signInWithGoogle();
+			await method();
 			await this._router.navigateByUrl('/profile');
 		} catch (error) {
 			const code = (error as { code?: string }).code ?? '';

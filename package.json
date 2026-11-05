@@ -20,6 +20,8 @@
 		"games:import:sample": "node --disable-warning=ExperimentalWarning tools/chess-import/src/cli.ts --max-scan 3000 --max-export 20 --work-dir tools/chess-import/.work/sample --output tools/chess-import/.work/sample/out/games.json --app-dir tools/chess-import/.work/sample/app --history tools/chess-import/.work/sample/history.json"
 	},
 	"dependencies": {
+		"@angular/aria": "^22.2.3",
+		"@angular/cdk": "^22.2.3",
 		"@angular/common": "22.2.1",
 		"@angular/compiler": "22.2.1",
 		"@angular/core": "22.2.1",
@@ -28,6 +30,7 @@
 		"@angular/platform-server": "22.2.1",
 		"@angular/router": "22.2.1",
 		"@angular/ssr": "22.2.2",
+		"@capacitor-firebase/authentication": "^8.6.0",
 		"@capacitor/android": "^8.5.3",
 		"@capacitor/app": "^8.1.2",
 		"@capacitor/core": "^8.5.3",
