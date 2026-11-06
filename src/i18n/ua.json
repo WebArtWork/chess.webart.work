@@ -894,5 +894,9 @@
 	"That QR code is not an email address.": "Цей QR-код не містить адреси пошти.",
 	"This browser cannot use the camera.": "Цей браузер не може користуватися камерою.",
 	"Camera access is blocked. Allow it for this site and try again.": "Доступ до камери заблоковано. Дозвольте його для цього сайту й спробуйте ще раз.",
-	"Could not open the camera.": "Не вдалося відкрити камеру."
+	"Could not open the camera.": "Не вдалося відкрити камеру.",
+	"Print": "Друкувати",
+	"Print all lessons": "Друкувати всі уроки",
+	"Print these lessons": "Друкувати ці уроки",
+	"Preparing…": "Готуємо…"
 }

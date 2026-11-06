@@ -1,8 +1,9 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { afterNextRender, Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HubListComponent } from '../../components/hub-list/hub-list.component';
 import { IconComponent } from '../../components/icon/icon.component';
+import { TheoryPrintComponent } from '../../components/theory-print/theory-print.component';
 import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
 import { THEORY_LESSONS } from '../../feature/theory/lessons';
@@ -11,10 +12,11 @@ import { TheoryProgressService } from '../../feature/theory/theory-progress.serv
 
 /**
  * One theory lesson, picked by the route's `lesson` data: the text, a self-check and practice links.
+ * Printing gives the text only, without the practice links and sources.
  * Its translations live in /i18n/theory/<slug>/.
  */
 @Component({
-	imports: [HubListComponent, IconComponent, NgTemplateOutlet, RouterLink, TPipe],
+	imports: [HubListComponent, IconComponent, NgTemplateOutlet, RouterLink, TheoryPrintComponent, TPipe],
 	templateUrl: './theory-lesson.component.html',
 })
 export class TheoryLessonComponent {
@@ -29,9 +31,16 @@ export class TheoryLessonComponent {
 	/** The self-check: hidden answer, then the reader's own verdict. */
 	protected readonly revealed = signal(false);
 	protected readonly progress = computed(() => this._progress.get(this._slug));
+	/** The text-only copy for paper; added in the browser, so the prerendered page holds the lesson once. */
+	protected readonly printable = signal(false);
 
 	constructor() {
 		inject(I18nService).usePage(`/i18n/theory/${this._slug}/`);
+		afterNextRender(() => this.printable.set(true));
+	}
+
+	protected print() {
+		window.print();
 	}
 
 	protected answer(correct: boolean) {

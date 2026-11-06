@@ -89,3 +89,25 @@ cg-board square.mark-answer {
 	border-color: var(--primary);
 	color: var(--primary-foreground);
 }
+
+/* Printing: the page content only, on white paper, without the topbar, footer and fixed-height shell. */
+@media print {
+	html,
+	body {
+		background: #fff;
+		color: #000;
+	}
+
+	app-topbar,
+	app-footer,
+	.splash {
+		display: none !important;
+	}
+
+	.ds,
+	main {
+		display: block !important;
+		height: auto !important;
+		overflow: visible !important;
+	}
+}

@@ -39,15 +39,21 @@
 	}
 </ng-template>
 
-<article class="mx-auto flex w-full max-w-2xl flex-col gap-8 px-4 pb-10 pt-4 sm:px-6">
+<article class="mx-auto flex w-full max-w-2xl flex-col gap-8 px-4 pb-10 pt-4 sm:px-6" [class]="printable() ? 'print:hidden' : ''">
 	<header class="flex flex-col gap-2">
-		<p class="text-sm font-medium text-mute">
-			@if (card.inspiredBy; as name) {
-				{{ 'Inspired by {name}' | t: { name: (name | t) } }}
-			} @else {
-				{{ groupLabel | t }}
-			}
-		</p>
+		<div class="flex items-center justify-between gap-3">
+			<p class="text-sm font-medium text-mute">
+				@if (card.inspiredBy; as name) {
+					{{ 'Inspired by {name}' | t: { name: (name | t) } }}
+				} @else {
+					{{ groupLabel | t }}
+				}
+			</p>
+			<button class="ds-btn ds-btn-ghost ds-btn-sm gap-1.5" type="button" (click)="print()">
+				<app-icon name="print" />
+				{{ 'Print' | t }}
+			</button>
+		</div>
 		<!-- the topbar already shows the title; the heading stays for screen readers and SEO -->
 		<h1 class="sr-only">{{ card.title | t }}</h1>
 		<p class="flex flex-wrap gap-x-3 gap-y-1 text-sm text-mute">
@@ -202,3 +208,7 @@
 		<a class="self-start text-sm" routerLink="/theory">{{ 'All lessons' | t }}</a>
 	</footer>
 </article>
+
+@if (printable()) {
+	<app-theory-print [lessons]="[{ card, lesson }]" />
+}

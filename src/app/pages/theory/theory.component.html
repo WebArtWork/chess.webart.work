@@ -1,5 +1,11 @@
-<section class="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6">
-	<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">{{ 'Theory' | t }}</h1>
+<section class="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6" [class]="printing() ? 'print:hidden' : ''">
+	<div class="flex items-center justify-between gap-3">
+		<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">{{ 'Theory' | t }}</h1>
+		<button class="ds-btn ds-btn-ghost ds-btn-sm ml-auto gap-1.5" type="button" [disabled]="preparing()" (click)="print()">
+			<app-icon name="print" />
+			{{ (preparing() ? 'Preparing…' : category() ? 'Print these lessons' : 'Print all lessons') | t }}
+		</button>
+	</div>
 
 	<details class="ds-card">
 		<summary class="cursor-pointer px-4 py-3 text-sm font-medium">{{ 'How to use these lessons' | t }}</summary>
@@ -55,6 +61,10 @@
 		</section>
 	}
 </section>
+
+@if (printing(); as lessons) {
+	<app-theory-print [lessons]="lessons" />
+}
 
 <!-- Categories: a bottom sheet on phones, a centered dialog on larger screens; opened from the topbar. -->
 <dialog

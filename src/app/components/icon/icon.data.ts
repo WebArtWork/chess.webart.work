@@ -27,7 +27,8 @@ export type IconName =
 	| 'trophy'
 	| 'refresh'
 	| 'history'
-	| 'qr';
+	| 'qr'
+	| 'print';
 
 interface IconPair {
 	/** Solar (linear) - light skin */
@@ -230,6 +231,11 @@ export const ICONS: Record<IconName, IconPair> = {
 		iconoir: iconoirGroup(
 			'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM21 14v3M14 21h3M21 21h.01"/>',
 		),
+	},
+	// a printer: paper in, the tray, and the printed page out
+	print: {
+		solar: solarGroup('<path d="M6 9V3h12v6"/><path d="M6 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1"/><path d="M6 14h12v7H6z"/>', ' stroke-linejoin="round"'),
+		iconoir: iconoirGroup('<path d="M6 9V3h12v6"/><path d="M6 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1"/><path d="M6 14h12v7H6z"/>'),
 	},
 	// a clock face with an arrow running back: what happened before
 	history: {

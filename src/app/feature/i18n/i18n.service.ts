@@ -37,11 +37,19 @@ export class I18nService {
 	}
 
 	/** Loads one page bundle for a language, for a page that only learns which one it needs after it loads. */
-	async loadPage(folder: string, language: string | undefined): Promise<void> {
-		if (!language || language === environment.defaultLanguage) return;
+	loadPage(folder: string, language: string | undefined): Promise<void> {
+		return this.loadPages([folder], language);
+	}
+
+	/**
+	 * Loads several page bundles at once, e.g. every lesson for printing. One call: parallel loads would
+	 * each merge into the same starting set, and the last to finish would drop the others.
+	 */
+	async loadPages(folders: string[], language: string | undefined): Promise<void> {
+		if (!language || language === environment.defaultLanguage || !folders.length) return;
 		// the base file first, so the page texts are merged into it rather than overwritten by it
 		await this._translate.loadTranslations(language);
-		await this._translate.loadExtraTranslation(folder, { language });
+		await this._translate.loadExtraTranslations(folders, { language });
 	}
 }
 
