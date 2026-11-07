@@ -3,9 +3,9 @@
 	"configurations": [
 		{
 			"name": "app",
-			"runtimeExecutable": "node",
-			"runtimeArgs": ["--max-old-space-size=4096", "node_modules/@angular/cli/bin/ng.js", "serve", "--port", "4300"],
-			"port": 4300
+			"runtimeExecutable": "npm",
+			"runtimeArgs": ["start"],
+			"port": 4200
 		}
 	]
 }
