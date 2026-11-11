@@ -1,0 +1,19 @@
+{
+	"Not every weakness has to be attacked at once. Sometimes it works better to stop a weak pawn from moving and put a strong piece in front of it. That square can become an outpost for a knight or a center of pressure.": "Не кожну слабкість треба атакувати одразу. Іноді ефективніше зупинити рух слабкого пішака і поставити перед ним сильну фігуру. Таке поле може стати опорним пунктом для коня або центром тиску.",
+	"Find an opponent’s pawn that could become passed or support a pawn break.": "Знайдіть пішака суперника, який може стати прохідним або підтримати прорив.",
+	"Pick the square in front of it where you can set up a blockade.": "Визначте поле перед ним, на якому можна встановити блокаду.",
+	"Think about which piece holds that square best.": "Подумайте, яка фігура найкраще тримає це поле.",
+	"Make sure the blockading piece is supported.": "Забезпечте підтримку блокувальної фігури.",
+	"Later, attack other weaknesses: it is harder for your opponent to break free.": "Згодом атакуйте інші слабкості: супернику важче звільнитися.",
+	"Your opponent has an isolated pawn. If you cannot win it safely at once, consider putting a knight on the protected square in front of it. The pawn cannot advance, and the knight attacks the squares around it.": "У суперника ізольований пішак. Якщо безпечно виграти його одразу не вдається, подумайте про те, щоб поставити коня перед ним на захищене поле. Пішак не може просунутися, а кінь атакує сусідні поля.",
+	"Occupying a beautiful outpost that your opponent can easily chase away with a pawn.": "Займати красивий форпост, який суперник може легко вигнати пішаком.",
+	"Why can a protected knight in front of an isolated pawn be stronger than an immediate trade?": "Чому захищений кінь перед ізольованим пішаком може бути сильнішим за негайний обмін?",
+	"It restricts the pawn’s movement and at the same time makes your pieces active.": "Він обмежує рух пішака і одночасно створює активність фігур.",
+	"Positional games": "Позиційні партії",
+	"Look for blockading pieces and outposts, and ask why they stand there.": "Шукайте блокувальні фігури й форпости та запитуйте себе, чому вони стоять саме там.",
+	"Analysis board": "Дошка аналізу",
+	"Choose the best blockade square, then explain why the other squares are less stable.": "Виберіть найкраще поле для блокади, а потім поясніть, чому інші поля менш стійкі.",
+	"Find the outposts and passed pawns: the squares to blockade and the pieces to put there.": "Знайдіть форпости й прохідних пішаків: поля для блокади і фігури, які туди варто поставити.",
+	"Games with passed pawns": "Партії з прохідними пішаками",
+	"Watch how passed pawns are pushed, and how they are stopped.": "Подивіться, як прохідних пішаків просувають і як їх зупиняють."
+}

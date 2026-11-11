@@ -1,0 +1,1 @@
+import{t as D}from"./chunk-B0mm_b63.js";var o=D(`App`,{web:()=>import(`./chunk-7V3wBA7V.js`).then(e=>new e.AppWeb)});export{o as App};
