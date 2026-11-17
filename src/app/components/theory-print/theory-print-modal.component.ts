@@ -17,7 +17,7 @@ export interface PrintPickerGroup {
 	selector: 'app-theory-print-modal',
 	imports: [TPipe],
 	template: `
-		<div class="flex flex-col gap-3">
+		<div class="flex h-full min-h-[min(75dvh,40rem)] flex-col gap-3">
 			<h2 id="print-title" class="text-lg font-semibold">
 				{{ 'Select lessons to print' | t }}
 			</h2>
@@ -41,9 +41,9 @@ export interface PrintPickerGroup {
 				}}</span>
 			</div>
 
-			<div class="max-h-[50dvh] overflow-y-auto">
+			<div class="min-h-0 flex-1 overflow-y-auto">
 				@for (group of groups; track group.value) {
-					<details class="border-b border-line">
+					<details class="border-b border-line" open>
 						<summary class="flex cursor-pointer items-center justify-between gap-3">
 							<label
 								class="flex min-h-11 flex-1 items-center gap-3"

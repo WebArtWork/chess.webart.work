@@ -78,7 +78,8 @@ export class TheoryComponent {
 		if (this.preparing()) return;
 		this._modal.show({
 			component: TheoryPrintModalComponent,
-			size: 'mid',
+			// a phone gets the whole screen, a larger window a wide dialog
+			size: window.innerWidth < 640 ? 'fullscreen' : 'mid',
 			ariaLabelledBy: 'print-title',
 			groups: PRINT_GROUPS,
 			initial: this.groups().flatMap((group) => group.cards.map((card) => card.slug)),
