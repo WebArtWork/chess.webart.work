@@ -3,7 +3,7 @@ import { TheoryLessonBody } from '../theory.interface';
 export const caroKannDefense: TheoryLessonBody = {
 	slug: 'caro-kann-defense',
 	idea: [
-		'The Caro-Kann Defense starts with 1.e4 c6. Black prepares ...d5 with a pawn, so the c8-bishop can come out before ...e6 closes it in. The structure is solid and healthy.',
+		'The Caro-Kann Defense starts with 1.e4 c6. Black prepares ...d5 with a pawn, so the c8-bishop can come out before ...e6 closes it in. The structure is solid.',
 		'It suits players who want a sound game with clear plans and fewer early dangers than in most replies to 1.e4.',
 	],
 	stepsHeading: 'The first moves',

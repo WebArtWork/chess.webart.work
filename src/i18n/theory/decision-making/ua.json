@@ -1,6 +1,6 @@
 {
 	"Why does a good player not always find the best move?": "Чому хороший шахіст не завжди знаходить найкращий хід?",
-	"In a real game your time is limited. Even experienced players cannot calculate every possible line. So success depends not only on chess knowledge but also on choosing what to calculate.": "У справжній партії час обмежений. Навіть досвідчені гравці не можуть прорахувати всі можливі продовження. Тому успіх залежить не лише від знання шахів, а й від уміння вибрати, що саме рахувати.",
+	"In a real game your time is limited. Even experienced players cannot calculate every possible line. So success also depends on choosing what to calculate.": "У справжній партії час обмежений. Навіть досвідчені гравці не можуть прорахувати всі можливі продовження. Тому успіх залежить ще й від уміння вибрати, що саме рахувати.",
 	"A strong practical player can tell critical positions from ordinary ones.": "Сильний практичний гравець уміє відрізняти критичні позиції від звичайних.",
 	"Spot the critical moments": "Визначайте критичні моменти",
 	"A position usually needs extra attention when:": "Позиція зазвичай потребує особливої уваги, коли:",
@@ -43,7 +43,7 @@
 	"What are my two most promising moves?": "Які два мої ходи найперспективніші?",
 	"What is the strongest reply to each?": "Яка найсильніша відповідь на кожен із них?",
 	"After the game, find the three decisions you spent the most time on. Was the position really critical, and did the extra time change your choice?": "Після партії знайдіть три рішення, на які ви витратили найбільше часу. Чи справді позиція була критичною і чи змінив додатковий час ваш вибір?",
-	"A strong practical player does not try to calculate everything but correctly picks out the decisions that deserve the most attention.": "Сильний практичний шахіст не намагається розрахувати все, а правильно визначає, які рішення потребують найбільшої уваги.",
+	"A strong practical player picks out the decisions that deserve the most attention instead of calculating everything.": "Сильний практичний шахіст визначає, які рішення потребують найбільшої уваги, замість того щоб рахувати все.",
 	"Positions where one decision matters: go through all six steps before you move.": "Позиції, де все вирішує одне рішення: пройдіть усі шість кроків, перш ніж ходити.",
 	"Calculate your opponent’s strongest replies, not the ones you hope for.": "Розраховуйте найсильніші відповіді суперника, а не ті, на які сподіваєтеся.",
 	"Find two or three candidate moves before you commit to one.": "Знайдіть два-три ходи-кандидати, перш ніж зупинитися на одному.",

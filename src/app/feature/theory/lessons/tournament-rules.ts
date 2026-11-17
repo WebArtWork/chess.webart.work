@@ -9,7 +9,7 @@ export const tournamentRules: TheoryLessonBody = {
 		],
 	},
 	idea: [
-		'A tournament is more than playing chess. You need to know how opponents are chosen, how the winner is decided, how the clock works and what you may and may not do at the board.',
+		'A tournament has rules beyond the moves. You need to know how opponents are chosen, how the winner is decided, how the clock works and what you may and may not do at the board.',
 		'Most of the surprises in a first tournament come from small rules: a touched piece, a clock pressed with the wrong hand, a late arrival or a tiebreak nobody explained. This lesson covers the rules you will meet most often, so none of them costs you a game.',
 	],
 	stepsHeading: 'How to prepare for a tournament',
@@ -135,7 +135,7 @@ export const tournamentRules: TheoryLessonBody = {
 				},
 				{
 					heading: 'Fair play and etiquette',
-					paragraphs: ['Chess is based on trust, so tournaments take these rules seriously.'],
+					paragraphs: ['Cheating is hard to catch, so tournaments enforce these rules strictly.'],
 					points: [
 						'Switch your phone off completely. In many tournaments a ringing phone loses the game.',
 						'Never use an engine, notes or help from other people during a game. This includes your coach, a friend and a spectator.',

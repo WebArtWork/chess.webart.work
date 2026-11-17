@@ -3,7 +3,7 @@ import { TheoryLessonBody } from '../theory.interface';
 export const kingsGambit: TheoryLessonBody = {
 	slug: 'kings-gambit',
 	idea: [
-		'The King’s Gambit starts with 1.e4 e5 2.f4. White offers the f-pawn to open the f-file and pull away Black’s e5 pawn, in order to build a big center and attack. It was the most popular opening of the 19th century, and it is still great fun to play.',
+		'The King’s Gambit starts with 1.e4 e5 2.f4. White offers the f-pawn to open the f-file and pull away Black’s e5 pawn, in order to build a big center and attack. It was the most popular opening of the 19th century, and it is still played for its attacking chances.',
 		'It suits players who love open, tactical positions. It is risky for both sides, because White’s king is exposed, so accuracy matters.',
 	],
 	stepsHeading: 'The first moves',
@@ -39,7 +39,7 @@ export const kingsGambit: TheoryLessonBody = {
 		{
 			heading: 'A famous idea: the Muzio Gambit',
 			paragraphs: [
-				'1.e4 e5 2.f4 exf4 3.Nf3 g5 4.Bc4 g4 5.O-O gxf3 6.Qxf3. White gives a whole knight for a big lead in development and open lines against the black king. It is a famous attacking idea, and it is dangerous to face without knowing the theory.',
+				'1.e4 e5 2.f4 exf4 3.Nf3 g5 4.Bc4 g4 5.O-O gxf3 6.Qxf3. White gives a whole knight for a big lead in development and open lines against the black king. It is dangerous to face without knowing the theory.',
 				'As Black, you can avoid it by declining the gambit (2...Bc5 or 2...d5) or by playing 3...Be7 or 3...d6.',
 			],
 		},

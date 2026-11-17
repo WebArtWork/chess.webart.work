@@ -6,7 +6,7 @@ export const sacrificeCompensation: TheoryLessonBody = {
 		{
 			heading: 'Material is not the only value',
 			paragraphs: [
-				'The queen, rooks, bishops, knights and pawns have rough values, but chess is not just counting points. A sacrifice can be justified if you get something real in return: a mating attack, time, strong passed pawns, active pieces.',
+				'The queen, rooks, bishops, knights and pawns have rough values, but points are only a rough guide. A sacrifice can be justified if you get something real in return: a mating attack, time, strong passed pawns, active pieces.',
 				'Still, the words “initiative” and “pressure” do not make every sacrifice correct. Giving up material without a convincing follow-up is usually dangerous.',
 			],
 		},

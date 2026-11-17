@@ -4,7 +4,7 @@ export const sicilianDefense: TheoryLessonBody = {
 	slug: 'sicilian-defense',
 	idea: [
 		'The Sicilian Defense starts with 1.e4 c5. Black does not copy White. The c-pawn attacks the d4 square from the side, so the game is unbalanced from the start: White gets more space, Black gets the open c-file and a healthy central pawn.',
-		'It is the most popular reply to 1.e4 and the choice of many strong players who want to play for a win with Black.',
+		'It is the most popular reply to 1.e4 and the usual choice when Black wants to play for a win.',
 	],
 	stepsHeading: 'The first moves',
 	steps: [

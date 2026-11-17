@@ -4,7 +4,7 @@ export const ruyLopez: TheoryLessonBody = {
 	slug: 'ruy-lopez',
 	idea: [
 		'The Ruy Lopez, also called the Spanish Game, starts with 1.e4 e5 2.Nf3 Nc6 3.Bb5. The bishop does not threaten e5 at once, but it attacks the knight that defends it. This builds long-term pressure on Black’s center.',
-		'It is played at every level, from club games to world championship matches. It rewards patience: the plans are clear, but the positions stay rich for many moves.',
+		'It is played at every level. It rewards patience: the plans are clear, but the positions stay rich for many moves.',
 	],
 	stepsHeading: 'The first moves',
 	steps: [

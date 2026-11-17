@@ -218,7 +218,7 @@ This lesson follows the FIDE Laws of Chess, which most tournaments use. Every ev
 
 #### Main idea
 
-A tournament is more than playing chess. You need to know how opponents are chosen, how the winner is decided, how the clock works and what you may and may not do at the board.
+A tournament has rules beyond the moves. You need to know how opponents are chosen, how the winner is decided, how the clock works and what you may and may not do at the board.
 
 Most of the surprises in a first tournament come from small rules: a touched piece, a clock pressed with the wrong hand, a late arrival or a tiebreak nobody explained. This lesson covers the rules you will meet most often, so none of them costs you a game.
 
@@ -329,7 +329,7 @@ In classical games you must write down every move, and your opponent’s. You ma
 
 ##### Fair play and etiquette
 
-Chess is based on trust, so tournaments take these rules seriously.
+Cheating is hard to catch, so tournaments enforce these rules strictly.
 
 - Switch your phone off completely. In many tournaments a ringing phone loses the game.
 - Never use an engine, notes or help from other people during a game. This includes your coach, a friend and a spectator.
@@ -437,7 +437,7 @@ The exception is a repeat move with a concrete tactical or positional purpose, s
 
 ##### Develop your pieces in harmony
 
-A strong opening is more than a set of good moves. Your pieces should support each other and work toward a common goal.
+Good opening moves should also work together: your pieces support each other and aim at one goal.
 
 #### How to think before an opening move
 
@@ -761,7 +761,7 @@ Category: Practical play · Skill: Calculation and time management · Rating: 12
 
 #### Why does a good player not always find the best move?
 
-In a real game your time is limited. Even experienced players cannot calculate every possible line. So success depends not only on chess knowledge but also on choosing what to calculate.
+In a real game your time is limited. Even experienced players cannot calculate every possible line. So success also depends on choosing what to calculate.
 
 A strong practical player can tell critical positions from ordinary ones.
 
@@ -836,7 +836,7 @@ After the game, find the three decisions you spent the most time on. Was the pos
 
 #### Key takeaway
 
-> A strong practical player does not try to calculate everything but correctly picks out the decisions that deserve the most attention.
+> A strong practical player picks out the decisions that deserve the most attention instead of calculating everything.
 
 #### Practice it
 
@@ -1071,7 +1071,7 @@ Pick one of your lost games.
 
 #### Key takeaway
 
-> What helps you most is not the number of games you play but the ability to turn your own mistakes into concrete training tasks.
+> Turning your own mistakes into concrete training tasks helps more than playing more games.
 
 #### Practice it
 
@@ -1760,7 +1760,7 @@ Then pick one skill to train over the next week. Don’t try to fix every weakne
 
 #### Key takeaway
 
-> Chess progress begins when every game becomes a source of information and every training session targets one specific weakness.
+> You improve when you learn something from every game and aim every training session at one specific weakness.
 
 #### Practice it
 
@@ -1978,7 +1978,7 @@ Inspired by: Andrei Volokitin · Category: Attack · Skill: Judging concrete and
 
 #### Material is not the only value
 
-The queen, rooks, bishops, knights and pawns have rough values, but chess is not just counting points. A sacrifice can be justified if you get something real in return: a mating attack, time, strong passed pawns, active pieces.
+The queen, rooks, bishops, knights and pawns have rough values, but points are only a rough guide. A sacrifice can be justified if you get something real in return: a mating attack, time, strong passed pawns, active pieces.
 
 Still, the words “initiative” and “pressure” do not make every sacrifice correct. Giving up material without a convincing follow-up is usually dangerous.
 
@@ -2123,7 +2123,7 @@ If tactical threats appear along the way, change the maneuver.
 
 A training position: White has a knight on a3, and the central square d5 could become an outpost. The route a3–c4–e3–d5 looks attractive, but check it square by square. A black pawn already on b5 attacks c4, so the knight may be captured there. A black pawn able to reach c6 or e6 could challenge d5. Also check whether a threat appears on the other flank during those three moves. If c4 is unsafe, the route a3–c2–e3–d5 takes just as long. It is an alternative only if every landing square is available and safe when the knight reaches it.
 
-A plan with a beautiful end square does not work if its route is tactically impossible. A strong maneuver is a real path, not just a desired square. Maneuvering is a steady fight for useful squares, not moving pieces around at random.
+A plan with a beautiful end square does not work if its route is tactically impossible. A strong maneuver is a real path, not just a desired square.
 
 #### Exercise: Exercises
 
@@ -2512,7 +2512,7 @@ Category: Opening · Skill: Learning a classic 1.e4 e5 opening · Rating: 800–
 
 #### Main idea
 
-The Italian Game starts with 1.e4 e5 2.Nf3 Nc6 3.Bc4. White develops quickly and aims the bishop at f7, the weakest square near Black’s king. It is one of the oldest openings and one of the best for learning how to start a game.
+The Italian Game starts with 1.e4 e5 2.Nf3 Nc6 3.Bc4. White develops quickly and aims the bishop at f7, the weakest square near Black’s king. It is one of the oldest openings, and a good first one to learn.
 
 It suits players who like clear plans: develop the pieces, castle, then take the center with c3 and d4.
 
@@ -2597,7 +2597,7 @@ Category: Opening · Skill: Building long-term pressure in 1.e4 e5 · Rating: 12
 
 The Ruy Lopez, also called the Spanish Game, starts with 1.e4 e5 2.Nf3 Nc6 3.Bb5. The bishop does not threaten e5 at once, but it attacks the knight that defends it. This builds long-term pressure on Black’s center.
 
-It is played at every level, from club games to world championship matches. It rewards patience: the plans are clear, but the positions stay rich for many moves.
+It is played at every level. It rewards patience: the plans are clear, but the positions stay rich for many moves.
 
 #### The first moves
 
@@ -2847,7 +2847,7 @@ Category: Opening · Skill: Playing for the initiative · Rating: 900–1700 · 
 
 #### Main idea
 
-The King’s Gambit starts with 1.e4 e5 2.f4. White offers the f-pawn to open the f-file and pull away Black’s e5 pawn, in order to build a big center and attack. It was the most popular opening of the 19th century, and it is still great fun to play.
+The King’s Gambit starts with 1.e4 e5 2.f4. White offers the f-pawn to open the f-file and pull away Black’s e5 pawn, in order to build a big center and attack. It was the most popular opening of the 19th century, and it is still played for its attacking chances.
 
 It suits players who love open, tactical positions. It is risky for both sides, because White’s king is exposed, so accuracy matters.
 
@@ -2879,7 +2879,7 @@ The usual continuation is 6.Bc4 d5 7.exd5 Bd6. Black has an extra pawn, and Whit
 
 #### A famous idea: the Muzio Gambit
 
-1.e4 e5 2.f4 exf4 3.Nf3 g5 4.Bc4 g4 5.O-O gxf3 6.Qxf3. White gives a whole knight for a big lead in development and open lines against the black king. It is a famous attacking idea, and it is dangerous to face without knowing the theory.
+1.e4 e5 2.f4 exf4 3.Nf3 g5 4.Bc4 g4 5.O-O gxf3 6.Qxf3. White gives a whole knight for a big lead in development and open lines against the black king. It is dangerous to face without knowing the theory.
 
 As Black, you can avoid it by declining the gambit (2...Bc5 or 2...d5) or by playing 3...Be7 or 3...d6.
 
@@ -2931,7 +2931,7 @@ Category: Opening · Skill: Playing for a win as Black · Rating: 1200–2000 ·
 
 The Sicilian Defense starts with 1.e4 c5. Black does not copy White. The c-pawn attacks the d4 square from the side, so the game is unbalanced from the start: White gets more space, Black gets the open c-file and a healthy central pawn.
 
-It is the most popular reply to 1.e4 and the choice of many strong players who want to play for a win with Black.
+It is the most popular reply to 1.e4 and the usual choice when Black wants to play for a win.
 
 #### The first moves
 
@@ -3095,7 +3095,7 @@ Category: Opening · Skill: A sound reply to 1.e4 · Rating: 900–1900 · Time:
 
 #### Main idea
 
-The Caro-Kann Defense starts with 1.e4 c6. Black prepares ...d5 with a pawn, so the c8-bishop can come out before ...e6 closes it in. The structure is solid and healthy.
+The Caro-Kann Defense starts with 1.e4 c6. Black prepares ...d5 with a pawn, so the c8-bishop can come out before ...e6 closes it in. The structure is solid.
 
 It suits players who want a sound game with clear plans and fewer early dangers than in most replies to 1.e4.
 
@@ -3349,7 +3349,7 @@ Category: Opening · Skill: Fighting for the center with pawns · Rating: 1000�
 
 The Queen’s Gambit starts with 1.d4 d5 2.c4. White offers a pawn to pull Black’s d5 pawn away and take control of the center. It is not a true gambit: if Black takes the pawn, White can usually win it back.
 
-It is the main opening after 1.d4, so every player meets it often. It is also a good school for pawn structure and the fight for the center.
+It is the main opening after 1.d4, so every player meets it often. It also teaches pawn structure and the fight for the center.
 
 #### The first moves
 
@@ -3432,7 +3432,7 @@ Category: Opening · Skill: A solid reply to 1.d4 · Rating: 1000–1900 · Time
 
 The Slav Defense starts with 1.d4 d5 2.c4 c6. Black defends d5 with the c-pawn instead of the e-pawn, so the c8-bishop stays free to develop. It is a very solid reply to the Queen’s Gambit.
 
-It suits players who want a sound structure and clear plans. It is one of the most respected defenses at every level.
+It suits players who want a sound structure and clear plans. It is a main defense to the Queen’s Gambit.
 
 #### The first moves
 
@@ -3596,9 +3596,9 @@ Category: Opening · Skill: Counterattacking a big center · Rating: 1300–2000
 
 #### Main idea
 
-In the King’s Indian Defense, Black lets White build a big center with pawns on c4, d4 and e4, then attacks it with pieces and pawn breaks. The bishop on g7 becomes a very powerful piece.
+In the King’s Indian Defense, Black lets White build a big center with pawns on c4, d4 and e4, then attacks it with pieces and pawn breaks. The bishop on g7 becomes a strong piece on the long diagonal.
 
-It suits fighting players who like to attack the king. It is sharp and rich in plans, but you must know the plan, not only the moves.
+It suits fighting players who like to attack the king. It is sharp, and you must know the plan, not only the moves.
 
 #### The first moves
 
@@ -3677,7 +3677,7 @@ Category: Opening · Skill: Strategic play against 1.d4 · Rating: 1300–2000 �
 
 #### Main idea
 
-The Nimzo-Indian Defense starts with 1.d4 Nf6 2.c4 e6 3.Nc3 Bb4. Black pins the knight on c3, which supports e4, and fights for the center with pieces instead of pawns. It is one of the most respected replies to 1.d4.
+The Nimzo-Indian Defense starts with 1.d4 Nf6 2.c4 e6 3.Nc3 Bb4. Black pins the knight on c3, which supports e4, and fights for the center with pieces instead of pawns. It is a main reply to 1.d4.
 
 It suits players who like strategy. White often gets the two bishops, but Black gets a healthy position and good counterplay.
 
@@ -3761,7 +3761,7 @@ Category: Opening · Skill: Flexible, positional play · Rating: 1200–2000 · 
 
 The English Opening starts with 1.c4. White controls d5 and the center from the side and keeps its options open. The game can become a Queen’s Gambit type of position, a Sicilian with the colors reversed, or something completely new.
 
-It suits patient players who like flexible pawn structures and positional plans. Many strong players choose it.
+It suits patient players who like flexible pawn structures and positional plans.
 
 #### The first moves
 

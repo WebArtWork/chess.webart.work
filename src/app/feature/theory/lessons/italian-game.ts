@@ -3,7 +3,7 @@ import { TheoryLessonBody } from '../theory.interface';
 export const italianGame: TheoryLessonBody = {
 	slug: 'italian-game',
 	idea: [
-		'The Italian Game starts with 1.e4 e5 2.Nf3 Nc6 3.Bc4. White develops quickly and aims the bishop at f7, the weakest square near Black’s king. It is one of the oldest openings and one of the best for learning how to start a game.',
+		'The Italian Game starts with 1.e4 e5 2.Nf3 Nc6 3.Bc4. White develops quickly and aims the bishop at f7, the weakest square near Black’s king. It is one of the oldest openings, and a good first one to learn.',
 		'It suits players who like clear plans: develop the pieces, castle, then take the center with c3 and d4.',
 	],
 	stepsHeading: 'The first moves',

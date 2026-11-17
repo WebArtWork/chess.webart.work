@@ -129,7 +129,7 @@ export const analyzingYourGames: TheoryLessonBody = {
 		ordered: true,
 	},
 	takeaway:
-		'What helps you most is not the number of games you play but the ability to turn your own mistakes into concrete training tasks.',
+		'Turning your own mistakes into concrete training tasks helps more than playing more games.',
 	practice: [
 		{
 			title: 'Review',

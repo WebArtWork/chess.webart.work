@@ -68,7 +68,7 @@
 	"Check those positions with the engine.": "Перевірте ці позиції за допомогою рушія.",
 	"Identify the most instructive mistake and its likely cause. A loss may have several causes, and the final error may not be the most useful one to study.": "Визначте найповчальнішу помилку та її ймовірну причину. Поразка може мати кілька причин, і остання помилка не завжди найкорисніша для вивчення.",
 	"Set one focused training task, then revisit a similar position a few days later.": "Поставте собі одне чітке тренувальне завдання, а через кілька днів поверніться до схожої позиції.",
-	"What helps you most is not the number of games you play but the ability to turn your own mistakes into concrete training tasks.": "Найбільшу користь приносить не кількість зіграних партій, а вміння перетворювати власні помилки на конкретні навчальні завдання.",
+	"Turning your own mistakes into concrete training tasks helps more than playing more games.": "Перетворення власних помилок на конкретні навчальні завдання допомагає більше, ніж гра в більшу кількість партій.",
 	"Paste your game as PGN, name your candidates, then compare them with the engine.": "Вставте свою партію у форматі PGN, назвіть ходи-кандидати, потім порівняйте їх із рушієм.",
 	"Pick a recent game, ideally a loss, and go through it without the engine first.": "Виберіть нещодавню партію, краще програну, і спершу перегляньте її без рушія.",
 	"Let the engine find the mistakes in your saved games and bring them back as puzzles.": "Нехай рушій знайде помилки у ваших збережених партіях і поверне їх як задачі."

@@ -3,7 +3,7 @@ import { TheoryLessonBody } from '../theory.interface';
 export const nimzoIndianDefense: TheoryLessonBody = {
 	slug: 'nimzo-indian-defense',
 	idea: [
-		'The Nimzo-Indian Defense starts with 1.d4 Nf6 2.c4 e6 3.Nc3 Bb4. Black pins the knight on c3, which supports e4, and fights for the center with pieces instead of pawns. It is one of the most respected replies to 1.d4.',
+		'The Nimzo-Indian Defense starts with 1.d4 Nf6 2.c4 e6 3.Nc3 Bb4. Black pins the knight on c3, which supports e4, and fights for the center with pieces instead of pawns. It is a main reply to 1.d4.',
 		'It suits players who like strategy. White often gets the two bishops, but Black gets a healthy position and good counterplay.',
 	],
 	stepsHeading: 'The first moves',

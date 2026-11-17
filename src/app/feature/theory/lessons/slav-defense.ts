@@ -4,7 +4,7 @@ export const slavDefense: TheoryLessonBody = {
 	slug: 'slav-defense',
 	idea: [
 		'The Slav Defense starts with 1.d4 d5 2.c4 c6. Black defends d5 with the c-pawn instead of the e-pawn, so the c8-bishop stays free to develop. It is a very solid reply to the Queen’s Gambit.',
-		'It suits players who want a sound structure and clear plans. It is one of the most respected defenses at every level.',
+		'It suits players who want a sound structure and clear plans. It is a main defense to the Queen’s Gambit.',
 	],
 	stepsHeading: 'The first moves',
 	steps: [

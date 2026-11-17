@@ -70,7 +70,7 @@ export const pieceManeuvering: TheoryLessonBody = {
 			heading: 'An example of thinking',
 			paragraphs: [
 				'A training position: White has a knight on a3, and the central square d5 could become an outpost. The route a3–c4–e3–d5 looks attractive, but check it square by square. A black pawn already on b5 attacks c4, so the knight may be captured there. A black pawn able to reach c6 or e6 could challenge d5. Also check whether a threat appears on the other flank during those three moves. If c4 is unsafe, the route a3–c2–e3–d5 takes just as long. It is an alternative only if every landing square is available and safe when the knight reaches it.',
-				'A plan with a beautiful end square does not work if its route is tactically impossible. A strong maneuver is a real path, not just a desired square. Maneuvering is a steady fight for useful squares, not moving pieces around at random.',
+				'A plan with a beautiful end square does not work if its route is tactically impossible. A strong maneuver is a real path, not just a desired square.',
 			],
 		},
 	],

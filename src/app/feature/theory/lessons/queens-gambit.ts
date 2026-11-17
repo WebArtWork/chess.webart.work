@@ -4,7 +4,7 @@ export const queensGambit: TheoryLessonBody = {
 	slug: 'queens-gambit',
 	idea: [
 		'The Queen’s Gambit starts with 1.d4 d5 2.c4. White offers a pawn to pull Black’s d5 pawn away and take control of the center. It is not a true gambit: if Black takes the pawn, White can usually win it back.',
-		'It is the main opening after 1.d4, so every player meets it often. It is also a good school for pawn structure and the fight for the center.',
+		'It is the main opening after 1.d4, so every player meets it often. It also teaches pawn structure and the fight for the center.',
 	],
 	stepsHeading: 'The first moves',
 	steps: [

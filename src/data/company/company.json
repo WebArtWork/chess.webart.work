@@ -156,7 +156,7 @@
 		},
 		"/theory/step-by-step-training": {
 			"title": "Learn chess tactics in small steps",
-			"description": "Master one tactical motif at a time: recognize it, apply it, then combine it with another. Inspired by Rob Brunia and Cor van Wijgerden.",
+			"description": "Learn one tactical motif at a time: recognize it, apply it, then combine it with another. Inspired by Rob Brunia and Cor van Wijgerden.",
 			"image": "/seo/theory-step-by-step-training.jpg"
 		},
 		"/theory/structured-improvement": {
@@ -326,7 +326,7 @@
 		},
 		"/library": {
 			"title": "Chess library",
-			"description": "Replay real chess games, analyze any position with Stockfish and keep your saved games in one place: everything you need to study chess.",
+			"description": "Replay real chess games, analyze any position with Stockfish and keep your saved games in one place.",
 			"image": "/seo/library-hub.jpg"
 		},
 		"/library/board": {

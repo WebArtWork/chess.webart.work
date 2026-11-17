@@ -3,8 +3,8 @@ import { TheoryLessonBody } from '../theory.interface';
 export const kingsIndianDefense: TheoryLessonBody = {
 	slug: 'kings-indian-defense',
 	idea: [
-		'In the King’s Indian Defense, Black lets White build a big center with pawns on c4, d4 and e4, then attacks it with pieces and pawn breaks. The bishop on g7 becomes a very powerful piece.',
-		'It suits fighting players who like to attack the king. It is sharp and rich in plans, but you must know the plan, not only the moves.',
+		'In the King’s Indian Defense, Black lets White build a big center with pawns on c4, d4 and e4, then attacks it with pieces and pawn breaks. The bishop on g7 becomes a strong piece on the long diagonal.',
+		'It suits fighting players who like to attack the king. It is sharp, and you must know the plan, not only the moves.',
 	],
 	stepsHeading: 'The first moves',
 	steps: [

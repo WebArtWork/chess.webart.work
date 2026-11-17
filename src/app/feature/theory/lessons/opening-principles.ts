@@ -45,7 +45,7 @@ export const openingPrinciples: TheoryLessonBody = {
 				{
 					heading: 'Develop your pieces in harmony',
 					paragraphs: [
-						'A strong opening is more than a set of good moves. Your pieces should support each other and work toward a common goal.',
+						'Good opening moves should also work together: your pieces support each other and aim at one goal.',
 					],
 				},
 			],

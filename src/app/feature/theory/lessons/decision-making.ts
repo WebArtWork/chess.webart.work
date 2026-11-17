@@ -6,7 +6,7 @@ export const decisionMaking: TheoryLessonBody = {
 		{
 			heading: 'Why does a good player not always find the best move?',
 			paragraphs: [
-				'In a real game your time is limited. Even experienced players cannot calculate every possible line. So success depends not only on chess knowledge but also on choosing what to calculate.',
+				'In a real game your time is limited. Even experienced players cannot calculate every possible line. So success also depends on choosing what to calculate.',
 				'A strong practical player can tell critical positions from ordinary ones.',
 			],
 		},
@@ -98,7 +98,7 @@ export const decisionMaking: TheoryLessonBody = {
 		],
 	},
 	takeaway:
-		'A strong practical player does not try to calculate everything but correctly picks out the decisions that deserve the most attention.',
+		'A strong practical player picks out the decisions that deserve the most attention instead of calculating everything.',
 	practice: [
 		{
 			title: 'What’s the threat?',

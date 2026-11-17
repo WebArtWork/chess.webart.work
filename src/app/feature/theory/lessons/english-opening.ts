@@ -4,7 +4,7 @@ export const englishOpening: TheoryLessonBody = {
 	slug: 'english-opening',
 	idea: [
 		'The English Opening starts with 1.c4. White controls d5 and the center from the side and keeps its options open. The game can become a Queen’s Gambit type of position, a Sicilian with the colors reversed, or something completely new.',
-		'It suits patient players who like flexible pawn structures and positional plans. Many strong players choose it.',
+		'It suits patient players who like flexible pawn structures and positional plans.',
 	],
 	stepsHeading: 'The first moves',
 	steps: [
