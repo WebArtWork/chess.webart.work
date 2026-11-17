@@ -1,7 +1,8 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, computed, DestroyRef, effect, ElementRef, inject, PLATFORM_ID, signal, viewChild } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, PLATFORM_ID, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ModalService } from '@wawjs/ngx-ui';
 import { BoardComponent } from '../../components/board/board.component';
 import { IconComponent } from '../../components/icon/icon.component';
 import { GamesToolbarService } from '../../feature/chess/games-toolbar.service';
@@ -25,6 +26,7 @@ import { Catalog, CatalogGame, CatalogPuzzle, PuzzleFilters } from '../../featur
 import { GameService } from '../../feature/game/game.service';
 import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
+import { FilterGroup, GamesFiltersModalComponent } from './games-filters-modal.component';
 
 const PAGE_SIZE = 12;
 const OPENING_CHIPS = 14;
@@ -44,7 +46,7 @@ export class GamesComponent {
 	private readonly _toolbar = inject(GamesToolbarService);
 	private readonly _i18n = inject(I18nService);
 	private readonly _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-	private readonly _sheet = viewChild.required<ElementRef<HTMLDialogElement>>('sheet');
+	private readonly _modal = inject(ModalService);
 
 	protected readonly catalog = signal<Catalog | null>(null);
 	protected readonly loading = signal(true);
@@ -56,7 +58,7 @@ export class GamesComponent {
 	protected readonly categoryLabels = CATEGORY_LABELS;
 
 	/** Chip groups shown after the opening search, in sheet order, with puzzle counts. */
-	protected readonly groups = computed(() => {
+	protected readonly groups = computed<FilterGroup[]>(() => {
 		const facets = this.catalog()?.facets;
 		const t = (text: string) => this._i18n.t(text);
 		const count = (key: FilterKey, value: string) => facets?.[key]?.[value] ?? 0;
@@ -125,21 +127,6 @@ export class GamesComponent {
 		}
 	}
 
-	protected isActive(key: FilterKey, value: string): boolean {
-		return this.filters()[key].includes(value);
-	}
-
-	protected toggle(key: FilterKey, value: string) {
-		this.filters.update((filters) => ({
-			...filters,
-			[key]: filters[key].includes(value) ? filters[key].filter((item) => item !== value) : [...filters[key], value],
-		}));
-	}
-
-	protected setSearch(value: string) {
-		this.filters.update((filters) => ({ ...filters, search: value }));
-	}
-
 	protected clear() {
 		this.filters.set({ ...EMPTY_FILTERS });
 	}
@@ -148,17 +135,18 @@ export class GamesComponent {
 		this.seed.update((value) => value + 1);
 	}
 
+	/** The filters, in a modal that edits this page's filter signal. */
 	protected openSheet() {
-		this._sheet().nativeElement.showModal();
-	}
-
-	protected closeSheet() {
-		this._sheet().nativeElement.close();
-	}
-
-	/** A tap on the dimmed backdrop (the dialog element itself) closes the sheet. */
-	protected onSheetClick(event: MouseEvent) {
-		if (event.target === this._sheet().nativeElement) this.closeSheet();
+		this._modal.show({
+			component: GamesFiltersModalComponent,
+			size: 'small',
+			ariaLabelledBy: 'filters-title',
+			filters: this.filters,
+			openings: this.openings,
+			groups: this.groups,
+			matches: this.matches,
+			activeCount: this.activeCount,
+		});
 	}
 
 	protected resultLabel(result: string): string {

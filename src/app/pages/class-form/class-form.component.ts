@@ -1,6 +1,7 @@
 import { Component, computed, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmailScannerComponent } from '../../components/email-scanner/email-scanner.component';
+import { ModalService } from '@wawjs/ngx-ui';
+import { EmailScannerModalComponent } from '../../components/email-scanner/email-scanner-modal.component';
 import { IconComponent } from '../../components/icon/icon.component';
 import { AuthService } from '../../feature/auth/auth.service';
 import {
@@ -13,20 +14,21 @@ import {
 import { ClassInput } from '../../feature/classroom/classroom.interface';
 import { ClassesService } from '../../feature/classroom/classes.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
+import { ClockInfoModalComponent } from './clock-info-modal.component';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** Create a class, weekly or without a schedule, or edit one (`?id=`), saved in Firestore through ClassesService. */
 @Component({
-	imports: [EmailScannerComponent, IconComponent, TPipe],
+	imports: [IconComponent, TPipe],
 	templateUrl: './class-form.component.html',
 })
 export class ClassFormComponent {
 	private readonly _router = inject(Router);
+	private readonly _modal = inject(ModalService);
 	private readonly _classes = inject(ClassesService);
 	private readonly _auth = inject(AuthService);
 	private readonly _form = viewChild<ElementRef<HTMLFormElement>>('form');
-	private readonly _clockInfo = viewChild<ElementRef<HTMLDialogElement>>('clockInfo');
 	/** The class being edited, or `null` when creating a new one. */
 	private readonly _id = inject(ActivatedRoute).snapshot.queryParamMap.get('id');
 
@@ -106,11 +108,17 @@ export class ClassFormComponent {
 	}
 
 	protected openClockInfo() {
-		this._clockInfo()?.nativeElement.showModal();
+		this._modal.show({ component: ClockInfoModalComponent, size: 'small', ariaLabelledBy: 'clock-info-title' });
 	}
 
-	protected closeClockInfo() {
-		this._clockInfo()?.nativeElement.close();
+	/** The camera that reads a QR code holding an email address. */
+	protected openScanner() {
+		this._modal.show({
+			component: EmailScannerModalComponent,
+			size: 'small',
+			ariaLabelledBy: 'email-scan-title',
+			onScanned: (email: string) => this.onScanned(email),
+		});
 	}
 
 	protected async submit(event: Event) {

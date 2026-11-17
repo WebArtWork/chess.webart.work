@@ -1,11 +1,5 @@
 <section class="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 pb-8 pt-4 sm:px-6" [class]="printing() ? 'print:hidden' : ''">
-	<div class="flex items-center justify-between gap-3">
-		<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">{{ 'Theory' | t }}</h1>
-		<button class="ds-btn ds-btn-ghost ds-btn-sm ml-auto gap-1.5" type="button" [disabled]="preparing()" (click)="print()">
-			<app-icon name="print" />
-			{{ (preparing() ? 'Preparing…' : category() ? 'Print these lessons' : 'Print all lessons') | t }}
-		</button>
-	</div>
+	<h1 class="sr-only md:not-sr-only md:text-xl md:font-semibold md:tracking-tight">{{ 'Theory' | t }}</h1>
 
 	<details class="ds-card">
 		<summary class="cursor-pointer px-4 py-3 text-sm font-medium">{{ 'How to use these lessons' | t }}</summary>
@@ -65,29 +59,3 @@
 @if (printing(); as lessons) {
 	<app-theory-print [lessons]="lessons" />
 }
-
-<!-- Categories: a bottom sheet on phones, a centered dialog on larger screens; opened from the topbar. -->
-<dialog
-	#sheet
-	class="m-0 mt-auto w-full max-w-none rounded-t-2xl border border-line bg-card p-0 text-fg backdrop:bg-black/50 sm:m-auto sm:max-w-md sm:rounded-2xl"
-	aria-labelledby="categories-title"
-	(click)="onSheetClick($event)"
->
-	<div class="flex max-h-[85dvh] flex-col">
-		<div class="flex items-center justify-between px-4 pb-2 pt-4">
-			<h2 id="categories-title" class="text-lg font-semibold">{{ 'Category' | t }}</h2>
-			<button class="ds-btn ds-btn-ghost size-10 !p-0" type="button" [attr.aria-label]="'Close' | t" (click)="closeSheet()">
-				<app-icon name="close" />
-			</button>
-		</div>
-
-		<div class="flex flex-wrap gap-2 overflow-y-auto px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2" role="group" aria-labelledby="categories-title">
-			<button class="ds-chip" type="button" [attr.aria-pressed]="!category()" (click)="pickCategory(null)">{{ 'All' | t }}</button>
-			@for (item of categories; track item) {
-				<button class="ds-chip" type="button" [attr.aria-pressed]="category() === item" (click)="pickCategory(item)">
-					{{ categoryLabels[item] | t }}
-				</button>
-			}
-		</div>
-	</div>
-</dialog>

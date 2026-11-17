@@ -135,7 +135,7 @@
 				aria-haspopup="dialog"
 				[attr.aria-label]="'Scan an email QR code' | t"
 				[attr.title]="'Scan an email QR code' | t"
-				(click)="scanner.open()"
+				(click)="openScanner()"
 			>
 				<app-icon name="qr" />
 			</button>
@@ -187,19 +187,3 @@
 		</button>
 	</div>
 </form>
-
-<app-email-scanner #scanner (scanned)="onScanned($event)" />
-
-<dialog
-	#clockInfo
-	class="m-auto w-[min(92vw,24rem)] rounded-xl border border-line bg-card p-0 text-fg backdrop:bg-black/50"
-	aria-labelledby="clock-info-title"
-	(click)="$event.target === clockInfo && closeClockInfo()"
->
-	<div class="flex flex-col gap-3 p-5">
-		<h2 id="clock-info-title" class="text-lg font-semibold tracking-tight">{{ 'Game clock' | t }}</h2>
-		<p>{{ 'Minutes per player + seconds added per move.' | t }}</p>
-		<p class="text-sm text-mute">{{ '10+5: each player gets 10 minutes, and 5 seconds are added after every move.' | t }}</p>
-		<button class="ds-btn ds-btn-primary h-11 w-full" type="button" (click)="closeClockInfo()">{{ 'Close' | t }}</button>
-	</div>
-</dialog>

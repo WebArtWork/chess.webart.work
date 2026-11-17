@@ -91,6 +91,17 @@
 
 			@if (theory.active()) {
 				<button
+					class="ds-btn ds-btn-ghost size-10 !p-0"
+					type="button"
+					aria-haspopup="dialog"
+					[attr.aria-label]="'Print lessons' | t"
+					[attr.title]="'Print lessons' | t"
+					[disabled]="theory.preparing()"
+					(click)="theory.print$.next()"
+				>
+					<app-icon name="print" />
+				</button>
+				<button
 					class="ds-btn ds-btn-ghost relative size-10 !p-0"
 					type="button"
 					aria-haspopup="dialog"
@@ -143,7 +154,7 @@
 					aria-haspopup="dialog"
 					[attr.aria-label]="'Show my email as a QR code' | t"
 					[attr.title]="'Show my email as a QR code' | t"
-					(click)="emailQr.open()"
+					(click)="openEmailQr()"
 				>
 					<app-icon name="qr" />
 				</button>
@@ -202,61 +213,3 @@
 		</div>
 	</div>
 </header>
-
-<app-email-qr #emailQr [email]="user()?.email?.toLowerCase() ?? ''" />
-
-<!-- Full-screen editor for the position field: opens when the field is tapped, Load sits below it. -->
-<dialog
-	#editor
-	class="m-0 h-dvh max-h-none w-dvw max-w-none bg-bg p-0 text-fg backdrop:bg-black/50"
-	[attr.aria-label]="'Load a position' | t"
->
-	<div class="flex h-full flex-col gap-3 p-4">
-		<div class="flex items-center justify-between">
-			<div class="flex gap-2" role="group" [attr.aria-label]="'Import a position' | t">
-				<button class="ds-chip" type="button" [attr.aria-pressed]="input.tab() === 'fen'" (click)="pickTab('fen')">FEN</button>
-				<button class="ds-chip" type="button" [attr.aria-pressed]="input.tab() === 'pgn'" (click)="pickTab('pgn')">PGN</button>
-			</div>
-			<button class="ds-btn ds-btn-ghost size-10 !p-0" type="button" [attr.aria-label]="'Close' | t" (click)="closeEditor()">
-				<app-icon name="close" />
-			</button>
-		</div>
-
-		<label class="sr-only" for="position-editor">{{ (input.tab() === 'fen' ? 'Position (FEN)' : 'Game (PGN)') | t }}</label>
-		<textarea
-			id="position-editor"
-			class="ds-textarea min-h-0 flex-1 font-mono"
-			autofocus
-			spellcheck="false"
-			[placeholder]="input.tab() === 'fen' ? 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1' : '1. e4 e5 2. Nf3 Nc6 ...'"
-			[value]="draft()"
-			(input)="draft.set($any($event.target).value)"
-		></textarea>
-
-		@if (input.error()) {
-			<p class="text-sm text-danger" role="alert">{{ input.error() | t }}</p>
-		}
-
-		<button class="ds-btn ds-btn-primary ds-btn-lg w-full" type="button" (click)="load()">{{ 'Load' | t }}</button>
-	</div>
-</dialog>
-
-<!-- Full-screen engine settings, opened by the settings icon. -->
-<dialog
-	#settingsDialog
-	class="m-0 h-dvh max-h-none w-dvw max-w-none bg-bg p-0 text-fg backdrop:bg-black/50"
-	aria-labelledby="engine-settings-title"
->
-	<div class="flex h-full flex-col gap-4 p-4">
-		<div class="flex items-center justify-between">
-			<h2 id="engine-settings-title" class="text-xl font-semibold tracking-tight">{{ 'Engine settings' | t }}</h2>
-			<button class="ds-btn ds-btn-ghost size-10 !p-0" type="button" [attr.aria-label]="'Close' | t" (click)="closeSettings()">
-				<app-icon name="close" />
-			</button>
-		</div>
-		<div class="flex-1 overflow-y-auto">
-			<app-analysis-settings [(settings)]="input.settings" />
-		</div>
-		<button class="ds-btn ds-btn-primary ds-btn-lg w-full" type="button" (click)="closeSettings()">{{ 'Done' | t }}</button>
-	</div>
-</dialog>

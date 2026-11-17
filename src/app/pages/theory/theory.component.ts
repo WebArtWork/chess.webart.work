@@ -1,14 +1,24 @@
-import { afterNextRender, Component, computed, DestroyRef, effect, ElementRef, inject, Injector, signal, viewChild } from '@angular/core';
+import { afterNextRender, Component, computed, DestroyRef, effect, inject, Injector, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ModalService } from '@wawjs/ngx-ui';
 import { IconComponent } from '../../components/icon/icon.component';
 import { PrintedLesson, TheoryPrintComponent } from '../../components/theory-print/theory-print.component';
+import { TheoryPrintModalComponent } from '../../components/theory-print/theory-print-modal.component';
 import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
 import { THEORY_CATALOG, THEORY_CATEGORY_LABELS, THEORY_GROUPS, THEORY_INTRO } from '../../feature/theory/theory.catalog';
 import { TheoryCategory } from '../../feature/theory/theory.interface';
 import { TheoryProgressService } from '../../feature/theory/theory-progress.service';
 import { TheoryToolbarService } from '../../feature/theory/theory-toolbar.service';
+import { TheoryCategoryModalComponent } from './theory-category-modal.component';
+
+/** Every hub block with all its lessons, in hub order: what the print dialog lists. */
+const PRINT_GROUPS = THEORY_GROUPS.map((group) => ({
+	value: group.value,
+	label: group.label,
+	cards: THEORY_CATALOG.filter((card) => card.group === group.value),
+})).filter((group) => group.cards.length);
 
 /** The Theory hub: every lesson in its block, filtered by category (kept in the URL, picked from the topbar). */
 @Component({
@@ -21,7 +31,7 @@ export class TheoryComponent {
 	private readonly _injector = inject(Injector);
 	private readonly _progress = inject(TheoryProgressService);
 	private readonly _toolbar = inject(TheoryToolbarService);
-	private readonly _sheet = viewChild.required<ElementRef<HTMLDialogElement>>('sheet');
+	private readonly _modal = inject(ModalService);
 
 	protected readonly categoryLabels = THEORY_CATEGORY_LABELS;
 	protected readonly intro = THEORY_INTRO;
@@ -55,16 +65,32 @@ export class TheoryComponent {
 		destroyRef.onDestroy(() => {
 			this._toolbar.active.set(false);
 			this._toolbar.filtered.set(false);
+			this._toolbar.preparing.set(false);
 		});
 		effect(() => this._toolbar.filtered.set(!!this.category()));
-		this._toolbar.categories$.pipe(takeUntilDestroyed(destroyRef)).subscribe(() => this._sheet().nativeElement.showModal());
+		effect(() => this._toolbar.preparing.set(this.preparing()));
+		this._toolbar.print$.pipe(takeUntilDestroyed(destroyRef)).subscribe(() => this.openPrint());
+		this._toolbar.categories$.pipe(takeUntilDestroyed(destroyRef)).subscribe(() => this.openCategories());
 	}
 
-	/** Prints every lesson the hub shows (all of them, or the picked category), text only. */
-	protected async print() {
+	/** Opens the lesson picker; the lessons the hub shows (all of them, or the picked category) start selected. */
+	protected openPrint() {
 		if (this.preparing()) return;
+		this._modal.show({
+			component: TheoryPrintModalComponent,
+			size: 'mid',
+			ariaLabelledBy: 'print-title',
+			groups: PRINT_GROUPS,
+			initial: this.groups().flatMap((group) => group.cards.map((card) => card.slug)),
+			onPrint: (slugs: string[]) => void this.print(slugs),
+		});
+	}
+
+	/** Prints the chosen lessons, text only. */
+	private async print(slugs: string[]) {
+		if (this.preparing() || !slugs.length) return;
 		this.preparing.set(true);
-		const cards = this.groups().flatMap((group) => group.cards);
+		const cards = PRINT_GROUPS.flatMap((group) => group.cards).filter((card) => slugs.includes(card.slug));
 		const [{ THEORY_LESSONS }] = await Promise.all([
 			import('../../feature/theory/lessons'),
 			this._i18n.loadPages(
@@ -87,16 +113,19 @@ export class TheoryComponent {
 	protected pickCategory(category: TheoryCategory | null) {
 		this.category.set(this.category() === category ? null : category);
 		this._syncUrl();
-		this.closeSheet();
 	}
 
-	protected closeSheet() {
-		this._sheet().nativeElement.close();
-	}
-
-	/** A tap on the dimmed backdrop (the dialog element itself) closes the sheet. */
-	protected onSheetClick(event: MouseEvent) {
-		if (event.target === this._sheet().nativeElement) this.closeSheet();
+	/** The category filter, opened from the topbar. */
+	protected openCategories() {
+		this._modal.show({
+			component: TheoryCategoryModalComponent,
+			size: 'small',
+			ariaLabelledBy: 'categories-title',
+			categories: this.categories,
+			labels: this.categoryLabels,
+			current: this.category(),
+			onPick: (category: TheoryCategory | null) => this.pickCategory(category),
+		});
 	}
 
 	private _syncUrl() {

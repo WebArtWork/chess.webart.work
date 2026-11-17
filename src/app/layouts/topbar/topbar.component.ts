@@ -1,12 +1,14 @@
 import { NgOptimizedImage } from '@angular/common';
-import { afterNextRender, Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { afterNextRender, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRouteSnapshot, NavigationEnd, Router, RouterLink } from '@angular/router';
+import { ModalService } from '@wawjs/ngx-ui';
 import { filter, map, startWith } from 'rxjs';
-import { AnalysisSettingsComponent } from '../../components/analysis-settings/analysis-settings.component';
-import { EmailQrComponent } from '../../components/email-qr/email-qr.component';
+import { EngineSettingsModalComponent } from '../../components/analysis-settings/engine-settings-modal.component';
+import { EmailQrModalComponent } from '../../components/email-qr/email-qr-modal.component';
 import { IconComponent } from '../../components/icon/icon.component';
 import { IconName } from '../../components/icon/icon.data';
+import { PositionEditorModalComponent } from '../../components/position-editor/position-editor-modal.component';
 import { LessonToolbarService, LessonView } from '../../feature/classroom/lesson-toolbar.service';
 import { GamesToolbarService } from '../../feature/chess/games-toolbar.service';
 import { PlayModeService } from '../../feature/chess/play-mode.service';
@@ -21,7 +23,7 @@ import { NAV_LINKS } from '../nav.const';
 
 @Component({
 	selector: 'app-topbar',
-	imports: [AnalysisSettingsComponent, EmailQrComponent, IconComponent, NgOptimizedImage, RouterLink, TPipe],
+	imports: [IconComponent, NgOptimizedImage, RouterLink, TPipe],
 	templateUrl: './topbar.component.html',
 	// no box of its own, so the sticky header sticks to the page, not to this element
 	host: { class: 'contents' },
@@ -29,6 +31,7 @@ import { NAV_LINKS } from '../nav.const';
 export class TopbarComponent {
 	private readonly _auth = inject(AuthService);
 	private readonly _router = inject(Router);
+	private readonly _modal = inject(ModalService);
 	protected readonly playMode = inject(PlayModeService);
 	protected readonly nav = inject(NavStateService);
 	protected readonly input = inject(PositionInputService);
@@ -41,42 +44,29 @@ export class TopbarComponent {
 		{ id: 'tournament', label: 'Tournament', icon: 'trophy' },
 	];
 
-	private readonly _editor = viewChild<ElementRef<HTMLDialogElement>>('editor');
-	private readonly _settingsDialog = viewChild<ElementRef<HTMLDialogElement>>('settingsDialog');
-	protected readonly draft = signal('');
-
 	protected readonly links = NAV_LINKS;
 	protected readonly user = this._auth.user;
 	protected readonly progress = inject(ProgressService);
 	protected readonly sharing = inject(ShareService);
 
+	/** The full-screen editor for the position field; Load sits below it. */
 	protected openEditor() {
-		this.input.error.set('');
-		this.draft.set(this.input.tab() === 'fen' ? this.input.fen() : '');
-		this._editor()?.nativeElement.showModal();
+		this._modal.show({ component: PositionEditorModalComponent, size: 'fullscreen', ariaLabelledBy: 'position-editor-title' });
 	}
 
+	/** The engine settings. */
 	protected openSettings() {
-		this._settingsDialog()?.nativeElement.showModal();
+		this._modal.show({ component: EngineSettingsModalComponent, size: 'fullscreen', ariaLabelledBy: 'engine-settings-title' });
 	}
 
-	protected closeSettings() {
-		this._settingsDialog()?.nativeElement.close();
-	}
-
-	protected closeEditor() {
-		this._editor()?.nativeElement.close();
-	}
-
-	protected load() {
-		this.input.load(this.input.tab(), this.draft());
-		if (!this.input.error()) this.closeEditor();
-	}
-
-	protected pickTab(tab: 'fen' | 'pgn') {
-		this.input.tab.set(tab);
-		this.draft.set(tab === 'fen' ? this.input.fen() : '');
-		this.input.error.set('');
+	/** The user's email as a QR code, for a class owner to scan. */
+	protected openEmailQr() {
+		this._modal.show({
+			component: EmailQrModalComponent,
+			size: 'small',
+			ariaLabelledBy: 'email-qr-title',
+			email: this.user()?.email?.toLowerCase() ?? '',
+		});
 	}
 
 	/** The active route's data, deepest level winning: page name and Study link. */
