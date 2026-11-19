@@ -26,6 +26,8 @@ export class ProfileComponent {
 	protected readonly confirmingDelete = signal(false);
 	protected readonly deleting = signal(false);
 	protected readonly deleteError = signal<string | null>(null);
+	/** The technical code behind `deleteError`, so a failed deletion can be reported and fixed. */
+	protected readonly deleteDetail = signal('');
 	protected readonly round = Math.round;
 	protected readonly name = computed(() => this.user()?.displayName || this.user()?.email || this._i18n.t('Player'));
 	protected readonly initial = computed(() => this.name().trim().charAt(0).toUpperCase());
@@ -43,12 +45,15 @@ export class ProfileComponent {
 	protected async deleteAccount() {
 		this.deleting.set(true);
 		this.deleteError.set(null);
+		this.deleteDetail.set('');
 		try {
 			await this._auth.deleteAccount();
 			// a full reload, so no progress from the deleted account stays in memory
 			window.location.assign('/');
 		} catch (error) {
 			console.error('Could not delete the account.', error);
+			const { code, message } = error as { code?: string; message?: string };
+			this.deleteDetail.set([code, message].filter(Boolean).join(': ').slice(0, 300));
 			const closed = (error as { code?: string }).code === 'auth/popup-closed-by-user';
 			this.deleteError.set(
 				closed ? 'Sign-in was cancelled, so nothing was deleted.' : 'Could not delete your account. Check your connection and try again.',

@@ -1,6 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { Capacitor } from '@capacitor/core';
 import { PreferencesComponent } from '../../components/preferences/preferences.component';
 import { AuthService } from '../../feature/auth/auth.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
@@ -15,8 +16,15 @@ export class SignInComponent {
 	private readonly _auth = inject(AuthService);
 	private readonly _router = inject(Router);
 
+	/**
+	 * Google blocks its sign-in page inside the iOS app's web view ("disallowed_useragent"), so the iOS app
+	 * offers Sign in with Apple only. Web and Android keep both.
+	 */
+	protected readonly showGoogle = Capacitor.getPlatform() !== 'ios';
 	protected readonly pending = signal(false);
 	protected readonly error = signal<string | null>(null);
+	/** The technical code or message behind `error`, so a failed sign-in can be reported and fixed. */
+	protected readonly detail = signal('');
 
 	protected signInWithGoogle() {
 		return this._signIn(() => this._auth.signInWithGoogle());
@@ -29,6 +37,7 @@ export class SignInComponent {
 	private async _signIn(method: () => Promise<unknown>) {
 		this.pending.set(true);
 		this.error.set(null);
+		this.detail.set('');
 
 		try {
 			await method();
@@ -38,6 +47,8 @@ export class SignInComponent {
 			if (!SILENT_ERROR_CODES.has(code)) {
 				console.error(error);
 				this.error.set(_errorMessage(code));
+				const message = (error as { message?: string }).message ?? '';
+				this.detail.set([code, message].filter(Boolean).join(': ').slice(0, 300));
 			}
 		} finally {
 			this.pending.set(false);

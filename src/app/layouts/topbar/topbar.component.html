@@ -1,4 +1,4 @@
-<header class="z-40 shrink-0 border-b border-line bg-bg md:sticky md:top-0 md:bg-bg/90 md:backdrop-blur">
+<header class="z-40 shrink-0 pt-[env(safe-area-inset-top)] border-b border-line bg-bg md:sticky md:top-0 md:bg-bg/90 md:backdrop-blur">
 	<div class="mx-auto flex h-14 w-full max-w-[72rem] items-center justify-between gap-2 px-2 sm:gap-4 sm:px-6">
 		<div class="flex min-w-0 items-center sm:gap-2.5">
 			<a class="inline-flex size-9 shrink-0 items-center justify-center rounded-lg no-underline sm:size-10" routerLink="/" [attr.aria-label]="'Dashboard' | t">
@@ -9,7 +9,7 @@
 
 		<!-- Phones, Study setup: the position inputs live here instead of in the page. -->
 		@if (input.active()) {
-			<div class="flex min-w-0 flex-1 items-center justify-end gap-1 md:hidden">
+			<div class="ml-auto flex shrink-0 items-center gap-1 md:hidden">
 				<button
 					class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0"
 					type="button"
@@ -46,7 +46,7 @@
 
 		<!-- Phones, Games: count, shuffle and filters live here instead of in the page. -->
 		@if (games.active()) {
-			<div class="flex min-w-0 flex-1 items-center justify-end gap-1 md:hidden">
+			<div class="ml-auto flex shrink-0 items-center gap-1 md:hidden">
 				<p class="m-0! min-w-0 truncate pr-1 text-xs leading-none text-mute" role="status">
 					@if (games.count() === null) {
 						{{ 'Loading…' | t }}

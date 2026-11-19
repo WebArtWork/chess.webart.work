@@ -74,6 +74,14 @@
 				}
 			</ul>
 		</section>
+
+		@if (!owner()) {
+			<p class="text-sm text-mute">
+				{{ 'Something wrong with this class or its owner?' | t }}
+				<a [href]="reportHref()">{{ 'Report this class' | t }}</a>.
+				{{ 'We review every report within 24 hours and remove abusive classes and accounts.' | t }}
+			</p>
+		}
 	} @else {
 		<div class="ds-card items-start gap-3 p-5" role="alert">
 			<p>{{ 'We could not open this class.' | t }}</p>

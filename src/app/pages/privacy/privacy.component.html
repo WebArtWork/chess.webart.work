@@ -27,13 +27,18 @@
 		<ul class="flex list-disc flex-col gap-2 pl-5 leading-relaxed marker:text-mute">
 			<li>{{ 'your name, email address and profile photo link, copied from your Google or Apple account (Apple may give a private relay email address instead of your real one);' | t }}</li>
 			<li>{{ 'the games and positions you save from the analysis board;' | t }}</li>
-			<li>{{ 'your rating and pawns, with a record of each change, so they follow you to other devices.' | t }}</li>
+			<li>{{ 'your rating and pawns, with a record of each change, so they follow you to other devices;' | t }}</li>
+			<li>{{ 'if you use Classes: the classes you create (name, schedule, game clock and the email addresses of the class mates you invite), and, when you join a class lesson, your name, the opening you were given and the games you play there.' | t }}</li>
 		</ul>
 		<p class="leading-relaxed">
 			{{
-				'We use this only to show your profile and keep your progress. Only you can read it: the database rules let each account reach its own data and nothing else. We share it with no one except the services below, which run the app for us.'
+				'We use this only to show your profile, keep your progress and run Classes. Your profile, saved games and progress can be read only by you: the database rules let each account reach its own data and nothing else. A class, and the lesson games in it, can be read only by its owner and by the class mates the owner invited by email. We share it with no one except the services below, which run the app for us.'
 					| t
 			}}
+		</p>
+		<p class="leading-relaxed">
+			{{ 'Classes are private: they are never listed or shown to other people. If someone misuses a class, use Report this class on the class page or email' | t }}
+			<a [href]="'mailto:' + email">{{ email }}</a>{{ '. We review reports within 24 hours and remove abusive classes and accounts.' | t }}
 		</p>
 	</section>
 
@@ -63,7 +68,7 @@
 			<a routerLink="/profile">{{ 'Open your profile' | t }}</a> {{ 'on the website or in the app and choose' | t }}
 			<strong>{{ 'Delete account' | t }}</strong>.
 			{{
-				'You are asked to sign in once more, then your account and everything stored for it are deleted right away: profile, saved games, rating and pawns. Progress saved on that device is removed too.'
+				'You are asked to sign in once more, then your account and everything stored for it are deleted right away: profile, saved games, rating and pawns, and the classes you own with their lessons. Progress saved on that device is removed too. If you signed in with Apple, we also revoke the app's access to your Apple account.'
 					| t
 			}}
 		</p>

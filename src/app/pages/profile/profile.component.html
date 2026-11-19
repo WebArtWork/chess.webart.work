@@ -124,7 +124,12 @@
 		}
 
 		@if (deleteError(); as error) {
-			<p class="text-sm text-danger" role="alert">{{ error | t }}</p>
+			<div role="alert">
+				<p class="m-0 text-sm text-danger">{{ error | t }}</p>
+				@if (deleteDetail(); as detail) {
+					<p class="mb-0 mt-1 break-words text-xs text-mute">{{ detail }}</p>
+				}
+			</div>
 		}
 	</section>
 </section>
