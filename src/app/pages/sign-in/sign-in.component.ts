@@ -1,6 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { Capacitor } from '@capacitor/core';
 import { PreferencesComponent } from '../../components/preferences/preferences.component';
 import { AuthService } from '../../feature/auth/auth.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
@@ -15,6 +16,11 @@ export class SignInComponent {
 	private readonly _auth = inject(AuthService);
 	private readonly _router = inject(Router);
 
+	/**
+	 * Google blocks its sign-in page inside the iOS app's web view ("disallowed_useragent"), so the iOS app
+	 * offers Sign in with Apple only. Web and Android keep both.
+	 */
+	protected readonly showGoogle = Capacitor.getPlatform() !== 'ios';
 	protected readonly pending = signal(false);
 	protected readonly error = signal<string | null>(null);
 

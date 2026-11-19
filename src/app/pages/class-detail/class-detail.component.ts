@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { longDays, upcomingLessons } from '../../feature/classroom/classroom.const';
 import { ClassItem } from '../../feature/classroom/classroom.interface';
 import { ClassesService } from '../../feature/classroom/classes.service';
+import { CONTACT_EMAIL } from '../../feature/legal/legal.const';
 import { I18nService } from '../../feature/i18n/i18n.service';
 import { TPipe } from '../../feature/i18n/t.pipe';
 
@@ -18,6 +19,7 @@ export class ClassDetailComponent {
 	private readonly _i18n = inject(I18nService);
 	private readonly _id = inject(ActivatedRoute).snapshot.paramMap.get('id') ?? '';
 	protected readonly user = inject(AuthService).user;
+	protected readonly email = CONTACT_EMAIL;
 
 	protected readonly item = signal<ClassItem | null>(null);
 	protected readonly loading = signal(true);
@@ -32,6 +34,12 @@ export class ClassDetailComponent {
 			name: item.ownerName || me?.displayName || '',
 			email: item.ownerEmail || me?.email?.toLowerCase() || '',
 		};
+	});
+
+	/** Opens the mail app with the class already named, so a member can report abuse in one tap. */
+	protected readonly reportHref = computed(() => {
+		const subject = encodeURIComponent(`Report a class: ${this.item()?.id ?? this._id}`);
+		return `mailto:${CONTACT_EMAIL}?subject=${subject}`;
 	});
 
 	/** The next lesson from now, in this device's time zone; `null` when the class has no days or time. */

@@ -13,7 +13,7 @@ import { CONTACT_EMAIL } from '../../feature/legal/legal.const';
 	templateUrl: './privacy.component.html',
 })
 export class PrivacyComponent {
-	protected readonly updated = '18 October 2026';
+	protected readonly updated = '19 November 2026';
 	protected readonly email = CONTACT_EMAIL;
 
 	constructor() {

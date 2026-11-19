@@ -76,8 +76,10 @@ export class AuthService {
 		if (isApple) {
 			let token: string | undefined;
 			if (Capacitor.isNativePlatform()) {
-				// the native Apple sheet gives an ID token only, which is not enough to revoke the Apple grant
-				await reauthenticateWithCredential(user, await this._nativeAppleCredential());
+				// the native Apple sheet gives an authorization code, which Firebase accepts to revoke the Apple grant
+				const apple = await this._nativeApple();
+				await reauthenticateWithCredential(user, apple.credential);
+				token = apple.authorizationCode;
 			} else {
 				const result = await reauthenticateWithPopup(user, await this._appleProvider());
 				token = OAuthProvider.credentialFromResult(result)?.accessToken;
@@ -95,13 +97,21 @@ export class AuthService {
 
 	/** The system Sign in with Apple sheet; Firebase JS signs in with the returned token, so the web session stays the single source of truth. */
 	private async _nativeAppleCredential() {
+		return (await this._nativeApple()).credential;
+	}
+
+	/** The Firebase credential from the Apple sheet, and the one-time code Apple needs to revoke the grant when the account is deleted. */
+	private async _nativeApple() {
 		const [{ FirebaseAuthentication }, { OAuthProvider }] = await Promise.all([
 			import('@capacitor-firebase/authentication'),
 			import('firebase/auth'),
 		]);
 		const { credential } = await FirebaseAuthentication.signInWithApple({ skipNativeAuth: true });
 		if (!credential?.idToken) throw new Error('Apple did not return a token.');
-		return new OAuthProvider('apple.com').credential({ idToken: credential.idToken, rawNonce: credential.nonce });
+		return {
+			credential: new OAuthProvider('apple.com').credential({ idToken: credential.idToken, rawNonce: credential.nonce }),
+			authorizationCode: credential.authorizationCode,
+		};
 	}
 
 	private async _appleProvider() {

@@ -900,5 +900,8 @@
 	"Select all": "Вибрати всі",
 	"Clear selection": "Зняти вибір",
 	"{count} of {total} selected": "Вибрано {count} з {total}",
-	"Print selected": "Друкувати вибрані"
+	"Print selected": "Друкувати вибрані",
+	"Something wrong with this class or its owner?": "Щось не так із цим класом чи його власником?",
+	"Report this class": "Поскаржитися на цей клас",
+	"We review every report within 24 hours and remove abusive classes and accounts.": "Ми розглядаємо кожну скаргу протягом 24 годин і видаляємо класи та облікові записи, що порушують правила."
 }
