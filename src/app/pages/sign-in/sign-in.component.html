@@ -53,7 +53,12 @@
 		</button>
 
 		@if (error(); as message) {
-			<p class="rounded-xl border border-danger p-4 text-sm" role="alert">{{ message | t }}</p>
+			<div class="rounded-xl border border-danger p-4 text-sm" role="alert">
+				<p class="m-0">{{ message | t }}</p>
+				@if (detail(); as detail) {
+					<p class="mb-0 mt-2 break-words text-xs text-mute">{{ detail }}</p>
+				}
+			</div>
 		}
 	</div>
 

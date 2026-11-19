@@ -9,7 +9,7 @@
 
 		<!-- Phones, Study setup: the position inputs live here instead of in the page. -->
 		@if (input.active()) {
-			<div class="flex min-w-0 flex-1 items-center justify-end gap-1 md:hidden">
+			<div class="ml-auto flex shrink-0 items-center gap-1 md:hidden">
 				<button
 					class="ds-btn ds-btn-ghost size-10 shrink-0 !p-0"
 					type="button"
@@ -46,7 +46,7 @@
 
 		<!-- Phones, Games: count, shuffle and filters live here instead of in the page. -->
 		@if (games.active()) {
-			<div class="flex min-w-0 flex-1 items-center justify-end gap-1 md:hidden">
+			<div class="ml-auto flex shrink-0 items-center gap-1 md:hidden">
 				<p class="m-0! min-w-0 truncate pr-1 text-xs leading-none text-mute" role="status">
 					@if (games.count() === null) {
 						{{ 'Loading…' | t }}
