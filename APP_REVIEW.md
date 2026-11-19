@@ -22,8 +22,11 @@ There is no paid content and no in-app purchase, so nothing to show for that.
 
 Hello, thank you for the review. Here is the information requested.
 
-1. **Screen recording:** attached. It was captured on a physical iPhone, starting with the app launch, and shows
-   training without an account, Sign in with Apple, creating a class, and account deletion.
+1. **Screen recording:** attached. It was captured on a physical iPhone and starts from the home screen with
+   the app launch. It shows: training without an account (Daily puzzle, a Theory lesson, the Library and analysis
+   board), Sign in with Apple, the Profile, creating a class and opening its lesson page, and finally
+   **Profile → Delete account**, which asks for Sign in with Apple again and returns to the start screen
+   after the account and its data are deleted. There is no paid content, so nothing is shown for that.
 
 2. **Purpose and audience:** Chess training teaches chess players (beginners to club level, ages 13+) to think
    in candidate moves, following Alexander Kotov's method: find every good move, calculate the tree of lines,
