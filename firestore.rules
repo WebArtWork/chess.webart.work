@@ -112,6 +112,8 @@ service cloud.firestore {
 					&& request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'finishedAt'])
 					&& request.resource.data.status == 'finished'
 					&& request.resource.data.finishedAt == request.time;
+				// account deletion: the owner removes the lessons of the class they delete
+				allow delete: if isClassOwner();
 
 				// a member who opened the lesson: their name, the opening picked for them and Ready
 				match /players/{uid} {
