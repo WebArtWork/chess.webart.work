@@ -7,6 +7,9 @@ import { FirebaseService } from '../firebase/firebase.service';
 /** Progress kept in the browser (daily, rating and pawns, puzzle practice, review queue, theory lessons); removed with the account. */
 const LOCAL_PROGRESS_KEYS = ['wawchess_daily', 'wawchess_progress', 'wawchess_quiz', 'wawchess_review', 'wawchess_theory'];
 
+/** How long the saved session may take to be checked before the app carries on as signed out. */
+const SESSION_CHECK_MS = 4000;
+
 /** Google and Apple sign-in through Firebase Auth. */
 @Service()
 export class AuthService {
@@ -132,13 +135,22 @@ export class AuthService {
 		const { onAuthStateChanged } = await import('firebase/auth');
 		await new Promise<void>((resolve) => {
 			let resolved = false;
-			onAuthStateChanged(auth, (user) => {
-				this.user.set(user);
+			const done = () => {
 				if (!resolved) {
 					resolved = true;
 					resolve();
 				}
+			};
+			onAuthStateChanged(auth, (user) => {
+				this.user.set(user);
+				done();
 			});
+			// If Firebase never answers (no network, a stalled web view), treat the visitor as signed out
+			// instead of leaving the page that asked frozen; a late answer still updates `user`.
+			setTimeout(() => {
+				if (!resolved) this.user.set(null);
+				done();
+			}, SESSION_CHECK_MS);
 		});
 	}
 }

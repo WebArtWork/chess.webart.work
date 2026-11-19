@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { inject, PLATFORM_ID, Service } from '@angular/core';
+import { Capacitor } from '@capacitor/core';
 import type { Auth } from 'firebase/auth';
 import type { Firestore } from 'firebase/firestore';
 import { environment } from '../../../environments/environment';
@@ -20,8 +21,14 @@ export class FirebaseService {
 	async auth(): Promise<Auth | null> {
 		if (!this._isBrowser) return null;
 		this._auth ??= (async () => {
-			const { getAuth } = await import('firebase/auth');
-			return getAuth(await this._getApp());
+			const app = await this._getApp();
+			const { browserLocalPersistence, getAuth, indexedDBLocalPersistence, initializeAuth } = await import('firebase/auth');
+			// The iOS app signs in with the native Apple sheet, never a pop-up. getAuth() also loads the pop-up
+			// iframe, which can stall inside the iOS web view and leave the session check, and so every
+			// sign-in-only page, waiting forever. Plain persistence has no iframe to wait for.
+			return Capacitor.getPlatform() === 'ios'
+				? initializeAuth(app, { persistence: [indexedDBLocalPersistence, browserLocalPersistence] })
+				: getAuth(app);
 		})();
 		return this._auth;
 	}
